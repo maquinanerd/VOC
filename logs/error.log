@@ -15,3 +15,6 @@ Traceback (most recent call last):
     self.backup_keys[category] = [key for key in config['backup_keys'] if key]
                                                  ~~~~~~^^^^^^^^^^^^^^^
 TypeError: list indices must be integers or slices, not str
+2025-08-13 17:56:44 - app.main - ERROR - Error processing article https://screenrant.com/stans-movie-streaming-release-date-paramount-plus/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 17:57:14 - app.main - ERROR - Error processing article https://screenrant.com/red-sonja-2025-movie-rotten-tomatoes-score-debut/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 17:57:45 - app.main - ERROR - Error processing article https://screenrant.com/james-bond-26-scott-rose-marsh-screen-testing-reports/: 'AIProcessor' object has no attribute 'prompt_template'

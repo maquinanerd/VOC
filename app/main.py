@@ -121,6 +121,28 @@ PIPELINE_CONFIG = {
     'publisher_logo_url': 'https://www.maquinanerd.com.br/wp-content/uploads/2023/11/logo-maquina-nerd-400px.png'
 }
 
+PROMPT_TEMPLATE = """
+Você é um especialista em SEO e um redator de notícias de entretenimento para o site '{publisher_name}'.
+Sua tarefa é reescrever o seguinte artigo para ser único, otimizado para SEO e envolvente para o público brasileiro.
+
+**Instruções:**
+1.  **Título:** Crie um novo título chamativo e otimizado para SEO (máximo de 70 caracteres). O título deve ser em português do Brasil.
+2.  **Resumo (Excerpt):** Escreva um resumo curto e atraente (máximo de 160 caracteres) que incentive o clique. Deve ser em português do Brasil.
+3.  **Conteúdo:** Reescreva o conteúdo principal. Mantenha o sentido original, mas use palavras diferentes e uma estrutura de frases variada. O tom deve ser informativo e engajante. Adicione subtítulos (H2, H3) para melhorar a legibilidade. O conteúdo deve ser em português do Brasil.
+4.  **Formato de Saída:** A saída DEVE ser um JSON VÁLIDO e nada mais. O JSON deve conter as seguintes chaves: "title", "excerpt", "content".
+5.  **Não inclua a fonte original no conteúdo reescrito.**
+
+**Artigo Original:**
+- **Categoria:** {category}
+- **Título Original:** {title}
+- **Resumo Original:** {excerpt}
+- **Tags:** {tags_text}
+- **Conteúdo Original:**
+{content}
+
+**JSON de Saída:**
+"""
+
 logger = logging.getLogger(__name__)
 
 
@@ -142,6 +164,9 @@ class PipelineManager:
             for category, config_data in AI_CONFIG.items()
         }
         self.ai_processor = ai_processor.AIProcessor(filtered_ai_config)
+        self.ai_processor.prompt_template = PROMPT_TEMPLATE.format(
+            publisher_name=PIPELINE_CONFIG['publisher_name']
+        )
         self.content_rewriter = rewriter.ContentRewriter()
         self.tag_extractor = tags.TagExtractor()
         self.categorizer = categorizer.Categorizer()

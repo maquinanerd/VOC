@@ -194,3 +194,49 @@ Traceback (most recent call last):
     self.backup_keys[category] = [key for key in config['backup_keys'] if key]
                                                  ~~~~~~^^^^^^^^^^^^^^^
 TypeError: list indices must be integers or slices, not str
+2025-08-13 17:53:15 - root - INFO - ============================================================
+2025-08-13 17:53:15 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 17:53:15 - root - INFO - Log level: INFO
+2025-08-13 17:53:15 - root - INFO - Log directory: logs
+2025-08-13 17:53:15 - root - INFO - ============================================================
+2025-08-13 17:53:15 - app.store - INFO - Initializing database
+2025-08-13 17:53:15 - app.store - INFO - Database initialized successfully
+2025-08-13 17:53:15 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 17:53:15 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 17:53:15 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 17:53:15 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 17:53:15 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 17:53:15 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 17:53:15 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 17:53:15 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 17:56:41 - root - INFO - ============================================================
+2025-08-13 17:56:41 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 17:56:41 - root - INFO - Log level: INFO
+2025-08-13 17:56:41 - root - INFO - Log directory: logs
+2025-08-13 17:56:41 - root - INFO - ============================================================
+2025-08-13 17:56:41 - app.store - INFO - Initializing database
+2025-08-13 17:56:41 - app.store - INFO - Database initialized successfully
+2025-08-13 17:56:41 - app.main - INFO - Running single pipeline cycle
+2025-08-13 17:56:41 - app.main - INFO - Starting pipeline cycle
+2025-08-13 17:56:41 - app.main - INFO - Processing feed: screenrant_movies
+2025-08-13 17:56:42 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-13 17:56:42 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-13 17:56:43 - app.main - INFO - Found 3 new articles for screenrant_movies
+2025-08-13 17:56:43 - app.main - INFO - Processing article: Eminem Documentary 'Stans' Streaming Release Date Announced from screenrant_movies
+2025-08-13 17:56:43 - app.extractor - INFO - Extracting content from: https://screenrant.com/stans-movie-streaming-release-date-paramount-plus/
+2025-08-13 17:56:44 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 17:56:44 - app.tags - INFO - Extracted 15 tags: after, alt, american-pie, and-it, august...
+2025-08-13 17:56:44 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 17:56:44 - app.main - ERROR - Error processing article https://screenrant.com/stans-movie-streaming-release-date-paramount-plus/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 17:57:14 - app.main - INFO - Processing article: Red Sonja Reboot Divides Critics with 60% Rotten Tomatoes Score from screenrant_movies
+2025-08-13 17:57:14 - app.extractor - INFO - Extracting content from: https://screenrant.com/red-sonja-2025-movie-rotten-tomatoes-score-debut/
+2025-08-13 17:57:14 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 17:57:14 - app.tags - INFO - Extracted 15 tags: alt, american, among, arnold-schwarzenegger, async...
+2025-08-13 17:57:14 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 17:57:14 - app.main - ERROR - Error processing article https://screenrant.com/red-sonja-2025-movie-rotten-tomatoes-score-debut/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 17:57:44 - app.main - INFO - Processing article: Scott Rose-Marsh Screen-Tests For James Bond 26: A Potential First For The Franchise from screenrant_movies
+2025-08-13 17:57:44 - app.extractor - INFO - Extracting content from: https://screenrant.com/james-bond-26-scott-rose-marsh-screen-testing-reports/
+2025-08-13 17:57:45 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 17:57:45 - app.tags - INFO - Extracted 15 tags: a-potential, aaron-taylor, according, action, after...
+2025-08-13 17:57:45 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 17:57:45 - app.main - ERROR - Error processing article https://screenrant.com/james-bond-26-scott-rose-marsh-screen-testing-reports/: 'AIProcessor' object has no attribute 'prompt_template'

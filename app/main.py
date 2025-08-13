@@ -135,9 +135,12 @@ class PipelineManager:
         self.feed_reader = feeds.FeedReader(USER_AGENT)
         self.content_extractor = extractor.ContentExtractor(USER_AGENT)
         # Filter None values from AI config
-        filtered_ai_config = {}
-        for category, keys in AI_CONFIG.items():
-            filtered_ai_config[category] =
+        filtered_ai_config = {
+            category: {
+                'backup_keys': [key for key in config_data.get('backup_keys', []) if key]
+            }
+            for category, config_data in AI_CONFIG.items()
+        }
         self.ai_processor = ai_processor.AIProcessor(filtered_ai_config)
         self.content_rewriter = rewriter.ContentRewriter()
         self.tag_extractor = tags.TagExtractor()

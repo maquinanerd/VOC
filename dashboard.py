@@ -13,15 +13,20 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for, f
 import logging
 
 # Load environment variables
-env_file = Path('.env')
-if env_file.exists():
-    with open(env_file) as f:
-        for line in f:
-            line = line.strip()
-            if line and not line.startswith('#') and '=' in line:
-                key, value = line.split('=', 1)
-                value = value.strip('"').strip("'")
-                os.environ[key] = value
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    # Fallback to manual loading if python-dotenv is not available
+    env_file = Path('.env')
+    if env_file.exists():
+        with open(env_file) as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#') and '=' in line:
+                    key, value = line.split('=', 1)
+                    value = value.strip('"').strip("'")
+                    os.environ[key] = value
 
 # Add current directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

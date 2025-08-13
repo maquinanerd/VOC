@@ -22,6 +22,7 @@ class AIProcessor:
         for category, config in api_keys.items():
             self.backup_keys[category] = [key for key in config['backup_keys'] if key]
         self.failed_keys = {category: set() for category in self.backup_keys.keys()}
+        self._active_clients = {}
 
     def _load_prompt_template(self) -> str:
         """Load the universal prompt template from file"""

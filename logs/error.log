@@ -43,3 +43,24 @@ TypeError: list indices must be integers or slices, not str
 2025-08-13 18:12:01 - app.main - ERROR - Error processing article https://www.thegamer.com/magic-the-gathering-mark-rosewater-bloomburrow-return-fans-players-animals-creatures/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
 2025-08-13 18:12:30 - app.main - ERROR - Error processing article https://gamerant.com/first-pokemon-lego-sets-price-age-rating-details-unusual-combo-leak/: 'AIProcessor' object has no attribute 'prompt_template'
 2025-08-13 18:12:32 - app.main - ERROR - Error processing article https://www.thegamer.com/tekken-8-harada-negative-reception-overblown-overstated/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:16:00 - apscheduler.executors.default - ERROR - Job "RSS Pipeline Cycle (trigger: interval[0:15:00], next run at: 2025-08-13 18:31:00 -03)" raised an exception
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\apscheduler\executors\base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "E:\Área de Trabalho 2\VocSenior\app\main.py", line 309, in run_single_cycle
+    pipeline.run_pipeline_cycle()
+               ^^^^^^^^^^^^^^^^^
+  File "E:\Área de Trabalho 2\VocSenior\app\main.py", line 167, in __init__
+    self.ai_processor.prompt_template = PROMPT_TEMPLATE
+                                        ^^^^^^^^^^^^^^^
+    self.content_rewriter = rewriter.ContentRewriter()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    self.tag_extractor = tags.TagExtractor()
+    ^
+KeyError: 'category'
+2025-08-13 18:19:56 - app.main - ERROR - Error processing article https://screenrant.com/weapons-2025-movie-end-credits-david-fincher-explained-zach-cregger/: 'AIProcessor' object has no attribute '_active_clients'
+2025-08-13 18:19:59 - app.main - ERROR - Error processing article https://collider.com/richard-armitage-the-lodge-prime-video-uk-august-2025/: 'AIProcessor' object has no attribute '_active_clients'
+2025-08-13 18:20:00 - app.main - ERROR - Error processing article https://collider.com/taylor-sheridan-universe-update-paramount-cbs-foundation/: 'AIProcessor' object has no attribute '_active_clients'
+2025-08-13 18:20:01 - app.main - ERROR - Error processing article https://www.cbr.com/top-gun-3-top-priority-paramount-skydance/: 'AIProcessor' object has no attribute '_active_clients'
+2025-08-13 18:20:10 - app.main - ERROR - Error processing article https://gamerant.com/assassins-creed-future-developer-comments/: 'AIProcessor' object has no attribute '_active_clients'
+2025-08-13 18:20:40 - app.main - ERROR - Error processing article https://gamerant.com/palworld-clone-nintendo-eshop/: 'AIProcessor' object has no attribute '_active_clients'

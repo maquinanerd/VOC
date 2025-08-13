@@ -240,3 +240,26 @@ TypeError: list indices must be integers or slices, not str
 2025-08-13 17:57:45 - app.tags - INFO - Extracted 15 tags: a-potential, aaron-taylor, according, action, after...
 2025-08-13 17:57:45 - app.ai_processor - INFO - Processing content with AI for category: movies
 2025-08-13 17:57:45 - app.main - ERROR - Error processing article https://screenrant.com/james-bond-26-scott-rose-marsh-screen-testing-reports/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:01:00 - root - INFO - ============================================================
+2025-08-13 18:01:00 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 18:01:00 - root - INFO - Log level: INFO
+2025-08-13 18:01:00 - root - INFO - Log directory: logs
+2025-08-13 18:01:00 - root - INFO - ============================================================
+2025-08-13 18:01:00 - app.store - INFO - Initializing database
+2025-08-13 18:01:00 - app.store - INFO - Database initialized successfully
+2025-08-13 18:01:00 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 18:01:00 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 18:01:00 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 18:01:00 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 18:01:00 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 18:01:00 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 18:01:00 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 18:01:00 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 18:01:28 - root - INFO - ============================================================
+2025-08-13 18:01:28 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 18:01:28 - root - INFO - Log level: INFO
+2025-08-13 18:01:28 - root - INFO - Log directory: logs
+2025-08-13 18:01:28 - root - INFO - ============================================================
+2025-08-13 18:01:28 - app.store - INFO - Initializing database
+2025-08-13 18:01:28 - app.store - INFO - Database initialized successfully
+2025-08-13 18:01:28 - app.main - INFO - Running single pipeline cycle

@@ -164,9 +164,7 @@ class PipelineManager:
             for category, config_data in AI_CONFIG.items()
         }
         self.ai_processor = ai_processor.AIProcessor(filtered_ai_config)
-        self.ai_processor.prompt_template = PROMPT_TEMPLATE.format(
-            publisher_name=PIPELINE_CONFIG['publisher_name']
-        )
+        self.ai_processor.prompt_template = PROMPT_TEMPLATE
         self.content_rewriter = rewriter.ContentRewriter()
         self.tag_extractor = tags.TagExtractor()
         self.categorizer = categorizer.Categorizer()
@@ -202,7 +200,8 @@ class PipelineManager:
                 content=article_data['content'],
                 tags_text=tags_text,
                 category=feed_category,
-                primary_key=primary_key
+                primary_key=primary_key,
+                publisher_name=PIPELINE_CONFIG['publisher_name']
             )
             
             if not rewritten_content:

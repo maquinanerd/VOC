@@ -9,63 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-gray-100">
-    <nav class="bg-blue-600 text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <i class="fas fa-rss text-2xl mr-3"></i>
-                    <h1 class="text-xl font-bold">RSS-WordPress Automação</h1>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="{{ url_for('dashboard') }}" class="hover:bg-blue-700 px-3 py-2 rounded">
-                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
-                    </a>
-                    <a href="{{ url_for('feeds_page') }}" class="hover:bg-blue-700 px-3 py-2 rounded">
-                        <i class="fas fa-rss mr-2"></i>Feeds
-                    </a>
-                    <a href="{{ url_for('settings_page') }}" class="hover:bg-blue-700 px-3 py-2 rounded">
-                        <i class="fas fa-cog mr-2"></i>Configurações
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <main class="max-w-7xl mx-auto py-6 px-4">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        
-        {% block content %}{% endblock %}
-    </main>
-
-    <script>
-        // Auto-refresh functionality
-        function refreshData() {
-            fetch('/api/stats')
-                .then(response => response.json())
-                .then(data => {
-                    // Update stats if elements exist
-                    const seenElement = document.getElementById('seen-articles');
-                    if (seenElement) seenElement.textContent = data.seen_articles;
-                    
-                    const publishedElement = document.getElementById('published-posts');
-                    if (publishedElement) publishedElement.textContent = data.published_posts;
-                    
-                    const failuresElement = document.getElementById('failures');
-                    if (failuresElement) failuresElement.textContent = data.failures;
-                })
-                .catch(error => console.error('Error refreshing data:', error));
-        }
-
-        // Refresh every 30 seconds
-        setInterval(refreshData, 30000);
-    </script>
+    {% block content %}{% endblock %}
 </body>
 </html>

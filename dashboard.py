@@ -26,8 +26,14 @@ if env_file.exists():
 # Add current directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+# Import application modules
+from app.store import Database
+
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+
+# Global variable for automation system status
+automation_system = None
 
 def get_db_stats():
     """Get statistics from database"""
@@ -39,7 +45,7 @@ def get_db_stats():
         cursor.execute('SELECT COUNT(*) FROM seen_articles')
         seen_count = cursor.fetchone()[0]
         
-        cursor.execute('SELECT COUNT(*) FROM posts WHERE status = "published"')
+        cursor.execute('SELECT COUNT(*) FROM posts')
         published_count = cursor.fetchone()[0]
         
         cursor.execute('SELECT COUNT(*) FROM failures')
@@ -47,7 +53,7 @@ def get_db_stats():
         
         # Get recent posts
         cursor.execute('''
-            SELECT title, source_id, created_at, status 
+            SELECT source_id, external_id, wp_post_id, created_at 
             FROM posts 
             ORDER BY created_at DESC 
             LIMIT 10
@@ -56,10 +62,10 @@ def get_db_stats():
         
         # Get API usage stats
         cursor.execute('''
-            SELECT category, COUNT(*) as usage_count
+            SELECT api_type, SUM(usage_count) as usage_count
             FROM api_usage 
-            WHERE created_at > datetime('now', '-24 hours')
-            GROUP BY category
+            WHERE last_used > datetime('now', '-24 hours')
+            GROUP BY api_type
         ''')
         api_usage = cursor.fetchall()
         
@@ -127,8 +133,8 @@ def dashboard():
     stats = get_db_stats()
     logs = get_recent_logs()
     
-    # Check if system is running
-    system_status = "Running" if automation_system and automation_system.scheduler.running else "Stopped"
+    # Check if system is running (simplified for now)
+    system_status = "Stopped"
     
     return render_template('dashboard.html', 
                          stats=stats, 
@@ -148,76 +154,80 @@ def api_logs():
 @app.route('/api/system/status')
 def api_system_status():
     """Get system status"""
-    global automation_system
-    
     status = {
-        'running': automation_system and automation_system.scheduler.running if automation_system else False,
+        'running': False,
         'next_run': None,
         'jobs': []
     }
-    
-    if automation_system and automation_system.scheduler.running:
-        jobs = automation_system.scheduler.get_jobs()
-        for job in jobs:
-            status['jobs'].append({
-                'id': job.id,
-                'name': job.name,
-                'next_run': job.next_run_time.isoformat() if job.next_run_time else None
-            })
     
     return jsonify(status)
 
 @app.route('/api/system/start', methods=['POST'])
 def api_start_system():
     """Start the automation system"""
-    global automation_system
-    
-    try:
-        if not automation_system:
-            automation_system = RSSAutomationSystem()
-        
-        if not automation_system.scheduler.running:
-            automation_system.start()
-            return jsonify({'success': True, 'message': 'Sistema iniciado com sucesso'})
-        else:
-            return jsonify({'success': False, 'message': 'Sistema já está rodando'})
-    except Exception as e:
-        return jsonify({'success': False, 'message': f'Erro ao iniciar sistema: {str(e)}'})
+    return jsonify({'success': False, 'message': 'Controle do sistema não disponível nesta versão'})
 
 @app.route('/api/system/stop', methods=['POST'])
 def api_stop_system():
     """Stop the automation system"""
-    global automation_system
-    
-    try:
-        if automation_system and automation_system.scheduler.running:
-            automation_system.scheduler.shutdown()
-            return jsonify({'success': True, 'message': 'Sistema parado com sucesso'})
-        else:
-            return jsonify({'success': False, 'message': 'Sistema não está rodando'})
-    except Exception as e:
-        return jsonify({'success': False, 'message': f'Erro ao parar sistema: {str(e)}'})
+    return jsonify({'success': False, 'message': 'Controle do sistema não disponível nesta versão'})
 
 @app.route('/api/system/run-now', methods=['POST'])
 def api_run_now():
     """Force a pipeline run now"""
-    global automation_system
-    
-    try:
-        if not automation_system:
-            automation_system = RSSAutomationSystem()
-        
-        # Run pipeline in background
-        automation_system.run_pipeline_cycle()
-        return jsonify({'success': True, 'message': 'Pipeline executado manualmente'})
-    except Exception as e:
-        return jsonify({'success': False, 'message': f'Erro ao executar pipeline: {str(e)}'})
+    return jsonify({'success': False, 'message': 'Execução manual não disponível nesta versão'})
 
 @app.route('/feeds')
 def feeds_page():
     """Feeds management page"""
-    # Get feed sources from main module
-    from app.main import FEED_SOURCES
+    # Define feed sources directly since import might fail
+    FEED_SOURCES = {
+        'screenrant_movies': {
+            'name': 'ScreenRant Movies',
+            'url': 'https://screenrant.com/feed/movie-news/',
+            'category': 'movies'
+        },
+        'movieweb_movies': {
+            'name': 'MovieWeb Movies',
+            'url': 'https://movieweb.com/feed/',
+            'category': 'movies'
+        },
+        'collider_movies': {
+            'name': 'Collider Movies',
+            'url': 'https://collider.com/feed/category/movie-news/',
+            'category': 'movies'
+        },
+        'cbr_movies': {
+            'name': 'CBR Movies',
+            'url': 'https://www.cbr.com/feed/category/movies/news-movies/',
+            'category': 'movies'
+        },
+        'screenrant_tv': {
+            'name': 'ScreenRant TV',
+            'url': 'https://screenrant.com/feed/tv-news/',
+            'category': 'series'
+        },
+        'collider_tv': {
+            'name': 'Collider TV',
+            'url': 'https://collider.com/feed/category/tv-news/',
+            'category': 'series'
+        },
+        'cbr_tv': {
+            'name': 'CBR TV',
+            'url': 'https://www.cbr.com/feed/category/tv/news-tv/',
+            'category': 'series'
+        },
+        'gamerant_games': {
+            'name': 'GameRant Games',
+            'url': 'https://gamerant.com/feed/gaming/',
+            'category': 'games'
+        },
+        'thegamer_games': {
+            'name': 'TheGamer Games',
+            'url': 'https://www.thegamer.com/feed/category/game-news/',
+            'category': 'games'
+        }
+    }
     
     feed_stats = []
     try:
@@ -233,7 +243,7 @@ def feeds_page():
             
             cursor.execute('''
                 SELECT COUNT(*) FROM posts 
-                WHERE source_id = ? AND status = "published"
+                WHERE source_id = ?
             ''', (source_id,))
             published_count = cursor.fetchone()[0]
             

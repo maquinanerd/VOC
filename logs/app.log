@@ -263,3 +263,224 @@ TypeError: list indices must be integers or slices, not str
 2025-08-13 18:01:28 - app.store - INFO - Initializing database
 2025-08-13 18:01:28 - app.store - INFO - Database initialized successfully
 2025-08-13 18:01:28 - app.main - INFO - Running single pipeline cycle
+2025-08-13 18:05:10 - root - INFO - ============================================================
+2025-08-13 18:05:10 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 18:05:10 - root - INFO - Log level: INFO
+2025-08-13 18:05:10 - root - INFO - Log directory: logs
+2025-08-13 18:05:10 - root - INFO - ============================================================
+2025-08-13 18:05:10 - app.store - INFO - Initializing database
+2025-08-13 18:05:10 - app.store - INFO - Database initialized successfully
+2025-08-13 18:05:10 - app.main - INFO - Running single pipeline cycle
+2025-08-13 18:05:10 - app.main - INFO - Starting pipeline cycle
+2025-08-13 18:05:10 - app.main - INFO - Processing feed: screenrant_movies
+2025-08-13 18:05:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-13 18:05:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-13 18:05:11 - app.main - INFO - Found 0 new articles for screenrant_movies
+2025-08-13 18:05:11 - app.main - INFO - Processing feed: screenrant_tv
+2025-08-13 18:05:12 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-13 18:05:12 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-13 18:05:12 - app.main - INFO - Found 3 new articles for screenrant_tv
+2025-08-13 18:05:12 - app.main - INFO - Processing article: Alan Tudyk On K-2SO's Future in Star Wars After Andor Season 2 from screenrant_tv
+2025-08-13 18:05:12 - app.extractor - INFO - Extracting content from: https://screenrant.com/k2so-star-wars-future-after-andor-alan-tudyk-response/
+2025-08-13 18:05:13 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:05:13 - app.tags - INFO - Extracted 15 tags: a-star-wars-story, alan-tudyk, andor, cassian, cassian-andor...
+2025-08-13 18:05:13 - app.main - ERROR - Error processing article https://screenrant.com/k2so-star-wars-future-after-andor-alan-tudyk-response/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:05:43 - app.main - INFO - Processing article: 9-1-1 Season 9 Promotes Corinne Massiah & Elijah M. Cooper To Regulars from screenrant_tv
+2025-08-13 18:05:43 - app.extractor - INFO - Extracting content from: https://screenrant.com/911-season-9-cast-corinne-massiah-elijah-m-cooper-promoted/
+2025-08-13 18:05:44 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:05:44 - app.tags - INFO - Extracted 15 tags: a-larger-part-of-the-story-makes-sense, according, after, after-bobby, aisha-hinds...
+2025-08-13 18:05:44 - app.main - ERROR - Error processing article https://screenrant.com/911-season-9-cast-corinne-massiah-elijah-m-cooper-promoted/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:06:14 - app.main - INFO - Processing article: The Galaxy Quest TV show gets an encouraging update after the Paramount & Skydance merger. from screenrant_tv
+2025-08-13 18:06:14 - app.extractor - INFO - Extracting content from: https://screenrant.com/tim-allen-glaxy-quest-tv-reboot-development-update-cbs-studios/
+2025-08-13 18:06:14 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:06:14 - app.tags - INFO - Extracted 15 tags: after, alan-rickman, async, budget, cast...
+2025-08-13 18:06:14 - app.main - ERROR - Error processing article https://screenrant.com/tim-allen-glaxy-quest-tv-reboot-development-update-cbs-studios/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:06:44 - app.main - INFO - Processing feed: movieweb_movies
+2025-08-13 18:06:45 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-13 18:06:45 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-13 18:06:46 - app.main - INFO - Found 3 new articles for movieweb_movies
+2025-08-13 18:06:46 - app.main - INFO - Processing article: 10 Underrated 'Criminal Minds' Episodes Worth Watching (Or Rewatching) from movieweb_movies
+2025-08-13 18:06:46 - app.extractor - INFO - Extracting content from: https://movieweb.com/criminal-minds-underrated-episodes/
+2025-08-13 18:06:47 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:06:47 - app.tags - INFO - Extracted 15 tags: aaron, aaron-zelman, add, admittedly, after...
+2025-08-13 18:06:47 - app.main - ERROR - Error processing article https://movieweb.com/criminal-minds-underrated-episodes/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:07:17 - app.main - INFO - Processing article: Taylor Sheridan's 'Wind River' Sequel: Release Date, Plot, & Cast from movieweb_movies
+2025-08-13 18:07:17 - app.extractor - INFO - Extracting content from: https://movieweb.com/taylor-sheridan-wind-river-sequel-release-date-plot-cast/
+2025-08-13 18:07:18 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:07:18 - app.tags - INFO - Extracted 15 tags: after, agents-lambert, alan-ruck, alberta, alt...
+2025-08-13 18:07:18 - app.main - ERROR - Error processing article https://movieweb.com/taylor-sheridan-wind-river-sequel-release-date-plot-cast/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:07:48 - app.main - INFO - Processing article: Cillian Murphy Returns in Intense Trailer for Netflix's 'Steve' from movieweb_movies
+2025-08-13 18:07:48 - app.extractor - INFO - Extracting content from: https://movieweb.com/cillian-murphy-steve-first-trailer-netflix/
+2025-08-13 18:07:48 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:07:48 - app.tags - INFO - Extracted 15 tags: after, alan-moloney, alt, another, async...
+2025-08-13 18:07:48 - app.main - ERROR - Error processing article https://movieweb.com/cillian-murphy-steve-first-trailer-netflix/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:08:15 - apscheduler.executors.default - INFO - Running job "RSS Pipeline Cycle (trigger: interval[0:15:00], next run at: 2025-08-13 18:23:15 -03)" (scheduled at 2025-08-13 18:08:15.859901-03:00)
+2025-08-13 18:08:15 - app.main - INFO - Starting pipeline cycle
+2025-08-13 18:08:15 - app.main - INFO - Processing feed: screenrant_movies
+2025-08-13 18:08:16 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-13 18:08:16 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-13 18:08:16 - app.main - INFO - Found 0 new articles for screenrant_movies
+2025-08-13 18:08:16 - app.main - INFO - Processing feed: screenrant_tv
+2025-08-13 18:08:17 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-13 18:08:17 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-13 18:08:17 - app.main - INFO - Found 0 new articles for screenrant_tv
+2025-08-13 18:08:17 - app.main - INFO - Processing feed: movieweb_movies
+2025-08-13 18:08:17 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-13 18:08:17 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-13 18:08:17 - app.main - INFO - Found 1 new articles for movieweb_movies
+2025-08-13 18:08:17 - app.main - INFO - Processing article: Is America Chavez Returning in 'Avengers: Doomsday'? from movieweb_movies
+2025-08-13 18:08:17 - app.extractor - INFO - Extracting content from: https://movieweb.com/xochitl-gomez-avengers-doomsday/
+2025-08-13 18:08:18 - app.main - INFO - Processing feed: collider_movies
+2025-08-13 18:08:18 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:08:18 - app.tags - INFO - Extracted 15 tags: alt, america, america-chavez, andrew-garfield, ant...
+2025-08-13 18:08:18 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 18:08:18 - app.main - ERROR - Error processing article https://movieweb.com/xochitl-gomez-avengers-doomsday/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:08:18 - app.main - INFO - Processing feed: collider_movies
+2025-08-13 18:08:19 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-13 18:08:19 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-13 18:08:19 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-13 18:08:19 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-13 18:08:20 - app.main - INFO - Found 3 new articles for collider_movies
+2025-08-13 18:08:20 - app.main - INFO - Processing article: 'Teenage Mutant Ninja Turtles: Mutant Mayhem' Sequel and the 'Last Ronin' Live-Action Movie Get Updates at Paramount from collider_movies
+2025-08-13 18:08:20 - app.extractor - INFO - Extracting content from: https://collider.com/teenage-mutant-ninja-turtles-mutant-mayhem-sequel-last-ronin-franchise-update-paramount-skydance-merger/
+2025-08-13 18:08:20 - app.main - INFO - Found 0 new articles for collider_movies
+2025-08-13 18:08:20 - app.main - INFO - Processing feed: collider_tv
+2025-08-13 18:08:20 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-13 18:08:20 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-13 18:08:21 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:08:21 - app.tags - INFO - Extracted 15 tags: alt, async, august-4, brendan, brien...
+2025-08-13 18:08:21 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 18:08:21 - app.main - ERROR - Error processing article https://collider.com/teenage-mutant-ninja-turtles-mutant-mayhem-sequel-last-ronin-franchise-update-paramount-skydance-merger/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:08:21 - app.main - INFO - Found 3 new articles for collider_tv
+2025-08-13 18:08:21 - app.main - INFO - Processing article: This 'Helluva Boss' Character Steps Into the Real World in Brandon Rogers’ 'A Night at the Park' [Exclusive] from collider_tv
+2025-08-13 18:08:21 - app.extractor - INFO - Extracting content from: https://collider.com/helluva-boss-blitzo-brandon-rogers-a-night-at-the-park/
+2025-08-13 18:08:22 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:08:22 - app.tags - INFO - Extracted 15 tags: a-day, a-night, a-night-at-the-park, acting, almost...
+2025-08-13 18:08:22 - app.main - ERROR - Error processing article https://collider.com/helluva-boss-blitzo-brandon-rogers-a-night-at-the-park/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:08:51 - app.main - INFO - Processing article: Star Trek's Status Confirmed at Paramount Amid Merger Uncertainty from collider_movies
+2025-08-13 18:08:51 - app.extractor - INFO - Extracting content from: https://collider.com/star-trek-movie-confirmed-as-top-priority-paramount-skydance-merger/
+2025-08-13 18:08:51 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:08:51 - app.tags - INFO - Extracted 15 tags: abraham-lincoln, abrams, according, alt, andor...
+2025-08-13 18:08:51 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 18:08:51 - app.main - ERROR - Error processing article https://collider.com/star-trek-movie-confirmed-as-top-priority-paramount-skydance-merger/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:08:52 - app.main - INFO - Processing article: Taylor Sheridan’s ‘Landman’ Season 2 Just Struck Oil With Earth-Shaking Release Date from collider_tv
+2025-08-13 18:08:52 - app.extractor - INFO - Extracting content from: https://collider.com/landman-season-2-release-date/
+2025-08-13 18:08:52 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:08:52 - app.tags - INFO - Extracted 15 tags: about, ali-larter, alt, andy-garcia, angela-norris...
+2025-08-13 18:08:52 - app.main - ERROR - Error processing article https://collider.com/landman-season-2-release-date/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:09:21 - app.main - INFO - Processing article: Florence Pugh's 'Little Women' Is Leaving Its Long-Standing Streamer from collider_movies
+2025-08-13 18:09:21 - app.extractor - INFO - Extracting content from: https://collider.com/florence-pugh-little-women-leaving-prime-video-uk-august-2025/
+2025-08-13 18:09:22 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:09:22 - app.tags - INFO - Extracted 15 tags: a-story-that-defies-time, alcott, alt, amy, amy-march...
+2025-08-13 18:09:22 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 18:09:22 - app.main - ERROR - Error processing article https://collider.com/florence-pugh-little-women-leaving-prime-video-uk-august-2025/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:09:22 - app.main - INFO - Processing article: Emma Meyers' Fan-Favorite Series 'A Good Girl's Guide to Murder' Finds a New Streaming Home from collider_tv
+2025-08-13 18:09:22 - app.extractor - INFO - Extracting content from: https://collider.com/emma-meyers-a-good-girls-guide-to-murder-prime-video-uk-august-2025/
+2025-08-13 18:09:23 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:09:23 - app.tags - INFO - Extracted 15 tags: a-good-girl, additional, also, alt, amid...
+2025-08-13 18:09:23 - app.main - ERROR - Error processing article https://collider.com/emma-meyers-a-good-girls-guide-to-murder-prime-video-uk-august-2025/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:09:52 - app.main - INFO - Processing feed: collider_tv
+2025-08-13 18:09:52 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-13 18:09:52 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-13 18:09:52 - app.main - INFO - Found 0 new articles for collider_tv
+2025-08-13 18:09:52 - app.main - INFO - Processing feed: cbr_movies
+2025-08-13 18:09:53 - app.main - INFO - Processing feed: cbr_movies
+2025-08-13 18:09:53 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-13 18:09:53 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-13 18:09:53 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-13 18:09:53 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-13 18:09:54 - app.main - INFO - Found 3 new articles for cbr_movies
+2025-08-13 18:09:54 - app.main - INFO - Processing article: Taron Egerton's 81% RT Secret Cold War Thriller Is Quietly Blowing Up on Streaming from cbr_movies
+2025-08-13 18:09:54 - app.extractor - INFO - Extracting content from: https://www.cbr.com/taron-egertons-tetris-is-dominating-streaming/
+2025-08-13 18:09:54 - app.main - INFO - Found 0 new articles for cbr_movies
+2025-08-13 18:09:54 - app.main - INFO - Processing feed: cbr_tv
+2025-08-13 18:09:54 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/tv/news-tv/
+2025-08-13 18:09:54 - app.feeds - INFO - Total unique items for cbr_tv: 10
+2025-08-13 18:09:55 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:09:55 - app.tags - INFO - Extracted 15 tags: actor-taron-egerton, ana, ana-sophia-heger, anthony-boyle, apple...
+2025-08-13 18:09:55 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 18:09:55 - app.main - ERROR - Error processing article https://www.cbr.com/taron-egertons-tetris-is-dominating-streaming/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:09:55 - app.main - INFO - Found 3 new articles for cbr_tv
+2025-08-13 18:09:55 - app.main - INFO - Processing article: Apple TV+'s Frasier Replacement Show Is a Streaming Hit in America Ahead of Season 3 from cbr_tv
+2025-08-13 18:09:55 - app.extractor - INFO - Extracting content from: https://www.cbr.com/apple-tvs-shrinking-is-climbing-the-charts/
+2025-08-13 18:09:56 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:09:56 - app.tags - INFO - Extracted 15 tags: additionally, america-ahead, apple, apple-tv, aug...
+2025-08-13 18:09:56 - app.main - ERROR - Error processing article https://www.cbr.com/apple-tvs-shrinking-is-climbing-the-charts/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:10:25 - app.main - INFO - Processing article: Gerard Butler's Criminally Underrated Spy Thriller With 45% RT Score Finally Finds Redemption on Streaming 2 Years Later from cbr_movies
+2025-08-13 18:10:25 - app.extractor - INFO - Extracting content from: https://www.cbr.com/gerard-butler-kandahar-redemption-streaming-netflix-hit-2-years-later/
+2025-08-13 18:10:25 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:10:25 - app.tags - INFO - Extracted 15 tags: accompanied, afghanistan, alan-siegel, ali, ali-fazal...
+2025-08-13 18:10:25 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 18:10:25 - app.main - ERROR - Error processing article https://www.cbr.com/gerard-butler-kandahar-redemption-streaming-netflix-hit-2-years-later/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:10:26 - app.main - INFO - Processing article: "South Park's New Episode 3 is Delayed - Here's When & How To Watch It" from cbr_tv
+2025-08-13 18:10:26 - app.extractor - INFO - Extracting content from: https://www.cbr.com/south-park-fans-hit-with-disappointing-season-27-announcement/
+2025-08-13 18:10:26 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:10:26 - app.tags - INFO - Extracted 15 tags: adrien-beard, after, alt, announcement, async...
+2025-08-13 18:10:26 - app.main - ERROR - Error processing article https://www.cbr.com/south-park-fans-hit-with-disappointing-season-27-announcement/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:10:55 - app.main - INFO - Processing article: 43 Years Later, Sylvester Stallone Reflects on Working With Hulk Hogan on Rocky III: 'A Class of His Own' from cbr_movies
+2025-08-13 18:10:55 - app.extractor - INFO - Extracting content from: https://www.cbr.com/sylvester-stallone-hulk-hogan-on-rocky-iii/
+2025-08-13 18:10:56 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:10:56 - app.tags - INFO - Extracted 15 tags: a-class, a-class-of-his-own, after, aug, before...
+2025-08-13 18:10:56 - app.ai_processor - INFO - Processing content with AI for category: movies
+2025-08-13 18:10:56 - app.main - ERROR - Error processing article https://www.cbr.com/sylvester-stallone-hulk-hogan-on-rocky-iii/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:10:56 - app.main - INFO - Processing article: Apple TV+’s Most-Watched Sci-Fi Mystery Is Still Dominating the Streaming Charts 5 Months After Finale from cbr_tv
+2025-08-13 18:10:56 - app.extractor - INFO - Extracting content from: https://www.cbr.com/severance-continues-to-dominate-the-streaming-charts/
+2025-08-13 18:10:57 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:10:57 - app.tags - INFO - Extracted 15 tags: acapulco, adam-scott, additionally, after, alt...
+2025-08-13 18:10:57 - app.main - ERROR - Error processing article https://www.cbr.com/severance-continues-to-dominate-the-streaming-charts/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:11:26 - app.main - INFO - Processing feed: cbr_tv
+2025-08-13 18:11:26 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/tv/news-tv/
+2025-08-13 18:11:26 - app.feeds - INFO - Total unique items for cbr_tv: 10
+2025-08-13 18:11:27 - app.main - INFO - Found 0 new articles for cbr_tv
+2025-08-13 18:11:27 - app.main - INFO - Processing feed: gamerant_games
+2025-08-13 18:11:27 - app.main - INFO - Processing feed: gamerant_games
+2025-08-13 18:11:27 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-13 18:11:27 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-13 18:11:28 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-13 18:11:28 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-13 18:11:28 - app.main - INFO - Found 3 new articles for gamerant_games
+2025-08-13 18:11:28 - app.main - INFO - Processing article: Pokemon GO Player Gets Their House Approved as a PokeStop from gamerant_games
+2025-08-13 18:11:28 - app.extractor - INFO - Extracting content from: https://gamerant.com/pokemon-go-house-approved-as-pokestop/
+2025-08-13 18:11:28 - app.main - INFO - Found 0 new articles for gamerant_games
+2025-08-13 18:11:28 - app.main - INFO - Processing feed: thegamer_games
+2025-08-13 18:11:29 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-13 18:11:29 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-13 18:11:29 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:11:29 - app.tags - INFO - Extracted 15 tags: adult, alt, cross, developer, engine...
+2025-08-13 18:11:29 - app.ai_processor - INFO - Processing content with AI for category: games
+2025-08-13 18:11:29 - app.main - ERROR - Error processing article https://gamerant.com/pokemon-go-house-approved-as-pokestop/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:11:30 - app.main - INFO - Found 3 new articles for thegamer_games
+2025-08-13 18:11:30 - app.main - INFO - Processing article: Baldur's Gate 3's Neil Newbon Can't Get Rid Of Some Of Astarion's Mannerisms from thegamer_games
+2025-08-13 18:11:30 - app.extractor - INFO - Extracting content from: https://www.thegamer.com/baldurs-gate-3-bg3-neil-newbon-still-laughs-like-astarion-method-acting/
+2025-08-13 18:11:31 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:11:31 - app.tags - INFO - Extracted 15 tags: alt, and-he-blames-method-acting, apes, apes-last-frontier, astarion...
+2025-08-13 18:11:31 - app.main - ERROR - Error processing article https://www.thegamer.com/baldurs-gate-3-bg3-neil-newbon-still-laughs-like-astarion-method-acting/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:11:59 - app.main - INFO - Processing article: Pokemon GO Event Adding Generation 9 Water-Type from gamerant_games
+2025-08-13 18:11:59 - app.extractor - INFO - Extracting content from: https://gamerant.com/pokemon-go-event-adding-generation-9-water-type/
+2025-08-13 18:12:00 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:12:00 - app.tags - INFO - Extracted 15 tags: adventure-effect, alolan-exeggutor, alolan-marowak, alolan-raichu, also...
+2025-08-13 18:12:00 - app.ai_processor - INFO - Processing content with AI for category: games
+2025-08-13 18:12:00 - app.main - ERROR - Error processing article https://gamerant.com/pokemon-go-event-adding-generation-9-water-type/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:12:01 - app.main - INFO - Processing article: Magic The Gathering's Head Designer Asks Fans What They'd Want From More Bloomburrow from thegamer_games
+2025-08-13 18:12:01 - app.extractor - INFO - Extracting content from: https://www.thegamer.com/magic-the-gathering-mark-rosewater-bloomburrow-return-fans-players-animals-creatures/
+2025-08-13 18:12:01 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:12:01 - app.tags - INFO - Extracted 15 tags: a-return-to-bloomburrow, again, alaskan-bull-wurm, also, because...
+2025-08-13 18:12:01 - app.main - ERROR - Error processing article https://www.thegamer.com/magic-the-gathering-mark-rosewater-bloomburrow-return-fans-players-animals-creatures/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:12:30 - app.main - INFO - Processing article: First Pokemon LEGO Set Leak Includes Unusual Detail from gamerant_games
+2025-08-13 18:12:30 - app.extractor - INFO - Extracting content from: https://gamerant.com/first-pokemon-lego-sets-price-age-rating-details-unusual-combo-leak/
+2025-08-13 18:12:30 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:12:30 - app.tags - INFO - Extracted 15 tags: age-rating, age-suitability, alt, apart, at-least-6...
+2025-08-13 18:12:30 - app.ai_processor - INFO - Processing content with AI for category: games
+2025-08-13 18:12:30 - app.main - ERROR - Error processing article https://gamerant.com/first-pokemon-lego-sets-price-age-rating-details-unusual-combo-leak/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:12:31 - app.main - INFO - Processing article: Tekken 8 Director Says The Internet Has Exaggerated The Game's Negative Reception from thegamer_games
+2025-08-13 18:12:31 - app.extractor - INFO - Extracting content from: https://www.thegamer.com/tekken-8-harada-negative-reception-overblown-overstated/
+2025-08-13 18:12:32 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:12:32 - app.tags - INFO - Extracted 15 tags: alt, arika, bandai-namco-entertainment, bigger-than-it-is, but-tekken-8...
+2025-08-13 18:12:32 - app.main - ERROR - Error processing article https://www.thegamer.com/tekken-8-harada-negative-reception-overblown-overstated/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-13 18:13:00 - app.main - INFO - Processing feed: thegamer_games
+2025-08-13 18:13:01 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-13 18:13:01 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-13 18:13:01 - app.main - INFO - Found 0 new articles for thegamer_games
+2025-08-13 18:13:01 - app.main - INFO - Pipeline cycle completed. Processed 0 articles
+2025-08-13 18:13:01 - apscheduler.executors.default - INFO - Job "RSS Pipeline Cycle (trigger: interval[0:15:00], next run at: 2025-08-13 18:23:15 -03)" executed successfully
+2025-08-13 18:13:02 - app.main - INFO - Pipeline cycle completed. Processed 0 articles

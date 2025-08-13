@@ -146,64 +146,52 @@ class AIProcessor:
         return None
 
 
-    def _build_prompt(self, title: str, excerpt: str, content: str, tags_text: str) -> str:
+    def _build_prompt(self, title: str, excerpt: str, content: str, tags_text: str, category: str, publisher_name: str) -> str:
         """Build the complete prompt by substituting placeholders"""
         return self.prompt_template.format(
             title=title,
             excerpt=excerpt,
             tags_text=tags_text,
-            content=content
+            content=content,
+            category=category,
+            publisher_name=publisher_name
         )
 
     def _parse_ai_response(self, response: str) -> Optional[Dict[str, str]]:
         """Parse AI response into structured format"""
         try:
-            # Look for the required sections
-            sections = {}
-
-            # Parse "Novo Título:"
-            title_match = response.find("Novo Título:")
-            if title_match != -1:
-                title_start = title_match + len("Novo Título:")
-                title_end = response.find("Novo Resumo:", title_start)
-                if title_end == -1:
-                    title_end = response.find("Novo Conteúdo:", title_start)
-                if title_end != -1:
-                    sections['title'] = response[title_start:title_end].strip()
-
-            # Parse "Novo Resumo:"
-            excerpt_match = response.find("Novo Resumo:")
-            if excerpt_match != -1:
-                excerpt_start = excerpt_match + len("Novo Resumo:")
-                excerpt_end = response.find("Novo Conteúdo:", excerpt_start)
-                if excerpt_end != -1:
-                    sections['excerpt'] = response[excerpt_start:excerpt_end].strip()
-
-            # Parse "Novo Conteúdo:"
-            content_match = response.find("Novo Conteúdo:")
-            if content_match != -1:
-                content_start = content_match + len("Novo Conteúdo:")
-                sections['content'] = response[content_start:].strip()
+            # Clean the response to find the JSON part, removing markdown fences
+            json_str = response
+            if '```json' in json_str:
+                json_str = json_str.split('```json')[1]
+            if '```' in json_str:
+                json_str = json_str.split('```')[0]
+            
+            sections = json.loads(json_str.strip())
 
             # Validate all sections are present
             required_sections = ['title', 'excerpt', 'content']
             for section in required_sections:
                 if section not in sections or not sections[section]:
-                    logger.error(f"Missing or empty section: {section}")
+                    logger.error(f"AI response is missing or has empty section: {section}")
                     return None
-
             return sections
-
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to decode JSON from AI response: {e}. Response: {response}")
+            return None
         except Exception as e:
-            logger.error(f"Error parsing AI response: {str(e)}")
+            logger.error(f"Error parsing AI response: {str(e)}. Response: {response}")
             return None
 
-    def rewrite_content(self, title: str, excerpt: str, content: str, tags_text: str, category: str, primary_key: Optional[str] = None) -> Optional[str]:
+    def rewrite_content(self, title: str, excerpt: str, content: str, tags_text: str, category: str, primary_key: Optional[str], publisher_name: str) -> Optional[Dict[str, str]]:
         """Rewrite content using AI with the specified category"""
         logger.info(f"Processing content with AI for category: {category}")
 
         # Build the complete prompt
-        prompt = self._build_prompt(title, excerpt, content, tags_text)
+        prompt = self._build_prompt(
+            title=title, excerpt=excerpt, content=content, tags_text=tags_text,
+            category=category, publisher_name=publisher_name
+        )
 
         # Try to get response from AI
         api_key = self.get_api_key(category, primary_key)

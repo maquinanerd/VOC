@@ -133,56 +133,51 @@ def dashboard():
     stats = get_db_stats()
     logs = get_recent_logs()
 
-    # Check if system is running
+    # Check if system is running by checking recent logs and process status
     try:
-        # We need to make a request to the /api/system/status endpoint to determine the status
-        # Since this is a Flask app running on the same server, we can simulate a request
-        # or, in a real scenario, this would involve an HTTP request.
-        # For simplicity, we'll assume we can access the system status directly if it were managed globally.
-        # As a workaround, let's assume if the /api/system/status endpoint returns 'running': True, the system is running.
-        # In a real application, a shared state or a dedicated service would manage this.
-        # For this fix, we'll hardcode based on the API endpoint's intended behavior.
-        # A more robust solution would involve actual HTTP calls or shared memory.
-        
-        # Mocking the response from /api/system/status for demonstration
-        # In a real app, you'd use requests.get('http://localhost:5000/api/system/status')
-        # For this example, we'll assume it's stopped if the API doesn't explicitly say running.
-        # The API endpoint currently returns {'running': False}.
-        
-        # To make this work dynamically, we'd need a way to *actually* get the status.
-        # Since the API itself returns `running: False` by default, we'll reflect that.
-        # If the intent is to *show* it's running, the API needs to be functional.
-        # For now, we'll set it to "Stopped" as per the API's default.
-        
-        # A better approach would be to have a shared state or a background worker that updates a status variable.
-        # As per the user's original problem statement, "O Status do Sistema está em Stoped", 
-        # we'll reflect that the dashboard *shows* it as stopped.
-        
-        # If the /api/system/status was implemented to reflect actual running status, we would call it.
-        # For now, we rely on the default of the /api/system/status endpoint, which is 'running': False.
-        
-        # For the purpose of this fix, if the API endpoint exists and is called, it implies the system is managed.
-        # Since the API returns "running": False, the dashboard should reflect "Stopped".
-        # If the system were truly running, that API would return "running": True.
-        
-        # We can infer a "running" state if there are active jobs or a future run time.
-        # Given the current implementation of api_system_status returns {'running': False},
-        # the system_status will be "Stopped".
-        
-        # Let's add a check if any logs indicate the system started or is active.
-        # This is a heuristic and not a direct status check.
-        
+        import psutil
+        import os
+
+        # Check if there are recent logs indicating the system is active
         is_running = False
-        for log in logs:
-            if "Automation system started" in log['message'] or "Processing feed" in log['message']:
+        recent_activity = False
+
+        # Look for scheduler started messages in recent logs (last 10 minutes)
+        for log in logs[-20:]:  # Check last 20 log entries
+            if any(keyword in log['message'] for keyword in [
+                "Scheduler started",
+                "Starting RSS to WordPress automation system",
+                "Pipeline will run every",
+                "Added job"
+            ]):
                 is_running = True
                 break
-        
+
+            # Also check for recent processing activity
+            if any(keyword in log['message'] for keyword in [
+                "Processing feed",
+                "Found new articles",
+                "Published to WordPress"
+            ]):
+                recent_activity = True
+
+        # Check if main.py process is running (backup method)
+        if not is_running:
+            for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+                try:
+                    if proc.info['cmdline'] and 'main.py' in ' '.join(proc.info['cmdline']):
+                        is_running = True
+                        break
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    pass
+
         if is_running:
             system_status = "Running"
+        elif recent_activity:
+            system_status = "Processing"
         else:
             system_status = "Stopped"
-            
+
     except Exception as e:
         logging.error(f"Error determining system status: {e}")
         system_status = "Unknown"

@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div x-data="dashboard()" x-init="init()">
+    <!-- Header with System Status -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-gray-800">Dashboard do Sistema</h2>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center">
+                    <span class="mr-2">Status:</span>
+                    <span :class="systemStatus === 'Running' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'" 
+                          class="px-3 py-1 rounded-full text-sm font-medium">
+                        {{ system_status }}
+                    </span>
+                </div>
+                <div class="space-x-2">
+                    <button @click="startSystem()" 
+                            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                        <i class="fas fa-play mr-2"></i>Iniciar
+                    </button>
+                    <button @click="stopSystem()" 
+                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                        <i class="fas fa-stop mr-2"></i>Parar
+                    </button>
+                    <button @click="runNow()" 
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                        <i class="fas fa-play-circle mr-2"></i>Executar Agora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-eye text-blue-500 text-2xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-500">Artigos Vistos</p>
+                    <p class="text-2xl font-bold text-gray-900" id="seen-articles">{{ stats.seen_articles }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-check-circle text-green-500 text-2xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-500">Posts Publicados</p>
+                    <p class="text-2xl font-bold text-gray-900" id="published-posts">{{ stats.published_posts }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-exclamation-triangle text-red-500 text-2xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-500">Falhas</p>
+                    <p class="text-2xl font-bold text-gray-900" id="failures">{{ stats.failures }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-robot text-purple-500 text-2xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-500">Uso IA (24h)</p>
+                    <p class="text-2xl font-bold text-gray-900">
+                        {{ stats.api_usage.values() | sum if stats.api_usage else 0 }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Posts and Logs -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Recent Posts -->
+        <div class="bg-white rounded-lg shadow-md">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900">Posts Recentes</h3>
+            </div>
+            <div class="divide-y divide-gray-200">
+                {% if stats.recent_posts %}
+                    {% for post in stats.recent_posts %}
+                    <div class="px-6 py-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-gray-900 truncate">{{ post[0] }}</p>
+                                <p class="text-sm text-gray-500">{{ post[1] }} • {{ post[2] }}</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <span class="px-2 py-1 text-xs rounded-full {{ 'bg-green-100 text-green-800' if post[3] == 'published' else 'bg-yellow-100 text-yellow-800' }}">
+                                    {{ post[3] }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="px-6 py-4 text-center text-gray-500">
+                        Nenhum post encontrado ainda
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- System Logs -->
+        <div class="bg-white rounded-lg shadow-md">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900">Logs do Sistema</h3>
+            </div>
+            <div class="max-h-96 overflow-y-auto">
+                <div class="divide-y divide-gray-200">
+                    {% if logs %}
+                        {% for log in logs %}
+                        <div class="px-6 py-3">
+                            <div class="text-xs text-gray-500">{{ log.timestamp }}</div>
+                            <div class="flex items-start">
+                                <span class="mr-2 text-xs px-2 py-1 rounded 
+                                    {{ 'bg-red-100 text-red-800' if log.level == 'ERROR' or log.level == 'CRITICAL' 
+                                       else 'bg-yellow-100 text-yellow-800' if log.level == 'WARNING' 
+                                       else 'bg-blue-100 text-blue-800' if log.level == 'INFO' 
+                                       else 'bg-gray-100 text-gray-800' }}">
+                                    {{ log.level }}
+                                </span>
+                                <p class="text-sm text-gray-900 flex-1">{{ log.message }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="px-6 py-4 text-center text-gray-500">
+                            Nenhum log encontrado
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div x-show="notification.show" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 transform translate-y-2"
+         x-transition:enter-end="opacity-100 transform translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 transform translate-y-0"
+         x-transition:leave-end="opacity-0 transform translate-y-2"
+         class="fixed bottom-4 right-4 max-w-sm w-full bg-white rounded-lg shadow-lg border border-gray-200 p-4">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <i :class="notification.type === 'success' ? 'fas fa-check-circle text-green-400' : 'fas fa-exclamation-circle text-red-400'"></i>
+            </div>
+            <div class="ml-3">
+                <p class="text-sm font-medium text-gray-900" x-text="notification.message"></p>
+            </div>
+            <div class="ml-4 flex-shrink-0 flex">
+                <button @click="notification.show = false" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function dashboard() {
+    return {
+        systemStatus: '{{ system_status }}',
+        notification: {
+            show: false,
+            message: '',
+            type: 'success'
+        },
+        
+        init() {
+            this.refreshStatus();
+            setInterval(() => this.refreshStatus(), 30000);
+        },
+        
+        async refreshStatus() {
+            try {
+                const response = await fetch('/api/system/status');
+                const data = await response.json();
+                this.systemStatus = data.running ? 'Running' : 'Stopped';
+            } catch (error) {
+                console.error('Error refreshing status:', error);
+            }
+        },
+        
+        async startSystem() {
+            try {
+                const response = await fetch('/api/system/start', { method: 'POST' });
+                const data = await response.json();
+                this.showNotification(data.message, data.success ? 'success' : 'error');
+                if (data.success) {
+                    this.systemStatus = 'Running';
+                }
+            } catch (error) {
+                this.showNotification('Erro ao iniciar sistema', 'error');
+            }
+        },
+        
+        async stopSystem() {
+            try {
+                const response = await fetch('/api/system/stop', { method: 'POST' });
+                const data = await response.json();
+                this.showNotification(data.message, data.success ? 'success' : 'error');
+                if (data.success) {
+                    this.systemStatus = 'Stopped';
+                }
+            } catch (error) {
+                this.showNotification('Erro ao parar sistema', 'error');
+            }
+        },
+        
+        async runNow() {
+            try {
+                const response = await fetch('/api/system/run-now', { method: 'POST' });
+                const data = await response.json();
+                this.showNotification(data.message, data.success ? 'success' : 'error');
+            } catch (error) {
+                this.showNotification('Erro ao executar pipeline', 'error');
+            }
+        },
+        
+        showNotification(message, type = 'success') {
+            this.notification = {
+                show: true,
+                message: message,
+                type: type
+            };
+            
+            setTimeout(() => {
+                this.notification.show = false;
+            }, 5000);
+        }
+    }
+}
+</script>
+{% endblock %}

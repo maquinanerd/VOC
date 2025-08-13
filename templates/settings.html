@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="space-y-6">
+    <div>
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Configurações do Sistema</h2>
+        <p class="text-gray-600">Visualize e configure as principais opções do sistema de automação.</p>
+    </div>
+
+    <!-- WordPress Configuration -->
+    <div class="bg-white rounded-lg shadow-md">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900 flex items-center">
+                <i class="fab fa-wordpress text-blue-600 mr-3"></i>
+                Configuração WordPress
+            </h3>
+        </div>
+        <div class="px-6 py-4 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">URL do WordPress</label>
+                    <div class="mt-1 p-3 bg-gray-50 rounded-md">
+                        <code class="text-sm text-gray-800">{{ settings.wordpress_url or 'Não configurado' }}</code>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Usuário</label>
+                    <div class="mt-1 p-3 bg-gray-50 rounded-md">
+                        <code class="text-sm text-gray-800">{{ settings.wordpress_user or 'Não configurado' }}</code>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center p-4 bg-blue-50 rounded-lg">
+                <i class="fas fa-info-circle text-blue-500 mr-3"></i>
+                <div class="text-sm text-blue-700">
+                    <strong>Status:</strong> 
+                    {% if settings.wordpress_url and settings.wordpress_user %}
+                        <span class="text-green-600">✓ Configurado</span>
+                    {% else %}
+                        <span class="text-red-600">✗ Incompleto</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gemini AI Configuration -->
+    <div class="bg-white rounded-lg shadow-md">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900 flex items-center">
+                <i class="fas fa-robot text-purple-600 mr-3"></i>
+                Configuração Gemini AI
+            </h3>
+        </div>
+        <div class="px-6 py-4 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-film text-red-500 mr-2"></i>
+                        <span class="font-medium text-red-800">Filmes</span>
+                    </div>
+                    <p class="text-sm text-red-600 mt-1">4 chaves configuradas</p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-tv text-blue-500 mr-2"></i>
+                        <span class="font-medium text-blue-800">Séries</span>
+                    </div>
+                    <p class="text-sm text-blue-600 mt-1">3 chaves configuradas</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-gamepad text-green-500 mr-2"></i>
+                        <span class="font-medium text-green-800">Games</span>
+                    </div>
+                    <p class="text-sm text-green-600 mt-1">2 chaves configuradas</p>
+                </div>
+            </div>
+            <div class="flex items-center p-4 bg-green-50 rounded-lg">
+                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                <div class="text-sm text-green-700">
+                    <strong>Total:</strong> {{ settings.gemini_keys_count }} chaves Gemini + 5 chaves backup configuradas
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Configuration -->
+    <div class="bg-white rounded-lg shadow-md">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900 flex items-center">
+                <i class="fas fa-cogs text-gray-600 mr-3"></i>
+                Configurações do Sistema
+            </h3>
+        </div>
+        <div class="px-6 py-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nível de Log</label>
+                        <div class="mt-1 p-3 bg-gray-50 rounded-md">
+                            <span class="text-sm text-gray-800 font-mono">{{ settings.log_level }}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Intervalo do Pipeline</label>
+                        <div class="mt-1 p-3 bg-gray-50 rounded-md">
+                            <span class="text-sm text-gray-800 font-mono">{{ settings.pipeline_interval }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Intervalo de Limpeza</label>
+                        <div class="mt-1 p-3 bg-gray-50 rounded-md">
+                            <span class="text-sm text-gray-800 font-mono">{{ settings.cleanup_interval }}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Banco de Dados</label>
+                        <div class="mt-1 p-3 bg-gray-50 rounded-md">
+                            <span class="text-sm text-gray-800 font-mono">SQLite (data/app.db)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Processing Settings -->
+    <div class="bg-white rounded-lg shadow-md">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900 flex items-center">
+                <i class="fas fa-list-ol text-orange-600 mr-3"></i>
+                Configurações de Processamento
+            </h3>
+        </div>
+        <div class="px-6 py-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <h4 class="font-medium text-gray-900">Pipeline RSS</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Processamento sequencial de 9 fontes
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Deduplicação automática por ID/link
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Extração de conteúdo completo
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Reescrita com IA por categoria
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-medium text-gray-900">Otimizações SEO</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Estruturação para Google News
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Tags automáticas extraídas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Links internos inteligentes
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Processamento de mídia
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Environment Information -->
+    <div class="bg-gray-50 rounded-lg p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Informações do Ambiente</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+            <div>
+                <span class="font-medium text-gray-700">Python:</span>
+                <span class="text-gray-600 ml-2">3.11+</span>
+            </div>
+            <div>
+                <span class="font-medium text-gray-700">Framework:</span>
+                <span class="text-gray-600 ml-2">Flask + APScheduler</span>
+            </div>
+            <div>
+                <span class="font-medium text-gray-700">Banco:</span>
+                <span class="text-gray-600 ml-2">SQLite</span>
+            </div>
+            <div>
+                <span class="font-medium text-gray-700">IA:</span>
+                <span class="text-gray-600 ml-2">Google Gemini 2.5</span>
+            </div>
+            <div>
+                <span class="font-medium text-gray-700">Extração:</span>
+                <span class="text-gray-600 ml-2">Trafilatura + BeautifulSoup</span>
+            </div>
+            <div>
+                <span class="font-medium text-gray-700">Publishing:</span>
+                <span class="text-gray-600 ml-2">WordPress REST API</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

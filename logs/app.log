@@ -582,3 +582,95 @@ KeyError: 'category'
 2025-08-13 18:21:11 - app.feeds - INFO - Total unique items for thegamer_games: 10
 2025-08-13 18:21:11 - app.main - INFO - Found 0 new articles for thegamer_games
 2025-08-13 18:21:11 - app.main - INFO - Pipeline cycle completed. Processed 0 articles
+2025-08-13 18:23:15 - apscheduler.executors.default - INFO - Running job "RSS Pipeline Cycle (trigger: interval[0:15:00], next run at: 2025-08-13 18:38:15 -03)" (scheduled at 2025-08-13 18:23:15.859901-03:00)
+2025-08-13 18:23:15 - app.main - INFO - Starting pipeline cycle
+2025-08-13 18:23:15 - app.main - INFO - Processing feed: screenrant_movies
+2025-08-13 18:23:16 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-13 18:23:16 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-13 18:23:16 - app.main - INFO - Found 0 new articles for screenrant_movies
+2025-08-13 18:23:16 - app.main - INFO - Processing feed: screenrant_tv
+2025-08-13 18:23:17 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-13 18:23:17 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-13 18:23:17 - app.main - INFO - Found 1 new articles for screenrant_tv
+2025-08-13 18:23:17 - app.main - INFO - Processing article: Landman Season 2 Release Date Confirmed For Paramount+ from screenrant_tv
+2025-08-13 18:23:17 - app.extractor - INFO - Extracting content from: https://screenrant.com/landman-season-2-release-date/
+2025-08-13 18:23:18 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-13 18:23:18 - app.tags - INFO - Extracted 15 tags: article-options, billy-bob-thornton, content-block-regular, continue, dev-stories...
+2025-08-13 18:23:18 - app.ai_processor - INFO - Processing content with AI for category: series
+2025-08-13 18:23:18 - app.main - ERROR - Error processing article https://screenrant.com/landman-season-2-release-date/: 'AIProcessor' object has no attribute 'prompt_template'
+2025-08-13 18:23:18 - app.main - INFO - Processing feed: movieweb_movies
+2025-08-13 18:23:18 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-13 18:23:18 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-13 18:23:18 - app.main - INFO - Found 0 new articles for movieweb_movies
+2025-08-13 18:23:18 - app.main - INFO - Processing feed: collider_movies
+2025-08-13 18:23:19 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-13 18:23:19 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-13 18:23:19 - app.main - INFO - Found 0 new articles for collider_movies
+2025-08-13 18:23:19 - app.main - INFO - Processing feed: collider_tv
+2025-08-13 18:23:19 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-13 18:23:19 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-13 18:23:19 - app.main - INFO - Found 0 new articles for collider_tv
+2025-08-13 18:23:19 - app.main - INFO - Processing feed: cbr_movies
+2025-08-13 18:23:20 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-13 18:23:20 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-13 18:23:20 - app.main - INFO - Found 0 new articles for cbr_movies
+2025-08-13 18:23:20 - app.main - INFO - Processing feed: cbr_tv
+2025-08-13 18:23:20 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/tv/news-tv/
+2025-08-13 18:23:20 - app.feeds - INFO - Total unique items for cbr_tv: 10
+2025-08-13 18:23:20 - app.main - INFO - Found 0 new articles for cbr_tv
+2025-08-13 18:23:20 - app.main - INFO - Processing feed: gamerant_games
+2025-08-13 18:23:21 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-13 18:23:21 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-13 18:23:21 - app.main - INFO - Found 0 new articles for gamerant_games
+2025-08-13 18:23:21 - app.main - INFO - Processing feed: thegamer_games
+2025-08-13 18:23:22 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-13 18:23:22 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-13 18:23:22 - app.main - INFO - Found 0 new articles for thegamer_games
+2025-08-13 18:23:22 - app.main - INFO - Pipeline cycle completed. Processed 0 articles
+2025-08-13 18:23:22 - apscheduler.executors.default - INFO - Job "RSS Pipeline Cycle (trigger: interval[0:15:00], next run at: 2025-08-13 18:38:15 -03)" executed successfully
+2025-08-13 18:23:31 - root - INFO - ============================================================
+2025-08-13 18:23:31 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 18:23:31 - root - INFO - Log level: INFO
+2025-08-13 18:23:31 - root - INFO - Log directory: logs
+2025-08-13 18:23:31 - root - INFO - ============================================================
+2025-08-13 18:23:31 - app.store - INFO - Initializing database
+2025-08-13 18:23:31 - app.store - INFO - Database initialized successfully
+2025-08-13 18:23:31 - app.main - INFO - Running single pipeline cycle
+2025-08-13 18:23:31 - app.main - INFO - Starting pipeline cycle
+2025-08-13 18:23:31 - app.main - INFO - Processing feed: screenrant_movies
+2025-08-13 18:23:32 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-13 18:23:32 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-13 18:23:32 - app.main - INFO - Found 0 new articles for screenrant_movies
+2025-08-13 18:23:32 - app.main - INFO - Processing feed: screenrant_tv
+2025-08-13 18:23:32 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-13 18:23:32 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-13 18:23:32 - app.main - INFO - Found 0 new articles for screenrant_tv
+2025-08-13 18:23:32 - app.main - INFO - Processing feed: movieweb_movies
+2025-08-13 18:23:33 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-13 18:23:33 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-13 18:23:33 - app.main - INFO - Found 0 new articles for movieweb_movies
+2025-08-13 18:23:33 - app.main - INFO - Processing feed: collider_movies
+2025-08-13 18:23:34 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-13 18:23:34 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-13 18:23:34 - app.main - INFO - Found 0 new articles for collider_movies
+2025-08-13 18:23:34 - app.main - INFO - Processing feed: collider_tv
+2025-08-13 18:23:34 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-13 18:23:34 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-13 18:23:34 - app.main - INFO - Found 0 new articles for collider_tv
+2025-08-13 18:23:34 - app.main - INFO - Processing feed: cbr_movies
+2025-08-13 18:23:35 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-13 18:23:35 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-13 18:23:35 - app.main - INFO - Found 0 new articles for cbr_movies
+2025-08-13 18:23:35 - app.main - INFO - Processing feed: cbr_tv
+2025-08-13 18:23:35 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/tv/news-tv/
+2025-08-13 18:23:35 - app.feeds - INFO - Total unique items for cbr_tv: 10
+2025-08-13 18:23:35 - app.main - INFO - Found 0 new articles for cbr_tv
+2025-08-13 18:23:35 - app.main - INFO - Processing feed: gamerant_games
+2025-08-13 18:23:36 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-13 18:23:36 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-13 18:23:36 - app.main - INFO - Found 0 new articles for gamerant_games
+2025-08-13 18:23:36 - app.main - INFO - Processing feed: thegamer_games
+2025-08-13 18:23:36 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-13 18:23:36 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-13 18:23:36 - app.main - INFO - Found 0 new articles for thegamer_games
+2025-08-13 18:23:36 - app.main - INFO - Pipeline cycle completed. Processed 0 articles

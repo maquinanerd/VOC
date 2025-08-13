@@ -276,12 +276,12 @@ class PipelineManager:
                 # Filter new items
                 new_items = []
                 for item in items:
-                    if not self.db.is_article_seen(source_id, item['id']):
+                    # Check if article has been processed (published) before
+                    if not self.db.is_article_processed(source_id, item['id']):
                         new_items.append(item)
-                        self.db.mark_article_seen(source_id, item['id'])
                 
                 # Limit articles per feed per cycle
-                max_articles = SCHEDULE_CONFIG['max_articles_per_feed']
+                max_articles = SCHEDULE_CONFIG.get('max_articles_per_feed', 3)
                 new_items = new_items[:max_articles]
                 
                 logger.info(f"Found {len(new_items)} new articles for {source_id}")
@@ -293,7 +293,7 @@ class PipelineManager:
                         total_processed += 1
                     
                     # Delay between AI calls
-                    if len(new_items) > 1:  # Don't delay after the last item
+                    if len(new_items) > 1 and item != new_items[-1]:
                         time.sleep(SCHEDULE_CONFIG['api_call_delay'])
                         
             except Exception as e:

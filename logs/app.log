@@ -1,0 +1,155 @@
+2025-08-13 19:15:26 - root - INFO - ============================================================
+2025-08-13 19:15:26 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:15:26 - root - INFO - Log level: INFO
+2025-08-13 19:15:26 - root - INFO - Log directory: logs
+2025-08-13 19:15:26 - root - INFO - ============================================================
+2025-08-13 19:15:26 - app.main - CRITICAL - Missing critical environment variables: ['WORDPRESS_URL', 'WORDPRESS_USER', 'WORDPRESS_PASSWORD']
+2025-08-13 19:17:48 - root - INFO - ============================================================
+2025-08-13 19:17:48 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:17:48 - root - INFO - Log level: INFO
+2025-08-13 19:17:48 - root - INFO - Log directory: logs
+2025-08-13 19:17:48 - root - INFO - ============================================================
+2025-08-13 19:17:48 - app.main - CRITICAL - Missing critical environment variables: ['WORDPRESS_URL', 'WORDPRESS_USER', 'WORDPRESS_PASSWORD']
+2025-08-13 19:18:15 - root - INFO - ============================================================
+2025-08-13 19:18:15 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:18:15 - root - INFO - Log level: INFO
+2025-08-13 19:18:15 - root - INFO - Log directory: logs
+2025-08-13 19:18:15 - root - INFO - ============================================================
+2025-08-13 19:18:15 - app.store - INFO - Initializing database
+2025-08-13 19:18:15 - app.store - INFO - Database initialized successfully
+2025-08-13 19:18:15 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:18:15 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:18:15 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 19:18:15 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 19:18:15 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 19:18:15 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 19:18:15 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 19:18:15 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 19:19:57 - app.main - INFO - Received shutdown signal, stopping scheduler...
+2025-08-13 19:19:57 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-13 19:19:58 - root - INFO - ============================================================
+2025-08-13 19:19:58 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:19:58 - root - INFO - Log level: INFO
+2025-08-13 19:19:58 - root - INFO - Log directory: logs
+2025-08-13 19:19:58 - root - INFO - ============================================================
+2025-08-13 19:19:58 - app.store - INFO - Initializing database
+2025-08-13 19:19:58 - app.store - INFO - Database initialized successfully
+2025-08-13 19:19:58 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:19:58 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:19:58 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 19:19:58 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 19:19:58 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 19:19:58 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 19:19:58 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 19:19:58 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 19:31:05 - app.main - INFO - Received shutdown signal, stopping scheduler...
+2025-08-13 19:31:05 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-13 19:31:07 - root - INFO - ============================================================
+2025-08-13 19:31:07 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:31:07 - root - INFO - Log level: INFO
+2025-08-13 19:31:07 - root - INFO - Log directory: logs
+2025-08-13 19:31:07 - root - INFO - ============================================================
+2025-08-13 19:31:07 - app.store - INFO - Initializing database
+2025-08-13 19:31:07 - app.store - INFO - Database initialized successfully
+2025-08-13 19:31:07 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:31:07 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:31:07 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 19:31:07 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 19:31:07 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 19:31:07 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 19:31:07 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 19:31:07 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 19:36:02 - app.main - INFO - Received shutdown signal, stopping scheduler...
+2025-08-13 19:36:02 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-13 19:36:04 - root - INFO - ============================================================
+2025-08-13 19:36:04 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:36:04 - root - INFO - Log level: INFO
+2025-08-13 19:36:04 - root - INFO - Log directory: logs
+2025-08-13 19:36:04 - root - INFO - ============================================================
+2025-08-13 19:36:04 - app.store - INFO - Initializing database
+2025-08-13 19:36:04 - app.store - INFO - Database initialized successfully
+2025-08-13 19:36:04 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:36:04 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:36:04 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 19:36:04 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 19:36:04 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 19:36:04 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 19:36:04 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 19:36:04 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 19:40:38 - app.main - INFO - Received shutdown signal, stopping scheduler...
+2025-08-13 19:40:38 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-13 19:40:41 - root - INFO - ============================================================
+2025-08-13 19:40:41 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:40:41 - root - INFO - Log level: INFO
+2025-08-13 19:40:41 - root - INFO - Log directory: logs
+2025-08-13 19:40:41 - root - INFO - ============================================================
+2025-08-13 19:40:41 - app.store - INFO - Initializing database
+2025-08-13 19:40:41 - app.store - INFO - Database initialized successfully
+2025-08-13 19:40:41 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:40:41 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:40:41 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 19:40:41 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 19:40:41 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 19:40:41 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 19:40:41 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 19:40:41 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 19:44:36 - root - INFO - ============================================================
+2025-08-13 19:44:36 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:44:36 - root - INFO - Log level: INFO
+2025-08-13 19:44:36 - root - INFO - Log directory: logs
+2025-08-13 19:44:36 - root - INFO - ============================================================
+2025-08-13 19:44:36 - app.store - INFO - Initializing database
+2025-08-13 19:44:36 - app.store - INFO - Database initialized successfully
+2025-08-13 19:44:36 - app.main - INFO - Running single pipeline cycle
+2025-08-13 19:44:41 - app.main - INFO - Received shutdown signal, stopping scheduler...
+2025-08-13 19:44:41 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-13 19:44:43 - root - INFO - ============================================================
+2025-08-13 19:44:43 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:44:43 - root - INFO - Log level: INFO
+2025-08-13 19:44:43 - root - INFO - Log directory: logs
+2025-08-13 19:44:43 - root - INFO - ============================================================
+2025-08-13 19:44:43 - app.store - INFO - Initializing database
+2025-08-13 19:44:43 - app.store - INFO - Database initialized successfully
+2025-08-13 19:44:43 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:44:43 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:44:43 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 19:44:43 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 19:44:43 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 19:44:43 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 19:44:43 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 19:44:43 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 19:47:22 - app.main - INFO - Received shutdown signal, stopping scheduler...
+2025-08-13 19:47:25 - root - INFO - ============================================================
+2025-08-13 19:47:25 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:47:25 - root - INFO - Log level: INFO
+2025-08-13 19:47:25 - root - INFO - Log directory: logs
+2025-08-13 19:47:25 - root - INFO - ============================================================
+2025-08-13 19:47:25 - app.store - INFO - Initializing database
+2025-08-13 19:47:25 - app.store - INFO - Database initialized successfully
+2025-08-13 19:47:25 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:47:25 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:47:25 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 19:47:25 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 19:47:25 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 19:47:25 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 19:47:25 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 19:47:25 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 19:48:50 - app.main - INFO - Received shutdown signal, stopping scheduler...
+2025-08-13 19:48:50 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-13 19:48:52 - root - INFO - ============================================================
+2025-08-13 19:48:52 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 19:48:52 - root - INFO - Log level: INFO
+2025-08-13 19:48:52 - root - INFO - Log directory: logs
+2025-08-13 19:48:52 - root - INFO - ============================================================
+2025-08-13 19:48:52 - app.store - INFO - Initializing database
+2025-08-13 19:48:52 - app.store - INFO - Database initialized successfully
+2025-08-13 19:48:52 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:48:52 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 19:48:52 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 19:48:52 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 19:48:52 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 19:48:52 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 19:48:52 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 19:48:52 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 19:51:11 - app.main - INFO - Received shutdown signal, stopping scheduler...
+2025-08-13 19:51:11 - apscheduler.scheduler - INFO - Scheduler has been shut down

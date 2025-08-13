@@ -36,25 +36,65 @@ PIPELINE_ORDER = [
 ]
 
 RSS_FEEDS = {
-    'screenrant_movies': {'urls': ['https://screenrant.com/feed/movie-news/'], 'category': 'movies'},
-    'screenrant_tv':     {'urls': ['https://screenrant.com/feed/tv-news/'],    'category': 'series'},
-    'movieweb_movies':   {'urls': ['https://movieweb.com/feed/'],               'category': 'movies'},
-    'collider_movies':   {'urls': ['https://collider.com/feed/category/movie-news/'], 'category': 'movies'},
-    'collider_tv':       {'urls': ['https://collider.com/feed/category/tv-news/'],    'category': 'series'},
-    'cbr_movies':        {'urls': ['https://www.cbr.com/feed/category/movies/news-movies/'], 'category': 'movies'},
-    'cbr_tv':            {'urls': ['https://www.cbr.com/feed/category/tv/news-tv/'],         'category': 'series'},
-    'gamerant_games':    {'urls': ['https://gamerant.com/feed/gaming/'],        'category': 'games'},
-    'thegamer_games':    {'urls': ['https://www.thegamer.com/feed/category/game-news/'], 'category': 'games'}
+    'screenrant_movies': {
+        'urls': ['https://screenrant.com/feed/movie-news/'], 
+        'category': 'movies',
+        'primary_key': 'GEMINI_MOVIES_1'
+    },
+    'movieweb_movies': {
+        'urls': ['https://movieweb.com/feed/'], 
+        'category': 'movies',
+        'primary_key': 'GEMINI_MOVIES_2'
+    },
+    'collider_movies': {
+        'urls': ['https://collider.com/feed/category/movie-news/'], 
+        'category': 'movies',
+        'primary_key': 'GEMINI_MOVIES_3'
+    },
+    'cbr_movies': {
+        'urls': ['https://www.cbr.com/feed/category/movies/news-movies/'], 
+        'category': 'movies',
+        'primary_key': 'GEMINI_MOVIES_4'
+    },
+    'screenrant_tv': {
+        'urls': ['https://screenrant.com/feed/tv-news/'], 
+        'category': 'series',
+        'primary_key': 'GEMINI_SERIES_1'
+    },
+    'collider_tv': {
+        'urls': ['https://collider.com/feed/category/tv-news/'], 
+        'category': 'series',
+        'primary_key': 'GEMINI_SERIES_2'
+    },
+    'cbr_tv': {
+        'urls': ['https://www.cbr.com/feed/category/tv/news-tv/'], 
+        'category': 'series',
+        'primary_key': 'GEMINI_SERIES_3'
+    },
+    'gamerant_games': {
+        'urls': ['https://gamerant.com/feed/gaming/'], 
+        'category': 'games',
+        'primary_key': 'GEMINI_GAMES_1'
+    },
+    'thegamer_games': {
+        'urls': ['https://www.thegamer.com/feed/category/game-news/'], 
+        'category': 'games',
+        'primary_key': 'GEMINI_GAMES_2'
+    }
 }
 
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 
 AI_CONFIG = {
-    'movies': [os.getenv('GEMINI_MOVIES_1'), os.getenv('GEMINI_MOVIES_2'), os.getenv('GEMINI_MOVIES_3'),
-               os.getenv('GEMINI_MOVIES_4'), os.getenv('GEMINI_BACKUP_1'), os.getenv('GEMINI_BACKUP_2')],
-    'series': [os.getenv('GEMINI_SERIES_1'), os.getenv('GEMINI_SERIES_2'), os.getenv('GEMINI_SERIES_3'),
-               os.getenv('GEMINI_BACKUP_3'), os.getenv('GEMINI_BACKUP_4')],
-    'games':  [os.getenv('GEMINI_GAMES_1'), os.getenv('GEMINI_GAMES_2'), os.getenv('GEMINI_BACKUP_5')],
+    'movies': {
+        'backup_keys': [os.getenv('GEMINI_BACKUP_1'), os.getenv('GEMINI_BACKUP_2')]
+    },
+    'series': {
+        'backup_keys': [os.getenv('GEMINI_BACKUP_3'), os.getenv('GEMINI_BACKUP_4')]
+    },
+    'games': {
+        'backup_keys': [os.getenv('GEMINI_BACKUP_5')]
+    }
 }
 
 WORDPRESS_CONFIG = {
@@ -122,16 +162,19 @@ class PipelineManager:
             )
             tags_text = ', '.join(article_tags)
             
-            # Get category for AI processing
-            feed_category = RSS_FEEDS[source_id]['category']
+            # Get category and primary key for AI processing
+            feed_config = RSS_FEEDS[source_id]
+            feed_category = feed_config['category']
+            primary_key = feed_config['primary_key']
             
-            # Process with AI
+            # Process with AI using feed-specific key
             rewritten_content = self.ai_processor.rewrite_content(
                 title=article_data['title'],
                 excerpt=article_data.get('excerpt', ''),
                 content=article_data['content'],
                 tags_text=tags_text,
-                category=feed_category
+                category=feed_category,
+                primary_key=primary_key
             )
             
             if not rewritten_content:

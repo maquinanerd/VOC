@@ -7,7 +7,7 @@ channel = "stable-25_05"
 packages = ["freetype", "lcms2", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "tcl", "tk", "xcodebuild", "zlib"]
 
 [workflows]
-runButton = "Project"
+runButton = "Dashboard Principal"
 
 [[workflows.workflow]]
 name = "Project"
@@ -68,6 +68,15 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python main.py --once"
+
+[[workflows.workflow]]
+name = "Dashboard Principal"
+author = 46387975
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python dashboard.py"
 
 [[ports]]
 localPort = 5000

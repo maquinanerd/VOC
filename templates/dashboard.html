@@ -59,6 +59,9 @@
                            {% if system_status == 'Running' %}text-green-600{% else %}text-red-600{% endif %}">
                             {{ system_status }}
                         </p>
+                        {% if stats.next_cycle != 'N/A' %}
+                        <p class="text-xs text-gray-500 mt-1">Próximo ciclo: {{ stats.next_cycle }}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

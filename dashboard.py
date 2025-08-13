@@ -69,8 +69,25 @@ def get_db_stats():
         ''')
         api_usage = cursor.fetchall()
 
-        # Calculate next cycle time (15 minutes from now)
-        next_cycle = datetime.now() + timedelta(minutes=15)
+        # Calculate next cycle time based on last activity or 15 minutes from now
+        cursor.execute('''
+            SELECT MAX(inserted_at) FROM seen_articles 
+            WHERE inserted_at > datetime('now', '-2 hours')
+        ''')
+        last_activity = cursor.fetchone()[0]
+        
+        if last_activity:
+            try:
+                last_time = datetime.fromisoformat(last_activity.replace('Z', '+00:00'))
+                next_cycle = last_time + timedelta(minutes=15)
+                # If next cycle is in the past, schedule for 15 minutes from now
+                if next_cycle < datetime.now():
+                    next_cycle = datetime.now() + timedelta(minutes=15)
+            except:
+                next_cycle = datetime.now() + timedelta(minutes=15)
+        else:
+            next_cycle = datetime.now() + timedelta(minutes=15)
+            
         next_cycle_str = next_cycle.strftime('%H:%M:%S')
 
         conn.close()
@@ -295,7 +312,7 @@ def feeds_page():
         for source_id, config in FEED_SOURCES.items():
             cursor.execute('''
                 SELECT COUNT(*) FROM seen_articles 
-                WHERE source_id = ? AND created_at > datetime('now', '-24 hours')
+                WHERE source_id = ? AND inserted_at > datetime('now', '-24 hours')
             ''', (source_id,))
             recent_count = cursor.fetchone()[0]
 

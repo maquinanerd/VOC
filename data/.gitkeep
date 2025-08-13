@@ -1,0 +1,2 @@
+# This file ensures the data directory is tracked in version control
+# The SQLite database and other data files will be stored here

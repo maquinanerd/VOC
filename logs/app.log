@@ -153,3 +153,15 @@
 2025-08-13 19:48:52 - apscheduler.scheduler - INFO - Scheduler started
 2025-08-13 19:51:11 - app.main - INFO - Received shutdown signal, stopping scheduler...
 2025-08-13 19:51:11 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-13 17:11:14 - root - INFO - ============================================================
+2025-08-13 17:11:14 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 17:11:14 - root - INFO - Log level: INFO
+2025-08-13 17:11:14 - root - INFO - Log directory: logs
+2025-08-13 17:11:14 - root - INFO - ============================================================
+2025-08-13 17:11:14 - __main__ - CRITICAL - Missing critical environment variables: ['WORDPRESS_URL', 'WORDPRESS_USER', 'WORDPRESS_PASSWORD']
+2025-08-13 17:22:10 - root - INFO - ============================================================
+2025-08-13 17:22:10 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 17:22:10 - root - INFO - Log level: INFO
+2025-08-13 17:22:10 - root - INFO - Log directory: logs
+2025-08-13 17:22:10 - root - INFO - ============================================================
+2025-08-13 17:22:10 - __main__ - CRITICAL - Missing critical environment variables: ['WORDPRESS_URL', 'WORDPRESS_USER', 'WORDPRESS_PASSWORD']

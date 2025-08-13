@@ -79,5 +79,5 @@ task = "shell.exec"
 args = "python dashboard.py"
 
 [[ports]]
-localPort = 5000
-externalPort = 80
+localPort = 8080
+externalPort = 800

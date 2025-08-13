@@ -2,3 +2,16 @@
 2025-08-13 19:17:48 - app.main - CRITICAL - Missing critical environment variables: ['WORDPRESS_URL', 'WORDPRESS_USER', 'WORDPRESS_PASSWORD']
 2025-08-13 17:11:14 - __main__ - CRITICAL - Missing critical environment variables: ['WORDPRESS_URL', 'WORDPRESS_USER', 'WORDPRESS_PASSWORD']
 2025-08-13 17:22:10 - __main__ - CRITICAL - Missing critical environment variables: ['WORDPRESS_URL', 'WORDPRESS_USER', 'WORDPRESS_PASSWORD']
+2025-08-13 17:40:09 - apscheduler.executors.default - ERROR - Job "RSS Pipeline Cycle (trigger: interval[0:15:00], next run at: 2025-08-13 17:55:09 -03)" raised an exception
+Traceback (most recent call last):
+  File "E:\햞ea de Trabalho 2\VocSenior\.venv\Lib\site-packages\apscheduler\executors\base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "E:\햞ea de Trabalho 2\VocSenior\app\main.py", line 281, in run_single_cycle
+    pipeline = PipelineManager()
+  File "E:\햞ea de Trabalho 2\VocSenior\app\main.py", line 141, in __init__
+    self.ai_processor = ai_processor.AIProcessor(filtered_ai_config)
+                        ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "E:\햞ea de Trabalho 2\VocSenior\app\ai_processor.py", line 23, in __init__
+    self.backup_keys[category] = [key for key in config['backup_keys'] if key]
+                                                 ~~~~~~^^^^^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str

@@ -137,7 +137,7 @@ class PipelineManager:
         # Filter None values from AI config
         filtered_ai_config = {}
         for category, keys in AI_CONFIG.items():
-            filtered_ai_config[category] = [k for k in keys if k is not None]
+            filtered_ai_config[category] =
         self.ai_processor = ai_processor.AIProcessor(filtered_ai_config)
         self.content_rewriter = rewriter.ContentRewriter()
         self.tag_extractor = tags.TagExtractor()

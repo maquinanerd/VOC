@@ -674,3 +674,64 @@ KeyError: 'category'
 2025-08-13 18:23:36 - app.feeds - INFO - Total unique items for thegamer_games: 10
 2025-08-13 18:23:36 - app.main - INFO - Found 0 new articles for thegamer_games
 2025-08-13 18:23:36 - app.main - INFO - Pipeline cycle completed. Processed 0 articles
+2025-08-13 18:29:03 - root - INFO - ============================================================
+2025-08-13 18:29:03 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 18:29:03 - root - INFO - Log level: INFO
+2025-08-13 18:29:03 - root - INFO - Log directory: logs
+2025-08-13 18:29:03 - root - INFO - ============================================================
+2025-08-13 18:29:03 - app.store - INFO - Initializing database
+2025-08-13 18:29:04 - app.store - INFO - Database initialized successfully
+2025-08-13 18:29:04 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 18:29:04 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-13 18:29:04 - app.main - INFO - Starting RSS to WordPress automation system
+2025-08-13 18:29:04 - app.main - INFO - Pipeline will run every 15 minutes
+2025-08-13 18:29:04 - app.main - INFO - Cleanup will run every 12 hours
+2025-08-13 18:29:04 - apscheduler.scheduler - INFO - Added job "RSS Pipeline Cycle" to job store "default"
+2025-08-13 18:29:04 - apscheduler.scheduler - INFO - Added job "Cleanup Task" to job store "default"
+2025-08-13 18:29:04 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-13 18:29:15 - root - INFO - ============================================================
+2025-08-13 18:29:15 - root - INFO - RSS to WordPress Automation System Started
+2025-08-13 18:29:15 - root - INFO - Log level: INFO
+2025-08-13 18:29:15 - root - INFO - Log directory: logs
+2025-08-13 18:29:15 - root - INFO - ============================================================
+2025-08-13 18:29:15 - app.store - INFO - Initializing database
+2025-08-13 18:29:15 - app.store - INFO - Database initialized successfully
+2025-08-13 18:29:15 - app.main - INFO - Running single pipeline cycle
+2025-08-13 18:29:15 - app.main - INFO - Starting pipeline cycle
+2025-08-13 18:29:15 - app.main - INFO - Processing feed: screenrant_movies
+2025-08-13 18:29:16 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-13 18:29:16 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-13 18:29:16 - app.main - ERROR - Error processing feed screenrant_movies: 'Database' object has no attribute 'is_article_processed'
+2025-08-13 18:29:16 - app.main - INFO - Processing feed: screenrant_tv
+2025-08-13 18:29:16 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-13 18:29:16 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-13 18:29:16 - app.main - ERROR - Error processing feed screenrant_tv: 'Database' object has no attribute 'is_article_processed'
+2025-08-13 18:29:16 - app.main - INFO - Processing feed: movieweb_movies
+2025-08-13 18:29:17 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-13 18:29:17 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-13 18:29:17 - app.main - ERROR - Error processing feed movieweb_movies: 'Database' object has no attribute 'is_article_processed'
+2025-08-13 18:29:17 - app.main - INFO - Processing feed: collider_movies
+2025-08-13 18:29:18 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-13 18:29:18 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-13 18:29:18 - app.main - ERROR - Error processing feed collider_movies: 'Database' object has no attribute 'is_article_processed'
+2025-08-13 18:29:18 - app.main - INFO - Processing feed: collider_tv
+2025-08-13 18:29:18 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-13 18:29:18 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-13 18:29:18 - app.main - ERROR - Error processing feed collider_tv: 'Database' object has no attribute 'is_article_processed'
+2025-08-13 18:29:18 - app.main - INFO - Processing feed: cbr_movies
+2025-08-13 18:29:18 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-13 18:29:18 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-13 18:29:18 - app.main - ERROR - Error processing feed cbr_movies: 'Database' object has no attribute 'is_article_processed'
+2025-08-13 18:29:18 - app.main - INFO - Processing feed: cbr_tv
+2025-08-13 18:29:19 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/tv/news-tv/
+2025-08-13 18:29:19 - app.feeds - INFO - Total unique items for cbr_tv: 10
+2025-08-13 18:29:19 - app.main - ERROR - Error processing feed cbr_tv: 'Database' object has no attribute 'is_article_processed'
+2025-08-13 18:29:19 - app.main - INFO - Processing feed: gamerant_games
+2025-08-13 18:29:19 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-13 18:29:19 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-13 18:29:19 - app.main - ERROR - Error processing feed gamerant_games: 'Database' object has no attribute 'is_article_processed'
+2025-08-13 18:29:19 - app.main - INFO - Processing feed: thegamer_games
+2025-08-13 18:29:20 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-13 18:29:20 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-13 18:29:20 - app.main - ERROR - Error processing feed thegamer_games: 'Database' object has no attribute 'is_article_processed'
+2025-08-13 18:29:20 - app.main - INFO - Pipeline cycle completed. Processed 0 articles

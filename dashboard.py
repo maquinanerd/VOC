@@ -69,6 +69,10 @@ def get_db_stats():
         ''')
         api_usage = cursor.fetchall()
 
+        # Calculate next cycle time (15 minutes from now)
+        next_cycle = datetime.now() + timedelta(minutes=15)
+        next_cycle_str = next_cycle.strftime('%H:%M:%S')
+
         conn.close()
 
         return {
@@ -76,7 +80,8 @@ def get_db_stats():
             'published_posts': published_count,
             'failures': failure_count,
             'recent_posts': recent_posts,
-            'api_usage': dict(api_usage)
+            'api_usage': dict(api_usage),
+            'next_cycle': next_cycle_str
         }
     except Exception as e:
         logging.error(f"Error getting database stats: {e}")
@@ -85,7 +90,8 @@ def get_db_stats():
             'published_posts': 0,
             'failures': 0,
             'recent_posts': [],
-            'api_usage': {}
+            'api_usage': {},
+            'next_cycle': 'N/A'
         }
 
 def get_recent_logs():

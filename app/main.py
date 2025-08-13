@@ -109,7 +109,7 @@ WORDPRESS_CATEGORIES = {
 
 SCHEDULE_CONFIG = {
     'check_interval': 15,          # minutos
-    'max_articles_per_feed': 3,    # por ciclo
+    'max_articles_per_feed': 3,    # por ciclo - ATIVO: 3 posts por feed
     'api_call_delay': 30,          # segundos entre chamadas à IA
     'cleanup_after_hours': 12
 }

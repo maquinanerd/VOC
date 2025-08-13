@@ -60,6 +60,15 @@ waitForPort = 5000
 [workflows.workflow.metadata]
 outputType = "webview"
 
+[[workflows.workflow]]
+name = "Executar Ciclo Único"
+author = 46387975
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python main.py --once"
+
 [[ports]]
 localPort = 5000
 externalPort = 80

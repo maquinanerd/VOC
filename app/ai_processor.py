@@ -1,15 +1,16 @@
 """
 AI content processing module using Gemini API with failover
 """
-
 import logging
 import os
 import time
-from typing import Dict, List, Optional, Any
+from typing import Dict, Optional, Any
 import json
 
 from google import genai
-from google.genai import types
+from google.api_core import exceptions as google_exceptions
+
+from .keys import KeyPool
 
 logger = logging.getLogger(__name__)
 
@@ -17,12 +18,9 @@ logger = logging.getLogger(__name__)
 class AIProcessor:
     """AI content processor with Gemini API integration and failover"""
 
-    def __init__(self, api_keys: Dict[str, Dict[str, List[str]]]):
-        self.backup_keys = {}
-        for category, config in api_keys.items():
-            self.backup_keys[category] = [key for key in config['backup_keys'] if key]
-        self.failed_keys = {category: set() for category in self.backup_keys.keys()}
-        self._active_clients = {}
+    def __init__(self, key_pools: Dict[str, KeyPool]):
+        self.key_pools = key_pools
+        self.prompt_template = self._load_prompt_template()
 
     def _load_prompt_template(self) -> str:
         """Load the universal prompt template from file"""
@@ -184,36 +182,53 @@ class AIProcessor:
             logger.error(f"Error parsing AI response: {str(e)}. Response: {response}")
             return None
 
-    def rewrite_content(self, title: str, excerpt: str, content: str, tags_text: str, category: str, primary_key: Optional[str], publisher_name: str) -> Optional[Dict[str, str]]:
+    def rewrite_content(self, title: str, excerpt: str, content: str, tags_text: str, category: str, publisher_name: str) -> Optional[Dict[str, str]]:
         """Rewrite content using AI with the specified category"""
         logger.info(f"Processing content with AI for category: {category}")
+
+        key_pool = self.key_pools.get(category)
+        if not key_pool or not key_pool.keys:
+            logger.error(f"No API keys configured for category: {category}")
+            return None
 
         # Build the complete prompt
         prompt = self._build_prompt(
             title=title, excerpt=excerpt, content=content, tags_text=tags_text,
             category=category, publisher_name=publisher_name
         )
+        
+        response = None
+        for attempt in range(2): # Try current key, and if it fails hard, try the next one once.
+            api_key = key_pool.get_key()
+            if not api_key:
+                logger.error(f"No more keys to try for category {category}")
+                break
 
-        # Try to get response from AI
-        api_key = self.get_api_key(category, primary_key)
-        if not api_key:
-            logger.error("Failed to get API key")
-            return None
+            try:
+                logger.info(f"Attempting AI call for category '{category}' with key index {key_pool.current_index}")
+                response = self._call_gemini_api(api_key, prompt)
+                
+                # If we get a response (even an empty one), the key is valid. Break the loop.
+                break 
 
-        client = self._get_active_client(api_key)
-        if not client:
-            logger.error("Failed to create Gemini client")
-            return None
+            except (google_exceptions.ResourceExhausted, google_exceptions.DeadlineExceeded, 
+                    google_exceptions.ServiceUnavailable, google_exceptions.PermissionDenied,
+                    ValueError) as e:
+                logger.error(f"Hard failure on API key index {key_pool.current_index}: {str(e)}")
+                key_pool.rotate_key() # Rotate on hard error
+                
+                if attempt == 0:
+                    logger.info("Retrying with the next API key...")
+                    time.sleep(2) # Small delay before retry
+                else:
+                    logger.error("Second attempt with new key also failed. Aborting for this article.")
+            
+            except Exception as e:
+                logger.critical(f"An unexpected error occurred during AI processing: {str(e)}")
+                return None # Unexpected error, abort
 
-        response = self._call_gemini_api(client, prompt)
         if not response:
-            logger.error("Failed to get response from AI API key")
-            # Mark the key as failed if the call was unsuccessful
-            if primary_key:
-                self.failed_keys.setdefault(category, set()).add(primary_key)
-            elif category in self.backup_keys and api_key in self.backup_keys[category]:
-                self.failed_keys.setdefault(category, set()).add(api_key)
-
+            logger.warning("AI processing resulted in no content after all attempts.")
             return None
 
         # Parse the response

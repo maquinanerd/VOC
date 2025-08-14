@@ -25,6 +25,7 @@ from . import media
 from . import wordpress
 from . import store
 from . import cleanup
+from . import keys
 
 # Configuration constants
 PIPELINE_ORDER = [
@@ -38,63 +39,48 @@ PIPELINE_ORDER = [
 RSS_FEEDS = {
     'screenrant_movies': {
         'urls': ['https://screenrant.com/feed/movie-news/'], 
-        'category': 'movies',
-        'primary_key': 'GEMINI_MOVIES_1'
+        'category': 'movies'
     },
     'movieweb_movies': {
         'urls': ['https://movieweb.com/feed/'], 
-        'category': 'movies',
-        'primary_key': 'GEMINI_MOVIES_2'
+        'category': 'movies'
     },
     'collider_movies': {
         'urls': ['https://collider.com/feed/category/movie-news/'], 
-        'category': 'movies',
-        'primary_key': 'GEMINI_MOVIES_3'
+        'category': 'movies'
     },
     'cbr_movies': {
         'urls': ['https://www.cbr.com/feed/category/movies/news-movies/'], 
-        'category': 'movies',
-        'primary_key': 'GEMINI_MOVIES_4'
+        'category': 'movies'
     },
     'screenrant_tv': {
         'urls': ['https://screenrant.com/feed/tv-news/'], 
-        'category': 'series',
-        'primary_key': 'GEMINI_SERIES_1'
+        'category': 'series'
     },
     'collider_tv': {
         'urls': ['https://collider.com/feed/category/tv-news/'], 
-        'category': 'series',
-        'primary_key': 'GEMINI_SERIES_2'
+        'category': 'series'
     },
     'cbr_tv': {
         'urls': ['https://www.cbr.com/feed/category/tv/news-tv/'], 
-        'category': 'series',
-        'primary_key': 'GEMINI_SERIES_3'
+        'category': 'series'
     },
     'gamerant_games': {
         'urls': ['https://gamerant.com/feed/gaming/'], 
-        'category': 'games',
-        'primary_key': 'GEMINI_GAMES_1'
+        'category': 'games'
     },
     'thegamer_games': {
         'urls': ['https://www.thegamer.com/feed/category/game-news/'], 
-        'category': 'games',
-        'primary_key': 'GEMINI_GAMES_2'
+        'category': 'games'
     }
 }
 
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 
-AI_CONFIG = {
-    'movies': {
-        'backup_keys': [os.getenv('GEMINI_BACKUP_1'), os.getenv('GEMINI_BACKUP_2')]
-    },
-    'series': {
-        'backup_keys': [os.getenv('GEMINI_BACKUP_3'), os.getenv('GEMINI_BACKUP_4')]
-    },
-    'games': {
-        'backup_keys': [os.getenv('GEMINI_BACKUP_5')]
-    }
+AI_KEY_POOLS = {
+    'movies': keys.KeyPool(keys.load_keys_from_env('GEMINI_KEYS_MOVIES')),
+    'series': keys.KeyPool(keys.load_keys_from_env('GEMINI_KEYS_SERIES')),
+    'games': keys.KeyPool(keys.load_keys_from_env('GEMINI_KEYS_GAMES')),
 }
 
 WORDPRESS_CONFIG = {
@@ -156,14 +142,8 @@ class PipelineManager:
         self.wp_client = wordpress.WordPressClient(filtered_wp_config, WORDPRESS_CATEGORIES)
         self.feed_reader = feeds.FeedReader(USER_AGENT)
         self.content_extractor = extractor.ContentExtractor(USER_AGENT)
-        # Filter None values from AI config
-        filtered_ai_config = {
-            category: {
-                'backup_keys': [key for key in config_data.get('backup_keys', []) if key]
-            }
-            for category, config_data in AI_CONFIG.items()
-        }
-        self.ai_processor = ai_processor.AIProcessor(filtered_ai_config)
+
+        self.ai_processor = ai_processor.AIProcessor(AI_KEY_POOLS)
         self.ai_processor.prompt_template = PROMPT_TEMPLATE
         self.content_rewriter = rewriter.ContentRewriter()
         self.tag_extractor = tags.TagExtractor()
@@ -191,16 +171,14 @@ class PipelineManager:
             # Get category and primary key for AI processing
             feed_config = RSS_FEEDS[source_id]
             feed_category = feed_config['category']
-            primary_key = feed_config['primary_key']
-            
-            # Process with AI using feed-specific key
+
+            # Process with AI using category-based key management
             rewritten_content = self.ai_processor.rewrite_content(
                 title=article_data['title'],
                 excerpt=article_data.get('excerpt', ''),
                 content=article_data['content'],
                 tags_text=tags_text,
                 category=feed_category,
-                primary_key=primary_key,
                 publisher_name=PIPELINE_CONFIG['publisher_name']
             )
             
@@ -335,8 +313,8 @@ def main():
     
     # Check AI keys
     ai_keys_available = False
-    for category, keys in AI_CONFIG.items():
-        if any(key for key in keys if key):
+    for pool in AI_KEY_POOLS.values():
+        if pool.keys:
             ai_keys_available = True
             break
     

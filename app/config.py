@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from tenacity import wait_exponential, stop_after_attempt
 
 # Carrega variáveis de ambiente de um arquivo .env
 load_dotenv()

@@ -12,3 +12,4 @@ requests
 trafilatura
 urllib3
 pytest
+tenacity

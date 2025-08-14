@@ -28,6 +28,14 @@ RSS_FEEDS = {
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 
 # --- Configuração da IA ---
+def _load_ai_keys():
+    """Helper to load Gemini API keys from environment variables."""
+    keys_by_category = {'movies': [], 'series': [], 'games': [], 'backup': []}
+    for key, value in os.environ.items():
+        if value and key.startswith('GEMINI_'):
+            # e.g., GEMINI_MOVIES_1 -> movies
+            # e.g., GEMINI_BACKUP_1 -> backup
+            category = key.split('_')[1].lower
 AI_MODELS = {
     'primary': os.getenv('AI_PRIMARY_MODEL', 'gemini-1.5-pro-latest'),
     'fallback': os.getenv('AI_FALLBACK_MODEL', 'gemini-1.5-flash-latest'),

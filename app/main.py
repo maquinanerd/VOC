@@ -14,120 +14,14 @@ from typing import List, Dict, Any
 from apscheduler.schedulers.blocking import BlockingScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 
-from . import logging_conf
-from . import feeds
-from . import extractor
-from . import ai_processor
-from . import rewriter
-from . import tags
-from . import categorizer
-from . import media
-from . import wordpress
-from . import store
-from . import cleanup
-from . import keys
-
-# Configuration constants
-PIPELINE_ORDER = [
-    'screenrant_movies', 'screenrant_tv',
-    'movieweb_movies',
-    'collider_movies', 'collider_tv',
-    'cbr_movies', 'cbr_tv',
-    'gamerant_games', 'thegamer_games',
-]
-
-RSS_FEEDS = {
-    'screenrant_movies': {
-        'urls': ['https://screenrant.com/feed/movie-news/'], 
-        'category': 'movies'
-    },
-    'movieweb_movies': {
-        'urls': ['https://movieweb.com/feed/'], 
-        'category': 'movies'
-    },
-    'collider_movies': {
-        'urls': ['https://collider.com/feed/category/movie-news/'], 
-        'category': 'movies'
-    },
-    'cbr_movies': {
-        'urls': ['https://www.cbr.com/feed/category/movies/news-movies/'], 
-        'category': 'movies'
-    },
-    'screenrant_tv': {
-        'urls': ['https://screenrant.com/feed/tv-news/'], 
-        'category': 'series'
-    },
-    'collider_tv': {
-        'urls': ['https://collider.com/feed/category/tv-news/'], 
-        'category': 'series'
-    },
-    'cbr_tv': {
-        'urls': ['https://www.cbr.com/feed/category/tv/news-tv/'], 
-        'category': 'series'
-    },
-    'gamerant_games': {
-        'urls': ['https://gamerant.com/feed/gaming/'], 
-        'category': 'games'
-    },
-    'thegamer_games': {
-        'urls': ['https://www.thegamer.com/feed/category/game-news/'], 
-        'category': 'games'
-    }
-}
-
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-
-AI_KEY_POOLS = {
-    'movies': keys.KeyPool(keys.load_keys_from_env('GEMINI_KEYS_MOVIES')),
-    'series': keys.KeyPool(keys.load_keys_from_env('GEMINI_KEYS_SERIES')),
-    'games': keys.KeyPool(keys.load_keys_from_env('GEMINI_KEYS_GAMES')),
-}
-
-WORDPRESS_CONFIG = {
-    'url': os.getenv('WORDPRESS_URL'),      # ex: https://maquinanerd.com.br/wp-json/wp/v2/
-    'user': os.getenv('WORDPRESS_USER'),
-    'password': os.getenv('WORDPRESS_PASSWORD')
-}
-
-WORDPRESS_CATEGORIES = {
-    'Notícias': 20, 'Filmes': 24, 'Séries': 21, 'Games': 73,
-}
-
-SCHEDULE_CONFIG = {
-    'check_interval': 15,          # minutos
-    'max_articles_per_feed': 3,    # por ciclo - ATIVO: 3 posts por feed
-    'api_call_delay': 30,          # segundos entre chamadas à IA
-    'cleanup_after_hours': 12
-}
-
-PIPELINE_CONFIG = {
-    'images_mode': os.getenv('IMAGES_MODE', 'hotlink'),  # 'hotlink' | 'download_upload'
-    'attribution_policy': 'Via {domain}',
-    'publisher_name': 'Máquina Nerd',
-    'publisher_logo_url': 'https://www.maquinanerd.com.br/wp-content/uploads/2023/11/logo-maquina-nerd-400px.png'
-}
-
-PROMPT_TEMPLATE = """
-Você é um especialista em SEO e um redator de notícias de entretenimento para o site '{publisher_name}'.
-Sua tarefa é reescrever o seguinte artigo para ser único, otimizado para SEO e envolvente para o público brasileiro.
-
-**Instruções:**
-1.  **Título:** Crie um novo título chamativo e otimizado para SEO (máximo de 70 caracteres). O título deve ser em português do Brasil.
-2.  **Resumo (Excerpt):** Escreva um resumo curto e atraente (máximo de 160 caracteres) que incentive o clique. Deve ser em português do Brasil.
-3.  **Conteúdo:** Reescreva o conteúdo principal. Mantenha o sentido original, mas use palavras diferentes e uma estrutura de frases variada. O tom deve ser informativo e engajante. Adicione subtítulos (H2, H3) para melhorar a legibilidade. O conteúdo deve ser em português do Brasil.
-4.  **Formato de Saída:** A saída DEVE ser um JSON VÁLIDO e nada mais. O JSON deve conter as seguintes chaves: "title", "excerpt", "content".
-5.  **Não inclua a fonte original no conteúdo reescrito.**
-
-**Artigo Original:**
-- **Categoria:** {category}
-- **Título Original:** {title}
-- **Resumo Original:** {excerpt}
-- **Tags:** {tags_text}
-- **Conteúdo Original:**
-{content}
-
-**JSON de Saída:**
-"""
+from . import (
+    logging_conf, feeds, extractor, ai_processor, rewriter, tags,
+    categorizer, media, wordpress, store, cleanup, keys
+)
+from .config import (
+    PIPELINE_ORDER, RSS_FEEDS, USER_AGENT, WORDPRESS_CONFIG,
+    WORDPRESS_CATEGORIES, SCHEDULE_CONFIG, PIPELINE_CONFIG, AI_CONFIG
+)
 
 logger = logging.getLogger(__name__)
 

@@ -35,7 +35,16 @@ def _load_ai_keys():
         if value and key.startswith('GEMINI_'):
             # e.g., GEMINI_MOVIES_1 -> movies
             # e.g., GEMINI_BACKUP_1 -> backup
-            category = key.split('_')[1].lower
+            parts = key.split('_')
+            if len(parts) > 1:
+                category = parts[1].lower()
+                if category in keys_by_category:
+                    keys_by_category[category].append(value)
+    return keys_by_category
+
+AI_CONFIG = _load_ai_keys()
+PROMPT_FILE_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'universal_prompt.txt')
+
 AI_MODELS = {
     'primary': os.getenv('AI_PRIMARY_MODEL', 'gemini-1.5-pro-latest'),
     'fallback': os.getenv('AI_FALLBACK_MODEL', 'gemini-1.5-flash-latest'),

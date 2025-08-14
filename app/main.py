@@ -37,8 +37,7 @@ class PipelineManager:
         self.feed_reader = feeds.FeedReader(USER_AGENT)
         self.content_extractor = extractor.ContentExtractor(USER_AGENT)
 
-        self.ai_processor = ai_processor.AIProcessor(AI_KEY_POOLS)
-        self.ai_processor.prompt_template = PROMPT_TEMPLATE
+        self.ai_processor = ai_processor.AIProcessor()
         self.content_rewriter = rewriter.ContentRewriter()
         self.tag_extractor = tags.TagExtractor()
         self.categorizer = categorizer.Categorizer()
@@ -68,6 +67,7 @@ class PipelineManager:
 
             # Process with AI using category-based key management
             rewritten_content = self.ai_processor.rewrite_content(
+                feed_category,
                 title=article_data['title'],
                 excerpt=article_data.get('excerpt', ''),
                 content=article_data['content'],
@@ -206,14 +206,11 @@ def main():
         sys.exit(1)
     
     # Check AI keys
-    ai_keys_available = False
-    for pool in AI_KEY_POOLS.values():
-        if pool.keys:
-            ai_keys_available = True
-            break
+    # The check is for any list of keys in the AI_CONFIG dictionary values being non-empty.
+    ai_keys_available = any(keys for keys in AI_CONFIG.values())
     
     if not ai_keys_available:
-        logger.critical("No AI API keys available in any category")
+        logger.critical("No AI API keys available in any category. Check your .env file for GEMINI_* keys.")
         sys.exit(1)
     
     # Initialize database

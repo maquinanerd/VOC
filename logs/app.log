@@ -2562,3 +2562,8 @@ KeyError: 'category'
 2025-08-14 11:57:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
 2025-08-14 11:57:44 - app.wordpress - INFO - Post created successfully with ID: 13378
 2025-08-14 11:57:45 - app.main - INFO - Successfully published post 13378
+2025-08-14 14:32:46 - root - INFO - ============================================================
+2025-08-14 14:32:46 - root - INFO - RSS to WordPress Automation System Started
+2025-08-14 14:32:46 - root - INFO - Log level: INFO
+2025-08-14 14:32:46 - root - INFO - Log directory: logs
+2025-08-14 14:32:46 - root - INFO - ============================================================

@@ -48,19 +48,20 @@ class AIProcessor:
             logger.critical(f"Prompt file not found at {PROMPT_FILE_PATH}. The application cannot proceed.")
             raise
 
-    def rewrite_content(self, category: str, **kwargs: Any) -> Optional[str]:
+    def rewrite_content(self, **kwargs: Any) -> Optional[str]:
         """
         Rewrites content using the AI, handling key rotation and retries.
 
         Args:
-            category: The content category ('movies', 'series', 'games').
-            **kwargs: Placeholders for the prompt template (title, content, etc.).
+            **kwargs: Placeholders for the prompt template (must include 'category',
+                      'title', 'content', etc.).
 
         Returns:
             The raw rewritten text from the AI, or None if it fails.
         """
+        category = kwargs.get('category')
         if category not in self.key_pools:
-            logger.error(f"Invalid AI category: {category}. No key pool available.")
+            logger.error(f"Invalid or missing AI category: '{category}'. No key pool available.")
             return None
 
         key_pool = self.key_pools[category]

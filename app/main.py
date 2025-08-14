@@ -67,7 +67,6 @@ class PipelineManager:
 
             # Process with AI using category-based key management
             rewritten_content = self.ai_processor.rewrite_content(
-                feed_category,
                 title=article_data['title'],
                 excerpt=article_data.get('excerpt', ''),
                 content=article_data['content'],

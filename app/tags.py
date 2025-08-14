@@ -1,211 +1,65 @@
+#!/usr/bin/env python3
 """
-Tag extraction module using heuristics and content analysis
+Tag extraction from article content.
 """
 
 import logging
 import re
 from typing import List, Set
-from slugify import slugify
 
 logger = logging.getLogger(__name__)
 
+# A simple list of common words to ignore.
+# This can be expanded or replaced with a more sophisticated library.
+STOP_WORDS = {
+    'a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', "aren't", 'as', 'at',
+    'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by', 'can', "can't", 'cannot',
+    'com', 'could', "couldn't", 'did', "didn't", 'do', 'does', "doesn't", 'doing', "don't", 'down', 'during', 'each',
+    'few', 'for', 'from', 'further', 'had', "hadn't", 'has', "hasn't", 'have', "haven't", 'having', 'he', "he'd",
+    "he'll", "he's", 'her', 'here', "here's", 'hers', 'herself', 'him', 'himself', 'his', 'how', "how's", 'i', "i'd",
+    "i'll", "i'm", "i've", 'if', 'in', 'into', 'is', "isn't", 'it', "it's", 'its', 'itself', "let's", 'me', 'more',
+    'most', "mustn't", 'my', 'myself', 'no', 'nor', 'not', 'of', 'off', 'on', 'once', 'only', 'or', 'other', 'ought',
+    'our', 'ours', 'ourselves', 'out', 'over', 'own', 'same', "shan't", 'she', "she'd", "she'll", "she's", 'should',
+    "shouldn't", 'so', 'some', 'such', 'than', 'that', "that's", 'the', 'their', 'theirs', 'them', 'themselves',
+    'then', 'there', "there's", 'these', 'they', "they'd", "they'll", "they're", "they've", 'this', 'those', 'through',
+    'to', 'too', 'under', 'until', 'up', 'very', 'was', "wasn't", 'we', "we'd", "we'll", "we're", "we've", 'were',
+    "weren't", 'what', "what's", 'when', "when's", 'where', "where's", 'which', 'while', 'who', "who's", 'whom',
+    'why', "why's", 'with', "won't", 'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've", 'your',
+    'yours', 'yourself', 'yourselves', 'filme', 'série', 'jogo', 'personagem', 'ator', 'atriz', 'diretor', 'roteirista'
+}
+
 
 class TagExtractor:
-    """Extract relevant tags from article content"""
-    
-    def __init__(self):
-        # Common entertainment industry terms
-        self.franchise_keywords = {
-            # Movies/Series
-            'marvel', 'dc', 'disney', 'pixar', 'star wars', 'star trek', 'lord of the rings',
-            'harry potter', 'fast and furious', 'transformers', 'x-men', 'avengers',
-            'batman', 'superman', 'spider-man', 'iron man', 'wonder woman',
-            'netflix', 'hbo', 'amazon prime', 'disney+', 'paramount+', 'apple tv+',
-            'stranger things', 'game of thrones', 'house of the dragon', 'the boys',
-            'the witcher', 'breaking bad', 'better call saul',
-            
-            # Gaming
-            'playstation', 'xbox', 'nintendo', 'steam', 'epic games', 'ubisoft',
-            'activision', 'blizzard', 'ea games', 'rockstar', 'bethesda',
-            'call of duty', 'grand theft auto', 'fifa', 'fortnite', 'minecraft',
-            'world of warcraft', 'league of legends', 'valorant', 'apex legends',
-            'the elder scrolls', 'fallout', 'assassins creed', 'the sims',
-            
-            # Platforms/Studios
-            'warner bros', 'universal', 'sony', 'paramount', 'mgm', '20th century',
-            'lucasfilm', 'marvel studios', 'dc films'
-        }
+    """Extracts relevant tags from text content."""
+
+    def extract_tags(self, content: str, title: str, max_tags: int = 15) -> List[str]:
+        """
+        Extracts potential tags from the title and content.
+        """
+        if not content and not title:
+            return []
+
+        text_to_process = ' '.join([title] * 3) + ' ' + content
+        proper_nouns = re.findall(r'\b[A-Z][a-zA-Z]*(?:\s+[A-Z][a-zA-Z\'-]*)*\b', text_to_process)
+
+        cleaned_tags: Set[str] = set()
+        for tag in proper_nouns:
+            tag = tag.strip()
+            if self._is_valid_tag(tag):
+                cleaned_tags.add(tag)
+
+        sorted_tags = sorted(list(cleaned_tags), key=lambda t: (text_to_process.count(t), len(t)), reverse=True)
         
-        # Patterns for recognizing titles and names
-        self.title_patterns = [
-            r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+\d+)?\b',  # Title Case names
-            r'\b(?:The|A|An)\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b',  # Articles with titles
-            r'\b[A-Z][a-z]+:\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b',  # Colon titles
-        ]
-        
-        # Common words to exclude
-        self.stop_words = {
-            'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with',
-            'by', 'from', 'as', 'is', 'was', 'are', 'were', 'be', 'been', 'being',
-            'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'should',
-            'could', 'can', 'may', 'might', 'must', 'shall', 'this', 'that', 'these',
-            'those', 'he', 'she', 'it', 'they', 'them', 'their', 'his', 'her', 'its',
-            'movie', 'film', 'series', 'show', 'game', 'news', 'report', 'article'
-        }
-    
-    def extract_franchise_tags(self, text: str) -> Set[str]:
-        """Extract known franchise and brand names"""
-        tags = set()
-        text_lower = text.lower()
-        
-        for keyword in self.franchise_keywords:
-            if keyword.lower() in text_lower:
-                # Use the original casing for better tag names
-                pattern = re.compile(re.escape(keyword), re.IGNORECASE)
-                matches = pattern.findall(text)
-                if matches:
-                    tags.add(slugify(keyword))
-        
-        return tags
-    
-    def extract_title_mentions(self, text: str) -> Set[str]:
-        """Extract likely titles and proper names from text"""
-        tags = set()
-        
-        for pattern in self.title_patterns:
-            matches = re.findall(pattern, text)
-            for match in matches:
-                # Clean and validate
-                cleaned = match.strip()
-                if len(cleaned) < 3 or len(cleaned) > 50:
-                    continue
-                
-                # Skip if it's all stop words
-                words = cleaned.lower().split()
-                if all(word in self.stop_words for word in words):
-                    continue
-                
-                # Skip common non-title phrases
-                if any(skip in cleaned.lower() for skip in ['according to', 'reported by', 'said that']):
-                    continue
-                
-                tags.add(slugify(cleaned))
-        
-        return tags
-    
-    def extract_quoted_terms(self, text: str) -> Set[str]:
-        """Extract terms in quotes (often titles)"""
-        tags = set()
-        
-        # Find quoted strings
-        quote_patterns = [
-            r'"([^"]{3,50})"',  # Double quotes
-            r"'([^']{3,50})'",  # Single quotes
-        ]
-        
-        for pattern in quote_patterns:
-            matches = re.findall(pattern, text)
-            for match in matches:
-                cleaned = match.strip()
-                if cleaned and not any(skip in cleaned.lower() for skip in ['said', 'told', 'according']):
-                    tags.add(slugify(cleaned))
-        
-        return tags
-    
-    def extract_capitalized_terms(self, text: str) -> Set[str]:
-        """Extract consistently capitalized terms (likely proper nouns)"""
-        tags = set()
-        
-        # Find terms that appear capitalized multiple times
-        words = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b', text)
-        word_counts = {}
-        
-        for word in words:
-            if len(word) > 2 and word.lower() not in self.stop_words:
-                word_counts[word] = word_counts.get(word, 0) + 1
-        
-        # Add words that appear multiple times or are known entities
-        for word, count in word_counts.items():
-            if count > 1 or any(keyword in word.lower() for keyword in self.franchise_keywords):
-                tags.add(slugify(word))
-        
-        return tags
-    
-    def extract_from_title(self, title: str) -> Set[str]:
-        """Extract tags specifically from the article title"""
-        tags = set()
-        
-        # Remove common article prefixes
-        clean_title = re.sub(r'^(Watch|See|New|Latest|Breaking|Exclusive):\s*', '', title, flags=re.IGNORECASE)
-        
-        # Extract main subjects from title
-        # Split on common separators
-        parts = re.split(r'[:\-–—|]', clean_title)
-        
-        for part in parts:
-            part = part.strip()
-            if len(part) > 3:
-                # Look for franchise keywords
-                for keyword in self.franchise_keywords:
-                    if keyword.lower() in part.lower():
-                        tags.add(slugify(keyword))
-                
-                # Extract capitalized terms
-                caps = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b', part)
-                for cap in caps:
-                    if cap.lower() not in self.stop_words and len(cap) > 2:
-                        tags.add(slugify(cap))
-        
-        return tags
-    
-    def validate_tags(self, tags: Set[str]) -> List[str]:
-        """Validate and clean extracted tags"""
-        valid_tags = []
-        
-        for tag in tags:
-            # Skip empty or very short tags
-            if not tag or len(tag) < 2:
-                continue
-            
-            # Skip numeric-only tags
-            if tag.isdigit():
-                continue
-            
-            # Skip very generic tags
-            generic_terms = {'new', 'latest', 'news', 'update', 'report', 'first', 'last'}
-            if tag in generic_terms:
-                continue
-            
-            # Clean the tag
-            clean_tag = slugify(tag)
-            if clean_tag and clean_tag not in valid_tags:
-                valid_tags.append(clean_tag)
-        
-        # Limit number of tags
-        return sorted(valid_tags)[:15]
-    
-    def extract_tags(self, content: str, title: str = "") -> List[str]:
-        """Extract all relevant tags from content and title"""
-        logger.debug("Extracting tags from content")
-        
-        all_tags = set()
-        
-        # Combine title and content for processing
-        full_text = f"{title} {content}"
-        
-        # Extract using different methods
-        all_tags.update(self.extract_franchise_tags(full_text))
-        all_tags.update(self.extract_title_mentions(full_text))
-        all_tags.update(self.extract_quoted_terms(full_text))
-        all_tags.update(self.extract_capitalized_terms(full_text))
-        
-        # Special extraction from title
-        if title:
-            all_tags.update(self.extract_from_title(title))
-        
-        # Validate and clean tags
-        final_tags = self.validate_tags(all_tags)
-        
-        logger.info(f"Extracted {len(final_tags)} tags: {', '.join(final_tags[:5])}{'...' if len(final_tags) > 5 else ''}")
-        
+        final_tags = sorted_tags[:max_tags]
+        logger.info(f"Extracted {len(final_tags)} tags: {', '.join(final_tags[:5])}...")
         return final_tags
+
+    def _is_valid_tag(self, tag: str) -> bool:
+        """Validates if a string is a good candidate for a tag."""
+        if tag.lower() in STOP_WORDS or len(tag) < 3 or len(tag) > 50:
+            return False
+        if 'http' in tag or 'www' in tag or '.com' in tag or '/' in tag or '\\' in tag:
+            return False
+        if tag.isdigit() or not any(c.isalpha() for c in tag):
+            return False
+        return True

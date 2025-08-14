@@ -25,10 +25,27 @@ class WordPressClient:
         if not config.get('url') or not config.get('user') or not config.get('password'):
             raise ValueError("WordPress URL, user, and password must be provided.")
             
-        self.base_url = config['url'].rstrip('/')
+        raw_url = config['url'].rstrip('/')
         self.auth = (config['user'], config['password'])
         self.categories_map = categories_map
         self.client = httpx.Client(auth=self.auth, timeout=30.0, follow_redirects=True)
+        self.base_url = self._get_final_url(raw_url)
+
+    def _get_final_url(self, url: str) -> str:
+        """
+        Resolves any redirects to get the final, canonical URL for the API.
+        This prevents issues with POST requests being converted to GET on 301 redirects.
+        """
+        try:
+            # Make a HEAD request to efficiently get the final URL after redirects
+            response = self.client.head(url)
+            final_url = str(response.url)
+            if url != final_url:
+                logger.warning(f"WordPress URL redirected from {url} to {final_url}. Using final URL.")
+            return final_url
+        except httpx.RequestError as e:
+            logger.error(f"Could not resolve WordPress URL {url}. Sticking with original. Error: {e}")
+            return url
 
     def get_domain(self) -> str:
         """Extracts the domain from the WordPress URL."""

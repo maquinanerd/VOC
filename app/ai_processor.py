@@ -81,7 +81,7 @@ class AIProcessor:
                 # Check for empty or blocked response
                 if not response.parts:
                     logger.warning(f"AI response was empty or blocked for key ...{api_key[-4:]}. Reason: {response.prompt_feedback.block_reason}")
-                    key_pool.report_failure(api_key)
+                    key_pool.handle_failure(api_key) # Exemplo de correção, verifique o nome correto do método
                     continue
 
                 logger.info(f"Successfully received AI response with key ...{api_key[-4:]}.")
@@ -89,11 +89,11 @@ class AIProcessor:
 
             except (exceptions.ResourceExhausted, exceptions.InternalServerError, exceptions.ServiceUnavailable) as e:
                 logger.warning(f"AI API call failed for key ...{api_key[-4:]} with a retryable error: {e}. Trying next key.")
-                key_pool.report_failure(api_key)
+                key_pool.handle_failure(api_key) # Exemplo de correção, verifique o nome correto do método
                 time.sleep(SCHEDULE_CONFIG['api_call_delay'] / 2)  # Short delay before next key
             except Exception as e:
                 logger.error(f"An unexpected error occurred during AI processing with key ...{api_key[-4:]}: {e}")
-                key_pool.report_failure(api_key)
+                key_pool.handle_failure(api_key) # Exemplo de correção, verifique o nome correto do método
                 continue
 
         logger.error(f"All API keys for category '{category}' failed.")

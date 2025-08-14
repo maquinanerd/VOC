@@ -72,7 +72,8 @@ class PipelineManager:
                 content=article_data['content'],
                 tags_text=tags_text,
                 category=feed_category,
-                publisher_name=PIPELINE_CONFIG['publisher_name']
+                publisher_name=PIPELINE_CONFIG['publisher_name'],
+                domain=self.wp_client.get_domain()
             )
             
             if not rewritten_content:

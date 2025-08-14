@@ -216,3 +216,5 @@ KeyError: 'category'
 2025-08-14 11:55:46 - app.wordpress - CRITICAL - An exception occurred while creating post: The read operation timed out
 2025-08-14 11:55:46 - app.main - ERROR - Failed to publish post for https://screenrant.com/gods-of-egypt-movie-netflix-success-streaming-charts/
 2025-08-14 17:38:04 - __main__ - ERROR - Error processing article https://screenrant.com/duffer-bros-new-movie-post-stranger-things-details/: AIProcessor.rewrite_content() got multiple values for argument 'category'
+2025-08-14 17:43:56 - __main__ - ERROR - Error processing article https://screenrant.com/duffer-bros-new-movie-post-stranger-things-details/: 'domain'
+2025-08-14 17:44:26 - __main__ - ERROR - Error processing article https://screenrant.com/superman-movie-585-million-global-box-office-milestone/: 'domain'

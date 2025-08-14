@@ -2589,3 +2589,30 @@ KeyError: 'category'
 2025-08-14 17:38:04 - app.extractor - INFO - Successfully extracted content using trafilatura
 2025-08-14 17:38:04 - app.tags - INFO - Extracted 15 tags: Stranger Things, Duffer Brothers, Paramount, Netflix, Hidden...
 2025-08-14 17:38:04 - __main__ - ERROR - Error processing article https://screenrant.com/duffer-bros-new-movie-post-stranger-things-details/: AIProcessor.rewrite_content() got multiple values for argument 'category'
+2025-08-14 17:43:51 - root - INFO - ============================================================
+2025-08-14 17:43:51 - root - INFO - RSS to WordPress Automation System Started
+2025-08-14 17:43:51 - root - INFO - Log level: INFO
+2025-08-14 17:43:51 - root - INFO - Log directory: logs
+2025-08-14 17:43:51 - root - INFO - ============================================================
+2025-08-14 17:43:51 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-14 17:43:51 - app.store - INFO - Database initialized successfully.
+2025-08-14 17:43:51 - __main__ - INFO - Running single pipeline cycle
+2025-08-14 17:43:52 - httpx - INFO - HTTP Request: HEAD https://maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 301 Moved Permanently"
+2025-08-14 17:43:54 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-14 17:43:54 - app.wordpress - WARNING - WordPress URL redirected from https://maquinanerd.com.br/wp-json/wp/v2 to https://www.maquinanerd.com.br/wp-json/wp/v2. Using final URL.
+2025-08-14 17:43:54 - app.ai_processor - INFO - Successfully loaded prompt template from E:\Área de Trabalho 2\VocSenior\universal_prompt.txt
+2025-08-14 17:43:54 - __main__ - INFO - Starting pipeline cycle
+2025-08-14 17:43:54 - __main__ - INFO - Processing feed: screenrant_movies
+2025-08-14 17:43:55 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-14 17:43:55 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-14 17:43:55 - __main__ - INFO - Found 3 new articles for screenrant_movies
+2025-08-14 17:43:55 - __main__ - INFO - Processing article: Duffer Brothers Eye Paramount Deal for First Movie Since Stranger Things Success from screenrant_movies
+2025-08-14 17:43:55 - app.extractor - INFO - Extracting content from: https://screenrant.com/duffer-bros-new-movie-post-stranger-things-details/
+2025-08-14 17:43:56 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-14 17:43:56 - app.tags - INFO - Extracted 15 tags: Duffer Brothers, Stranger Things, Paramount, Netflix, Hidden...
+2025-08-14 17:43:56 - __main__ - ERROR - Error processing article https://screenrant.com/duffer-bros-new-movie-post-stranger-things-details/: 'domain'
+2025-08-14 17:44:26 - __main__ - INFO - Processing article: James Gunn's Superman Surpasses Spielberg Sci-Fi Film in Studio's Top-Grossing Movies from screenrant_movies
+2025-08-14 17:44:26 - app.extractor - INFO - Extracting content from: https://screenrant.com/superman-movie-585-million-global-box-office-milestone/
+2025-08-14 17:44:26 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-14 17:44:26 - app.tags - INFO - Extracted 15 tags: Superman, James Gunn, Box Office, Steven Spielberg's, Rachel Brosnahan...
+2025-08-14 17:44:26 - __main__ - ERROR - Error processing article https://screenrant.com/superman-movie-585-million-global-box-office-milestone/: 'domain'

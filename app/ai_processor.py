@@ -7,7 +7,7 @@ import google.generativeai as genai
 from google.api_core import exceptions
 
 from . import keys
-from .config import AI_CONFIG, PROMPT_FILE_PATH, SCHEDULE_CONFIG
+from .config import AI_CONFIG, PROMPT_FILE_PATH, SCHEDULE_CONFIG, AI_MODELS, AI_GENERATION_CONFIG
 
 logger = logging.getLogger(__name__)
 
@@ -25,12 +25,7 @@ class AIProcessor:
             if category != 'backup' and api_keys
         }
         self.prompt_template = self._load_prompt_template()
-        self.generation_config = {
-            "temperature": 0.7,
-            "top_p": 1,
-            "top_k": 1,
-            "max_output_tokens": 8192,
-        }
+        self.generation_config = AI_GENERATION_CONFIG
         self.safety_settings = [
             {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
             {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
@@ -77,7 +72,7 @@ class AIProcessor:
                 logger.info(f"Attempting to rewrite content with key ending in '...{api_key[-4:]}' for category '{category}'.")
                 genai.configure(api_key=api_key)
                 model = genai.GenerativeModel(
-                    model_name="gemini-1.5-flash",
+                    model_name=AI_MODELS['primary'],
                     generation_config=self.generation_config,
                     safety_settings=self.safety_settings
                 )

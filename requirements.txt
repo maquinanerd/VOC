@@ -1,6 +1,7 @@
 apscheduler
 beautifulsoup4
 feedparser
+google-generativeai
 lxml
 pillow
 python-dateutil

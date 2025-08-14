@@ -1,241 +1,104 @@
-"""
-AI content processing module using Gemini API with failover
-"""
 import logging
-import os
+import re
 import time
-from typing import Dict, Optional, Any
-import json
+from typing import Dict, Any, Optional
 
-from google import genai
-from google.api_core import exceptions as google_exceptions
+import google.generativeai as genai
+from google.api_core import exceptions
 
-from .keys import KeyPool
+from . import keys
+from .config import AI_CONFIG, PROMPT_FILE_PATH, SCHEDULE_CONFIG
 
 logger = logging.getLogger(__name__)
 
 
 class AIProcessor:
-    """AI content processor with Gemini API integration and failover"""
+    """
+    Handles content rewriting using the Gemini AI API.
+    Manages API key rotation, failover, and rate limiting.
+    """
 
-    def __init__(self, key_pools: Dict[str, KeyPool]):
-        self.key_pools = key_pools
+    def __init__(self):
+        self.key_pools = {
+            category: keys.KeyPool(api_keys)
+            for category, api_keys in AI_CONFIG.items()
+            if category != 'backup' and api_keys
+        }
         self.prompt_template = self._load_prompt_template()
+        self.generation_config = {
+            "temperature": 0.7,
+            "top_p": 1,
+            "top_k": 1,
+            "max_output_tokens": 8192,
+        }
+        self.safety_settings = [
+            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+        ]
 
     def _load_prompt_template(self) -> str:
-        """Load the universal prompt template from file"""
+        """Loads the prompt template from the external file."""
         try:
-            prompt_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'universal_prompt.txt')
-            with open(prompt_path, 'r', encoding='utf-8') as f:
-                return f.read().strip()
+            with open(PROMPT_FILE_PATH, 'r', encoding='utf-8') as f:
+                logger.info(f"Successfully loaded prompt template from {PROMPT_FILE_PATH}")
+                return f.read()
         except FileNotFoundError:
-            logger.critical("universal_prompt.txt not found in project root")
-            raise
-        except Exception as e:
-            logger.critical(f"Error loading prompt template: {str(e)}")
+            logger.critical(f"Prompt file not found at {PROMPT_FILE_PATH}. The application cannot proceed.")
             raise
 
-    def _get_active_client(self, api_key: str) -> Optional[genai.Client]:
-        """Get or create a Gemini client for the given API key"""
-        if not api_key:
+    def rewrite_content(self, category: str, **kwargs: Any) -> Optional[str]:
+        """
+        Rewrites content using the AI, handling key rotation and retries.
+
+        Args:
+            category: The content category ('movies', 'series', 'games').
+            **kwargs: Placeholders for the prompt template (title, content, etc.).
+
+        Returns:
+            The raw rewritten text from the AI, or None if it fails.
+        """
+        if category not in self.key_pools:
+            logger.error(f"Invalid AI category: {category}. No key pool available.")
             return None
 
-        if api_key not in self._active_clients:
-            try:
-                self._active_clients[api_key] = genai.Client(api_key=api_key)
-            except Exception as e:
-                logger.error(f"Failed to create Gemini client: {str(e)}")
-                return None
+        key_pool = self.key_pools[category]
+        prompt = self.prompt_template.format(**kwargs)
 
-        return self._active_clients[api_key]
-
-    def _call_gemini_api(self, client: genai.Client, prompt: str, max_retries: int = 3) -> Optional[str]:
-        """Call Gemini API with exponential backoff retry"""
-        for attempt in range(max_retries):
-            try:
-                response = client.models.generate_content(
-                    model="gemini-2.5-pro",
-                    contents=prompt,
-                    config=types.GenerateContentConfig(
-                        temperature=0.3,
-                        max_output_tokens=4000,
-                    )
-                )
-
-                if response.text:
-                    return response.text.strip()
-                else:
-                    logger.warning("Empty response from Gemini API")
-                    return None
-
-            except Exception as e:
-                logger.error(f"Gemini API call failed (attempt {attempt + 1}): {str(e)}")
-
-                # Check for rate limiting or temporary errors
-                error_str = str(e).lower()
-                if any(code in error_str for code in ['429', 'rate limit', '5xx', 'timeout']):
-                    if attempt < max_retries - 1:
-                        # Exponential backoff
-                        sleep_time = (2 ** attempt) * 5
-                        logger.info(f"Rate limited, waiting {sleep_time} seconds before retry")
-                        time.sleep(sleep_time)
-                        continue
-
-                # For non-retryable errors, break immediately
-                if any(code in error_str for code in ['400', '401', '403', 'invalid']):
-                    logger.error("Non-retryable error, skipping retries")
-                    break
-
-        return None
-
-    def _try_category_keys(self, category: str, prompt: str) -> Optional[str]:
-        """Try all available API keys for a category with failover"""
-        if category not in self.ai_config:
-            logger.error(f"Category '{category}' not found in AI config")
-            return None
-
-        keys = self.ai_config[category]
-        available_keys = [key for key in keys if key]
-
-        if not available_keys:
-            logger.error(f"No API keys available for category '{category}'")
-            return None
-
-        logger.info(f"Trying {len(available_keys)} API keys for category '{category}'")
-
-        for i, api_key in enumerate(available_keys):
-            logger.debug(f"Trying API key {i + 1}/{len(available_keys)} for {category}")
-
-            client = self._get_active_client(api_key)
-            if not client:
-                continue
-
-            result = self._call_gemini_api(client, prompt)
-            if result:
-                logger.info(f"Successfully processed with key {i + 1} for {category}")
-                return result
-
-            logger.warning(f"API key {i + 1} failed for {category}, trying next")
-
-        logger.error(f"All API keys failed for category '{category}'")
-        return None
-
-    def get_api_key(self, category: str, primary_key: Optional[str] = None) -> Optional[str]:
-        """Get API key - try primary first, then fallback to backup keys"""
-        # Try primary key first if provided and not failed
-        if primary_key and primary_key not in self.failed_keys.get(category, set()):
-            primary_key_value = os.getenv(primary_key)
-            if primary_key_value:
-                return primary_key_value
-
-        # Fallback to backup keys
-        if category not in self.backup_keys or not self.backup_keys[category]:
-            logger.error(f"No backup API keys available for category: {category}")
-            return None
-
-        available_backup_keys = [k for k in self.backup_keys[category] if k not in self.failed_keys[category]]
-        if not available_backup_keys:
-            logger.warning(f"All backup keys failed for category {category}, resetting failed keys")
-            self.failed_keys[category].clear()
-            available_backup_keys = self.backup_keys[category]
-
-        if available_backup_keys:
-            return available_backup_keys[0]
-
-        return None
-
-
-    def _build_prompt(self, title: str, excerpt: str, content: str, tags_text: str, category: str, publisher_name: str) -> str:
-        """Build the complete prompt by substituting placeholders"""
-        return self.prompt_template.format(
-            title=title,
-            excerpt=excerpt,
-            tags_text=tags_text,
-            content=content,
-            category=category,
-            publisher_name=publisher_name
-        )
-
-    def _parse_ai_response(self, response: str) -> Optional[Dict[str, str]]:
-        """Parse AI response into structured format"""
-        try:
-            # Clean the response to find the JSON part, removing markdown fences
-            json_str = response
-            if '```json' in json_str:
-                json_str = json_str.split('```json')[1]
-            if '```' in json_str:
-                json_str = json_str.split('```')[0]
-            
-            sections = json.loads(json_str.strip())
-
-            # Validate all sections are present
-            required_sections = ['title', 'excerpt', 'content']
-            for section in required_sections:
-                if section not in sections or not sections[section]:
-                    logger.error(f"AI response is missing or has empty section: {section}")
-                    return None
-            return sections
-        except json.JSONDecodeError as e:
-            logger.error(f"Failed to decode JSON from AI response: {e}. Response: {response}")
-            return None
-        except Exception as e:
-            logger.error(f"Error parsing AI response: {str(e)}. Response: {response}")
-            return None
-
-    def rewrite_content(self, title: str, excerpt: str, content: str, tags_text: str, category: str, publisher_name: str) -> Optional[Dict[str, str]]:
-        """Rewrite content using AI with the specified category"""
-        logger.info(f"Processing content with AI for category: {category}")
-
-        key_pool = self.key_pools.get(category)
-        if not key_pool or not key_pool.keys:
-            logger.error(f"No API keys configured for category: {category}")
-            return None
-
-        # Build the complete prompt
-        prompt = self._build_prompt(
-            title=title, excerpt=excerpt, content=content, tags_text=tags_text,
-            category=category, publisher_name=publisher_name
-        )
-        
-        response = None
-        for attempt in range(2): # Try current key, and if it fails hard, try the next one once.
+        for attempt in range(len(key_pool.keys)):
             api_key = key_pool.get_key()
             if not api_key:
-                logger.error(f"No more keys to try for category {category}")
-                break
+                logger.error(f"No more API keys available for category '{category}'.")
+                return None
 
             try:
-                logger.info(f"Attempting AI call for category '{category}' with key index {key_pool.current_index}")
-                response = self._call_gemini_api(api_key, prompt)
-                
-                # If we get a response (even an empty one), the key is valid. Break the loop.
-                break 
+                logger.info(f"Attempting to rewrite content with key ending in '...{api_key[-4:]}' for category '{category}'.")
+                genai.configure(api_key=api_key)
+                model = genai.GenerativeModel(
+                    model_name="gemini-1.5-flash",
+                    generation_config=self.generation_config,
+                    safety_settings=self.safety_settings
+                )
+                response = model.generate_content(prompt)
 
-            except (google_exceptions.ResourceExhausted, google_exceptions.DeadlineExceeded, 
-                    google_exceptions.ServiceUnavailable, google_exceptions.PermissionDenied,
-                    ValueError) as e:
-                logger.error(f"Hard failure on API key index {key_pool.current_index}: {str(e)}")
-                key_pool.rotate_key() # Rotate on hard error
-                
-                if attempt == 0:
-                    logger.info("Retrying with the next API key...")
-                    time.sleep(2) # Small delay before retry
-                else:
-                    logger.error("Second attempt with new key also failed. Aborting for this article.")
-            
+                # Check for empty or blocked response
+                if not response.parts:
+                    logger.warning(f"AI response was empty or blocked for key ...{api_key[-4:]}. Reason: {response.prompt_feedback.block_reason}")
+                    key_pool.report_failure(api_key)
+                    continue
+
+                logger.info(f"Successfully received AI response with key ...{api_key[-4:]}.")
+                return response.text
+
+            except (exceptions.ResourceExhausted, exceptions.InternalServerError, exceptions.ServiceUnavailable) as e:
+                logger.warning(f"AI API call failed for key ...{api_key[-4:]} with a retryable error: {e}. Trying next key.")
+                key_pool.report_failure(api_key)
+                time.sleep(SCHEDULE_CONFIG['api_call_delay'] / 2)  # Short delay before next key
             except Exception as e:
-                logger.critical(f"An unexpected error occurred during AI processing: {str(e)}")
-                return None # Unexpected error, abort
+                logger.error(f"An unexpected error occurred during AI processing with key ...{api_key[-4:]}: {e}")
+                key_pool.report_failure(api_key)
+                continue
 
-        if not response:
-            logger.warning("AI processing resulted in no content after all attempts.")
-            return None
-
-        # Parse the response
-        parsed_response = self._parse_ai_response(response)
-        if not parsed_response:
-            logger.error("Failed to parse AI response")
-            return None
-
-        logger.info("Successfully processed content with AI")
-        return parsed_response
+        logger.error(f"All API keys for category '{category}' failed.")
+        return None

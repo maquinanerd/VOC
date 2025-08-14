@@ -2733,3 +2733,120 @@ violations {
 }
 ]. Trying next key.
 2025-08-14 17:51:42 - __main__ - ERROR - Error processing article https://screenrant.com/superman-movie-585-million-global-box-office-milestone/: 'KeyPool' object has no attribute 'report_failure'
+2025-08-14 18:03:25 - root - INFO - ============================================================
+2025-08-14 18:03:25 - root - INFO - RSS to WordPress Automation System Started
+2025-08-14 18:03:25 - root - INFO - Log level: INFO
+2025-08-14 18:03:25 - root - INFO - Log directory: logs
+2025-08-14 18:03:25 - root - INFO - ============================================================
+2025-08-14 18:03:25 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-14 18:03:25 - app.store - INFO - Database initialized successfully.
+2025-08-14 18:03:25 - __main__ - INFO - Running single pipeline cycle
+2025-08-14 18:03:26 - httpx - INFO - HTTP Request: HEAD https://maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 301 Moved Permanently"
+2025-08-14 18:03:28 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-14 18:03:28 - app.wordpress - WARNING - WordPress URL redirected from https://maquinanerd.com.br/wp-json/wp/v2 to https://www.maquinanerd.com.br/wp-json/wp/v2. Using final URL.
+2025-08-14 18:03:28 - app.ai_processor - INFO - Successfully loaded prompt template from E:\Área de Trabalho 2\VocSenior\universal_prompt.txt
+2025-08-14 18:03:28 - __main__ - INFO - Starting pipeline cycle
+2025-08-14 18:03:28 - __main__ - INFO - Processing feed: screenrant_movies
+2025-08-14 18:03:30 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-14 18:03:30 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-14 18:03:30 - __main__ - INFO - Found 3 new articles for screenrant_movies
+2025-08-14 18:03:30 - __main__ - INFO - Processing article: Duffer Brothers Eye Paramount Deal for First Movie Since Stranger Things Success from screenrant_movies
+2025-08-14 18:03:30 - app.extractor - INFO - Extracting content from: https://screenrant.com/duffer-bros-new-movie-post-stranger-things-details/
+2025-08-14 18:03:31 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-14 18:03:31 - app.tags - INFO - Extracted 15 tags: Duffer Brothers, Stranger Things, Paramount, Netflix, Hidden...
+2025-08-14 18:03:31 - app.ai_processor - INFO - Attempting to rewrite content with key ending in '...X7zc' for category 'movies'.
+2025-08-14 18:03:32 - app.ai_processor - WARNING - AI API call failed for key ...X7zc with a retryable error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 27
+}
+]. Trying next key.
+2025-08-14 18:03:32 - __main__ - ERROR - Error processing article https://screenrant.com/duffer-bros-new-movie-post-stranger-things-details/: 'KeyPool' object has no attribute 'handle_failure'
+2025-08-14 18:04:02 - __main__ - INFO - Processing article: James Gunn's Superman Surpasses Spielberg Sci-Fi Film in Studio's Top-Grossing Movies from screenrant_movies
+2025-08-14 18:04:02 - app.extractor - INFO - Extracting content from: https://screenrant.com/superman-movie-585-million-global-box-office-milestone/
+2025-08-14 18:04:02 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-14 18:04:02 - app.tags - INFO - Extracted 15 tags: Superman, James Gunn, Box Office, Steven Spielberg's, Rachel Brosnahan...
+2025-08-14 18:04:02 - app.ai_processor - INFO - Attempting to rewrite content with key ending in '...X7zc' for category 'movies'.
+2025-08-14 18:04:03 - app.ai_processor - WARNING - AI API call failed for key ...X7zc with a retryable error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 56
+}
+]. Trying next key.
+2025-08-14 18:04:03 - __main__ - ERROR - Error processing article https://screenrant.com/superman-movie-585-million-global-box-office-milestone/: 'KeyPool' object has no attribute 'handle_failure'

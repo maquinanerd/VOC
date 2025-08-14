@@ -60,13 +60,19 @@ class AIProcessor:
             return None
 
         key_pool = self.key_pools[category]
+        if not key_pool._key_list:
+            logger.error(f"No API keys configured for category '{category}'.")
+            return None
+
         prompt = self.prompt_template.format(**kwargs)
 
-        for attempt in range(len(key_pool.keys)):
+        # Tenta usar as chaves disponíveis, respeitando o cooldown.
+        for _ in range(len(key_pool._key_list)):
             api_key = key_pool.get_key()
             if not api_key:
-                logger.error(f"No more API keys available for category '{category}'.")
-                return None
+                logger.warning(f"All API keys for category '{category}' are in cooldown. Will retry in the next cycle.")
+                # Se get_key() retorna None, todas as chaves estão em cooldown.
+                break
 
             try:
                 logger.info(f"Attempting to rewrite content with key ending in '...{api_key[-4:]}' for category '{category}'.")
@@ -81,7 +87,7 @@ class AIProcessor:
                 # Check for empty or blocked response
                 if not response.parts:
                     logger.warning(f"AI response was empty or blocked for key ...{api_key[-4:]}. Reason: {response.prompt_feedback.block_reason}")
-                    key_pool.handle_failure(api_key) # Exemplo de correção, verifique o nome correto do método
+                    key_pool.report_failure(api_key)
                     continue
 
                 logger.info(f"Successfully received AI response with key ...{api_key[-4:]}.")
@@ -89,12 +95,12 @@ class AIProcessor:
 
             except (exceptions.ResourceExhausted, exceptions.InternalServerError, exceptions.ServiceUnavailable) as e:
                 logger.warning(f"AI API call failed for key ...{api_key[-4:]} with a retryable error: {e}. Trying next key.")
-                key_pool.handle_failure(api_key) # Exemplo de correção, verifique o nome correto do método
+                key_pool.report_failure(api_key)
                 time.sleep(SCHEDULE_CONFIG['api_call_delay'] / 2)  # Short delay before next key
             except Exception as e:
                 logger.error(f"An unexpected error occurred during AI processing with key ...{api_key[-4:]}: {e}")
-                key_pool.handle_failure(api_key) # Exemplo de correção, verifique o nome correto do método
+                key_pool.report_failure(api_key)
                 continue
 
-        logger.error(f"All API keys for category '{category}' failed.")
+        logger.error(f"All API keys for category '{category}' failed or are in cooldown for this cycle.")
         return None

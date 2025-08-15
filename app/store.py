@@ -196,7 +196,8 @@ class Database:
             """, (source_id, now, limit))
             return cursor.fetchall()
         except sqlite3.Error as e:
-            logger.error(f"Failed to
+            logger.error(f"Failed to get articles to process for source_id '{source_id}': {e}")
+            return []
 
     def close(self):
         """Closes the database connection."""

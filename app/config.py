@@ -1,17 +1,27 @@
 import os
 from dotenv import load_dotenv
-from tenacity import wait_exponential, stop_after_attempt
 
 # Carrega variáveis de ambiente de um arquivo .env
 load_dotenv()
 
 PIPELINE_ORDER = [
-    'screenrant_movies', 'screenrant_tv',
+    'screenrant_movies',
+    'screenrant_tv',
+    'collider_movies',
+    'collider_tv',
     'movieweb_movies',
-    'collider_movies', 'collider_tv',
-    'cbr_movies', 'cbr_tv',
-    'gamerant_games', 'thegamer_games',
+    'cbr_movies',
+    'cbr_tv',
+    'gamerant_games',
+    'thegamer_games',
 ]
+
+AI_MODEL_FALLBACK_ORDER = {
+    'movies': ['gemini-1.5-pro-latest', 'gemini-1.5-flash-latest'],
+    'series': ['gemini-1.5-pro-latest', 'gemini-1.5-flash-latest'],
+    'games':  ['gemini-1.5-flash-latest'],
+    'default':['gemini-1.5-flash-latest']
+}
 
 RSS_FEEDS = {
     'screenrant_movies': {'urls': ['https://screenrant.com/feed/movie-news/'], 'category': 'movies'},
@@ -69,10 +79,12 @@ WORDPRESS_CATEGORIES = {
 
 # --- Configuração do Agendador e Pipeline ---
 SCHEDULE_CONFIG = {
-    'check_interval': int(os.getenv('CHECK_INTERVAL_MINUTES', 15)),
+    'check_interval_minutes': int(os.getenv('CHECK_INTERVAL_MINUTES', 5)),
     'max_articles_per_feed': int(os.getenv('MAX_ARTICLES_PER_FEED', 3)),
-    'api_call_delay': int(os.getenv('API_CALL_DELAY_SECONDS', 30)),
-    'cleanup_after_hours': int(os.getenv('CLEANUP_AFTER_HOURS', 12))
+    'api_call_delay_seconds': int(os.getenv('API_CALL_DELAY_SECONDS', 60)),
+    'rate_limit_per_minute': int(os.getenv('RATE_PER_MINUTE_PER_MODEL', 12)),
+    'max_deferred_articles_per_feed': int(os.getenv('MAX_DEFERRED_ARTICLES_PER_FEED', 2)),
+    'cleanup_after_hours': int(os.getenv('CLEANUP_AFTER_HOURS', 72))
 }
 
 PIPELINE_CONFIG = {
@@ -80,10 +92,4 @@ PIPELINE_CONFIG = {
     'attribution_policy': 'Via {domain}',
     'publisher_name': 'Máquina Nerd',
     'publisher_logo_url': 'https://www.maquinanerd.com.br/wp-content/uploads/2023/11/logo-maquina-nerd-400px.png'
-}
-
-# --- Configuração de Retentativas ---
-RETRY_CONFIG = {
-    'wait': wait_exponential(multiplier=1, min=2, max=10),
-    'stop': stop_after_attempt(3),
 }

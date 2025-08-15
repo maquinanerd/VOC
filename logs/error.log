@@ -222,3 +222,13 @@ KeyError: 'category'
 2025-08-14 17:51:42 - __main__ - ERROR - Error processing article https://screenrant.com/superman-movie-585-million-global-box-office-milestone/: 'KeyPool' object has no attribute 'report_failure'
 2025-08-14 18:03:32 - __main__ - ERROR - Error processing article https://screenrant.com/duffer-bros-new-movie-post-stranger-things-details/: 'KeyPool' object has no attribute 'handle_failure'
 2025-08-14 18:04:03 - __main__ - ERROR - Error processing article https://screenrant.com/superman-movie-585-million-global-box-office-milestone/: 'KeyPool' object has no attribute 'handle_failure'
+2025-08-15 12:05:15 - app.ai_processor - ERROR - An unexpected error occurred during AI processing with key ...P7wg: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-08-15 12:05:15 - app.ai_processor - ERROR - All API keys for category 'movies' failed or are in cooldown for this cycle.

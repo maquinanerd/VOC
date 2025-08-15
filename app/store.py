@@ -5,7 +5,7 @@ Database management for the application using SQLite.
 
 import sqlite3
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
@@ -43,28 +43,52 @@ class Database:
         logger.info("Initializing database tables if they don't exist...")
         try:
             cursor = self._get_cursor()
-            # Table for successfully published posts
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS posts (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    source_id TEXT NOT NULL,
-                    external_id TEXT NOT NULL,
-                    wp_post_id INTEGER NOT NULL,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(source_id, external_id)
-                )
-            ''')
-            # Table for all articles seen in feeds
+            # Tabela para rastrear artigos e seu estado
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS seen_articles (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     source_id TEXT NOT NULL,
                     external_id TEXT NOT NULL,
-                    inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    url TEXT,
+                    published_at DATETIME,
+                    inserted_at DATETIME DEFAULT (strftime('%Y-%m-%d %H:%M:%f', 'now')),
+                    status TEXT DEFAULT 'NEW', -- NEW, PROCESSING, REWRITTEN, PUBLISHED, FAILED, DEFERRED
+                    retry_at DATETIME,
+                    fail_count INTEGER DEFAULT 0,
                     UNIQUE(source_id, external_id)
                 )
             ''')
-            # Table for processing failures
+            # Tabela para rastrear posts publicados no WordPress
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS posts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    seen_article_id INTEGER,
+                    wp_post_id INTEGER,
+                    created_at DATETIME DEFAULT (strftime('%Y-%m-%d %H:%M:%f', 'now')),
+                    FOREIGN KEY(seen_article_id) REFERENCES seen_articles(id)
+                )
+            ''')
+            # Tabela para rastrear o estado do pipeline (qual feed processar)
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS pipeline_state (
+                    key TEXT PRIMARY KEY,
+                    value TEXT
+                )
+            ''')
+            cursor.execute("INSERT OR IGNORE INTO pipeline_state (key, value) VALUES ('last_processed_feed_index', '-1')")
+
+            # Tabela para gerenciar o status e cooldown das chaves de API
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS api_key_status (
+                    key_hash TEXT PRIMARY KEY,
+                    api_key TEXT NOT NULL,
+                    category TEXT NOT NULL,
+                    is_valid BOOLEAN DEFAULT 1,
+                    cooldown_until DATETIME
+                )
+            ''')
+
+            # Tabela para logs de falhas
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS failures (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -74,20 +98,12 @@ class Database:
                     failed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             ''')
-            # Table for API usage tracking
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS api_usage (
-                    api_type TEXT PRIMARY KEY,
-                    usage_count INTEGER DEFAULT 0,
-                    last_used TIMESTAMP
-                )
-            ''')
             self.conn.commit()
             logger.info("Database initialized successfully.")
         except sqlite3.Error as e:
             logger.error(f"Database initialization failed: {e}")
 
-    def is_article_processed(self, source_id: str, external_id: str) -> bool:
+    def is_article_published(self, source_id: str, external_id: str) -> bool:
         """
         Checks if an article has already been successfully processed and posted.
 
@@ -106,7 +122,7 @@ class Database:
             )
             return cursor.fetchone() is not None
         except sqlite3.Error as e:
-            logger.error(f"Error checking if article is processed: {e}")
+            logger.error(f"Error checking if article is published: {e}")
             return True # Fail safe to avoid reprocessing on DB error
 
     def save_processed_post(self, source_id: str, external_id: str, wp_post_id: int):
@@ -114,8 +130,12 @@ class Database:
         try:
             cursor = self._get_cursor()
             cursor.execute(
-                "INSERT INTO posts (source_id, external_id, wp_post_id) VALUES (?, ?, ?)",
-                (source_id, external_id, wp_post_id)
+                "UPDATE seen_articles SET status = 'PUBLISHED' WHERE source_id = ? AND external_id = ?",
+                (source_id, external_id)
+            )
+            cursor.execute(
+                "INSERT INTO posts (seen_article_id, wp_post_id) SELECT id, ? FROM seen_articles WHERE source_id = ? AND external_id = ?",
+                (wp_post_id, source_id, external_id)
             )
             self.conn.commit()
             logger.debug(f"Saved post {wp_post_id} for {source_id} to database.")
@@ -123,6 +143,60 @@ class Database:
             logger.warning(f"Post with external_id {external_id} from {source_id} already exists in posts table.")
         except sqlite3.Error as e:
             logger.error(f"Failed to save processed post: {e}")
+
+    def get_pipeline_state(self, key: str) -> str | None:
+        """Gets a value from the pipeline state table."""
+        try:
+            cursor = self._get_cursor()
+            cursor.execute("SELECT value FROM pipeline_state WHERE key = ?", (key,))
+            row = cursor.fetchone()
+            return row['value'] if row else None
+        except sqlite3.Error as e:
+            logger.error(f"Failed to get pipeline state for key '{key}': {e}")
+            return None
+
+    def set_pipeline_state(self, key: str, value: str):
+        """Sets a value in the pipeline state table."""
+        try:
+            cursor = self._get_cursor()
+            cursor.execute("INSERT OR REPLACE INTO pipeline_state (key, value) VALUES (?, ?)", (key, value))
+            self.conn.commit()
+        except sqlite3.Error as e:
+            logger.error(f"Failed to set pipeline state for key '{key}': {e}")
+
+    def update_article_status(self, article_id: int, status: str, retry_at: datetime | None = None):
+        """Updates the status of an article in the seen_articles table."""
+        try:
+            cursor = self._get_cursor()
+            if status == 'DEFERRED':
+                cursor.execute(
+                    "UPDATE seen_articles SET status = ?, retry_at = ?, fail_count = fail_count + 1 WHERE id = ?",
+                    (status, retry_at, article_id)
+                )
+            else:
+                 cursor.execute(
+                    "UPDATE seen_articles SET status = ? WHERE id = ?",
+                    (status, article_id)
+                )
+            self.conn.commit()
+        except sqlite3.Error as e:
+            logger.error(f"Failed to update article status for id {article_id}: {e}")
+
+    def get_articles_to_process(self, source_id: str, limit: int) -> list:
+        """Gets new or deferred articles for a given feed source."""
+        try:
+            cursor = self._get_cursor()
+            now = datetime.utcnow()
+            # Prioritizes deferred articles that are ready for retry, then new ones.
+            cursor.execute("""
+                SELECT id, external_id, url, status FROM seen_articles
+                WHERE source_id = ? AND (status = 'NEW' OR (status = 'DEFERRED' AND retry_at < ?))
+                ORDER BY status DESC, published_at DESC
+                LIMIT ?
+            """, (source_id, now, limit))
+            return cursor.fetchall()
+        except sqlite3.Error as e:
+            logger.error(f"Failed to
 
     def close(self):
         """Closes the database connection."""

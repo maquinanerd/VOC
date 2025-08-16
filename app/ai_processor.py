@@ -86,8 +86,8 @@ class AIProcessor:
         for _ in range(len(key_pool._key_list)):
             api_key = key_pool.get_key()
             if not api_key:
-                logger.warning(f"All API keys for category '{category}' are in cooldown. Will retry in the next cycle.")
-                last_error_reason = f"All keys for category '{category}' are in cooldown."
+                last_error_reason = f"Key pool for category '{category}' is exhausted (all keys are in cooldown)."
+                logger.warning(last_error_reason)
                 break
 
             try:

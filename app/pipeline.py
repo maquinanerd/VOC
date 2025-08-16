@@ -81,8 +81,14 @@ def run_pipeline_cycle():
                         )
 
                         if not rewritten_text:
-                            reason = failure_reason or "AI processing failed without a specific reason"
-                            logger.warning(f"Article '{article_data['title']}' marked as FAILED (Reason: {reason}). Continuing to next article.")
+                            reason = failure_reason or "AI processing failed"
+                            # Check for the specific case where the key pool for the category is exhausted
+                            if "pool is exhausted" in reason:
+                                logger.warning(
+                                    f"{feed_config['category']} pool exhausted → marking article FAILED → moving on."
+                                )
+                            else:
+                                logger.warning(f"Article '{article_data['title']}' marked as FAILED (Reason: {reason}). Continuing to next article.")
                             db.update_article_status(article_db_id, 'FAILED', reason=reason)
                             continue
 

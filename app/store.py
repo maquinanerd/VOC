@@ -7,6 +7,7 @@ import sqlite3
 import logging
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import List, Dict, Any
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +55,7 @@ class Database:
                     inserted_at DATETIME DEFAULT (strftime('%Y-%m-%d %H:%M:%f', 'now')),
                     status TEXT DEFAULT 'NEW', -- NEW, PROCESSING, REWRITTEN, PUBLISHED, FAILED, DEFERRED
                     retry_at DATETIME,
-                    fail_count INTEGER DEFAULT 0,
+                    fail_reason TEXT,
                     UNIQUE(source_id, external_id)
                 )
             ''')
@@ -101,29 +102,36 @@ class Database:
             self.conn.commit()
             logger.info("Database initialized successfully.")
         except sqlite3.Error as e:
-            logger.error(f"Database initialization failed: {e}")
+            logger.error(f"Database initialization failed: {e}", exc_info=True)
+            raise
 
-    def is_article_published(self, source_id: str, external_id: str) -> bool:
+    def filter_new_articles(self, source_id: str, items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
-        Checks if an article has already been successfully processed and posted.
+        Filters a list of feed items, returning only those not already in the database.
+        New articles are inserted into the 'seen_articles' table with 'NEW' status.
 
         Args:
             source_id: The ID of the feed source.
-            external_id: The unique identifier of the article from the feed.
+            items: A list of normalized feed items.
 
         Returns:
-            True if the article is in the 'posts' table, False otherwise.
+            A list of new articles that were added to the database.
         """
+        new_articles = []
         try:
             cursor = self._get_cursor()
-            cursor.execute(
-                "SELECT 1 FROM posts WHERE source_id = ? AND external_id = ?",
-                (source_id, external_id)
-            )
-            return cursor.fetchone() is not None
+            for item in items:
+                cursor.execute("SELECT id FROM seen_articles WHERE source_id = ? AND external_id = ?", (source_id, item['id']))
+                if cursor.fetchone() is None:
+                    cursor.execute(
+                        "INSERT INTO seen_articles (source_id, external_id, url, published_at) VALUES (?, ?, ?, ?)",
+                        (source_id, item['id'], item['link'], item['published_at'])
+                    )
+                    item['db_id'] = cursor.lastrowid
+                    new_articles.append(item)
+            self.conn.commit()
         except sqlite3.Error as e:
-            logger.error(f"Error checking if article is published: {e}")
-            return True # Fail safe to avoid reprocessing on DB error
+            logger.error(f"Error filtering new articles for {source_id}: {e}",
 
     def save_processed_post(self, source_id: str, external_id: str, wp_post_id: int):
         """Saves a record of a successfully published post."""

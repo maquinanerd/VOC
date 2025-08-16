@@ -1,15 +1,10 @@
-import os
 import time
+import logging
 from typing import List, Optional, Dict
 
 from .config import SCHEDULE_CONFIG
 
-def load_keys_from_env(env_var_name: str) -> List[str]:
-    """Carrega chaves de uma variável de ambiente, separadas por vírgula."""
-    keys_str = os.getenv(env_var_name)
-    if not keys_str:
-        return []
-    return [key.strip() for key in keys_str.split(',') if key.strip()]
+logger = logging.getLogger(__name__)
 
 
 class KeyPool:
@@ -29,7 +24,7 @@ class KeyPool:
         self._key_list = list(self.keys.keys())
         self.current_index = 0
         # Define o tempo de cooldown com base na configuração de delay da API
-        self.cooldown_seconds = SCHEDULE_CONFIG.get('api_call_delay', 30) * 2
+        self.cooldown_seconds = SCHEDULE_CONFIG.get('api_call_delay_seconds', 60) * 2
 
     def get_key(self) -> Optional[str]:
         """
@@ -54,8 +49,9 @@ class KeyPool:
 
         return None # Todas as chaves estão em cooldown
 
-    def report_failure(self, key: str):
+    def handle_failure(self, key: str):
         """Reporta uma falha para uma chave, colocando-a em cooldown e avançando o ponteiro."""
         if key in self.keys:
+            logger.warning(f"Placing key ...{key[-4:]} in cooldown for {self.cooldown_seconds} seconds.")
             self.keys[key] = time.time()
             self.current_index = (self.current_index + 1) % len(self._key_list)

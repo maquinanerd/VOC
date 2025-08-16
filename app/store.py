@@ -199,6 +199,43 @@ class Database:
             logger.error(f"Failed to get articles to process for source_id '{source_id}': {e}")
             return []
 
+    def cleanup_old_entries(self, cutoff_time: datetime) -> int:
+        """
+        Deletes records from seen_articles and posts older than the cutoff time.
+        Only deletes articles with status 'PUBLISHED' or 'FAILED'.
+
+        Args:
+            cutoff_time: The datetime threshold. Records older than this will be deleted.
+
+        Returns:
+            The number of records deleted from seen_articles.
+        """
+        try:
+            cursor = self._get_cursor()
+
+            # Find IDs of old articles to delete
+            cursor.execute(
+                "SELECT id FROM seen_articles WHERE inserted_at < ? AND status IN ('PUBLISHED', 'FAILED')",
+                (cutoff_time,)
+            )
+            article_ids_to_delete = [row['id'] for row in cursor.fetchall()]
+
+            if not article_ids_to_delete:
+                return 0
+
+            placeholders = ','.join('?' for _ in article_ids_to_delete)
+
+            cursor.execute(f"DELETE FROM posts WHERE seen_article_id IN ({placeholders})", article_ids_to_delete)
+            cursor.execute(f"DELETE FROM seen_articles WHERE id IN ({placeholders})", article_ids_to_delete)
+
+            deleted_count = cursor.rowcount
+            self.conn.commit()
+            return deleted_count
+        except sqlite3.Error as e:
+            logger.error(f"Error during database cleanup: {e}", exc_info=True)
+            self.conn.rollback()
+            return 0
+
     def close(self):
         """Closes the database connection."""
         if self.conn:

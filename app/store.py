@@ -175,20 +175,22 @@ class Database:
         except sqlite3.Error as e:
             logger.error(f"Failed to set pipeline state for key '{key}': {e}")
 
-    def update_article_status(self, article_id: int, status: str, retry_at: datetime | None = None):
+    def update_article_status(self, article_id: int, status: str, retry_at: datetime | None = None, reason: str | None = None):
         """Updates the status of an article in the seen_articles table."""
         try:
             cursor = self._get_cursor()
             if status == 'DEFERRED':
                 cursor.execute(
-                    "UPDATE seen_articles SET status = ?, retry_at = ?, fail_count = fail_count + 1 WHERE id = ?",
-                    (status, retry_at, article_id)
+                    "UPDATE seen_articles SET status = ?, retry_at = ?, fail_reason = ?, fail_count = fail_count + 1 WHERE id = ?",
+                    (status, retry_at, reason, article_id)
                 )
             else:
-                 cursor.execute(
-                    "UPDATE seen_articles SET status = ? WHERE id = ?",
-                    (status, article_id)
-                )
+                if reason:
+                    cursor.execute(
+                        "UPDATE seen_articles SET status = ?, fail_reason = ? WHERE id = ?",
+                        (status, reason, article_id))
+                else:
+                    cursor.execute("UPDATE seen_articles SET status = ? WHERE id = ?", (status, article_id))
             self.conn.commit()
         except sqlite3.Error as e:
             logger.error(f"Failed to update article status for id {article_id}: {e}")

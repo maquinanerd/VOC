@@ -3157,3 +3157,601 @@ violations {
   seconds: 40
 }
 ]. Trying next key.
+2025-08-16 13:35:31 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-16 13:35:31 - app.store - INFO - Database initialized successfully.
+2025-08-16 13:35:31 - app.store - INFO - Database connection closed.
+2025-08-16 13:35:31 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-16 13:35:31 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-16 13:35:31 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-16 13:35:31 - app.ai_processor - INFO - Successfully loaded prompt template from E:\Área de Trabalho 2\VocSenior\app\..\universal_prompt.txt
+2025-08-16 13:35:33 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-16 13:35:33 - app.pipeline - INFO - Processing feed: screenrant_movies
+2025-08-16 13:35:34 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-16 13:35:34 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-16 13:35:34 - app.store - ERROR - Error filtering new articles for screenrant_movies: table seen_articles has no column named url
+2025-08-16 13:35:34 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-16 13:35:34 - app.pipeline - INFO - Processing feed: screenrant_tv
+2025-08-16 13:35:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-16 13:35:35 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-16 13:35:35 - app.store - ERROR - Error filtering new articles for screenrant_tv: table seen_articles has no column named url
+2025-08-16 13:35:35 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-16 13:35:35 - app.pipeline - INFO - Processing feed: collider_movies
+2025-08-16 13:35:35 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-16 13:35:35 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-16 13:35:35 - app.store - ERROR - Error filtering new articles for collider_movies: table seen_articles has no column named url
+2025-08-16 13:35:35 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-16 13:35:35 - app.pipeline - INFO - Processing feed: collider_tv
+2025-08-16 13:35:36 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-16 13:35:36 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-16 13:35:36 - app.store - ERROR - Error filtering new articles for collider_tv: table seen_articles has no column named url
+2025-08-16 13:35:36 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-16 13:35:36 - app.pipeline - INFO - Processing feed: movieweb_movies
+2025-08-16 13:35:37 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-16 13:35:37 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-16 13:35:37 - app.store - ERROR - Error filtering new articles for movieweb_movies: table seen_articles has no column named url
+2025-08-16 13:35:37 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-16 13:35:37 - app.pipeline - INFO - Processing feed: cbr_movies
+2025-08-16 13:35:37 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-16 13:35:37 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-16 13:35:37 - app.store - ERROR - Error filtering new articles for cbr_movies: table seen_articles has no column named url
+2025-08-16 13:35:37 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-08-16 13:35:37 - app.pipeline - INFO - Processing feed: cbr_tv
+2025-08-16 13:35:37 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/tv/news-tv/
+2025-08-16 13:35:37 - app.feeds - INFO - Total unique items for cbr_tv: 10
+2025-08-16 13:35:37 - app.store - ERROR - Error filtering new articles for cbr_tv: table seen_articles has no column named url
+2025-08-16 13:35:37 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-08-16 13:35:37 - app.pipeline - INFO - Processing feed: gamerant_games
+2025-08-16 13:35:38 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-16 13:35:38 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-16 13:35:38 - app.store - ERROR - Error filtering new articles for gamerant_games: table seen_articles has no column named url
+2025-08-16 13:35:38 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-08-16 13:35:38 - app.pipeline - INFO - Processing feed: thegamer_games
+2025-08-16 13:35:39 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-16 13:35:39 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-16 13:35:39 - app.store - ERROR - Error filtering new articles for thegamer_games: table seen_articles has no column named url
+2025-08-16 13:35:39 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-08-16 13:35:39 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-16 13:35:39 - app.store - INFO - Database connection closed.
+2025-08-16 13:35:39 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-16 13:35:39 - __main__ - CRITICAL - Erro crítico durante a execução do ciclo único: name 'post_id' is not defined
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\wordpress.py", line 180, in close
+    response = self.session.delete(f"{self.base_url}/posts/{post_id}")
+               ^^^^^^^^^^^^
+AttributeError: 'WordPressClient' object has no attribute 'session'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\main.py", line 41, in main
+    run_pipeline_cycle()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 122, in run_pipeline_cycle
+    wp_client.close()
+    ~~~~~~~~~~~~~~~^^
+  File "E:\Área de Trabalho 2\VocSenior\app\wordpress.py", line 183, in close
+    logger.error(f"Error deleting post {post_id}: {str(e)}")
+                                        ^^^^^^^
+NameError: name 'post_id' is not defined
+2025-08-16 13:42:40 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-16 13:42:41 - app.store - INFO - Database initialized successfully.
+2025-08-16 13:42:41 - app.store - INFO - Database connection closed.
+2025-08-16 13:42:41 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-16 13:42:41 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-16 13:42:41 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-16 13:42:41 - app.ai_processor - INFO - Successfully loaded prompt template from E:\Área de Trabalho 2\VocSenior\app\..\universal_prompt.txt
+2025-08-16 13:42:43 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-16 13:42:43 - app.pipeline - INFO - Processing feed: screenrant_movies
+2025-08-16 13:42:44 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-16 13:42:44 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-16 13:42:45 - app.pipeline - INFO - Found 10 new articles for screenrant_movies
+2025-08-16 13:42:45 - app.pipeline - INFO - Processing article: Quentin Tarantino Explains Cancellation of Planned Final Movie, The Movie Critic from screenrant_movies
+2025-08-16 13:42:45 - app.extractor - INFO - Extracting content from: https://screenrant.com/the-movie-critic-cancelled-explained-quentin-tarantino/
+2025-08-16 13:42:45 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-16 13:42:45 - app.tags - INFO - Extracted 15 tags: Tarantino, The Movie Critic, Hollywood, Quentin Tarantino, Once Upon...
+2025-08-16 13:42:45 - app.ai_processor - INFO - Attempting to rewrite content with key ending in '...X7zc' for category 'movies'.
+2025-08-16 13:42:46 - app.ai_processor - WARNING - AI API call failed for key ...X7zc with a retryable error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 10
+}
+]. Trying next key.
+2025-08-16 13:42:46 - app.pipeline - ERROR - Error processing article https://screenrant.com/the-movie-critic-cancelled-explained-quentin-tarantino/: 'KeyPool' object has no attribute 'report_failure'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 85, in rewrite_content
+    response = model.generate_content(prompt)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 10
+}
+]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 71, in run_pipeline_cycle
+    rewritten_text = ai_processor.rewrite_content(
+        category=feed_config['category'],
+    ...<5 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+    )
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 98, in rewrite_content
+    key_pool.report_failure(api_key)
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'KeyPool' object has no attribute 'report_failure'
+2025-08-16 13:42:46 - app.pipeline - ERROR - Error processing feed screenrant_movies: Database.update_article_status() got an unexpected keyword argument 'reason'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 85, in rewrite_content
+    response = model.generate_content(prompt)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 10
+}
+]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 71, in run_pipeline_cycle
+    rewritten_text = ai_processor.rewrite_content(
+        category=feed_config['category'],
+    ...<5 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+    )
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 98, in rewrite_content
+    key_pool.report_failure(api_key)
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'KeyPool' object has no attribute 'report_failure'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 114, in run_pipeline_cycle
+    db.update_article_status(article_data['id'], 'FAILED', reason=str(e))
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Database.update_article_status() got an unexpected keyword argument 'reason'
+2025-08-16 13:42:46 - app.pipeline - INFO - Processing feed: screenrant_tv
+2025-08-16 13:42:47 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-16 13:42:47 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-16 13:42:47 - app.pipeline - INFO - Found 10 new articles for screenrant_tv
+2025-08-16 13:42:47 - app.pipeline - INFO - Processing article: Iconic Mythical Figure Set to Stun in Percy Jackson Season 3 Reveal from screenrant_tv
+2025-08-16 13:42:47 - app.extractor - INFO - Extracting content from: https://screenrant.com/percy-jackson-season-3-atlas-talks-rick-riordan/
+2025-08-16 13:42:47 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-16 13:42:47 - app.tags - INFO - Extracted 15 tags: Atlas, Percy, Percy Jackson, Riordan, Rick Riordan...
+2025-08-16 13:42:47 - app.ai_processor - INFO - Attempting to rewrite content with key ending in '...U1dI' for category 'series'.
+2025-08-16 13:42:48 - app.ai_processor - WARNING - AI API call failed for key ...U1dI with a retryable error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 8
+}
+]. Trying next key.
+2025-08-16 13:42:48 - app.pipeline - ERROR - Error processing article https://screenrant.com/percy-jackson-season-3-atlas-talks-rick-riordan/: 'KeyPool' object has no attribute 'report_failure'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 85, in rewrite_content
+    response = model.generate_content(prompt)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 8
+}
+]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 71, in run_pipeline_cycle
+    rewritten_text = ai_processor.rewrite_content(
+        category=feed_config['category'],
+    ...<5 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+    )
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 98, in rewrite_content
+    key_pool.report_failure(api_key)
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'KeyPool' object has no attribute 'report_failure'
+2025-08-16 13:42:48 - app.pipeline - ERROR - Error processing feed screenrant_tv: Database.update_article_status() got an unexpected keyword argument 'reason'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 85, in rewrite_content
+    response = model.generate_content(prompt)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "E:\Área de Trabalho 2\VocSenior\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-pro"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 8
+}
+]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 71, in run_pipeline_cycle
+    rewritten_text = ai_processor.rewrite_content(
+        category=feed_config['category'],
+    ...<5 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+    )
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 98, in rewrite_content
+    key_pool.report_failure(api_key)
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'KeyPool' object has no attribute 'report_failure'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 114, in run_pipeline_cycle
+    db.update_article_status(article_data['id'], 'FAILED', reason=str(e))
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Database.update_article_status() got an unexpected keyword argument 'reason'
+2025-08-16 13:42:48 - app.pipeline - INFO - Processing feed: collider_movies
+2025-08-16 13:42:49 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-16 13:42:49 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-16 13:42:49 - app.pipeline - INFO - Found 10 new articles for collider_movies
+2025-08-16 13:42:49 - app.pipeline - INFO - Processing article: 'Deadpool & Wolverine' Star's Forgotten Marvel Spin-Off Becomes a Sleeper Hit Overnight from collider_movies
+2025-08-16 13:42:49 - app.extractor - INFO - Extracting content from: https://collider.com/jennifer-garner-elektra-movie-netflix-streaming-success-august-2025/
+2025-08-16 13:42:50 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-16 13:42:50 - app.tags - INFO - Extracted 15 tags: Elektra, Garner, Marvel, Wolverine, Deadpool...
+2025-08-16 13:42:50 - app.ai_processor - INFO - Attempting to rewrite content with key ending in '...X7zc' for category 'movies'.
+2025-08-16 13:42:50 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-16 13:42:50 - app.store - INFO - Database connection closed.
+2025-08-16 13:42:50 - app.wordpress - INFO - WordPress client connection closed.

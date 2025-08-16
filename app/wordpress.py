@@ -176,9 +176,3 @@ class WordPressClient:
         if self.client and not self.client.is_closed:
             self.client.close()
             logger.info("WordPress client connection closed.")
-        try:
-            response = self.session.delete(f"{self.base_url}/posts/{post_id}")
-            return response.status_code == 200
-        except Exception as e:
-            logger.error(f"Error deleting post {post_id}: {str(e)}")
-            return False

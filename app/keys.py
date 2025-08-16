@@ -75,7 +75,9 @@ class KeyPool:
 
     def report_success(self, key: str):
         """Reports a successful use of a key, resetting its failure count."""
-        if key not in self._key_status and self._key_status[key]['failures'] > 0:
-            logger.info(f"Key ...{key[-4:]} is now active again after successful use.")
-            self._key_status[key]['failures'] = 0
-            self._key_status[key]['cooldown_until'] = None
+        if key in self._key_status:
+            status = self._key_status[key]
+            if status['failures'] > 0:
+                logger.info(f"Key ...{key[-4:]} is now active again after successful use.")
+                status['failures'] = 0
+                status['cooldown_until'] = None

@@ -52,7 +52,7 @@ AI_CONFIG = _load_ai_keys()
 PROMPT_FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'universal_prompt.txt')
 
 AI_MODELS = {
-    'primary': os.getenv('AI_PRIMARY_MODEL', 'gemini-1.5-pro-latest'),
+    'primary': os.getenv('AI_PRIMARY_MODEL', 'gemini-1.5-flash-latest'),
     'fallback': os.getenv('AI_FALLBACK_MODEL', 'gemini-1.5-flash-latest'),
 }
 

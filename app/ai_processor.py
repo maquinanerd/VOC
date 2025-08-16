@@ -24,6 +24,18 @@ class AIProcessor:
             for category, api_keys in AI_CONFIG.items()
             if api_keys
         }
+
+            # Log the number of keys loaded for each category
+            movies_keys_count = len(AI_CONFIG.get('movies', []))
+            series_keys_count = len(AI_CONFIG.get('series', []))
+            games_keys_count = len(AI_CONFIG.get('games', []))
+
+            logger.info(
+                f"Loaded {movies_keys_count} movie keys, "
+                f"{series_keys_count} series keys, "
+                f"{games_keys_count} game keys."
+            )
+
         self.prompt_template = self._load_prompt_template()
         self.generation_config = AI_GENERATION_CONFIG
         self.safety_settings = [
@@ -73,10 +85,11 @@ class AIProcessor:
                 break
 
             try:
-                logger.info(f"Attempting to rewrite content with key ending in '...{api_key[-4:]}' for category '{category}'.")
+                model_name = AI_MODELS['primary']
+                logger.info(f"Attempting rewrite with model '{model_name}', key '...{api_key[-4:]}', category '{category}'.")
                 genai.configure(api_key=api_key)
                 model = genai.GenerativeModel(
-                    model_name=AI_MODELS['primary'],
+                    model_name=model_name,
                     generation_config=self.generation_config,
                     safety_settings=self.safety_settings
                 )
@@ -84,7 +97,9 @@ class AIProcessor:
 
                 # Check for empty or blocked response
                 if not response.parts:
-                    logger.warning(f"AI response was empty or blocked for key ...{api_key[-4:]}. Reason: {response.prompt_feedback.block_reason}")
+                    feedback = response.prompt_feedback
+                    reason = feedback.block_reason.name if feedback.block_reason else "No parts in response"
+                    logger.warning(f"AI response was empty or blocked for key ...{api_key[-4:]}. Reason: {reason}")
                     key_pool.report_failure(api_key)
                     continue # Try next key
 
@@ -93,11 +108,19 @@ class AIProcessor:
                 return response.text
 
             except exceptions.ResourceExhausted as e:
-                logger.warning(f"AI API call failed for key ...{api_key[-4:]} with ResourceExhausted (429) error: {e}. Placing key in cooldown.")
-                key_pool.report_
+                logger.warning(f"AI API call failed for key ...{api_key[-4:]} with ResourceExhausted (429) error. Placing key in cooldown.")
+                base_cooldown = SCHEDULE_CONFIG.get('api_call_delay_seconds', 60)
+                key_pool.report_failure(api_key, base_cooldown_seconds=base_cooldown)
+                continue
+
+            except (exceptions.InternalServerError, exceptions.ServiceUnavailable) as e:
+                logger.warning(f"AI API call failed for key ...{api_key[-4:]} with a temporary server error: {e}. Trying next key.")
+                key_pool.report_failure(api_key, base_cooldown_seconds=60) # Short cooldown
+                continue
+
             except Exception as e:
-                logger.error(f"An unexpected error occurred during AI processing with key ...{api_key[-4:]}: {e}")
-                key_pool.report_failure(api_key)
+                logger.error(f"An unexpected error occurred during AI processing with key ...{api_key[-4:]}: {e}", exc_info=True)
+                key_pool.report_failure(api_key) # Default cooldown
                 continue
 
         logger.error(f"All API keys for category '{category}' failed or are in cooldown for this cycle.")

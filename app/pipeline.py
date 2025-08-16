@@ -40,6 +40,14 @@ def run_pipeline_cycle():
 
     try:
         for i, source_id in enumerate(PIPELINE_ORDER):
+            # Check circuit breaker before processing
+            consecutive_failures = db.get_consecutive_failures(source_id)
+            if consecutive_failures >= 3:
+                logger.warning(f"Circuit open for feed {source_id} ({consecutive_failures} fails) → skipping this round.")
+                # Reset for the next cycle as per prompt "zere o contador na próxima"
+                db.reset_consecutive_failures(source_id)
+                continue
+
             feed_config = RSS_FEEDS.get(source_id)
             if not feed_config:
                 logger.warning(f"No configuration found for feed source: {source_id}")
@@ -127,9 +135,13 @@ def run_pipeline_cycle():
                         logger.error(f"Error processing article {article_data.get('link', 'N/A')}: {e}", exc_info=True)
                         db.update_article_status(article_db_id, 'FAILED', reason=str(e))
 
+                # If we reach here without a feed-level exception, the processing was successful
+                db.reset_consecutive_failures(source_id)
+
             except Exception as e:
                 logger.error(f"Error processing feed {source_id}: {e}", exc_info=True)
-            
+                db.increment_consecutive_failures(source_id)
+
             # Per-feed delay before processing the next source
             if i < len(PIPELINE_ORDER) - 1:
                 next_feed = PIPELINE_ORDER[i + 1]

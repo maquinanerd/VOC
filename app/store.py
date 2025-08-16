@@ -9,6 +9,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict, Any
 
+from .config import PIPELINE_ORDER
+
 logger = logging.getLogger(__name__)
 
 class Database:
@@ -77,6 +79,16 @@ class Database:
                 )
             ''')
             cursor.execute("INSERT OR IGNORE INTO pipeline_state (key, value) VALUES ('last_processed_feed_index', '-1')")
+
+            # Tabela para rastrear o estado do circuit breaker por feed
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS feed_status (
+                    source_id TEXT PRIMARY KEY,
+                    consecutive_failures INTEGER NOT NULL DEFAULT 0
+                )
+            ''')
+            for feed_id in PIPELINE_ORDER:
+                cursor.execute("INSERT OR IGNORE INTO feed_status (source_id) VALUES (?)", (feed_id,))
 
             # Tabela para gerenciar o status e cooldown das chaves de API
             cursor.execute('''
@@ -177,6 +189,38 @@ class Database:
             self.conn.commit()
         except sqlite3.Error as e:
             logger.error(f"Failed to set pipeline state for key '{key}': {e}")
+
+    def get_consecutive_failures(self, source_id: str) -> int:
+        """Gets the consecutive failure count for a feed source."""
+        try:
+            cursor = self._get_cursor()
+            cursor.execute("SELECT consecutive_failures FROM feed_status WHERE source_id = ?", (source_id,))
+            row = cursor.fetchone()
+            return row['consecutive_failures'] if row else 0
+        except sqlite3.Error as e:
+            logger.error(f"Failed to get consecutive failures for '{source_id}': {e}")
+            return 0 # Assume 0 on error to avoid breaking the pipeline
+
+    def increment_consecutive_failures(self, source_id: str):
+        """Increments the consecutive failure count for a feed source."""
+        try:
+            cursor = self._get_cursor()
+            cursor.execute(
+                "UPDATE feed_status SET consecutive_failures = consecutive_failures + 1 WHERE source_id = ?",
+                (source_id,)
+            )
+            self.conn.commit()
+        except sqlite3.Error as e:
+            logger.error(f"Failed to increment consecutive failures for '{source_id}': {e}")
+
+    def reset_consecutive_failures(self, source_id: str):
+        """Resets the consecutive failure count for a feed source."""
+        try:
+            cursor = self._get_cursor()
+            cursor.execute("UPDATE feed_status SET consecutive_failures = 0 WHERE source_id = ?", (source_id,))
+            self.conn.commit()
+        except sqlite3.Error as e:
+            logger.error(f"Failed to reset consecutive failures for '{source_id}': {e}")
 
     def update_article_status(self, article_id: int, status: str, retry_at: datetime | None = None, reason: str | None = None):
         """Updates the status of an article in the seen_articles table."""

@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from flask import Flask, render_template, jsonify, request, redirect, url_for, flash
 import logging
+from collections import deque
 
 # Load environment variables
 try:
@@ -123,11 +124,9 @@ def get_recent_logs():
         if not log_file.exists():
             return []
 
-        with open(log_file, 'r') as f:
-            lines = f.readlines()
-
-        # Get last 50 lines
-        recent_lines = lines[-50:] if len(lines) > 50 else lines
+        with open(log_file, 'r', encoding='utf-8') as f:
+            # Use deque for a memory-efficient way to get the last 50 lines.
+            recent_lines = deque(f, 50)
 
         logs = []
         for line in recent_lines:

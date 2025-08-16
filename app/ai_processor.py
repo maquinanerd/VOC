@@ -1,29 +1,30 @@
 import logging
-import re
-import time
-from typing import Dict, Any, Optional
+from typing import Any, Optional
 
 import google.generativeai as genai
 from google.api_core import exceptions
 
-from . import keys
-from .config import AI_CONFIG, PROMPT_FILE_PATH, SCHEDULE_CONFIG, AI_MODELS, AI_GENERATION_CONFIG
+from .key_pool import KeyPool
+from .config import AI_CONFIG, PROMPT_FILE_PATH, AI_MODELS, AI_GENERATION_CONFIG
 
 logger = logging.getLogger(__name__)
 
 
 class AIProcessor:
-    """
-    Handles content rewriting using the Gemini AI API.
-    Manages API key rotation, failover, and rate limiting.
-    """
+    """Handles content rewriting using the Gemini AI API."""
 
     def __init__(self):
         self.key_pools = {
-            category: keys.KeyPool(api_keys)
+            category: KeyPool(api_keys)
             for category, api_keys in AI_CONFIG.items()
-            if category != 'backup' and api_keys
+            if api_keys
         }
+        logger.info(
+            "Loaded %d movie keys, %d series keys, %d game keys",
+            len(AI_CONFIG.get("movies", [])),
+            len(AI_CONFIG.get("series", [])),
+            len(AI_CONFIG.get("games", [])),
+        )
         self.prompt_template = self._load_prompt_template()
         self.generation_config = AI_GENERATION_CONFIG
         self.safety_settings = [
@@ -34,73 +35,91 @@ class AIProcessor:
         ]
 
     def _load_prompt_template(self) -> str:
-        """Loads the prompt template from the external file."""
         try:
-            with open(PROMPT_FILE_PATH, 'r', encoding='utf-8') as f:
-                logger.info(f"Successfully loaded prompt template from {PROMPT_FILE_PATH}")
+            with open(PROMPT_FILE_PATH, "r", encoding="utf-8") as f:
+                logger.info(
+                    f"Successfully loaded prompt template from {PROMPT_FILE_PATH}"
+                )
                 return f.read()
         except FileNotFoundError:
-            logger.critical(f"Prompt file not found at {PROMPT_FILE_PATH}. The application cannot proceed.")
+            logger.critical(
+                f"Prompt file not found at {PROMPT_FILE_PATH}. The application cannot proceed."
+            )
             raise
 
     def rewrite_content(self, **kwargs: Any) -> Optional[str]:
-        """
-        Rewrites content using the AI, handling key rotation and retries.
-
-        Args:
-            **kwargs: Placeholders for the prompt template (must include 'category',
-                      'title', 'content', etc.).
-
-        Returns:
-            The raw rewritten text from the AI, or None if it fails.
-        """
-        category = kwargs.get('category')
+        """Rewrites content using the AI, handling key rotation and retries."""
+        category = kwargs.get("category")
         if category not in self.key_pools:
-            logger.error(f"Invalid or missing AI category: '{category}'. No key pool available.")
+            logger.error(
+                f"Invalid or missing AI category: '{category}'. No key pool available."
+            )
             return None
 
         key_pool = self.key_pools[category]
-        if not key_pool._key_list:
-            logger.error(f"No API keys configured for category '{category}'.")
+        if not key_pool.keys:
+            logger.error(
+                f"No API keys configured for category '{category}'."
+            )
             return None
 
         prompt = self.prompt_template.format(**kwargs)
 
-        # Tenta usar as chaves disponíveis, respeitando o cooldown.
-        for _ in range(len(key_pool._key_list)):
-            api_key = key_pool.get_key()
+        for _ in range(len(key_pool.keys)):
+            api_key = key_pool.next_key()
             if not api_key:
-                logger.warning(f"All API keys for category '{category}' are in cooldown. Will retry in the next cycle.")
-                # Se get_key() retorna None, todas as chaves estão em cooldown.
+                logger.warning(
+                    f"All API keys for category '{category}' are in cooldown. Will retry in the next cycle."
+                )
                 break
-
             try:
-                logger.info(f"Attempting to rewrite content with key ending in '...{api_key[-4:]}' for category '{category}'.")
+                logger.info(
+                    f"Attempting to rewrite content with key ending in '...{api_key[-4:]}' for category '{category}'."
+                )
                 genai.configure(api_key=api_key)
                 model = genai.GenerativeModel(
-                    model_name=AI_MODELS['primary'],
+                    model_name=AI_MODELS["primary"],
                     generation_config=self.generation_config,
-                    safety_settings=self.safety_settings
+                    safety_settings=self.safety_settings,
                 )
                 response = model.generate_content(prompt)
-
-                # Check for empty or blocked response
                 if not response.parts:
-                    logger.warning(f"AI response was empty or blocked for key ...{api_key[-4:]}. Reason: {response.prompt_feedback.block_reason}")
-                    key_pool.report_failure(api_key)
+                    logger.warning(
+                        f"AI response was empty or blocked for key ...{api_key[-4:]}. Reason: {response.prompt_feedback.block_reason}"
+                    )
+                    key_pool.report_failure(api_key, 60)
                     continue
-
-                logger.info(f"Successfully received AI response with key ...{api_key[-4:]}.")
+                key_pool.report_success(api_key)
+                logger.info(
+                    f"Successfully received AI response with key ...{api_key[-4:]}.")
                 return response.text
-
-            except (exceptions.ResourceExhausted, exceptions.InternalServerError, exceptions.ServiceUnavailable) as e:
-                logger.warning(f"AI API call failed for key ...{api_key[-4:]} with a retryable error: {e}. Trying next key.")
-                key_pool.report_failure(api_key)
-                time.sleep(SCHEDULE_CONFIG['api_call_delay'] / 2)  # Short delay before next key
+            except exceptions.ResourceExhausted as e:
+                logger.warning("429 on pro → trying flash")
+                try:
+                    genai.configure(api_key=api_key)
+                    model = genai.GenerativeModel(
+                        model_name=AI_MODELS["fallback"],
+                        generation_config=self.generation_config,
+                        safety_settings=self.safety_settings,
+                    )
+                    response = model.generate_content(prompt)
+                    if not response.parts:
+                        raise exceptions.ResourceExhausted("Empty response")
+                    key_pool.report_success(api_key)
+                    return response.text
+                except Exception:
+                    logger.warning(
+                        f"report_failure key ****{api_key[-4:]} -> rotating to next key"
+                    )
+                    retry_delay = getattr(e, "retry_delay", 60)
+                    key_pool.report_failure(api_key, retry_delay)
             except Exception as e:
-                logger.error(f"An unexpected error occurred during AI processing with key ...{api_key[-4:]}: {e}")
-                key_pool.report_failure(api_key)
-                continue
+                logger.error(
+                    f"An unexpected error occurred during AI processing with key ...{api_key[-4:]}: {e}"
+                )
+                key_pool.report_failure(api_key, 60)
 
-        logger.error(f"All API keys for category '{category}' failed or are in cooldown for this cycle.")
+        logger.error(
+            f"All API keys for category '{category}' failed or are in cooldown for this cycle."
+        )
         return None

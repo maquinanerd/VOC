@@ -77,7 +77,8 @@ WORDPRESS_CATEGORIES = {
 SCHEDULE_CONFIG = {
     'check_interval_minutes': int(os.getenv('CHECK_INTERVAL_MINUTES', 15)),
     'max_articles_per_feed': int(os.getenv('MAX_ARTICLES_PER_FEED', 3)),
-    'api_call_delay_seconds': int(os.getenv('API_CALL_DELAY_SECONDS', 30)),
+    'per_article_delay_seconds': int(os.getenv('PER_ARTICLE_DELAY_SECONDS', 8)),
+    'per_feed_delay_seconds': int(os.getenv('PER_FEED_DELAY_SECONDS', 15)),
     'cleanup_after_hours': int(os.getenv('CLEANUP_AFTER_HOURS', 72))
 }
 
@@ -85,5 +86,5 @@ PIPELINE_CONFIG = {
     'images_mode': os.getenv('IMAGES_MODE', 'hotlink'),  # 'hotlink' ou 'download_upload'
     'attribution_policy': 'Via {domain}',
     'publisher_name': 'Máquina Nerd',
-    'publisher_logo_url': 'https://www.maquinanerd.com.br/wp-content/uploads/2023/11/logo-maquina-nerd-400px.png'
+    'publisher_logo_url': 'https://www.maquinanerd.com.br/wp-content/uploads/2023/11/logo-maquina-nerd-400px.png'   
 }

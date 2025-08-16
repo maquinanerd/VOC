@@ -136,24 +136,27 @@ class Database:
         return new_articles
 
 
-    def save_processed_post(self, source_id: str, external_id: str, wp_post_id: int):
+    def save_processed_post(self, article_db_id: int, wp_post_id: int) -> None:
         """Saves a record of a successfully published post."""
         try:
             cursor = self._get_cursor()
+            # First, update the article's status to 'PUBLISHED' and clear any previous failure reason
             cursor.execute(
-                "UPDATE seen_articles SET status = 'PUBLISHED' WHERE source_id = ? AND external_id = ?",
-                (source_id, external_id)
+                "UPDATE seen_articles SET status = 'PUBLISHED', fail_reason = NULL WHERE id = ?",
+                (article_db_id,)
             )
+            # Then, insert the record into the 'posts' table
             cursor.execute(
-                "INSERT INTO posts (seen_article_id, wp_post_id) SELECT id, ? FROM seen_articles WHERE source_id = ? AND external_id = ?",
-                (wp_post_id, source_id, external_id)
+                "INSERT INTO posts (seen_article_id, wp_post_id) VALUES (?, ?)",
+                (article_db_id, wp_post_id)
             )
             self.conn.commit()
-            logger.debug(f"Saved post {wp_post_id} for {source_id} to database.")
+            logger.info(f"Successfully recorded published post for article DB ID {article_db_id} (WP Post ID: {wp_post_id}).")
         except sqlite3.IntegrityError:
-            logger.warning(f"Post with external_id {external_id} from {source_id} already exists in posts table.")
+            logger.warning(f"Post record for article DB ID {article_db_id} already exists.")
+            self.conn.rollback()
         except sqlite3.Error as e:
-            logger.error(f"Failed to save processed post: {e}")
+            logger.error(f"Failed to save
 
     def get_pipeline_state(self, key: str) -> str | None:
         """Gets a value from the pipeline state table."""

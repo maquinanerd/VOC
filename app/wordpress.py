@@ -5,6 +5,7 @@ WordPress client for publishing content via the REST API.
 import logging
 import httpx
 from typing import List, Dict, Any, Optional
+import mimetypes
 from urllib.parse import urlparse
 from slugify import slugify
 
@@ -127,6 +128,10 @@ class WordPressClient:
         tag_names = post_data.get('tags', [])
         if tag_names:
             post_data['tags'] = self._get_tag_ids(tag_names)
+
+        # Remove featured_media if it's None or 0, as WP API might reject it
+        if not post_data.get('featured_media'):
+            post_data.pop('featured_media', None)
 
         logger.info(f"Creating WordPress post: {post_data.get('title', 'No Title')}")
         

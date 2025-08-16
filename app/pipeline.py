@@ -1,5 +1,6 @@
 import logging
 import time
+import random
 from typing import Dict, Any
 
 from .config import (
@@ -38,7 +39,7 @@ def run_pipeline_cycle():
     processed_articles_in_cycle = 0
 
     try:
-        for source_id in PIPELINE_ORDER:
+        for i, source_id in enumerate(PIPELINE_ORDER):
             feed_config = RSS_FEEDS.get(source_id)
             if not feed_config:
                 logger.warning(f"No configuration found for feed source: {source_id}")
@@ -56,19 +57,20 @@ def run_pipeline_cycle():
                 logger.info(f"Found {len(new_articles)} new articles for {source_id}")
 
                 for article_data in new_articles[:SCHEDULE_CONFIG.get('max_articles_per_feed', 3)]:
+                    article_db_id = article_data['db_id']
                     try:
-                        logger.info(f"Processing article: {article_data['title']} from {source_id}")
-                        db.update_article_status(article_data['id'], 'PROCESSING')
+                        logger.info(f"Processing article: {article_data['title']} (DB ID: {article_db_id}) from {source_id}")
+                        db.update_article_status(article_db_id, 'PROCESSING')
 
                         extracted_content = extractor.extract_content(article_data['link'])
                         if not extracted_content or not extracted_content.get('content'):
                             logger.warning(f"Failed to extract content from {article_data['link']}")
-                            db.update_article_status(article_data['id'], 'FAILED', reason="Extraction failed")
+                            db.update_article_status(article_db_id, 'FAILED', reason="Extraction failed")
                             continue
 
                         tags = tag_extractor.extract_tags(extracted_content['content'], extracted_content['title'])
 
-                        rewritten_text = ai_processor.rewrite_content(
+                        rewritten_text, failure_reason = ai_processor.rewrite_content(
                             category=feed_config['category'],
                             title=extracted_content['title'],
                             excerpt=extracted_content.get('excerpt', ''),
@@ -79,8 +81,9 @@ def run_pipeline_cycle():
                         )
 
                         if not rewritten_text:
-                            logger.warning(f"AI processing failed for {article_data['link']}")
-                            db.update_article_status(article_data['id'], 'FAILED', reason="AI processing failed")
+                            reason = failure_reason or "AI processing failed without a specific reason"
+                            logger.warning(f"Article '{article_data['title']}' marked as FAILED (Reason: {reason}). Continuing to next article.")
+                            db.update_article_status(article_db_id, 'FAILED', reason=reason)
                             continue
 
                         processed_content = rewriter.process_content(rewritten_text, tags, wp_client.get_domain())
@@ -100,21 +103,33 @@ def run_pipeline_cycle():
                         wp_post_id = wp_client.create_post(post_payload)
 
                         if wp_post_id:
-                            db.save_processed_post(article_data['id'], wp_post_id)
-                            logger.info(f"Successfully published post {wp_post_id} for article {article_data['id']}")
+                            db.save_processed_post(article_db_id, wp_post_id)
+                            logger.info(f"Successfully published post {wp_post_id} for article DB ID {article_db_id}")
                             processed_articles_in_cycle += 1
                         else:
                             logger.error(f"Failed to publish post for {article_data['link']}")
-                            db.update_article_status(article_data['id'], 'FAILED', reason="WordPress publishing failed")
+                            db.update_article_status(article_db_id, 'FAILED', reason="WordPress publishing failed")
 
-                        time.sleep(SCHEDULE_CONFIG['api_call_delay_seconds'])
+                        # Per-article delay to respect API rate limits and avoid being predictable
+                        base_delay = SCHEDULE_CONFIG.get('per_article_delay_seconds', 8)
+                        # Add jitter to be less predictable (e.g., for 8s, sleep between 6s and 10s)
+                        delay = max(1.0, random.uniform(base_delay - 2, base_delay + 2))
+                        logger.info(f"Sleeping for {delay:.1f}s (per-article delay).")
+                        time.sleep(delay)
 
                     except Exception as e:
                         logger.error(f"Error processing article {article_data.get('link', 'N/A')}: {e}", exc_info=True)
-                        db.update_article_status(article_data['id'], 'FAILED', reason=str(e))
+                        db.update_article_status(article_db_id, 'FAILED', reason=str(e))
 
             except Exception as e:
                 logger.error(f"Error processing feed {source_id}: {e}", exc_info=True)
+            
+            # Per-feed delay before processing the next source
+            if i < len(PIPELINE_ORDER) - 1:
+                next_feed = PIPELINE_ORDER[i + 1]
+                delay = SCHEDULE_CONFIG.get('per_feed_delay_seconds', 15)
+                logger.info(f"Finished feed '{source_id}'. Sleeping for {delay}s before next feed: {next_feed}")
+                time.sleep(delay)
 
     finally:
         logger.info(f"Pipeline cycle completed. Processed {processed_articles_in_cycle} articles.")

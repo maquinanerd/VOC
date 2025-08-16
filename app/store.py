@@ -131,7 +131,9 @@ class Database:
                     new_articles.append(item)
             self.conn.commit()
         except sqlite3.Error as e:
-        logger.error(f"Error filtering new articles for {source_id}: {e}")
+            logger.error(f"Error filtering new articles for {source_id}: {e}")
+            return []
+        return new_articles
 
 
     def save_processed_post(self, source_id: str, external_id: str, wp_post_id: int):

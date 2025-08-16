@@ -101,6 +101,15 @@ class Database:
                 )
             ''')
 
+            # Tabela para rastrear o uso da API para o dashboard
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS api_usage (
+                    api_type TEXT PRIMARY KEY,
+                    usage_count INTEGER NOT NULL DEFAULT 0,
+                    last_used DATETIME
+                )
+            ''')
+
             # Tabela para logs de falhas
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS failures (
@@ -168,7 +177,8 @@ class Database:
             logger.warning(f"Post record for article DB ID {article_db_id} already exists.")
             self.conn.rollback()
         except sqlite3.Error as e:
-            logger.error(f"Failed to save
+            logger.error(f"Failed to save processed post for article DB ID {article_db_id}: {e}")
+            self.conn.rollback()
 
     def get_pipeline_state(self, key: str) -> str | None:
         """Gets a value from the pipeline state table."""

@@ -1,57 +1,81 @@
-import time
 import logging
-from typing import List, Optional, Dict
-
-from .config import SCHEDULE_CONFIG
+import time
+from datetime import datetime, timedelta
+from itertools import cycle
+from typing import Dict, List, Optional, Any
 
 logger = logging.getLogger(__name__)
 
-
 class KeyPool:
     """
-    Gerencia um pool de chaves de API com rotação e cooldown para falhas.
+    Manages a pool of API keys with rotation and exponential backoff cooldown.
     """
 
-    def __init__(self, keys: List[str]):
+    def __init__(self, api_keys: List[str], max_cooldown_seconds: int = 300):
         """
-        Inicializa o pool de chaves.
+        Initializes the KeyPool.
 
         Args:
-            keys: Uma lista de chaves de API.
+            api_keys: A list of API keys to manage.
+            max_cooldown_seconds: The maximum duration for a key to be in cooldown (default: 5 minutes).
         """
-        # Usamos um dicionário para rastrear o tempo da última falha de cada chave
-        self.keys: Dict[str, float] = {key: 0 for key in keys if key}
-        self._key_list = list(self.keys.keys())
-        self.current_index = 0
-        # Define o tempo de cooldown com base na configuração de delay da API
-        self.cooldown_seconds = SCHEDULE_CONFIG.get('api_call_delay_seconds', 60) * 2
+        if not api_keys:
+            self._key_list: List[str] = []
+            self._key_cycle = None
+            self._key_status: Dict[str, Dict[str, Any]] = {}
+            logger.warning("KeyPool initialized with an empty list of keys.")
+        else:
+            self._key_list = api_keys
+            self._key_cycle = cycle(self._key_list)
+            self._key_status = {
+                key: {'cooldown_until': None, 'failures': 0}
+                for key in self._key_list
+            }
+            logger.info(f"KeyPool ready with {len(self._key_list)} keys.")
+
+        self.max_cooldown_seconds = max_cooldown_seconds
 
     def get_key(self) -> Optional[str]:
         """
-        Retorna uma chave válida que não esteja em cooldown.
-        Gira pelas chaves até encontrar uma disponível ou retorna None se todas estiverem em cooldown.
+        Gets the next available key from the pool, skipping any keys in cooldown.
+
+        Returns:
+            An available API key, or None if all keys are in cooldown.
         """
-        if not self._key_list:
+        if not self._key_cycle:
             return None
 
-        now = time.time()
-        initial_index = self.current_index
-
         for _ in range(len(self._key_list)):
-            key = self._key_list[self.current_index]
-            last_failure = self.keys.get(key, 0)
+            key = next(self._key_cycle)
+            status = self._key_status[key]
+            cooldown_until = status.get('cooldown_until')
 
-            if now - last_failure > self.cooldown_seconds:
-                return key
+            if cooldown_until and datetime.now() < cooldown_until:
+                continue
+            
+            return key
 
-            # Chave em cooldown, passa para a próxima
-            self.current_index = (self.current_index + 1) % len(self._key_list)
+        logger.warning("All API keys are currently in cooldown.")
+        return None
 
-        return None # Todas as chaves estão em cooldown
+    def report_failure(self, key: str, base_cooldown_seconds: int = 60):
+        """Reports a failure for a key and puts it into exponential backoff cooldown."""
+        if key not in self._key_status:
+            return
 
-    def handle_failure(self, key: str):
-        """Reporta uma falha para uma chave, colocando-a em cooldown e avançando o ponteiro."""
-        if key in self.keys:
-            logger.warning(f"Placing key ...{key[-4:]} in cooldown for {self.cooldown_seconds} seconds.")
-            self.keys[key] = time.time()
-            self.current_index = (self.current_index + 1) % len(self._key_list)
+        status = self._key_status[key]
+        status['failures'] += 1
+
+        backoff_factor = 2 ** (status['failures'] - 1)
+        cooldown_duration = min(base_cooldown_seconds * backoff_factor, self.max_cooldown_seconds)
+        cooldown_end = datetime.now() + timedelta(seconds=cooldown_duration)
+        status['cooldown_until'] = cooldown_end
+
+        logger.warning(f"Cooldown set for key ...{key[-4:]} for {cooldown_duration:.0f}s. Cooldown until: {cooldown_end.strftime('%Y-%m-%d %H:%M:%S')}")
+
+    def report_success(self, key: str):
+        """Reports a successful use of a key, resetting its failure count."""
+        if key not in self._key_status and self._key_status[key]['failures'] > 0:
+            logger.info(f"Key ...{key[-4:]} is now active again after successful use.")
+            self._key_status[key]['failures'] = 0
+            self._key_status[key]['cooldown_until'] = None

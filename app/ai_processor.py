@@ -164,8 +164,6 @@ class AIProcessor:
         Parses the JSON response from the AI and validates its structure.
         """
         try:
-            # The model is configured to return JSON, so we parse it directly.
-            # It might be wrapped in markdown ```json ... ```, so we clean it.
             clean_text = text.strip()
             if clean_text.startswith("```json"):
                 clean_text = clean_text[7:-3].strip()
@@ -180,15 +178,29 @@ class AIProcessor:
 
             # Check for a structured error response from the AI (e.g., content rejected)
             if "erro" in data:
-                logger.warning(
+                logger.warning(f"AI returned a rejection error: {data['erro']}")
+                return data  # Return the error dict to be handled by the caller
 
-            if not all(rewritten.values()):
-                logger.error("AI response contained empty sections.")
+            # Validate the presence of all required keys for a successful rewrite
+            required_keys = [
+                "titulo_final", "conteudo_final", "meta_description",
+                "focus_keyword", "tags", "categorias"
+            ]
+            missing_keys = [key for key in required_keys if key not in data]
+
+            if missing_keys:
+                logger.error(f"AI response is missing required keys: {', '.join(missing_keys)}")
+                logger.debug(f"Received data: {data}")
                 return None
 
-            logger.info("Successfully parsed AI response.")
-            return rewritten
+            logger.info("Successfully parsed and validated AI response.")
+            return data
 
+        except json.JSONDecodeError as e:
+            logger.error(f"Error decoding JSON from AI response: {e}")
+            logger.debug(f"Received text: {text[:500]}...")
+            return None
         except Exception as e:
-            logger.error(f"Error parsing AI response: {e}")
+            logger.error(f"An unexpected error occurred while parsing AI response: {e}")
+            logger.debug(f"Received text: {text[:500]}...")
             return None

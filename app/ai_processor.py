@@ -61,7 +61,14 @@ class AIProcessor:
         api_key = self.api_keys[self.current_key_index]
         try:
             genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel('gemini-1.5-flash-latest')
+            # Enforce JSON output from the model for reliable parsing
+            generation_config = genai.types.GenerationConfig(
+                response_mime_type="application/json"
+            )
+            self.model = genai.GenerativeModel(
+                'gemini-1.5-flash-latest',
+                generation_config=generation_config
+            )
             logger.info(f"Using API key index {self.current_key_index} for category '{self.category}'.")
         except Exception as e:
             logger.error(f"Failed to configure Gemini with API key index {self.current_key_index}: {e}")
@@ -93,7 +100,7 @@ class AIProcessor:
 
     def rewrite_content(
         self, title: str, excerpt: str, tags_text: str, content: str, domain: str
-    ) -> Tuple[Optional[Dict[str, str]], Optional[str]]:
+    ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
         """
         Rewrites the given article content using the AI model.
 
@@ -124,10 +131,15 @@ class AIProcessor:
                 response = self.model.generate_content(prompt)
 
                 parsed_data = self._parse_response(response.text)
-                if not parsed_data:
-                    raise AIProcessorError("Failed to parse AI response into the expected format.")
 
-                # Add a delay between successful calls to respect rate limits
+                if not parsed_data:
+                    raise AIProcessorError("Failed to parse or validate AI response. See logs for details.")
+
+                # If the AI returned a specific rejection error, handle it as a failure.
+                if "erro" in parsed_data:
+                    return None, parsed_data["erro"]
+
+                # Success: Add a delay between calls to respect rate limits
                 time.sleep(SCHEDULE_CONFIG.get('api_call_delay', 30))
 
                 return parsed_data, None
@@ -147,26 +159,28 @@ class AIProcessor:
         return None, final_reason
 
     @staticmethod
-    def _parse_response(text: str) -> Optional[Dict[str, str]]:
+    def _parse_response(text: str) -> Optional[Dict[str, Any]]:
         """
-        Parses the raw text response from the AI into a structured dictionary.
+        Parses the JSON response from the AI and validates its structure.
         """
         try:
-            # Use more robust regex to handle variations in whitespace and newlines
-            title_match = re.search(r"Novo Título:\s*(.*?)\s*Novo Resumo:", text, re.DOTALL | re.IGNORECASE)
-            summary_match = re.search(r"Novo Resumo:\s*(.*?)\s*Novo Conteúdo:", text, re.DOTALL | re.IGNORECASE)
-            content_match = re.search(r"Novo Conteúdo:\s*(.*)", text, re.DOTALL | re.IGNORECASE)
+            # The model is configured to return JSON, so we parse it directly.
+            # It might be wrapped in markdown ```json ... ```, so we clean it.
+            clean_text = text.strip()
+            if clean_text.startswith("```json"):
+                clean_text = clean_text[7:-3].strip()
+            elif clean_text.startswith("```"):
+                clean_text = clean_text[3:-3].strip()
 
-            if not (title_match and summary_match and content_match):
-                logger.error("AI response did not match the expected format (Title/Summary/Content).")
-                logger.debug(f"Received response: {text[:500]}...")
+            data = json.loads(clean_text)
+
+            if not isinstance(data, dict):
+                logger.error(f"AI response is not a dictionary. Received type: {type(data)}")
                 return None
 
-            rewritten = {
-                'title': title_match.group(1).strip(),
-                'summary': summary_match.group(1).strip(),
-                'content': content_match.group(1).strip(),
-            }
+            # Check for a structured error response from the AI (e.g., content rejected)
+            if "erro" in data:
+                logger.warning(
 
             if not all(rewritten.values()):
                 logger.error("AI response contained empty sections.")

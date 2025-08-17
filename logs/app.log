@@ -4624,3 +4624,89 @@ TypeError: expected string or bytes-like object, got 'dict'
 2025-08-17 19:17:59 - app.store - INFO - Database connection closed.
 2025-08-17 19:17:59 - app.wordpress - INFO - WordPress client connection closed.
 2025-08-17 19:17:59 - __main__ - INFO - Ciclo único concluído com sucesso.
+2025-08-17 19:22:22 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 19:22:22 - app.store - INFO - Database initialized successfully.
+2025-08-17 19:22:22 - app.store - INFO - Database connection closed.
+2025-08-17 19:22:22 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 19:22:22 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 19:22:22 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 19:22:24 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 19:22:24 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 19:22:24 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:22:25 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 19:22:25 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 19:22:25 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 19:22:25 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 19:22:25 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 19:22:25 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 19:22:25 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 19:22:25 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 19:22:25 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 19:22:25 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:22:26 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 19:22:26 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 19:22:26 - app.pipeline - INFO - Found 1 new articles for collider_movies
+2025-08-17 19:22:26 - app.pipeline - INFO - Processing article: HBO Is Adding a Full Slate of Anime Masterpieces to Its Catalog (DB ID: 126) from collider_movies
+2025-08-17 19:22:26 - app.extractor - INFO - Extracting content from: https://collider.com/hbo-max-new-anime-movies-streaming-september-2025/
+2025-08-17 19:22:27 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 19:22:27 - app.tags - INFO - Extracted 15 tags: HBO Max, Japanese, GKIDS, Anime Masterpieces, HBO Is Adding...
+2025-08-17 19:22:27 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 19:22:35 - app.ai_processor - INFO - Successfully parsed AI response.
+2025-08-17 19:23:05 - app.rewriter - INFO - Processing and validating rewritten content
+2025-08-17 19:23:05 - app.rewriter - ERROR - Failed to parse AI response: expected string or bytes-like object, got 'dict'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\rewriter.py", line 17, in _parse_ai_response
+    title_match = re.search(r"Novo Título:\s*(.*?)\s*Novo Resumo:", raw_text, re.DOTALL)
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pablo\AppData\Local\Programs\Python\Python313\Lib\re\__init__.py", line 177, in search
+    return _compile(pattern, flags).search(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'dict'
+2025-08-17 19:23:05 - app.rewriter - INFO - Content processing completed successfully
+2025-08-17 19:23:07 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hbo-max "HTTP/1.1 200 OK"
+2025-08-17 19:23:08 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=japanese "HTTP/1.1 200 OK"
+2025-08-17 19:23:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:10 - app.wordpress - INFO - Successfully created tag 'Japanese'
+2025-08-17 19:23:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=gkids "HTTP/1.1 200 OK"
+2025-08-17 19:23:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:13 - app.wordpress - INFO - Successfully created tag 'GKIDS'
+2025-08-17 19:23:14 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=anime-masterpieces "HTTP/1.1 200 OK"
+2025-08-17 19:23:16 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:16 - app.wordpress - INFO - Successfully created tag 'Anime Masterpieces'
+2025-08-17 19:23:17 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hbo-is-adding "HTTP/1.1 200 OK"
+2025-08-17 19:23:19 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:19 - app.wordpress - INFO - Successfully created tag 'HBO Is Adding'
+2025-08-17 19:23:20 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=its-catalog "HTTP/1.1 200 OK"
+2025-08-17 19:23:21 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:21 - app.wordpress - INFO - Successfully created tag 'Its Catalog'
+2025-08-17 19:23:22 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=full-slate "HTTP/1.1 200 OK"
+2025-08-17 19:23:24 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:24 - app.wordpress - INFO - Successfully created tag 'Full Slate'
+2025-08-17 19:23:25 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=september "HTTP/1.1 200 OK"
+2025-08-17 19:23:26 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:26 - app.wordpress - INFO - Successfully created tag 'September'
+2025-08-17 19:23:27 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=its-catalog-hbo-is-adding "HTTP/1.1 200 OK"
+2025-08-17 19:23:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:29 - app.wordpress - INFO - Successfully created tag 'Its Catalog HBO Is Adding'
+2025-08-17 19:23:30 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=millennium-actress "HTTP/1.1 200 OK"
+2025-08-17 19:23:31 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:31 - app.wordpress - INFO - Successfully created tag 'Millennium Actress'
+2025-08-17 19:23:33 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=shin-godzilla "HTTP/1.1 200 OK"
+2025-08-17 19:23:34 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hideaki-anno "HTTP/1.1 200 OK"
+2025-08-17 19:23:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:35 - app.wordpress - INFO - Successfully created tag 'Hideaki Anno'
+2025-08-17 19:23:36 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=your-name "HTTP/1.1 200 OK"
+2025-08-17 19:23:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:38 - app.wordpress - INFO - Successfully created tag 'Your Name'
+2025-08-17 19:23:39 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-boy "HTTP/1.1 200 OK"
+2025-08-17 19:23:40 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 19:23:40 - app.wordpress - INFO - Successfully created tag 'The Boy'
+2025-08-17 19:23:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=angel "HTTP/1.1 200 OK"
+2025-08-17 19:23:42 - app.wordpress - INFO - Creating WordPress post: 
+2025-08-17 19:23:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 400 Bad Request"
+2025-08-17 19:23:43 - app.wordpress - ERROR - Failed to create post: 400 - {"code":"empty_content","message":"O conte\u00fado, o t\u00edtulo e o resumo est\u00e3o vazios.","data":{"status":400}}
+2025-08-17 19:23:43 - app.pipeline - ERROR - Failed to publish post for https://collider.com/hbo-max-new-anime-movies-streaming-september-2025/
+2025-08-17 19:23:43 - app.pipeline - INFO - Sleeping for 8.2s (per-article delay).
+2025-08-17 19:23:46 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 19:23:46 - app.store - INFO - Database connection closed.
+2025-08-17 19:23:46 - app.wordpress - INFO - WordPress client connection closed.

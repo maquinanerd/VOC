@@ -4425,3 +4425,48 @@ TypeError: cannot unpack non-iterable NoneType object
 2025-08-17 19:02:22 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 19:02:22 - app.store - INFO - Database connection closed.
 2025-08-17 19:02:22 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 19:08:30 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 19:08:30 - app.store - INFO - Database initialized successfully.
+2025-08-17 19:08:30 - app.store - INFO - Database connection closed.
+2025-08-17 19:08:30 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 19:08:30 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 19:08:30 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 19:08:32 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 19:08:32 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 19:08:32 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:08:33 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 19:08:33 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 19:08:33 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 19:08:33 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 19:08:33 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 19:08:33 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 19:08:33 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 19:08:33 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 19:08:33 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 19:08:33 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:08:34 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 19:08:34 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 19:08:34 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-17 19:08:34 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-17 19:08:34 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 19:08:34 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-17 19:08:34 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-17 19:08:34 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-17 19:08:34 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-17 19:08:34 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:08:35 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-17 19:08:35 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-17 19:08:35 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-17 19:08:35 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-17 19:08:35 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:08:36 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-17 19:08:36 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-17 19:08:36 - app.pipeline - INFO - Found 2 new articles for cbr_movies
+2025-08-17 19:08:36 - app.pipeline - INFO - Processing article: Vanessa Kirby's New R-Rated Fantastic Four Replacement Thriller Tops Netflix's Global Charts Days After Release (DB ID: 122) from cbr_movies
+2025-08-17 19:08:36 - app.extractor - INFO - Extracting content from: https://www.cbr.com/vanessa-kirby-night-always-comes-netflix-top-10/
+2025-08-17 19:08:37 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 19:08:37 - app.tags - INFO - Extracted 15 tags: Kirby, Night Always Comes, Netflix, Lynette, Vanessa Kirby...
+2025-08-17 19:08:37 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 19:08:47 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 19:08:47 - app.store - INFO - Database connection closed.
+2025-08-17 19:08:47 - app.wordpress - INFO - WordPress client connection closed.

@@ -99,13 +99,14 @@ class AIProcessor:
         return cls._prompt_template
 
     def rewrite_content(
-        self, title: str, excerpt: str, tags_text: str, content: str, domain: str
+        self, title: str, url: str, excerpt: str, tags_text: str, content: str, domain: str
     ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
         """
         Rewrites the given article content using the AI model.
 
         Args:
             title: The original title of the article.
+            url: The original URL of the article.
             excerpt: The original excerpt/summary.
             tags_text: A string of comma-separated tags.
             content: The full HTML content of the article.
@@ -117,7 +118,8 @@ class AIProcessor:
         """
         prompt_template = self._load_prompt_template()
         prompt = prompt_template.format(
-            title=title,
+            titulo_original=title,
+            url_original=url,
             excerpt=excerpt or "N/A",
             tags_text=tags_text,
             content=content,

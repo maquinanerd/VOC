@@ -4710,3 +4710,120 @@ TypeError: expected string or bytes-like object, got 'dict'
 2025-08-17 19:23:46 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 19:23:46 - app.store - INFO - Database connection closed.
 2025-08-17 19:23:46 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 19:38:36 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 19:38:36 - app.store - INFO - Database initialized successfully.
+2025-08-17 19:38:36 - app.store - INFO - Database connection closed.
+2025-08-17 19:38:36 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 19:38:36 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 19:38:36 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 19:38:38 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 19:38:38 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 19:38:38 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:38:39 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 19:38:39 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 19:38:39 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 19:38:39 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 19:38:39 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 19:38:40 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 19:38:40 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 19:38:40 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 19:38:40 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 19:38:40 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:38:40 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 19:38:40 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 19:38:40 - app.pipeline - INFO - Found 1 new articles for collider_movies
+2025-08-17 19:38:40 - app.pipeline - INFO - Processing article: Nightwing Saves the Day With New Figure Ahead of DC Studios' 'Dynamic Duo' (DB ID: 127) from collider_movies
+2025-08-17 19:38:40 - app.extractor - INFO - Extracting content from: https://collider.com/nightwing-batman-arkham-dc-hot-toys-figure-images/
+2025-08-17 19:38:41 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 19:38:41 - app.tags - INFO - Extracted 15 tags: Nightwing, Batman, Arkham, Arkham Knight, Dynamic Duo...
+2025-08-17 19:38:41 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 19:38:49 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:38:49 - app.ai_processor - ERROR - AI content generation failed with key index 0: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:38:49 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:38:49 - app.ai_processor - INFO - Using API key index 1 for category 'movies'.
+2025-08-17 19:38:49 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-17 19:38:59 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:38:59 - app.ai_processor - ERROR - AI content generation failed with key index 1: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:38:59 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:38:59 - app.ai_processor - INFO - Using API key index 2 for category 'movies'.
+2025-08-17 19:38:59 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 2)...
+2025-08-17 19:39:08 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:39:08 - app.ai_processor - ERROR - AI content generation failed with key index 2: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:39:08 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:39:08 - app.ai_processor - INFO - Using API key index 3 for category 'movies'.
+2025-08-17 19:39:08 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 3)...
+2025-08-17 19:39:15 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:39:15 - app.ai_processor - ERROR - AI content generation failed with key index 3: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:39:15 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:39:15 - app.ai_processor - INFO - Using API key index 4 for category 'movies'.
+2025-08-17 19:39:15 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 4)...
+2025-08-17 19:39:25 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:39:25 - app.ai_processor - ERROR - AI content generation failed with key index 4: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:39:25 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:39:25 - app.ai_processor - INFO - Using API key index 5 for category 'movies'.
+2025-08-17 19:39:25 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 5)...
+2025-08-17 19:39:35 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:39:35 - app.ai_processor - ERROR - AI content generation failed with key index 5: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:39:35 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:39:35 - app.ai_processor - INFO - Using API key index 6 for category 'movies'.
+2025-08-17 19:39:35 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 6)...
+2025-08-17 19:39:43 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:39:43 - app.ai_processor - ERROR - AI content generation failed with key index 6: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:39:43 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:39:43 - app.ai_processor - INFO - Using API key index 7 for category 'movies'.
+2025-08-17 19:39:43 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 7)...
+2025-08-17 19:39:52 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:39:52 - app.ai_processor - ERROR - AI content generation failed with key index 7: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:39:52 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:39:52 - app.ai_processor - CRITICAL - All API keys have failed.
+2025-08-17 19:39:52 - app.ai_processor - CRITICAL - Failed to rewrite content. All API keys for category 'movies' failed. Last error: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:39:52 - app.pipeline - WARNING - Article 'Nightwing Saves the Day With New Figure Ahead of DC Studios' 'Dynamic Duo'' marked as FAILED (Reason: All API keys for category 'movies' failed. Last error: Failed to parse or validate AI response. See logs for details.). Continuing to next article.
+2025-08-17 19:39:52 - app.pipeline - INFO - Finished feed 'collider_movies'. Sleeping for 15s before next feed: collider_tv
+2025-08-17 19:40:07 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-17 19:40:07 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 19:40:08 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-17 19:40:08 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-17 19:40:08 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-17 19:40:08 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-17 19:40:08 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:40:09 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-17 19:40:09 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-17 19:40:09 - app.pipeline - INFO - Found 2 new articles for movieweb_movies
+2025-08-17 19:40:09 - app.pipeline - INFO - Processing article: Why 'Alien: Earth' Feels Like an 'Alien' Sequel (DB ID: 128) from movieweb_movies
+2025-08-17 19:40:09 - app.extractor - INFO - Extracting content from: https://movieweb.com/alien-earth-connection-to-alien-explained/
+2025-08-17 19:40:10 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 19:40:10 - app.tags - INFO - Extracted 15 tags: Alien, Earth, Ripley, Xenomorph, Feels More Like...
+2025-08-17 19:40:10 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 19:40:30 - app.ai_processor - ERROR - Error decoding JSON from AI response: Expecting ',' delimiter: line 1 column 6988 (char 6987)
+2025-08-17 19:40:30 - app.ai_processor - ERROR - AI content generation failed with key index 0: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:40:30 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:40:30 - app.ai_processor - INFO - Using API key index 1 for category 'movies'.
+2025-08-17 19:40:30 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-17 19:40:43 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:40:43 - app.ai_processor - ERROR - AI content generation failed with key index 1: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:40:43 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:40:43 - app.ai_processor - INFO - Using API key index 2 for category 'movies'.
+2025-08-17 19:40:43 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 2)...
+2025-08-17 19:41:03 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:41:03 - app.ai_processor - ERROR - AI content generation failed with key index 2: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:41:03 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:41:03 - app.ai_processor - INFO - Using API key index 3 for category 'movies'.
+2025-08-17 19:41:03 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 3)...
+2025-08-17 19:41:22 - app.ai_processor - ERROR - AI response is missing required keys: titulo_final, conteudo_final, meta_description, focus_keyword, tags, categorias
+2025-08-17 19:41:22 - app.ai_processor - ERROR - AI content generation failed with key index 3: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:41:22 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:41:22 - app.ai_processor - INFO - Using API key index 4 for category 'movies'.
+2025-08-17 19:41:22 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 4)...
+2025-08-17 19:41:39 - app.ai_processor - ERROR - Error decoding JSON from AI response: Extra data: line 1 column 8718 (char 8717)
+2025-08-17 19:41:39 - app.ai_processor - ERROR - AI content generation failed with key index 4: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:41:39 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:41:39 - app.ai_processor - INFO - Using API key index 5 for category 'movies'.
+2025-08-17 19:41:39 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 5)...
+2025-08-17 19:41:52 - app.ai_processor - ERROR - Error decoding JSON from AI response: Expecting ',' delimiter: line 1 column 5279 (char 5278)
+2025-08-17 19:41:52 - app.ai_processor - ERROR - AI content generation failed with key index 5: Failed to parse or validate AI response. See logs for details.
+2025-08-17 19:41:52 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:41:52 - app.ai_processor - INFO - Using API key index 6 for category 'movies'.
+2025-08-17 19:41:52 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 6)...
+2025-08-17 19:42:08 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 19:42:08 - app.store - INFO - Database connection closed.
+2025-08-17 19:42:08 - app.wordpress - INFO - WordPress client connection closed.

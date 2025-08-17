@@ -4356,3 +4356,72 @@ TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'pub
 2025-08-17 19:01:10 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 19:01:10 - app.store - INFO - Database connection closed.
 2025-08-17 19:01:10 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 19:02:08 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 19:02:08 - app.store - INFO - Database initialized successfully.
+2025-08-17 19:02:08 - app.store - INFO - Database connection closed.
+2025-08-17 19:02:08 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 19:02:08 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 19:02:08 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 19:02:10 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 19:02:10 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 19:02:10 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:02:10 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 19:02:10 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 19:02:10 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 19:02:10 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 19:02:10 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 19:02:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 19:02:11 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 19:02:11 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 19:02:11 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 19:02:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:02:11 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 19:02:11 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 19:02:11 - app.pipeline - INFO - Found 1 new articles for collider_movies
+2025-08-17 19:02:11 - app.pipeline - INFO - Processing article: Live-Action Anime Adaptation That “Deeply Moved” Makoto Shinkai Gets Its First Poster (DB ID: 121) from collider_movies
+2025-08-17 19:02:12 - app.extractor - INFO - Extracting content from: https://collider.com/5-centimeters-per-second-poster-live-action-makoto-shinkai/
+2025-08-17 19:02:12 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 19:02:12 - app.tags - INFO - Extracted 15 tags: Shinkai, Makoto Shinkai, Centimeters, Japanese, Second...
+2025-08-17 19:02:12 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 19:02:13 - app.ai_processor - ERROR - AI content generation failed with key index 0: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:02:13 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:02:13 - app.ai_processor - INFO - Using API key index 1 for category 'movies'.
+2025-08-17 19:02:13 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-17 19:02:14 - app.ai_processor - ERROR - AI content generation failed with key index 1: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:02:14 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:02:14 - app.ai_processor - INFO - Using API key index 2 for category 'movies'.
+2025-08-17 19:02:14 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 2)...
+2025-08-17 19:02:15 - app.ai_processor - ERROR - AI content generation failed with key index 2: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:02:15 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:02:15 - app.ai_processor - INFO - Using API key index 3 for category 'movies'.
+2025-08-17 19:02:15 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 3)...
+2025-08-17 19:02:15 - app.ai_processor - ERROR - AI content generation failed with key index 3: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:02:15 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:02:15 - app.ai_processor - INFO - Using API key index 4 for category 'movies'.
+2025-08-17 19:02:15 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 4)...
+2025-08-17 19:02:16 - app.ai_processor - ERROR - AI content generation failed with key index 4: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:02:16 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:02:16 - app.ai_processor - INFO - Using API key index 5 for category 'movies'.
+2025-08-17 19:02:16 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 5)...
+2025-08-17 19:02:17 - app.ai_processor - ERROR - AI content generation failed with key index 5: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:02:17 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:02:17 - app.ai_processor - INFO - Using API key index 6 for category 'movies'.
+2025-08-17 19:02:17 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 6)...
+2025-08-17 19:02:18 - app.ai_processor - ERROR - AI content generation failed with key index 6: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:02:18 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:02:18 - app.ai_processor - INFO - Using API key index 7 for category 'movies'.
+2025-08-17 19:02:18 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 7)...
+2025-08-17 19:02:19 - app.ai_processor - ERROR - AI content generation failed with key index 7: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:02:19 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:02:19 - app.ai_processor - CRITICAL - All API keys have failed.
+2025-08-17 19:02:19 - app.ai_processor - CRITICAL - Failed to rewrite content after trying all API keys for category 'movies'.
+2025-08-17 19:02:19 - app.pipeline - ERROR - Error processing article https://collider.com/5-centimeters-per-second-poster-live-action-makoto-shinkai/: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+2025-08-17 19:02:19 - app.pipeline - INFO - Finished feed 'collider_movies'. Sleeping for 15s before next feed: collider_tv
+2025-08-17 19:02:22 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 19:02:22 - app.store - INFO - Database connection closed.
+2025-08-17 19:02:22 - app.wordpress - INFO - WordPress client connection closed.

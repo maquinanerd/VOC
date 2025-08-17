@@ -7,8 +7,8 @@ import google.generativeai as genai
 import logging
 import re
 import time
-from pathlib import Path
-from typing import Dict, Optional, List
+from pathlib import Path 
+from typing import Dict, Optional, List, Tuple
 
 from .config import AI_CONFIG, SCHEDULE_CONFIG
 from .exceptions import AIProcessorError, AllKeysFailedError
@@ -61,7 +61,7 @@ class AIProcessor:
         api_key = self.api_keys[self.current_key_index]
         try:
             genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel('gemini-pro')
+            self.model = genai.GenerativeModel('gemini-1.5-flash-latest')
             logger.info(f"Using API key index {self.current_key_index} for category '{self.category}'.")
         except Exception as e:
             logger.error(f"Failed to configure Gemini with API key index {self.current_key_index}: {e}")
@@ -93,7 +93,7 @@ class AIProcessor:
 
     def rewrite_content(
         self, title: str, excerpt: str, tags_text: str, content: str, domain: str
-    ) -> Optional[Dict[str, str]]:
+    ) -> Tuple[Optional[Dict[str, str]], Optional[str]]:
         """
         Rewrites the given article content using the AI model.
 
@@ -105,8 +105,8 @@ class AIProcessor:
             domain: The base domain for internal links.
 
         Returns:
-            A dictionary with 'title', 'summary', and 'content' keys containing
-            the rewritten text, or None if all retries and failovers fail.
+            A tuple containing a dictionary with the rewritten text and a failure
+            reason (or None if successful).
         """
         prompt_template = self._load_prompt_template()
         prompt = prompt_template.format(
@@ -117,28 +117,34 @@ class AIProcessor:
             domain=domain
         )
 
-        # Total attempts will be the number of keys.
+        last_error = "Unknown error"
         for _ in range(len(self.api_keys)):
             try:
                 logger.info(f"Sending content to AI for rewriting (Key index: {self.current_key_index})...")
                 response = self.model.generate_content(prompt)
 
+                parsed_data = self._parse_response(response.text)
+                if not parsed_data:
+                    raise AIProcessorError("Failed to parse AI response into the expected format.")
+
                 # Add a delay between successful calls to respect rate limits
                 time.sleep(SCHEDULE_CONFIG.get('api_call_delay', 30))
 
-                return self._parse_response(response.text)
+                return parsed_data, None
 
             except Exception as e:
-                logger.error(f"AI content generation failed with key index {self.current_key_index}: {e}")
+                last_error = str(e)
+                logger.error(f"AI content generation failed with key index {self.current_key_index}: {last_error}")
                 self._failover_to_next_key()
                 if self.current_key_index < len(self.api_keys):
                     self._configure_model()
                 else:
                     logger.critical("All API keys have failed.")
                     break  # Exit loop if all keys are exhausted
-
-        logger.critical(f"Failed to rewrite content after trying all API keys for category '{self.category}'.")
-        return None
+        
+        final_reason = f"All API keys for category '{self.category}' failed. Last error: {last_error}"
+        logger.critical(f"Failed to rewrite content. {final_reason}")
+        return None, final_reason
 
     @staticmethod
     def _parse_response(text: str) -> Optional[Dict[str, str]]:

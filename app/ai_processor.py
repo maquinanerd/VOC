@@ -2,13 +2,13 @@
 """
 Handles content rewriting using a Generative AI model with API key failover.
 """
-
+import json
 import google.generativeai as genai
 import logging
 import re
 import time
 from pathlib import Path 
-from typing import Dict, Optional, List, Tuple
+from typing import Dict, Optional, List, Tuple, Any
 
 from .config import AI_CONFIG, SCHEDULE_CONFIG
 from .exceptions import AIProcessorError, AllKeysFailedError

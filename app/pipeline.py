@@ -83,6 +83,7 @@ def run_pipeline_cycle():
 
                         rewritten_text, failure_reason = ai_processor.rewrite_content(
                             title=extracted_content['title'],
+                            url=article_data['link'],
                             excerpt=extracted_content.get('excerpt', ''),
                             content=extracted_content['content'],
                             tags_text=', '.join(tags),

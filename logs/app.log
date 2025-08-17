@@ -4870,3 +4870,91 @@ TypeError: AIProcessor.rewrite_content() missing 1 required positional argument:
 2025-08-17 19:49:28 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 19:49:28 - app.store - INFO - Database connection closed.
 2025-08-17 19:49:28 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 20:10:39 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 20:10:39 - app.store - INFO - Database initialized successfully.
+2025-08-17 20:10:39 - app.store - INFO - Database connection closed.
+2025-08-17 20:10:39 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 20:10:39 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 20:10:39 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 20:10:42 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 20:10:42 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 20:10:42 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 20:10:43 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 20:10:43 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 20:10:43 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 20:10:43 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 20:10:43 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 20:10:43 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 20:10:43 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 20:10:43 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 20:10:43 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 20:10:43 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 20:10:44 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 20:10:44 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 20:10:44 - app.pipeline - INFO - Found 1 new articles for collider_movies
+2025-08-17 20:10:44 - app.pipeline - INFO - Processing article: This Underrated 71% RT Anime Movie Has Finally Found a U.S. Streaming Home (DB ID: 131) from collider_movies
+2025-08-17 20:10:44 - app.extractor - INFO - Extracting content from: https://collider.com/ghost-cat-anzu-streaming-hbo-max-september-2025/
+2025-08-17 20:10:45 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 20:10:45 - app.tags - INFO - Extracted 15 tags: Anzu, Ghost Cat Anzu, Cast, Cast Placeholder Image, RT Anime Movie Has Finally Found...
+2025-08-17 20:10:45 - app.pipeline - ERROR - Error processing article https://collider.com/ghost-cat-anzu-streaming-hbo-max-september-2025/: AIProcessor.rewrite_content() missing 1 required positional argument: 'url'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        domain=wp_client.get_domain(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() missing 1 required positional argument: 'url'
+2025-08-17 20:10:45 - app.pipeline - INFO - Finished feed 'collider_movies'. Sleeping for 15s before next feed: collider_tv
+2025-08-17 20:11:00 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-17 20:11:00 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 20:11:00 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-17 20:11:00 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-17 20:11:00 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-17 20:11:00 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-17 20:11:00 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 20:11:01 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-17 20:11:01 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-17 20:11:01 - app.pipeline - INFO - Found 2 new articles for movieweb_movies
+2025-08-17 20:11:01 - app.pipeline - INFO - Processing article: 10 Must-Watch War Documentaries On Netflix (DB ID: 132) from movieweb_movies
+2025-08-17 20:11:01 - app.extractor - INFO - Extracting content from: https://movieweb.com/best-war-documentaries-on-netflix/
+2025-08-17 20:11:02 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 20:11:02 - app.tags - INFO - Extracted 15 tags: War, America, Cuba, Cast, WWI...
+2025-08-17 20:11:02 - app.pipeline - ERROR - Error processing article https://movieweb.com/best-war-documentaries-on-netflix/: AIProcessor.rewrite_content() missing 1 required positional argument: 'url'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        domain=wp_client.get_domain(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() missing 1 required positional argument: 'url'
+2025-08-17 20:11:02 - app.pipeline - INFO - Processing article: Taylor Kitsch Celebrates Working With "F**cking Great" Chris Pratt on 'The Terminal List: Dark Wolf' (DB ID: 133) from movieweb_movies
+2025-08-17 20:11:02 - app.extractor - INFO - Extracting content from: https://movieweb.com/terminal-list-dark-wolf-taylor-kitsch-praises-chris-pratt/
+2025-08-17 20:11:02 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 20:11:02 - app.tags - INFO - Extracted 15 tags: The Terminal List, Kitsch, Pratt, Prime Video, Dark Wolf...
+2025-08-17 20:11:02 - app.pipeline - ERROR - Error processing article https://movieweb.com/terminal-list-dark-wolf-taylor-kitsch-praises-chris-pratt/: AIProcessor.rewrite_content() missing 1 required positional argument: 'url'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        domain=wp_client.get_domain(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() missing 1 required positional argument: 'url'
+2025-08-17 20:11:02 - app.pipeline - INFO - Finished feed 'movieweb_movies'. Sleeping for 15s before next feed: cbr_movies
+2025-08-17 20:11:02 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 20:11:02 - app.store - INFO - Database connection closed.
+2025-08-17 20:11:02 - app.wordpress - INFO - WordPress client connection closed.

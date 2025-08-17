@@ -38,7 +38,7 @@ def run_pipeline_cycle():
         feed_reader = FeedReader(db)
         extractor = ContentExtractor()
         key_manager = KeyManager(db)
-        ai_processor = AIProcessor(key_manager)
+        ai_processor = AIProcessor(feed_config['category'])
         rewriter = Rewriter()
         tag_generator = TagGenerator()
         categorizer = WordPressCategorizer()

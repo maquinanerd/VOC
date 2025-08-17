@@ -4827,3 +4827,46 @@ TypeError: expected string or bytes-like object, got 'dict'
 2025-08-17 19:42:08 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 19:42:08 - app.store - INFO - Database connection closed.
 2025-08-17 19:42:08 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 19:49:11 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 19:49:11 - app.store - INFO - Database initialized successfully.
+2025-08-17 19:49:11 - app.store - INFO - Database connection closed.
+2025-08-17 19:49:11 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 19:49:11 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 19:49:11 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 19:49:12 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 19:49:12 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 19:49:12 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:49:13 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 19:49:13 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 19:49:13 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 19:49:13 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 19:49:13 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 19:49:14 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 19:49:14 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 19:49:14 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 19:49:14 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 19:49:14 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:49:14 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 19:49:14 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 19:49:14 - app.pipeline - INFO - Found 1 new articles for collider_movies
+2025-08-17 19:49:14 - app.pipeline - INFO - Processing article: 63 Years Later, John Wayne’s WWII Masterpiece Is Free to Watch (DB ID: 130) from collider_movies
+2025-08-17 19:49:14 - app.extractor - INFO - Extracting content from: https://collider.com/john-wayne-the-longest-day-ww2-movie-free-streaming-youtube-august-2025/
+2025-08-17 19:49:15 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 19:49:15 - app.tags - INFO - Extracted 15 tags: Wayne, Day, John Wayne, The Longest Day, Fonda...
+2025-08-17 19:49:15 - app.pipeline - ERROR - Error processing article https://collider.com/john-wayne-the-longest-day-ww2-movie-free-streaming-youtube-august-2025/: AIProcessor.rewrite_content() missing 1 required positional argument: 'url'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        domain=wp_client.get_domain(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() missing 1 required positional argument: 'url'
+2025-08-17 19:49:15 - app.pipeline - INFO - Finished feed 'collider_movies'. Sleeping for 15s before next feed: collider_tv
+2025-08-17 19:49:28 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 19:49:28 - app.store - INFO - Database connection closed.
+2025-08-17 19:49:28 - app.wordpress - INFO - WordPress client connection closed.

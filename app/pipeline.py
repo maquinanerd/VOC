@@ -87,7 +87,6 @@ def run_pipeline_cycle():
                             content=extracted_content['content'],
                             tags_text=', '.join(tags),
                             domain=wp_client.get_domain(),
-                            publisher_name=PIPELINE_CONFIG['publisher_name']
                         )
 
                         if not rewritten_text:

@@ -3769,3 +3769,590 @@ Traceback (most recent call last):
   File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 34, in run_pipeline_cycle
     ai_processor = AIProcessor()
 TypeError: AIProcessor.__init__() missing 1 required positional argument: 'category'
+2025-08-17 18:47:20 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 18:47:20 - app.store - INFO - Database initialized successfully.
+2025-08-17 18:47:20 - app.store - INFO - Database connection closed.
+2025-08-17 18:47:20 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 18:47:20 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 18:47:20 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 18:47:23 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 18:47:23 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 18:47:23 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 18:47:24 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 18:47:24 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 18:47:24 - app.pipeline - INFO - Found 9 new articles for screenrant_movies
+2025-08-17 18:47:24 - app.pipeline - INFO - Processing article: James Gunn Reveals Tense Superman Filming Moment with Lex Luthor (DB ID: 31) from screenrant_movies
+2025-08-17 18:47:24 - app.extractor - INFO - Extracting content from: https://screenrant.com/superman-2025-movie-superman-speech-james-gunn-reaction/
+2025-08-17 18:47:26 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:47:26 - app.tags - INFO - Extracted 15 tags: Superman, Gunn, James Gunn, Corenswet, Luthor...
+2025-08-17 18:47:26 - app.pipeline - ERROR - Error processing article https://screenrant.com/superman-2025-movie-superman-speech-james-gunn-reaction/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:47:26 - app.pipeline - INFO - Processing article: Orlando Bloom on Pirates of the Caribbean 6: 'Get Everybody Back' (DB ID: 32) from screenrant_movies
+2025-08-17 18:47:26 - app.extractor - INFO - Extracting content from: https://screenrant.com/pirates-of-the-caribbean-sequel-orlando-bloom-wants-everybody-back/
+2025-08-17 18:47:26 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:47:26 - app.tags - INFO - Extracted 15 tags: Pirates, Caribbean, Bloom, Will, Orlando Bloom...
+2025-08-17 18:47:26 - app.pipeline - ERROR - Error processing article https://screenrant.com/pirates-of-the-caribbean-sequel-orlando-bloom-wants-everybody-back/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:47:26 - app.pipeline - INFO - Processing article: Fantastic Four Surpasses Third Phase 1 MCU Movie at Box Office (DB ID: 33) from screenrant_movies
+2025-08-17 18:47:26 - app.extractor - INFO - Extracting content from: https://screenrant.com/fantastic-four-first-steps-box-office-450-million-worldwide-box-office-milestone/
+2025-08-17 18:47:27 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:47:27 - app.tags - INFO - Extracted 15 tags: Fantastic Four, First Steps, The Fantastic Four, MCU, Box Office...
+2025-08-17 18:47:27 - app.pipeline - ERROR - Error processing article https://screenrant.com/fantastic-four-first-steps-box-office-450-million-worldwide-box-office-milestone/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:47:27 - app.pipeline - INFO - Finished feed 'screenrant_movies'. Sleeping for 15s before next feed: screenrant_tv
+2025-08-17 18:47:42 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 18:47:42 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 18:47:42 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 18:47:43 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 18:47:43 - app.pipeline - INFO - Found 10 new articles for screenrant_tv
+2025-08-17 18:47:43 - app.pipeline - INFO - Processing article: Wednesday Creators Explain Season 2 Delay & Future Plans (DB ID: 40) from screenrant_tv
+2025-08-17 18:47:43 - app.extractor - INFO - Extracting content from: https://screenrant.com/wednesday-season-3-release-al-gough-miles-millar-response/
+2025-08-17 18:47:43 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:47:43 - app.tags - INFO - Extracted 15 tags: Wednesday, Netflix, Wednesday Creators Address Season, Release Window After Season, Jenna Ortega...
+2025-08-17 18:47:43 - app.pipeline - ERROR - Error processing article https://screenrant.com/wednesday-season-3-release-al-gough-miles-millar-response/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:47:43 - app.pipeline - INFO - Processing article: Moon Knight Season 2: Composer Reveals Disappointing Update (DB ID: 41) from screenrant_tv
+2025-08-17 18:47:43 - app.extractor - INFO - Extracting content from: https://screenrant.com/moon-knight-season-2-update-hesham-nazih-response/
+2025-08-17 18:47:44 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:47:44 - app.tags - INFO - Extracted 15 tags: Knight, Moon, Moon Knight, Season, Marvel...
+2025-08-17 18:47:44 - app.pipeline - ERROR - Error processing article https://screenrant.com/moon-knight-season-2-update-hesham-nazih-response/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:47:44 - app.pipeline - INFO - Processing article: Kaitlyn Dever Reveals The Heartwarming Inspiration Behind Her Controversial Abby Role In The Last Of Us (DB ID: 42) from screenrant_tv
+2025-08-17 18:47:44 - app.extractor - INFO - Extracting content from: https://screenrant.com/the-last-of-us-kaitlyn-dever-dad-abby-role-manifest/
+2025-08-17 18:47:45 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:47:45 - app.tags - INFO - Extracted 15 tags: Abby, Dever, Last, The Last, Craig...
+2025-08-17 18:47:45 - app.pipeline - ERROR - Error processing article https://screenrant.com/the-last-of-us-kaitlyn-dever-dad-abby-role-manifest/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:47:45 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-08-17 18:48:00 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 18:48:00 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 18:48:01 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 18:48:01 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 18:48:01 - app.pipeline - INFO - Found 10 new articles for collider_movies
+2025-08-17 18:48:01 - app.pipeline - INFO - Processing article: It’s Official, 2 Massive Lord of the Rings Stars are Returning for ‘The Hunt For Gollum’ (DB ID: 50) from collider_movies
+2025-08-17 18:48:01 - app.extractor - INFO - Extracting content from: https://collider.com/lord-of-the-rings-hunt-for-gollum-cast-ian-mckellen-elijah-wood/
+2025-08-17 18:48:02 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:02 - app.tags - INFO - Extracted 15 tags: Gollum, Rings, The Hunt, The Lord, Jackson...
+2025-08-17 18:48:02 - app.pipeline - ERROR - Error processing article https://collider.com/lord-of-the-rings-hunt-for-gollum-cast-ian-mckellen-elijah-wood/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:02 - app.pipeline - INFO - Processing article: Leonardo DiCaprio Still Regrets Turning Down This Epic ’70s Movie Almost 30 Years Later (DB ID: 51) from collider_movies
+2025-08-17 18:48:02 - app.extractor - INFO - Extracting content from: https://collider.com/leonardo-dicaprio-turned-down-boogie-nights-regrets/
+2025-08-17 18:48:02 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:02 - app.tags - INFO - Extracted 15 tags: DiCaprio, Anderson, Boogie Nights, Leonardo DiCaprio, One Battle After Another...
+2025-08-17 18:48:02 - app.pipeline - ERROR - Error processing article https://collider.com/leonardo-dicaprio-turned-down-boogie-nights-regrets/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:03 - app.pipeline - INFO - Processing article: Vanessa Kirby’s 205-Minute Historical Epic Becomes a Global Hit After Bombing at the Box Office 2 Years Ago (DB ID: 52) from collider_movies
+2025-08-17 18:48:03 - app.extractor - INFO - Extracting content from: https://collider.com/vanessa-kirby-napoleon-global-streaming-success-apple-tv-plus-august-2025/
+2025-08-17 18:48:03 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:03 - app.tags - INFO - Extracted 15 tags: Napoleon, Kirby, Phoenix, Vanessa Kirby, Scott...
+2025-08-17 18:48:03 - app.pipeline - ERROR - Error processing article https://collider.com/vanessa-kirby-napoleon-global-streaming-success-apple-tv-plus-august-2025/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:03 - app.pipeline - INFO - Finished feed 'collider_movies'. Sleeping for 15s before next feed: collider_tv
+2025-08-17 18:48:18 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-17 18:48:18 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 18:48:19 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-17 18:48:19 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-17 18:48:19 - app.pipeline - INFO - Found 10 new articles for collider_tv
+2025-08-17 18:48:19 - app.pipeline - INFO - Processing article: This 'One Piece' Main Cast Member Is Making a Comeback to Another Anime Adaptation (DB ID: 60) from collider_tv
+2025-08-17 18:48:19 - app.extractor - INFO - Extracting content from: https://collider.com/one-piece-mackenyu-chihayafuru-full-circle-return/
+2025-08-17 18:48:19 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:19 - app.tags - INFO - Extracted 15 tags: Chihaya, Cast, Chihayafuru, Mackenyu, One Piece...
+2025-08-17 18:48:19 - app.pipeline - ERROR - Error processing article https://collider.com/one-piece-mackenyu-chihayafuru-full-circle-return/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:19 - app.pipeline - INFO - Processing article: Forgotten 7-Season Fantasy Classic 'X-Files' Helped Revive Lands on YouTube for Free (DB ID: 61) from collider_tv
+2025-08-17 18:48:19 - app.extractor - INFO - Extracting content from: https://collider.com/the-outer-limits-streaming-free-youtube-august-2025/
+2025-08-17 18:48:20 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:20 - app.tags - INFO - Extracted 15 tags: Outer Limits, The Outer Limits, YouTube, Files, Season Fantasy Classic...
+2025-08-17 18:48:20 - app.pipeline - ERROR - Error processing article https://collider.com/the-outer-limits-streaming-free-youtube-august-2025/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:20 - app.pipeline - INFO - Processing article: 'Merlin' Star's 'Devil's Hour' Replacement Lands on a New Streamer (DB ID: 62) from collider_tv
+2025-08-17 18:48:20 - app.extractor - INFO - Extracting content from: https://collider.com/colin-morgan-the-killing-kind-netflix-streaming-september-2025/
+2025-08-17 18:48:20 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:20 - app.tags - INFO - Extracted 15 tags: Ingrid, The Killing Kind, Webster, Morgan, Appleton...
+2025-08-17 18:48:20 - app.pipeline - ERROR - Error processing article https://collider.com/colin-morgan-the-killing-kind-netflix-streaming-september-2025/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:21 - app.pipeline - INFO - Finished feed 'collider_tv'. Sleeping for 15s before next feed: movieweb_movies
+2025-08-17 18:48:36 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-17 18:48:36 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 18:48:36 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-17 18:48:36 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-17 18:48:36 - app.pipeline - INFO - Found 10 new articles for movieweb_movies
+2025-08-17 18:48:36 - app.pipeline - INFO - Processing article: 10 Classic TV Shows That Are Hard To Watch Today (DB ID: 70) from movieweb_movies
+2025-08-17 18:48:37 - app.extractor - INFO - Extracting content from: https://movieweb.com/classic-tv-shows-hard-to-watch-today/
+2025-08-17 18:48:37 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:38 - app.tags - INFO - Extracted 15 tags: Bat, Batman, Cosby, Hogan, Cast...
+2025-08-17 18:48:38 - app.pipeline - ERROR - Error processing article https://movieweb.com/classic-tv-shows-hard-to-watch-today/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:38 - app.pipeline - INFO - Processing article: John Hughes' Teen Classic 'The Breakfast Club' Returns to Theaters for 40th Anniversary (DB ID: 71) from movieweb_movies
+2025-08-17 18:48:38 - app.extractor - INFO - Extracting content from: https://movieweb.com/breakfast-club-40th-anniversary-re-release-theaters/
+2025-08-17 18:48:38 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:38 - app.tags - INFO - Extracted 15 tags: The Breakfast Club, John, John Hughes, John Hughes Classic That Made, Times Its Budget Returning...
+2025-08-17 18:48:38 - app.pipeline - ERROR - Error processing article https://movieweb.com/breakfast-club-40th-anniversary-re-release-theaters/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:38 - app.pipeline - INFO - Processing article: 10 Years Later, 'Green Room' Remains an Unforgettable Horror Experience (DB ID: 72) from movieweb_movies
+2025-08-17 18:48:38 - app.extractor - INFO - Extracting content from: https://movieweb.com/green-room-movie-punk-rock-white-supremacy/
+2025-08-17 18:48:39 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:39 - app.tags - INFO - Extracted 15 tags: Green Room, Saulnier, Punk Rock Movie Showed White Supremacy, Genre Mashup That's Unforgettable, Jeremy Saulnier...
+2025-08-17 18:48:39 - app.pipeline - ERROR - Error processing article https://movieweb.com/green-room-movie-punk-rock-white-supremacy/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:39 - app.pipeline - INFO - Finished feed 'movieweb_movies'. Sleeping for 15s before next feed: cbr_movies
+2025-08-17 18:48:54 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-17 18:48:54 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 18:48:55 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-17 18:48:55 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-17 18:48:55 - app.pipeline - INFO - Found 10 new articles for cbr_movies
+2025-08-17 18:48:55 - app.pipeline - INFO - Processing article: James Gunn Just Moved a Major DCU Movie Up The Production Schedule (DB ID: 80) from cbr_movies
+2025-08-17 18:48:55 - app.extractor - INFO - Extracting content from: https://www.cbr.com/james-gunn-major-dcu-movie-production-update/
+2025-08-17 18:48:56 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:56 - app.tags - INFO - Extracted 15 tags: Gunn, DCU, Superman, James Gunn, Major DCU Movie Up The Production Schedule...
+2025-08-17 18:48:56 - app.pipeline - ERROR - Error processing article https://www.cbr.com/james-gunn-major-dcu-movie-production-update/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:56 - app.pipeline - INFO - Processing article: Star Wars: Simon Kinberg Shouts Out Andor for Inspiring His Upcoming Trilogy (DB ID: 81) from cbr_movies
+2025-08-17 18:48:56 - app.extractor - INFO - Extracting content from: https://www.cbr.com/andor-inspired-simon-kinberg-star-wars-trilogy/
+2025-08-17 18:48:56 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:56 - app.tags - INFO - Extracted 15 tags: Star Wars, Kinberg, Andor, Simon Kinberg, Inspiring His Upcoming Trilogy...
+2025-08-17 18:48:56 - app.pipeline - ERROR - Error processing article https://www.cbr.com/andor-inspired-simon-kinberg-star-wars-trilogy/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:57 - app.pipeline - INFO - Processing article: Jake Gyllenhaal's Sci-Fi Cult Classic With 1 of the Most Confusing Endings of All Time Is Coming to Hulu (DB ID: 82) from cbr_movies
+2025-08-17 18:48:57 - app.extractor - INFO - Extracting content from: https://www.cbr.com/donnie-darko-hulu-streaming/
+2025-08-17 18:48:57 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:48:57 - app.tags - INFO - Extracted 15 tags: Donnie, Dark, Donnie Darko, Gyllenhaal, Jake Gyllenhaal...
+2025-08-17 18:48:57 - app.pipeline - ERROR - Error processing article https://www.cbr.com/donnie-darko-hulu-streaming/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:48:57 - app.pipeline - INFO - Finished feed 'cbr_movies'. Sleeping for 15s before next feed: cbr_tv
+2025-08-17 18:49:12 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-08-17 18:49:12 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 18:49:12 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/tv/news-tv/
+2025-08-17 18:49:12 - app.feeds - INFO - Total unique items for cbr_tv: 10
+2025-08-17 18:49:13 - app.pipeline - INFO - Found 10 new articles for cbr_tv
+2025-08-17 18:49:13 - app.pipeline - INFO - Processing article: Fans Are Flocking to 1 of the Best Crime Dramas in TV History (DB ID: 90) from cbr_tv
+2025-08-17 18:49:13 - app.extractor - INFO - Extracting content from: https://www.cbr.com/snowfall-itunes-streaming-success/
+2025-08-17 18:49:13 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:49:13 - app.tags - INFO - Extracted 15 tags: Snowfall, Los Angeles, Singleton, That Isn't The Wire, Best Crime Dramas...
+2025-08-17 18:49:13 - app.pipeline - ERROR - Error processing article https://www.cbr.com/snowfall-itunes-streaming-success/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:49:13 - app.pipeline - INFO - Processing article: Running Point Season 2 Begins Production 5 Months After Speedy Renewal (DB ID: 91) from cbr_tv
+2025-08-17 18:49:13 - app.extractor - INFO - Extracting content from: https://www.cbr.com/kate-hudson-netflix-running-point-season-2-begins-filming/
+2025-08-17 18:49:14 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:49:14 - app.tags - INFO - Extracted 15 tags: Running Point, Netflix, Season, Hudson, Kate Hudson...
+2025-08-17 18:49:14 - app.pipeline - ERROR - Error processing article https://www.cbr.com/kate-hudson-netflix-running-point-season-2-begins-filming/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:49:14 - app.pipeline - INFO - Processing article: The 4-Season Legal Sleeper Series That Was Buried by Suits Comes to Netflix Next Month (DB ID: 92) from cbr_tv
+2025-08-17 18:49:14 - app.extractor - INFO - Extracting content from: https://www.cbr.com/franklin-bash-netflix-streaming/
+2025-08-17 18:49:14 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:49:14 - app.tags - INFO - Extracted 15 tags: Franklin, Bash, Netflix, Gosselaar, Season...
+2025-08-17 18:49:14 - app.pipeline - ERROR - Error processing article https://www.cbr.com/franklin-bash-netflix-streaming/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:49:14 - app.pipeline - INFO - Finished feed 'cbr_tv'. Sleeping for 15s before next feed: gamerant_games
+2025-08-17 18:49:29 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-08-17 18:49:29 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-17 18:49:30 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-17 18:49:30 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-17 18:49:30 - app.pipeline - INFO - Found 10 new articles for gamerant_games
+2025-08-17 18:49:30 - app.pipeline - INFO - Processing article: Pokemon Legends: Z-A Is Bringing Back a Forgotten Game Mechanic (DB ID: 100) from gamerant_games
+2025-08-17 18:49:30 - app.extractor - INFO - Extracting content from: https://gamerant.com/pokemon-legends-z-a-poison-damage-mechanic-outside-battles/
+2025-08-17 18:49:31 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:49:31 - app.tags - INFO - Extracted 15 tags: Pokemon, Legends, Pokemon Legends, Poison, Nintendo...
+2025-08-17 18:49:31 - app.pipeline - ERROR - Error processing article https://gamerant.com/pokemon-legends-z-a-poison-damage-mechanic-outside-battles/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:49:31 - app.pipeline - INFO - Processing article: Analyst Claims That Grand Theft Auto 6's Biggest Competition is GTA 5 (DB ID: 101) from gamerant_games
+2025-08-17 18:49:32 - app.extractor - INFO - Extracting content from: https://gamerant.com/grand-theft-auto-6-biggest-competition-gta-5-analyst/
+2025-08-17 18:49:32 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:49:32 - app.tags - INFO - Extracted 15 tags: Grand Theft Auto, GTA, Rockstar, Analyst Claims That Grand Theft Auto, Biggest Competition...
+2025-08-17 18:49:32 - app.pipeline - ERROR - Error processing article https://gamerant.com/grand-theft-auto-6-biggest-competition-gta-5-analyst/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:49:32 - app.pipeline - INFO - Processing article: Genshin Impact Leak Hints at Two New Nod-Krai Characters (DB ID: 102) from gamerant_games
+2025-08-17 18:49:32 - app.extractor - INFO - Extracting content from: https://gamerant.com/genshin-impact-leak-nod-krai-characters-jahoda-linnea/
+2025-08-17 18:49:33 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:49:33 - app.tags - INFO - Extracted 15 tags: Genshin, Impact, Genshin Impact, Krai, Nod...
+2025-08-17 18:49:33 - app.pipeline - ERROR - Error processing article https://gamerant.com/genshin-impact-leak-nod-krai-characters-jahoda-linnea/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:49:33 - app.pipeline - INFO - Finished feed 'gamerant_games'. Sleeping for 15s before next feed: thegamer_games
+2025-08-17 18:49:48 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-08-17 18:49:48 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-17 18:49:49 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-17 18:49:49 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-17 18:49:49 - app.pipeline - INFO - Found 10 new articles for thegamer_games
+2025-08-17 18:49:49 - app.pipeline - INFO - Processing article: Pokemon Legends Z-A Is Being Compared To Dark Souls (DB ID: 110) from thegamer_games
+2025-08-17 18:49:49 - app.extractor - INFO - Extracting content from: https://www.thegamer.com/pokemon-pokemon-legends-z-a-lza-dark-souls-comparison-playable-demo/
+2025-08-17 18:49:50 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:49:50 - app.tags - INFO - Extracted 15 tags: Dark Souls, Pokemon, Nintendo, And We Can See Why, Kind Of Like That...
+2025-08-17 18:49:50 - app.pipeline - ERROR - Error processing article https://www.thegamer.com/pokemon-pokemon-legends-z-a-lza-dark-souls-comparison-playable-demo/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:49:50 - app.pipeline - INFO - Processing article: Battlefield 6 Players Think The Defibrillator Is Way Too Overpowered (DB ID: 111) from thegamer_games
+2025-08-17 18:49:50 - app.extractor - INFO - Extracting content from: https://www.thegamer.com/battlefield-6-medic-defib-overpowered-infinite-ammo/
+2025-08-17 18:49:50 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:49:50 - app.tags - INFO - Extracted 15 tags: Battlefield, But Some Think The Defib Is Overpowered And Has, Everyone Loves Playing Medic In Battlefield, Infinite Ammo, Multiplayer...
+2025-08-17 18:49:50 - app.pipeline - ERROR - Error processing article https://www.thegamer.com/battlefield-6-medic-defib-overpowered-infinite-ammo/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:49:51 - app.pipeline - INFO - Processing article: Call Of Duty Leaker Seemingly Reveals Black Ops 7 Campaign Characters (DB ID: 112) from thegamer_games
+2025-08-17 18:49:51 - app.extractor - INFO - Extracting content from: https://www.thegamer.com/call-of-duty-cod-black-ops-7-bo7-campaign-leak-retcon/
+2025-08-17 18:49:51 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 18:49:51 - app.tags - INFO - Extracted 15 tags: Black Ops, Harper, Duty, Call, New Leak Suggets...
+2025-08-17 18:49:51 - app.pipeline - ERROR - Error processing article https://www.thegamer.com/call-of-duty-cod-black-ops-7-bo7-campaign-leak-retcon/: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        publisher_name=PIPELINE_CONFIG['publisher_name']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: AIProcessor.rewrite_content() got an unexpected keyword argument 'publisher_name'
+2025-08-17 18:49:51 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 18:49:51 - app.store - INFO - Database connection closed.
+2025-08-17 18:49:51 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 18:49:51 - __main__ - INFO - Ciclo único concluído com sucesso.
+2025-08-17 19:00:58 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 19:00:58 - app.store - INFO - Database initialized successfully.
+2025-08-17 19:00:58 - app.store - INFO - Database connection closed.
+2025-08-17 19:00:58 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 19:00:58 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 19:00:58 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 19:01:00 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 19:01:00 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 19:01:00 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:01:01 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 19:01:01 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 19:01:01 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 19:01:01 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 19:01:01 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 19:01:01 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 19:01:01 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 19:01:01 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 19:01:01 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 19:01:01 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:01:02 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 19:01:02 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 19:01:02 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-17 19:01:02 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-17 19:01:02 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 19:01:02 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-17 19:01:02 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-17 19:01:02 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-17 19:01:02 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-17 19:01:02 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 19:01:03 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-17 19:01:03 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-17 19:01:03 - app.pipeline - INFO - Found 1 new articles for movieweb_movies
+2025-08-17 19:01:03 - app.pipeline - INFO - Processing article: Ice Cube's 'War of the Worlds' Is a Fascinating and Flawed Sci-Fi Adaptation (DB ID: 120) from movieweb_movies
+2025-08-17 19:01:03 - app.extractor - INFO - Extracting content from: https://movieweb.com/ice-cube-war-of-the-worlds-fascinating-flawed-entertaining-movie/
+2025-08-17 19:01:04 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 19:01:04 - app.tags - INFO - Extracted 15 tags: Worlds, War, Ice Cube, Radford, Ice Cube's...
+2025-08-17 19:01:04 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 19:01:05 - app.ai_processor - ERROR - AI content generation failed with key index 0: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:01:05 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:01:05 - app.ai_processor - INFO - Using API key index 1 for category 'movies'.
+2025-08-17 19:01:05 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-17 19:01:06 - app.ai_processor - ERROR - AI content generation failed with key index 1: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:01:06 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:01:06 - app.ai_processor - INFO - Using API key index 2 for category 'movies'.
+2025-08-17 19:01:06 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 2)...
+2025-08-17 19:01:07 - app.ai_processor - ERROR - AI content generation failed with key index 2: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:01:07 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:01:07 - app.ai_processor - INFO - Using API key index 3 for category 'movies'.
+2025-08-17 19:01:07 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 3)...
+2025-08-17 19:01:08 - app.ai_processor - ERROR - AI content generation failed with key index 3: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:01:08 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:01:08 - app.ai_processor - INFO - Using API key index 4 for category 'movies'.
+2025-08-17 19:01:08 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 4)...
+2025-08-17 19:01:09 - app.ai_processor - ERROR - AI content generation failed with key index 4: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:01:09 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:01:09 - app.ai_processor - INFO - Using API key index 5 for category 'movies'.
+2025-08-17 19:01:09 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 5)...
+2025-08-17 19:01:10 - app.ai_processor - ERROR - AI content generation failed with key index 5: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-08-17 19:01:10 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-17 19:01:10 - app.ai_processor - INFO - Using API key index 6 for category 'movies'.
+2025-08-17 19:01:10 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 6)...
+2025-08-17 19:01:10 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 19:01:10 - app.store - INFO - Database connection closed.
+2025-08-17 19:01:10 - app.wordpress - INFO - WordPress client connection closed.

@@ -3755,3 +3755,17 @@ TypeError: Database.update_article_status() got an unexpected keyword argument '
 2025-08-16 13:42:50 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-16 13:42:50 - app.store - INFO - Database connection closed.
 2025-08-16 13:42:50 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 17:32:06 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 17:32:06 - app.store - INFO - Database initialized successfully.
+2025-08-17 17:32:06 - app.store - INFO - Database connection closed.
+2025-08-17 17:32:06 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 17:32:06 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 17:32:06 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 17:32:06 - __main__ - CRITICAL - Erro crítico durante a execução do ciclo único: AIProcessor.__init__() missing 1 required positional argument: 'category'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\main.py", line 41, in main
+    run_pipeline_cycle()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 34, in run_pipeline_cycle
+    ai_processor = AIProcessor()
+TypeError: AIProcessor.__init__() missing 1 required positional argument: 'category'

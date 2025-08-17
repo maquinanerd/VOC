@@ -31,7 +31,6 @@ def run_pipeline_cycle():
     feed_reader = FeedReader(user_agent=PIPELINE_CONFIG.get('publisher_name', 'Bot'))
     extractor = ContentExtractor(user_agent=PIPELINE_CONFIG.get('publisher_name', 'Bot'))
     tag_extractor = TagExtractor()
-    ai_processor = AIProcessor()
     rewriter = ContentRewriter()
     categorizer = Categorizer()
     wp_client = WordPressClient(config=WORDPRESS_CONFIG, categories_map=WORDPRESS_CATEGORIES)
@@ -53,7 +52,11 @@ def run_pipeline_cycle():
                 logger.warning(f"No configuration found for feed source: {source_id}")
                 continue
 
-            logger.info(f"Processing feed: {source_id}")
+            category = feed_config['category']
+            logger.info(f"Processing feed: {source_id} (Category: {category})")
+
+            ai_processor = AIProcessor(category)
+
             try:
                 feed_items = feed_reader.read_feeds(feed_config['urls'], source_id)
                 new_articles = db.filter_new_articles(source_id, feed_items)
@@ -79,7 +82,6 @@ def run_pipeline_cycle():
                         tags = tag_extractor.extract_tags(extracted_content['content'], extracted_content['title'])
 
                         rewritten_text, failure_reason = ai_processor.rewrite_content(
-                            category=feed_config['category'],
                             title=extracted_content['title'],
                             excerpt=extracted_content.get('excerpt', ''),
                             content=extracted_content['content'],

@@ -19,6 +19,18 @@ YOUTUBE_DOMAINS = (
     "www.youtu.be",
 )
 
+PRIORITY_CDN_DOMAINS = (
+    "static1.srcdn.com",
+    "static1.colliderimages.com",
+    "static1.cbrimages.com",
+    "static1.moviewebimages.com",
+    "static0.gamerantimages.com",
+    "static1.gamerantimages.com",
+    "static2.gamerantimages.com",
+    "static3.gamerantimages.com",
+    "static1.thegamerimages.com",
+)
+
 FORBIDDEN_TEXT_EXACT: Set[str] = {
     "Your comment has not been saved",
 }
@@ -27,6 +39,8 @@ FORBIDDEN_LABELS: Set[str] = {
     "Release Date", "Runtime", "Director", "Directors", "Writer", "Writers",
     "Producer", "Producers", "Cast"
 }
+
+JUNK_IMAGE_PATTERNS = ("placeholder", "sprite", "icon", "emoji", ".svg")
 
 def _parse_srcset(srcset: str):
     """
@@ -66,8 +80,8 @@ def is_small(u: str) -> bool:
             logger.debug(f"Filtering out small image by query param: {u} (w={w}, h={h})")
             return True
         # Check for common placeholder/junk patterns
-        if "placeholder" in u.lower() or u.lower().endswith(".svg"):
-            logger.debug(f"Filtering out image by pattern (placeholder/svg): {u}")
+        if any(pat in u.lower() for pat in JUNK_IMAGE_PATTERNS):
+            logger.debug(f"Filtering out image by pattern (junk/svg): {u}")
             return True
     except (ValueError, IndexError):
         pass # Ignore parsing errors in query params
@@ -82,14 +96,18 @@ def _abs(u: str, base: str) -> str | None:
         return None
     return urljoin(base, u)
 
+def _extract_from_style(style_attr: str) -> Optional[str]:
+    """Extracts a URL from a 'background-image: url(...)' style attribute."""
+    if not style_attr:
+        return None
+    # Regex to find url(...) and handle optional quotes
+    match = re.search(r"url\((['\"]?)(.*?)\1\)", style_attr)
+    if match:
+        return match.group(2)
+    return None
+
 def collect_images_from_article(soup: BeautifulSoup, base_url: str) -> list[str]:
     """
-    Collects all valid image URLs from an article's soup, handling various
-    lazy-loading and responsive image techniques.
-    """
-    urls = []
-
-    # 1) Classic <img> tags (src, data-*, and srcset)
     for img in soup.find_all("img"):
         cand = None
         for attr in ("src", "data-src", "data-original", "data-lazy-src", "data-image", "data-img-url"):

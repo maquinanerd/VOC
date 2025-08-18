@@ -19,32 +19,32 @@ Use a seguinte estrutura JSON para a sua resposta:
 
 ### DETALHES PARA CADA CAMPO DO JSON:
 
-1. **titulo_final**:  
-   - Crie um novo título otimizado para SEO, atrativo e claro.  
+1. **titulo_final**:
+   - Crie um novo título otimizado para SEO, atrativo e claro.
    - Apenas texto, sem HTML.
 
-2. **conteudo_final**:  
-   - Texto reestruturado em parágrafos curtos com `<p>`  
-   - Destacar palavras-chave com `<b>`  
-   - Inserir links internos com `<a href="{domain}/tag/slug">`  
+2. **conteudo_final**:
+   - Texto reestruturado em parágrafos curtos com `<p>`
+   - Destacar palavras-chave com `<b>`
+   - Inserir links internos com `<a href="{domain}/tag/slug">`
    - Preservar todas as mídias HTML originais.
 
-3. **meta_description**:  
+3. **meta_description**:
    - Até 150 caracteres, atrativo para o Google.
 
-4. **focus_keyword**:  
+4. **focus_keyword**:
    - Palavra-chave principal presente em `titulo_final`, `meta_description` e `conteudo_final`.
 
-5. **tags**:  
+5. **tags**:
    - Lista com pelo menos 5 termos relevantes do conteúdo.
 
-6. **categorias**:  
+6. **categorias**:
    - Uma única string indicando a categoria (ex: `["movies"]`).
 
-7. **titulo_original**:  
+7. **titulo_original**:
    - Copiar exatamente como fornecido.
 
-8. **url_original**:  
+8. **url_original**:
    - Copiar exatamente como fornecido.
 
 ---

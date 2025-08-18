@@ -424,6 +424,9 @@ class ContentExtractor:
             # 2. Convert proprietary image divs to standard <figure> tags
             self._convert_data_img_to_figure(soup)
 
+            # 3.1 Coletar imagens do HTML limpo (antes do trafilatura)
+            pre_images = collect_images_from_article(soup, base_url=url)
+
             # 3. Extract the featured image URL using the priority list
             featured_image_url = self._extract_featured_image(soup, url)
 
@@ -463,9 +466,16 @@ class ContentExtractor:
             article_soup = BeautifulSoup(content_html, 'lxml')
             self._remove_forbidden_blocks(article_soup)
 
-            # 7. Collect all images using the advanced collector from the cleaned article soup
-            all_image_urls = collect_images_from_article(article_soup, base_url=url)
-            logger.info(f"Collected {len(all_image_urls)} images from article body.")
+            # 7. Combine pre- and post-trafilatura images
+            post_images = collect_images_from_article(article_soup, base_url=url)
+
+            seen, all_image_urls = set(), []
+            for u in pre_images + post_images:
+                if u not in seen:
+                    seen.add(u)
+                    all_image_urls.append(u)
+
+            logger.info(f"Collected {len(all_image_urls)} images from article (pre+post).")
 
             # The body tag is sometimes added by BeautifulSoup, we only want the contents
             if article_soup.body:

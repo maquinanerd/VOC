@@ -23,6 +23,7 @@ from .html_utils import (
     add_credit_to_figures,
     rewrite_img_srcs_with_wp,
     hard_filter_forbidden_html,
+    strip_credits_and_normalize_youtube,
 )
 from bs4 import BeautifulSoup
 
@@ -136,8 +137,11 @@ def run_pipeline_cycle():
                         content_html = rewrite_img_srcs_with_wp(content_html, uploaded_src_map)
 
                         # 3.4: Add credits to figures
-                        content_html = add_credit_to_figures(content_html, extracted_data['source_url'])
+                        # content_html = add_credit_to_figures(content_html, extracted_data['source_url'])
 
+                        # Só player do YouTube (oEmbed) e sem “Crédito: …”
+                        content_html = strip_credits_and_normalize_youtube(content_html)
+                        
                         # 3.5: Final sanitization pass
                         content_html = hard_filter_forbidden_html(content_html)
 

@@ -6520,3 +6520,60 @@ message: "API key not valid. Please pass a valid API key."
 2025-08-18 11:44:46 - app.pipeline - INFO - Pipeline cycle completed. Processed 7 articles.
 2025-08-18 11:44:46 - app.store - INFO - Database connection closed.
 2025-08-18 11:44:46 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-18 14:56:04 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-18 14:56:04 - app.store - INFO - Database initialized successfully.
+2025-08-18 14:56:04 - app.store - INFO - Database connection closed.
+2025-08-18 14:56:04 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-18 14:56:04 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-18 14:56:04 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-18 14:56:07 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-18 14:56:07 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-18 14:56:07 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 14:56:08 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-18 14:56:08 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-18 14:56:08 - app.pipeline - INFO - Found 6 new articles for screenrant_movies
+2025-08-18 14:56:08 - app.pipeline - INFO - Processing article: New Shudder Horror Trailer Reveals The Terrifying Cujo Replacement With 95% RT Score (DB ID: 183) from screenrant_movies
+2025-08-18 14:56:09 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 14:56:09 - app.extractor - INFO - Converted 1 'data-img-url' divs to <figure> tags.
+2025-08-18 14:56:09 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 14:56:09 - app.extractor - INFO - Found 1 unique YouTube videos.
+2025-08-18 14:56:09 - app.extractor - INFO - Collected 0 images from article body.
+2025-08-18 14:56:09 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/good-boy-dog-horror-movie-trailer/. Title: New Shudder Horror Trailer Reveals The Terrifying ...
+2025-08-18 14:56:09 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 14:56:15 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 14:56:45 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 14:56:45 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/good-boy-horror-movie-dog.jpg
+2025-08-18 14:56:45 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/good-boy-horror-movie-dog.jpg "HTTP/1.1 200 OK"
+2025-08-18 14:56:46 - app.wordpress - INFO - Uploading image 'good-boy-horror-movie-dog.jpg' to WordPress.
+2025-08-18 14:57:02 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 14:57:02 - app.wordpress - INFO - Uploaded media 14029 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/good-boy-horror-movie-dog.jpg
+2025-08-18 14:57:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14029 "HTTP/1.1 200 OK"
+2025-08-18 14:57:03 - app.html_utils - INFO - Adicionou/atualizou créditos para 1 figuras.
+2025-08-18 14:57:03 - app.wordpress - INFO - Post will be created with featured_media 14029.
+2025-08-18 14:57:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=good-boy "HTTP/1.1 200 OK"
+2025-08-18 14:57:06 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 14:57:06 - app.wordpress - INFO - Successfully created tag 'Good Boy'
+2025-08-18 14:57:08 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ben-leonberg "HTTP/1.1 200 OK"
+2025-08-18 14:57:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 14:57:10 - app.wordpress - INFO - Successfully created tag 'Ben Leonberg'
+2025-08-18 14:57:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=alex-cannon "HTTP/1.1 200 OK"
+2025-08-18 14:57:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 14:57:13 - app.wordpress - INFO - Successfully created tag 'Alex Cannon'
+2025-08-18 14:57:15 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ifc-films "HTTP/1.1 200 OK"
+2025-08-18 14:57:16 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 14:57:16 - app.wordpress - INFO - Successfully created tag 'IFC Films'
+2025-08-18 14:57:17 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=terror "HTTP/1.1 200 OK"
+2025-08-18 14:57:20 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 14:57:20 - app.wordpress - INFO - Successfully created tag 'terror'
+2025-08-18 14:57:21 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=filme-de-cachorro "HTTP/1.1 200 OK"
+2025-08-18 14:57:22 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 14:57:22 - app.wordpress - INFO - Successfully created tag 'filme de cachorro'
+2025-08-18 14:57:22 - app.wordpress - INFO - Creating WordPress post: Terror canino: Trailer de Good Boy revela filme de horror com 95% de aprovação no Rotten Tomatoes
+2025-08-18 14:57:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 14:57:25 - app.wordpress - INFO - Successfully created post 'Terror canino: Trailer de Good Boy revela filme de horror com 95% de aprovação no Rotten Tomatoes' with ID: 14030
+2025-08-18 14:57:25 - app.store - INFO - Successfully recorded published post for article DB ID 183 (WP Post ID: 14030).
+2025-08-18 14:57:25 - app.pipeline - INFO - Successfully published post 14030 for article DB ID 183
+2025-08-18 14:57:25 - app.pipeline - INFO - Sleeping for 9.1s (per-article delay).
+2025-08-18 14:57:28 - app.pipeline - INFO - Pipeline cycle completed. Processed 1 articles.
+2025-08-18 14:57:28 - app.store - INFO - Database connection closed.
+2025-08-18 14:57:28 - app.wordpress - INFO - WordPress client connection closed.

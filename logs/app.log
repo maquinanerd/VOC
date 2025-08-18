@@ -5581,3 +5581,108 @@ KeyError: '\n  "titulo_final"'
 2025-08-17 22:33:19 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 22:33:19 - app.store - INFO - Database connection closed.
 2025-08-17 22:33:19 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 22:43:14 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 22:43:14 - app.store - INFO - Database initialized successfully.
+2025-08-17 22:43:14 - app.store - INFO - Database connection closed.
+2025-08-17 22:43:14 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 22:43:14 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 22:43:14 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 22:43:16 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 22:43:16 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 22:43:16 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 22:43:17 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 22:43:17 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 22:43:17 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 22:43:17 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 22:43:17 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 22:43:17 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 22:43:17 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 22:43:17 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 22:43:17 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 22:43:17 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 22:43:18 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 22:43:18 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 22:43:18 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-17 22:43:18 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-17 22:43:18 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 22:43:18 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-17 22:43:18 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-17 22:43:18 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-17 22:43:18 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-17 22:43:18 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 22:43:19 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-17 22:43:19 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-17 22:43:19 - app.pipeline - INFO - Found 3 new articles for movieweb_movies
+2025-08-17 22:43:19 - app.pipeline - INFO - Processing article: 8 TV Shows That Are Pure Rage Bait From Start to Finish (DB ID: 154) from movieweb_movies
+2025-08-17 22:43:19 - app.extractor - INFO - Extracting content from: https://movieweb.com/tv-shows-that-are-pure-rage-bait-from-start-to-finish/
+2025-08-17 22:43:20 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 22:43:20 - app.tags - INFO - Extracted 15 tags: Velma, Caillou, Force, Drawn Together, Big Mouth...
+2025-08-17 22:43:20 - app.pipeline - ERROR - Error processing article https://movieweb.com/tv-shows-that-are-pure-rage-bait-from-start-to-finish/: '\n  "titulo_final"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 82, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        domain=wp_client.get_domain(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 120, in rewrite_content
+    prompt = prompt_template.format(
+        titulo_original=title,
+    ...<2 lines>...
+        domain=domain,
+    )
+KeyError: '\n  "titulo_final"'
+2025-08-17 22:43:20 - app.pipeline - INFO - Processing article: Greatest Sci-Fi Horror Movies of All Time (DB ID: 155) from movieweb_movies
+2025-08-17 22:43:20 - app.extractor - INFO - Extracting content from: https://movieweb.com/greatest-sci-fi-horror-movies-of-all-time/
+2025-08-17 22:43:20 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 22:43:20 - app.tags - INFO - Extracted 15 tags: One, Event Horizon, Bennell, Beyond, Greatest Sci-Fi Horror Movies...
+2025-08-17 22:43:20 - app.pipeline - ERROR - Error processing article https://movieweb.com/greatest-sci-fi-horror-movies-of-all-time/: '\n  "titulo_final"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 82, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        domain=wp_client.get_domain(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 120, in rewrite_content
+    prompt = prompt_template.format(
+        titulo_original=title,
+    ...<2 lines>...
+        domain=domain,
+    )
+KeyError: '\n  "titulo_final"'
+2025-08-17 22:43:20 - app.pipeline - INFO - Processing article: 10 Best Non-Linear TV Shows That Require Your Full Attention (DB ID: 156) from movieweb_movies
+2025-08-17 22:43:20 - app.extractor - INFO - Extracting content from: https://movieweb.com/best-non-linear-tv-shows/
+2025-08-17 22:43:21 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 22:43:21 - app.tags - INFO - Extracted 15 tags: Westworld, The Witcher, The Expanse, Lisa Joy, Damages...
+2025-08-17 22:43:21 - app.pipeline - ERROR - Error processing article https://movieweb.com/best-non-linear-tv-shows/: '\n  "titulo_final"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 82, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        domain=wp_client.get_domain(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 120, in rewrite_content
+    prompt = prompt_template.format(
+        titulo_original=title,
+    ...<2 lines>...
+        domain=domain,
+    )
+KeyError: '\n  "titulo_final"'
+2025-08-17 22:43:21 - app.pipeline - INFO - Finished feed 'movieweb_movies'. Sleeping for 15s before next feed: cbr_movies
+2025-08-17 22:43:24 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 22:43:24 - app.store - INFO - Database connection closed.
+2025-08-17 22:43:24 - app.wordpress - INFO - WordPress client connection closed.

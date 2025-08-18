@@ -4,7 +4,7 @@ A SUA RESPOSTA DEVE SER ESTRITAMENTE UM OBJETO JSON VÁLIDO. NÃO INCLUA NENHUM 
 
 Use a seguinte estrutura JSON para a sua resposta:
 ```json
-{
+{{
   "titulo_final": "...",
   "conteudo_final": "...",
   "meta_description": "...",
@@ -12,7 +12,7 @@ Use a seguinte estrutura JSON para a sua resposta:
   "tags": ["tag-especifica-1", "tag-especifica-2", "nome-de-ator", "nome-do-filme"],
   "titulo_original": "...",
   "url_original": "..."
-}
+}}
 ```
 
 ### DETALHES PARA CADA CAMPO DO JSON:

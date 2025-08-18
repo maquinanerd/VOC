@@ -14,7 +14,6 @@ from .config import (
 from .store import Database
 from .feeds import FeedReader
 from .extractor import ContentExtractor
-from .tags import TagExtractor
 from .ai_processor import AIProcessor
 from .categorizer import Categorizer
 from .wordpress import WordPressClient
@@ -28,8 +27,7 @@ def run_pipeline_cycle():
 
     db = Database()
     feed_reader = FeedReader(user_agent=PIPELINE_CONFIG.get('publisher_name', 'Bot'))
-    extractor = ContentExtractor(user_agent=PIPELINE_CONFIG.get('publisher_name', 'Bot'))
-    tag_extractor = TagExtractor()
+    extractor = ContentExtractor()
     categorizer = Categorizer()
     wp_client = WordPressClient(config=WORDPRESS_CONFIG, categories_map=WORDPRESS_CATEGORIES)
 
@@ -71,21 +69,18 @@ def run_pipeline_cycle():
                         logger.info(f"Processing article: {article_data['title']} (DB ID: {article_db_id}) from {source_id}")
                         db.update_article_status(article_db_id, 'PROCESSING')
 
-                        extracted_content = extractor.extract_content(article_data['link'])
-                        if not extracted_content or not extracted_content.get('content'):
+                        extracted_data = extractor.extract(article_data['link'])
+                        if not extracted_data or not extracted_data.get('content'):
                             logger.warning(f"Failed to extract content from {article_data['link']}")
                             db.update_article_status(article_db_id, 'FAILED', reason="Extraction failed")
                             continue
 
-                        tags = tag_extractor.extract_tags(extracted_content['content'], extracted_content['title'])
-
                         rewritten_data, failure_reason = ai_processor.rewrite_content(
-                            title=extracted_content['title'],
+                            title=extracted_data['title'],
                             url=article_data['link'],
-                            excerpt=extracted_content.get('excerpt', ''),
-                            content=extracted_content['content'],
-                            tags_text=', '.join(tags),
+                            content=extracted_data['content'],
                             domain=wp_client.get_domain(),
+                            videos=extracted_data.get('videos', [])
                         )
 
                         if not rewritten_data:
@@ -108,7 +103,8 @@ def run_pipeline_cycle():
                             'excerpt': rewritten_data['meta_description'],
                             'status': 'publish',
                             'categories': [wp_category_id] if wp_category_id else [],
-                            'tags': rewritten_data.get('tags', [])
+                            'tags': rewritten_data.get('tags', []),
+                            'featured_image_url': extracted_data.get('featured_image_url')
                         }
 
                         wp_post_id = wp_client.create_post(post_payload)

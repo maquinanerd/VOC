@@ -24,6 +24,12 @@ Use a seguinte estrutura JSON para a sua resposta:
 2.  **conteudo_final**:
     *   Reestruture o texto em parágrafos curtos e coesos, cada um envolto em `<p>`. **Não crie parágrafos novos a cada vírgula.**
     *   **PRESERVE INTEGRALMENTE todas as tags de mídia do conteúdo original**, como `<img>`, `<figure>` e `<iframe>`. Elas devem estar no `conteudo_final`.
+    *   **INCORPORE OS VÍDEOS DO YOUTUBE** fornecidos na lista abaixo em pontos relevantes do texto. Use o seguinte formato de `<iframe>` para cada vídeo. Limite a no máximo 3 vídeos por artigo:
+        ```html
+        <figure class="video-container">
+          <iframe src="URL_DO_EMBED_AQUI" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </figure>
+        ```
     *   Destaque com `<b>` os termos mais importantes (nomes de filmes, atores, personagens, estúdios).
     *   Insira links internos contextuais usando as tags que você identificou. Ex: `<b><a href="{domain}/tag/miles-teller">Miles Teller</a></b>`.
 
@@ -47,6 +53,7 @@ DADOS PARA PROCESSAMENTO:
 - Título Original: {titulo_original}
 - URL Original: {url_original}
 - Domínio para Links Internos: {domain}
+- Vídeos do YouTube Disponíveis (use a embed_url): {videos_list}
 - Conteúdo Original (HTML):
 {content}
 ---

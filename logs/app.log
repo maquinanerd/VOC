@@ -5686,3 +5686,208 @@ KeyError: '\n  "titulo_final"'
 2025-08-17 22:43:24 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 22:43:24 - app.store - INFO - Database connection closed.
 2025-08-17 22:43:24 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 22:47:44 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 22:47:44 - app.store - INFO - Database initialized successfully.
+2025-08-17 22:47:44 - app.store - INFO - Database connection closed.
+2025-08-17 22:47:44 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 22:47:44 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 22:47:44 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 22:47:46 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 22:47:46 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 22:47:46 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 22:47:47 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 22:47:47 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 22:47:47 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 22:47:47 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 22:47:47 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 22:47:47 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 22:47:47 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 22:47:47 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 22:47:47 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 22:47:47 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 22:47:48 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 22:47:48 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 22:47:48 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-17 22:47:48 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-17 22:47:48 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 22:47:48 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-17 22:47:48 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-17 22:47:48 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-17 22:47:48 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-17 22:47:48 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 22:47:49 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-17 22:47:49 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-17 22:47:49 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-17 22:47:49 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-17 22:47:49 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 22:47:50 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-17 22:47:50 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-17 22:47:50 - app.pipeline - INFO - Found 2 new articles for cbr_movies
+2025-08-17 22:47:50 - app.pipeline - INFO - Processing article: The Scariest Movie of 2024 Is This 91% RT Masterpiece That's Quietly Dominating the Streaming Charts (DB ID: 157) from cbr_movies
+2025-08-17 22:47:50 - app.extractor - INFO - Extracting content from: https://www.cbr.com/a24-heretic-dominating-the-streaming-charts/
+2025-08-17 22:47:51 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 22:47:51 - app.tags - INFO - Extracted 15 tags: Heretic, Thatcher, RT Masterpiece That's Quietly Dominating, Amazon Prime Video, The Scariest Movie...
+2025-08-17 22:47:51 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 22:48:00 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 22:48:30 - app.wordpress - INFO - Downloading image for upload: https://static1.cbrimages.com/wordpress/wp-content/uploads/sharedimages/2025/02/01718402_poster_w780.jpg?q=49&fit=contain&w=480&dpr=2
+2025-08-17 22:48:30 - httpx - INFO - HTTP Request: GET https://static1.cbrimages.com/wordpress/wp-content/uploads/sharedimages/2025/02/01718402_poster_w780.jpg?q=49&fit=contain&w=480&dpr=2 "HTTP/1.1 200 OK"
+2025-08-17 22:48:31 - app.wordpress - INFO - Uploading image '01718402_poster_w780.jpg' to WordPress.
+2025-08-17 22:48:36 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-17 22:48:36 - app.wordpress - INFO - Image uploaded successfully. Media ID: 13901
+2025-08-17 22:48:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13901 "HTTP/1.1 200 OK"
+2025-08-17 22:48:38 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=a24 "HTTP/1.1 200 OK"
+2025-08-17 22:48:39 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=heretic "HTTP/1.1 200 OK"
+2025-08-17 22:48:40 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:48:40 - app.wordpress - INFO - Successfully created tag 'Heretic'
+2025-08-17 22:48:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hugh-grant "HTTP/1.1 200 OK"
+2025-08-17 22:48:42 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:48:42 - app.wordpress - INFO - Successfully created tag 'Hugh Grant'
+2025-08-17 22:48:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=chloe-east "HTTP/1.1 200 OK"
+2025-08-17 22:48:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:48:43 - app.wordpress - INFO - Successfully created tag 'Chloe East'
+2025-08-17 22:48:44 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=sophie-thatcher "HTTP/1.1 200 OK"
+2025-08-17 22:48:45 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:48:45 - app.wordpress - INFO - Successfully created tag 'Sophie Thatcher'
+2025-08-17 22:48:50 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=amazon-prime-video "HTTP/1.1 200 OK"
+2025-08-17 22:48:51 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=rotten-tomatoes "HTTP/1.1 200 OK"
+2025-08-17 22:48:51 - app.wordpress - INFO - Creating WordPress post: Heretic (2024): Sucesso de terror da A24 domina o streaming
+2025-08-17 22:48:54 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-17 22:48:54 - app.wordpress - INFO - Successfully created post 'Heretic (2024): Sucesso de terror da A24 domina o streaming' with ID: 13902
+2025-08-17 22:48:54 - app.store - INFO - Successfully recorded published post for article DB ID 157 (WP Post ID: 13902).
+2025-08-17 22:48:54 - app.pipeline - INFO - Successfully published post 13902 for article DB ID 157
+2025-08-17 22:48:54 - app.pipeline - INFO - Sleeping for 7.4s (per-article delay).
+2025-08-17 22:49:01 - app.pipeline - INFO - Processing article: Stephen King's Dreamcatcher Finds New Life on Streaming (DB ID: 158) from cbr_movies
+2025-08-17 22:49:01 - app.extractor - INFO - Extracting content from: https://www.cbr.com/stephen-king-dreamcatcher-streaming/
+2025-08-17 22:49:02 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 22:49:02 - app.tags - INFO - Extracted 15 tags: King, Dreamcatcher, Stephen King, The Stephen King Film With, Fi History Finds New Life...
+2025-08-17 22:49:02 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 22:49:13 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 22:49:43 - app.wordpress - INFO - Downloading image for upload: https://static1.cbrimages.com/wordpress/wp-content/uploads/sharedimages/2025/07/01110797_poster_w780.jpg?q=49&fit=contain&w=480&dpr=2
+2025-08-17 22:49:44 - httpx - INFO - HTTP Request: GET https://static1.cbrimages.com/wordpress/wp-content/uploads/sharedimages/2025/07/01110797_poster_w780.jpg?q=49&fit=contain&w=480&dpr=2 "HTTP/1.1 200 OK"
+2025-08-17 22:49:44 - app.wordpress - INFO - Uploading image '01110797_poster_w780.jpg' to WordPress.
+2025-08-17 22:49:51 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-17 22:49:51 - app.wordpress - INFO - Image uploaded successfully. Media ID: 13903
+2025-08-17 22:49:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13903 "HTTP/1.1 200 OK"
+2025-08-17 22:49:53 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dreamcatcher "HTTP/1.1 200 OK"
+2025-08-17 22:49:54 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:49:54 - app.wordpress - INFO - Successfully created tag 'Dreamcatcher'
+2025-08-17 22:49:55 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=stephen-king "HTTP/1.1 200 OK"
+2025-08-17 22:49:55 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=lawrence-kasdan "HTTP/1.1 200 OK"
+2025-08-17 22:49:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:49:56 - app.wordpress - INFO - Successfully created tag 'Lawrence Kasdan'
+2025-08-17 22:49:57 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=damian-lewis "HTTP/1.1 200 OK"
+2025-08-17 22:49:58 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:49:58 - app.wordpress - INFO - Successfully created tag 'Damian Lewis'
+2025-08-17 22:49:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=thomas-jane "HTTP/1.1 200 OK"
+2025-08-17 22:50:00 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:50:00 - app.wordpress - INFO - Successfully created tag 'Thomas Jane'
+2025-08-17 22:50:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=tubi "HTTP/1.1 200 OK"
+2025-08-17 22:50:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=sci-fi "HTTP/1.1 200 OK"
+2025-08-17 22:50:01 - app.wordpress - INFO - Creating WordPress post: Dreamcatcher: O filme de Stephen King que voltou aos streamings
+2025-08-17 22:50:05 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-17 22:50:05 - app.wordpress - INFO - Successfully created post 'Dreamcatcher: O filme de Stephen King que voltou aos streamings' with ID: 13904
+2025-08-17 22:50:05 - app.store - INFO - Successfully recorded published post for article DB ID 158 (WP Post ID: 13904).
+2025-08-17 22:50:05 - app.pipeline - INFO - Successfully published post 13904 for article DB ID 158
+2025-08-17 22:50:05 - app.pipeline - INFO - Sleeping for 6.2s (per-article delay).
+2025-08-17 22:50:11 - app.pipeline - INFO - Finished feed 'cbr_movies'. Sleeping for 15s before next feed: cbr_tv
+2025-08-17 22:50:26 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-08-17 22:50:26 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 22:50:27 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/tv/news-tv/
+2025-08-17 22:50:27 - app.feeds - INFO - Total unique items for cbr_tv: 10
+2025-08-17 22:50:27 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-08-17 22:50:27 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-08-17 22:50:27 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-17 22:50:27 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-17 22:50:27 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-17 22:50:27 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-08-17 22:50:27 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-08-17 22:50:27 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-17 22:50:28 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-17 22:50:28 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-17 22:50:28 - app.pipeline - INFO - Found 1 new articles for thegamer_games
+2025-08-17 22:50:28 - app.pipeline - INFO - Processing article: Battlefield 6 Dataminers Give Us Our First Look At Big Maps (DB ID: 159) from thegamer_games
+2025-08-17 22:50:28 - app.extractor - INFO - Extracting content from: https://www.thegamer.com/battlefield-bf-battlefield-6-bf6-large-maps-datamine-battlefield-studios/
+2025-08-17 22:50:29 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 22:50:29 - app.tags - INFO - Extracted 15 tags: Battlefield, We Finally Have Proof That Battlefield, Is Going To Have Large Maps At Launch, Battlefield Studios, Mirak Valley...
+2025-08-17 22:50:29 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 22:50:29 - app.ai_processor - ERROR - AI content generation failed with key index 0: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-08-17 22:50:29 - app.ai_processor - WARNING - Failing over to next API key for category 'games'.
+2025-08-17 22:50:29 - app.ai_processor - INFO - Using API key index 1 for category 'games'.
+2025-08-17 22:50:29 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-17 22:50:40 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 22:51:10 - app.wordpress - WARNING - No <img> tag found in the content to set as featured image.
+2025-08-17 22:51:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=battlefield-6 "HTTP/1.1 200 OK"
+2025-08-17 22:51:12 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ea "HTTP/1.1 200 OK"
+2025-08-17 22:51:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:51:13 - app.wordpress - INFO - Successfully created tag 'EA'
+2025-08-17 22:51:14 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mirak-valley "HTTP/1.1 200 OK"
+2025-08-17 22:51:15 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:51:15 - app.wordpress - INFO - Successfully created tag 'Mirak Valley'
+2025-08-17 22:51:16 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=eastwood "HTTP/1.1 200 OK"
+2025-08-17 22:51:17 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:51:17 - app.wordpress - INFO - Successfully created tag 'Eastwood'
+2025-08-17 22:51:18 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=battlefield-studios "HTTP/1.1 200 OK"
+2025-08-17 22:51:19 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:51:19 - app.wordpress - INFO - Successfully created tag 'Battlefield Studios'
+2025-08-17 22:51:20 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=sobek-city "HTTP/1.1 200 OK"
+2025-08-17 22:51:21 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:51:21 - app.wordpress - INFO - Successfully created tag 'Sobek City'
+2025-08-17 22:51:22 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=operation-firestorm "HTTP/1.1 200 OK"
+2025-08-17 22:51:23 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 22:51:23 - app.wordpress - INFO - Successfully created tag 'Operation Firestorm'
+2025-08-17 22:51:23 - app.wordpress - INFO - Creating WordPress post: Battlefield 6: Mapas Grandes Confirmados no Lançamento!
+2025-08-17 22:51:26 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-17 22:51:26 - app.wordpress - INFO - Successfully created post 'Battlefield 6: Mapas Grandes Confirmados no Lançamento!' with ID: 13906
+2025-08-17 22:51:26 - app.store - INFO - Successfully recorded published post for article DB ID 159 (WP Post ID: 13906).
+2025-08-17 22:51:26 - app.pipeline - INFO - Successfully published post 13906 for article DB ID 159
+2025-08-17 22:51:26 - app.pipeline - INFO - Sleeping for 9.2s (per-article delay).
+2025-08-17 22:51:35 - app.pipeline - INFO - Pipeline cycle completed. Processed 3 articles.
+2025-08-17 22:51:35 - app.store - INFO - Database connection closed.
+2025-08-17 22:51:35 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 22:51:35 - __main__ - INFO - Ciclo único concluído com sucesso.
+2025-08-18 00:57:15 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-18 00:57:15 - app.store - INFO - Database initialized successfully.
+2025-08-18 00:57:15 - app.store - INFO - Database connection closed.
+2025-08-18 00:57:15 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-18 00:57:15 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-18 00:57:15 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-18 00:57:18 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-18 00:57:18 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-18 00:57:18 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 00:57:19 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-18 00:57:19 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-18 00:57:19 - app.pipeline - INFO - Found 1 new articles for screenrant_movies
+2025-08-18 00:57:19 - app.pipeline - INFO - Processing article: Tim Burton Praises Robert Eggers' The Lighthouse Starring Robert Pattinson (DB ID: 160) from screenrant_movies
+2025-08-18 00:57:19 - app.extractor - INFO - Extracting content from: https://screenrant.com/the-lighthouse-movie-review-tim-burton/
+2025-08-18 00:57:20 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-18 00:57:20 - app.tags - INFO - Extracted 15 tags: Lighthouse, Eggers, Burton, The Lighthouse, Robert Eggers...
+2025-08-18 00:57:20 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 00:57:30 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 00:58:00 - app.wordpress - WARNING - No <img> tag found in the content to set as featured image.
+2025-08-18 00:58:03 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=robert-eggers "HTTP/1.1 200 OK"
+2025-08-18 00:58:03 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=robert-pattinson "HTTP/1.1 200 OK"
+2025-08-18 00:58:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=willem-dafoe "HTTP/1.1 200 OK"
+2025-08-18 00:58:06 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=o-farol "HTTP/1.1 200 OK"
+2025-08-18 00:58:07 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 00:58:07 - app.wordpress - INFO - Successfully created tag 'O Farol'
+2025-08-18 00:58:08 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=a24 "HTTP/1.1 200 OK"
+2025-08-18 00:58:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=tim-burton "HTTP/1.1 200 OK"
+2025-08-18 00:58:10 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=terror-psicologico "HTTP/1.1 200 OK"
+2025-08-18 00:58:10 - app.wordpress - INFO - Creating WordPress post: Tim Burton Ama 'O Farol'! Crítica de Eggers e Pattinson
+2025-08-18 00:58:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 00:58:13 - app.wordpress - INFO - Successfully created post 'Tim Burton Ama 'O Farol'! Crítica de Eggers e Pattinson' with ID: 13908
+2025-08-18 00:58:13 - app.store - INFO - Successfully recorded published post for article DB ID 160 (WP Post ID: 13908).
+2025-08-18 00:58:13 - app.pipeline - INFO - Successfully published post 13908 for article DB ID 160
+2025-08-18 00:58:13 - app.pipeline - INFO - Sleeping for 7.2s (per-article delay).
+2025-08-18 00:58:21 - app.pipeline - INFO - Finished feed 'screenrant_movies'. Sleeping for 15s before next feed: screenrant_tv
+2025-08-18 00:58:23 - app.pipeline - INFO - Pipeline cycle completed. Processed 1 articles.
+2025-08-18 00:58:23 - app.store - INFO - Database connection closed.
+2025-08-18 00:58:23 - app.wordpress - INFO - WordPress client connection closed.

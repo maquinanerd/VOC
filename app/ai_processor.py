@@ -99,7 +99,7 @@ class AIProcessor:
         return cls._prompt_template
 
     def rewrite_content(
-        self, title: str, url: str, excerpt: str, tags_text: str, content: str, domain: str
+        self, title: str, url: str, content: str, domain: str, videos: List[Dict[str, str]]
     ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
         """
         Rewrites the given article content using the AI model.
@@ -107,10 +107,9 @@ class AIProcessor:
         Args:
             title: The original title of the article.
             url: The original URL of the article.
-            excerpt: The original excerpt/summary.
-            tags_text: A string of comma-separated tags.
             content: The full HTML content of the article.
             domain: The base domain for internal links.
+            videos: A list of dictionaries of extracted YouTube videos.
 
         Returns:
             A tuple containing a dictionary with the rewritten text and a failure
@@ -122,6 +121,7 @@ class AIProcessor:
             url_original=url,
             content=content,
             domain=domain,
+            videos_list="\n".join([v['embed_url'] for v in videos]) if videos else "Nenhum"
         )
 
         last_error = "Unknown error"

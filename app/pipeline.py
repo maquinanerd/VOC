@@ -22,7 +22,6 @@ from .html_utils import (
     merge_images_into_content,
     add_credit_to_figures,
     rewrite_img_srcs_with_wp,
-    hard_filter_forbidden_html,
     strip_credits_and_normalize_youtube,
 )
 from bs4 import BeautifulSoup
@@ -142,9 +141,6 @@ def run_pipeline_cycle():
                         # Só player do YouTube (oEmbed) e sem “Crédito: …”
                         content_html = strip_credits_and_normalize_youtube(content_html)
                         
-                        # 3.5: Final sanitization pass
-                        content_html = hard_filter_forbidden_html(content_html)
-
                         # Step 4: Prepare payload for WordPress
                         wp_category_id = categorizer.map_category(source_id, WORDPRESS_CATEGORIES)
 

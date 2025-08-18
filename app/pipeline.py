@@ -16,7 +16,6 @@ from .feeds import FeedReader
 from .extractor import ContentExtractor
 from .tags import TagExtractor
 from .ai_processor import AIProcessor
-from .rewriter import ContentRewriter
 from .categorizer import Categorizer
 from .wordpress import WordPressClient
 
@@ -31,7 +30,6 @@ def run_pipeline_cycle():
     feed_reader = FeedReader(user_agent=PIPELINE_CONFIG.get('publisher_name', 'Bot'))
     extractor = ContentExtractor(user_agent=PIPELINE_CONFIG.get('publisher_name', 'Bot'))
     tag_extractor = TagExtractor()
-    rewriter = ContentRewriter()
     categorizer = Categorizer()
     wp_client = WordPressClient(config=WORDPRESS_CONFIG, categories_map=WORDPRESS_CATEGORIES)
 
@@ -81,7 +79,7 @@ def run_pipeline_cycle():
 
                         tags = tag_extractor.extract_tags(extracted_content['content'], extracted_content['title'])
 
-                        rewritten_text, failure_reason = ai_processor.rewrite_content(
+                        rewritten_data, failure_reason = ai_processor.rewrite_content(
                             title=extracted_content['title'],
                             url=article_data['link'],
                             excerpt=extracted_content.get('excerpt', ''),
@@ -90,7 +88,7 @@ def run_pipeline_cycle():
                             domain=wp_client.get_domain(),
                         )
 
-                        if not rewritten_text:
+                        if not rewritten_data:
                             reason = failure_reason or "AI processing failed"
                             # Check for the specific case where the key pool for the category is exhausted
                             if "pool is exhausted" in reason:
@@ -102,17 +100,15 @@ def run_pipeline_cycle():
                             db.update_article_status(article_db_id, 'FAILED', reason=reason)
                             continue
 
-                        processed_content = rewriter.process_content(rewritten_text, tags, wp_client.get_domain())
-
                         wp_category_id = categorizer.map_category(source_id, WORDPRESS_CATEGORIES)
 
                         post_payload = {
-                            'title': processed_content['title'],
-                            'content': processed_content['content'],
-                            'excerpt': processed_content['excerpt'],
+                            'title': rewritten_data['titulo_final'],
+                            'content': rewritten_data['conteudo_final'],
+                            'excerpt': rewritten_data['meta_description'],
                             'status': 'publish',
                             'categories': [wp_category_id] if wp_category_id else [],
-                            'tags': tags,
+                            'tags': rewritten_data.get('tags', []),
                             'featured_media_url': extracted_content.get('main_image')
                         }
 

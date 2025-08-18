@@ -5192,3 +5192,103 @@ KeyError: '\n  "titulo_final"'
 2025-08-17 21:10:45 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 21:10:45 - app.store - INFO - Database connection closed.
 2025-08-17 21:10:45 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 21:23:52 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 21:23:52 - app.store - INFO - Database initialized successfully.
+2025-08-17 21:23:52 - app.store - INFO - Database connection closed.
+2025-08-17 21:23:52 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 21:23:52 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 21:23:52 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 21:23:54 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 21:23:54 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 21:23:54 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 21:23:55 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 21:23:55 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 21:23:55 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 21:23:55 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 21:23:55 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 21:23:55 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 21:23:55 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 21:23:55 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 21:23:55 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 21:23:55 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 21:23:56 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 21:23:56 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 21:23:56 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-17 21:23:56 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-17 21:23:56 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 21:23:56 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-17 21:23:56 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-17 21:23:56 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-17 21:23:56 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-17 21:23:56 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 21:23:57 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-17 21:23:57 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-17 21:23:57 - app.pipeline - INFO - Found 5 new articles for movieweb_movies
+2025-08-17 21:23:57 - app.pipeline - INFO - Processing article: 5 Low-Budget Fantasy Movies That Are Absolute Masterpieces (DB ID: 139) from movieweb_movies
+2025-08-17 21:23:57 - app.extractor - INFO - Extracting content from: https://movieweb.com/low-budget-fantasy-movies-that-are-absolute-masterpieces/
+2025-08-17 21:23:58 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 21:23:58 - app.tags - INFO - Extracted 15 tags: Gollum, Aragorn, The Hunt, Hotel, The Head Hunter...
+2025-08-17 21:23:58 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 21:24:20 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 21:24:50 - app.rewriter - INFO - Processing and validating rewritten content
+2025-08-17 21:24:50 - app.rewriter - ERROR - Failed to parse AI response: expected string or bytes-like object, got 'dict'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\rewriter.py", line 17, in _parse_ai_response
+    title_match = re.search(r"Novo Título:\s*(.*?)\s*Novo Resumo:", raw_text, re.DOTALL)
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pablo\AppData\Local\Programs\Python\Python313\Lib\re\__init__.py", line 177, in search
+    return _compile(pattern, flags).search(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'dict'
+2025-08-17 21:24:50 - app.rewriter - INFO - Content processing completed successfully
+2025-08-17 21:24:52 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=gollum "HTTP/1.1 200 OK"
+2025-08-17 21:24:53 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=aragorn "HTTP/1.1 200 OK"
+2025-08-17 21:24:55 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:24:55 - app.wordpress - INFO - Successfully created tag 'Aragorn'
+2025-08-17 21:24:56 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-hunt "HTTP/1.1 200 OK"
+2025-08-17 21:24:58 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:24:58 - app.wordpress - INFO - Successfully created tag 'The Hunt'
+2025-08-17 21:24:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hotel "HTTP/1.1 200 OK"
+2025-08-17 21:25:00 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:00 - app.wordpress - INFO - Successfully created tag 'Hotel'
+2025-08-17 21:25:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-head-hunter "HTTP/1.1 200 OK"
+2025-08-17 21:25:02 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:02 - app.wordpress - INFO - Successfully created tag 'The Head Hunter'
+2025-08-17 21:25:04 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=middle "HTTP/1.1 200 OK"
+2025-08-17 21:25:06 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:06 - app.wordpress - INFO - Successfully created tag 'Middle'
+2025-08-17 21:25:07 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=rings "HTTP/1.1 200 OK"
+2025-08-17 21:25:09 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:09 - app.wordpress - INFO - Successfully created tag 'Rings'
+2025-08-17 21:25:10 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=born "HTTP/1.1 200 OK"
+2025-08-17 21:25:11 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:11 - app.wordpress - INFO - Successfully created tag 'Born'
+2025-08-17 21:25:13 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=lord "HTTP/1.1 200 OK"
+2025-08-17 21:25:15 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:15 - app.wordpress - INFO - Successfully created tag 'Lord'
+2025-08-17 21:25:16 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hope "HTTP/1.1 200 OK"
+2025-08-17 21:25:18 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:18 - app.wordpress - INFO - Successfully created tag 'Hope'
+2025-08-17 21:25:19 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=cgi "HTTP/1.1 200 OK"
+2025-08-17 21:25:22 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:22 - app.wordpress - INFO - Successfully created tag 'CGI'
+2025-08-17 21:25:23 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=daydream-hotel "HTTP/1.1 200 OK"
+2025-08-17 21:25:24 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:24 - app.wordpress - INFO - Successfully created tag 'Daydream Hotel'
+2025-08-17 21:25:25 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=oak-dwellers "HTTP/1.1 200 OK"
+2025-08-17 21:25:27 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:27 - app.wordpress - INFO - Successfully created tag 'Oak Dwellers'
+2025-08-17 21:25:28 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=red-string "HTTP/1.1 200 OK"
+2025-08-17 21:25:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:30 - app.wordpress - INFO - Successfully created tag 'Red String'
+2025-08-17 21:25:32 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=blood-tea "HTTP/1.1 200 OK"
+2025-08-17 21:25:33 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:25:33 - app.wordpress - INFO - Successfully created tag 'Blood Tea'
+2025-08-17 21:25:33 - app.wordpress - INFO - Creating WordPress post: 
+2025-08-17 21:25:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 400 Bad Request"
+2025-08-17 21:25:34 - app.wordpress - ERROR - Failed to create post: 400 - {"code":"empty_content","message":"O conte\u00fado, o t\u00edtulo e o resumo est\u00e3o vazios.","data":{"status":400}}
+2025-08-17 21:25:34 - app.pipeline - ERROR - Failed to publish post for https://movieweb.com/low-budget-fantasy-movies-that-are-absolute-masterpieces/
+2025-08-17 21:25:34 - app.pipeline - INFO - Sleeping for 7.8s (per-article delay).
+2025-08-17 21:25:40 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 21:25:40 - app.store - INFO - Database connection closed.
+2025-08-17 21:25:40 - app.wordpress - INFO - WordPress client connection closed.

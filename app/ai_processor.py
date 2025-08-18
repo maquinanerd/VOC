@@ -120,10 +120,8 @@ class AIProcessor:
         prompt = prompt_template.format(
             titulo_original=title,
             url_original=url,
-            excerpt=excerpt or "N/A",
-            tags_text=tags_text,
             content=content,
-            domain=domain
+            domain=domain,
         )
 
         last_error = "Unknown error"
@@ -186,7 +184,7 @@ class AIProcessor:
             # Validate the presence of all required keys for a successful rewrite
             required_keys = [
                 "titulo_final", "conteudo_final", "meta_description",
-                "focus_keyword", "tags", "categorias"
+                "focus_keyword", "tags"
             ]
             missing_keys = [key for key in required_keys if key not in data]
 

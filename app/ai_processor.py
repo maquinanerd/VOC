@@ -12,7 +12,6 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from .config import AI_CONFIG, SCHEDULE_CONFIG
 from .exceptions import AIProcessorError, AllKeysFailedError
-from .html_utils import hard_filter_forbidden_html
 
 logger = logging.getLogger(__name__)
 
@@ -152,17 +151,6 @@ class AIProcessor:
                 # If the AI returned a specific rejection error, handle it as a failure.
                 if "erro" in parsed_data:
                     return None, parsed_data["erro"]
-
-                # Sanitize the final HTML content to remove any remaining forbidden elements
-                if 'conteudo_final' in parsed_data and parsed_data['conteudo_final']:
-                    original_len = len(parsed_data['conteudo_final'])
-                    parsed_data['conteudo_final'] = hard_filter_forbidden_html(
-                        parsed_data['conteudo_final']
-                    )
-                    final_len = len(parsed_data['conteudo_final'])
-                    chars_removed = original_len - final_len
-                    if chars_removed > 0:
-                        logger.info(f"Post-AI HTML sanitizer removed {chars_removed} characters.")
 
                 # Success: Add a delay between calls to respect rate limits
                 time.sleep(SCHEDULE_CONFIG.get('api_call_delay', 30))

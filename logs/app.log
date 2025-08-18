@@ -5891,3 +5891,66 @@ message: "API key not valid. Please pass a valid API key."
 2025-08-18 00:58:23 - app.pipeline - INFO - Pipeline cycle completed. Processed 1 articles.
 2025-08-18 00:58:23 - app.store - INFO - Database connection closed.
 2025-08-18 00:58:23 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-18 01:41:39 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-18 01:41:39 - app.store - INFO - Database initialized successfully.
+2025-08-18 01:41:39 - app.store - INFO - Database connection closed.
+2025-08-18 01:41:39 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-18 01:41:39 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-18 01:41:39 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-18 01:41:41 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-18 01:41:41 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-18 01:41:41 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 01:41:42 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-18 01:41:42 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-18 01:41:42 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-18 01:41:42 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-18 01:41:42 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-18 01:41:42 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-18 01:41:42 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-18 01:41:42 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-18 01:41:42 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-18 01:41:42 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 01:41:43 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-18 01:41:43 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-18 01:41:43 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-18 01:41:43 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-18 01:41:43 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-18 01:41:44 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-18 01:41:44 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-18 01:41:44 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-18 01:41:44 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-18 01:41:44 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 01:41:44 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-18 01:41:44 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-18 01:41:44 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-18 01:41:44 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-18 01:41:44 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 01:41:45 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-18 01:41:45 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-18 01:41:45 - app.pipeline - INFO - Found 1 new articles for cbr_movies
+2025-08-18 01:41:45 - app.pipeline - INFO - Processing article: Weapons Star Explains Why the Film's Antagonist Is 'Like an Artist' (DB ID: 161) from cbr_movies
+2025-08-18 01:41:46 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 01:41:46 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-18 01:41:46 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 01:41:46 - app.extractor - INFO - Successfully extracted content from https://www.cbr.com/weapons-amy-madigan-gladys-artist/. Title: Weapons Star Explains Why the Film's Antagonist Is...
+2025-08-18 01:41:46 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 01:42:01 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 01:42:31 - app.wordpress - WARNING - No <img> tag found in the content to set as featured image.
+2025-08-18 01:42:36 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=weapons "HTTP/1.1 200 OK"
+2025-08-18 01:42:36 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=amy-madigan "HTTP/1.1 200 OK"
+2025-08-18 01:42:37 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=gladys "HTTP/1.1 200 OK"
+2025-08-18 01:42:39 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 01:42:39 - app.wordpress - INFO - Successfully created tag 'Gladys'
+2025-08-18 01:42:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=julia-garner "HTTP/1.1 200 OK"
+2025-08-18 01:42:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=josh-brolin "HTTP/1.1 200 OK"
+2025-08-18 01:42:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=zach-cregger "HTTP/1.1 200 OK"
+2025-08-18 01:42:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=resident-evil "HTTP/1.1 200 OK"
+2025-08-18 01:42:43 - app.wordpress - INFO - Creating WordPress post: Amy Madigan: vilã de 'Weapons' é 'como uma artista'
+2025-08-18 01:42:46 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 01:42:46 - app.wordpress - INFO - Successfully created post 'Amy Madigan: vilã de 'Weapons' é 'como uma artista'' with ID: 13909
+2025-08-18 01:42:47 - app.store - INFO - Successfully recorded published post for article DB ID 161 (WP Post ID: 13909).
+2025-08-18 01:42:47 - app.pipeline - INFO - Successfully published post 13909 for article DB ID 161
+2025-08-18 01:42:47 - app.pipeline - INFO - Sleeping for 9.1s (per-article delay).
+2025-08-18 01:42:50 - app.pipeline - INFO - Pipeline cycle completed. Processed 1 articles.
+2025-08-18 01:42:50 - app.store - INFO - Database connection closed.
+2025-08-18 01:42:50 - app.wordpress - INFO - WordPress client connection closed.

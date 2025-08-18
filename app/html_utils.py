@@ -1,6 +1,10 @@
 import re
+import logging
+from typing import List, Dict
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, parse_qs
+
+logger = logging.getLogger(__name__)
 
 YOUTUBE_HOSTS = {
     "youtube.com", "www.youtube.com", "m.youtube.com", "youtu.be", "www.youtu.be"

@@ -6976,3 +6976,202 @@ message: "API key not valid. Please pass a valid API key."
 2025-08-18 16:35:53 - app.pipeline - INFO - Pipeline cycle completed. Processed 3 articles.
 2025-08-18 16:35:53 - app.store - INFO - Database connection closed.
 2025-08-18 16:35:53 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-18 16:44:30 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-18 16:44:30 - app.store - INFO - Database initialized successfully.
+2025-08-18 16:44:30 - app.store - INFO - Database connection closed.
+2025-08-18 16:44:30 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-18 16:44:30 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-18 16:44:30 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-18 16:44:32 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-18 16:44:32 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-18 16:44:32 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 16:44:32 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-18 16:44:32 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-18 16:44:32 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-18 16:44:32 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-18 16:44:32 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-18 16:44:33 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-18 16:44:33 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-18 16:44:33 - app.pipeline - INFO - Found 1 new articles for screenrant_tv
+2025-08-18 16:44:33 - app.pipeline - INFO - Processing article: Dune: Prophecy Season 2: Atreides Family Member Addresses Return (DB ID: 212) from screenrant_tv
+2025-08-18 16:44:34 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:44:34 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-18 16:44:34 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:44:34 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-08-18 16:44:34 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/dune-prophecy-season-2-orry-atreides-return-milo-callaghan-response/. Title: Dune: Prophecy Season 2 Return Addressed By Key At...
+2025-08-18 16:44:34 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:44:41 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:45:11 - app.pipeline - INFO - Attempting to upload up to 4 images.
+2025-08-18 16:45:11 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/dune-prophecy-season-1-ep-5-62.jpg
+2025-08-18 16:45:12 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/dune-prophecy-season-1-ep-5-62.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:45:12 - app.wordpress - INFO - Uploading image 'dune-prophecy-season-1-ep-5-62.jpg' to WordPress.
+2025-08-18 16:45:22 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:45:22 - app.wordpress - INFO - Uploaded media 14086 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/dune-prophecy-season-1-ep-5-62.jpg
+2025-08-18 16:45:23 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14086 "HTTP/1.1 200 OK"
+2025-08-18 16:45:23 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/10/dune-prophecy-poster.jpg
+2025-08-18 16:45:23 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2024/10/dune-prophecy-poster.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:45:23 - app.wordpress - INFO - Uploading image 'dune-prophecy-poster.jpg' to WordPress.
+2025-08-18 16:45:27 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:45:27 - app.wordpress - INFO - Uploaded media 14087 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/10/dune-prophecy-poster.jpg
+2025-08-18 16:45:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14087 "HTTP/1.1 200 OK"
+2025-08-18 16:45:29 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/dune-prophecy-season-1-ep-3-18.jpg
+2025-08-18 16:45:29 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/dune-prophecy-season-1-ep-3-18.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:45:29 - app.wordpress - INFO - Uploading image 'dune-prophecy-season-1-ep-3-18.jpg' to WordPress.
+2025-08-18 16:45:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:45:34 - app.wordpress - INFO - Uploaded media 14088 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/dune-prophecy-season-1-ep-3-18.jpg
+2025-08-18 16:45:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14088 "HTTP/1.1 200 OK"
+2025-08-18 16:45:35 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/dune-prophecy-season-1-ep-3-26.jpg
+2025-08-18 16:45:35 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/dune-prophecy-season-1-ep-3-26.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:45:36 - app.wordpress - INFO - Uploading image 'dune-prophecy-season-1-ep-3-26.jpg' to WordPress.
+2025-08-18 16:45:42 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:45:42 - app.wordpress - INFO - Uploaded media 14089 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/dune-prophecy-season-1-ep-3-26.jpg
+2025-08-18 16:45:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14089 "HTTP/1.1 200 OK"
+2025-08-18 16:45:43 - app.wordpress - INFO - Post will be created with featured_media 14086.
+2025-08-18 16:45:44 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dune-prophecy "HTTP/1.1 200 OK"
+2025-08-18 16:45:45 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:45:45 - app.wordpress - INFO - Successfully created tag 'Dune: Prophecy'
+2025-08-18 16:45:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=milo-callaghan "HTTP/1.1 200 OK"
+2025-08-18 16:45:47 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:45:47 - app.wordpress - INFO - Successfully created tag 'Milo Callaghan'
+2025-08-18 16:45:48 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=orry-atreides "HTTP/1.1 200 OK"
+2025-08-18 16:45:50 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:45:50 - app.wordpress - INFO - Successfully created tag 'Orry Atreides'
+2025-08-18 16:45:51 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=emma-canning "HTTP/1.1 200 OK"
+2025-08-18 16:45:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:45:52 - app.wordpress - INFO - Successfully created tag 'Emma Canning'
+2025-08-18 16:45:53 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=tula-harkonnen "HTTP/1.1 200 OK"
+2025-08-18 16:45:54 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:45:54 - app.wordpress - INFO - Successfully created tag 'Tula Harkonnen'
+2025-08-18 16:45:55 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=desmond "HTTP/1.1 200 OK"
+2025-08-18 16:45:55 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:45:55 - app.wordpress - INFO - Successfully created tag 'Desmond'
+2025-08-18 16:45:57 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=bene-gesserit "HTTP/1.1 200 OK"
+2025-08-18 16:45:58 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:45:58 - app.wordpress - INFO - Successfully created tag 'Bene Gesserit'
+2025-08-18 16:45:58 - app.wordpress - INFO - Creating WordPress post: Retorno de Orry em Dune: Prophecy 2? Ator responde!
+2025-08-18 16:46:01 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:46:01 - app.wordpress - INFO - Successfully created post 'Retorno de Orry em Dune: Prophecy 2? Ator responde!' with ID: 14090
+2025-08-18 16:46:02 - app.store - INFO - Successfully recorded published post for article DB ID 212 (WP Post ID: 14090).
+2025-08-18 16:46:02 - app.pipeline - INFO - Successfully published post 14090 for article DB ID 212
+2025-08-18 16:46:02 - app.pipeline - INFO - Sleeping for 7.7s (per-article delay).
+2025-08-18 16:46:09 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-08-18 16:46:24 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-18 16:46:24 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 16:46:25 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-18 16:46:25 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-18 16:46:25 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-18 16:46:25 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-18 16:46:25 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-18 16:46:25 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-18 16:46:25 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-18 16:46:25 - app.pipeline - INFO - Found 10 new articles for collider_tv
+2025-08-18 16:46:25 - app.pipeline - INFO - Processing article: Alan Tudyk’s Pitch-Perfect Sci-Fi Series Is Finally Available to Binge From Start to Finish (DB ID: 213) from collider_tv
+2025-08-18 16:46:26 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:46:26 - app.extractor - INFO - Converted 1 'data-img-url' divs to <figure> tags.
+2025-08-18 16:46:26 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:46:26 - app.extractor - INFO - Collected 0 images from article (pre+post).
+2025-08-18 16:46:26 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/resident-alien-all-seasons-streaming-peacock/. Title: Alan Tudyk’s Pitch-Perfect Sci-Fi Series Is Finall...
+2025-08-18 16:46:26 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:46:34 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:47:04 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 16:47:04 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/alan-tudyk.jpg
+2025-08-18 16:47:04 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/alan-tudyk.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:47:05 - app.wordpress - INFO - Uploading image 'alan-tudyk.jpg' to WordPress.
+2025-08-18 16:47:12 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:47:12 - app.wordpress - INFO - Uploaded media 14091 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/alan-tudyk.jpg
+2025-08-18 16:47:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14091 "HTTP/1.1 200 OK"
+2025-08-18 16:47:13 - app.wordpress - INFO - Post will be created with featured_media 14091.
+2025-08-18 16:47:15 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=resident-alien "HTTP/1.1 200 OK"
+2025-08-18 16:47:17 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=alan-tudyk "HTTP/1.1 200 OK"
+2025-08-18 16:47:18 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=peacock "HTTP/1.1 200 OK"
+2025-08-18 16:47:19 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=syfy "HTTP/1.1 200 OK"
+2025-08-18 16:47:20 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=chris-sheridan "HTTP/1.1 200 OK"
+2025-08-18 16:47:21 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=firefly "HTTP/1.1 200 OK"
+2025-08-18 16:47:23 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=andor "HTTP/1.1 200 OK"
+2025-08-18 16:47:23 - app.wordpress - INFO - Creating WordPress post: Todas as temporadas de Resident Alien estão disponíveis no Peacock
+2025-08-18 16:47:26 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:47:26 - app.wordpress - INFO - Successfully created post 'Todas as temporadas de Resident Alien estão disponíveis no Peacock' with ID: 14092
+2025-08-18 16:47:26 - app.store - INFO - Successfully recorded published post for article DB ID 213 (WP Post ID: 14092).
+2025-08-18 16:47:26 - app.pipeline - INFO - Successfully published post 14092 for article DB ID 213
+2025-08-18 16:47:26 - app.pipeline - INFO - Sleeping for 7.8s (per-article delay).
+2025-08-18 16:47:34 - app.pipeline - INFO - Processing article: ‘Moon Knight’ Season 2 Gets a Mysterious Update From an Unexpected Source (DB ID: 214) from collider_tv
+2025-08-18 16:47:34 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:47:34 - app.extractor - INFO - Converted 1 'data-img-url' divs to <figure> tags.
+2025-08-18 16:47:34 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:47:34 - app.extractor - INFO - Collected 0 images from article (pre+post).
+2025-08-18 16:47:34 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/moon-knight-season-2-update-hesham-nazih/. Title: ‘Moon Knight’ Season 2 Gets a Mysterious Update Fr...
+2025-08-18 16:47:34 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:47:41 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:48:11 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 16:48:11 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/02/moon-knight-tv-series.jpg
+2025-08-18 16:48:12 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/02/moon-knight-tv-series.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:48:12 - app.wordpress - INFO - Uploading image 'moon-knight-tv-series.jpg' to WordPress.
+2025-08-18 16:48:27 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:48:27 - app.wordpress - INFO - Uploaded media 14093 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/02/moon-knight-tv-series.jpg
+2025-08-18 16:48:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14093 "HTTP/1.1 200 OK"
+2025-08-18 16:48:29 - app.wordpress - INFO - Post will be created with featured_media 14093.
+2025-08-18 16:48:30 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=moon-knight "HTTP/1.1 200 OK"
+2025-08-18 16:48:31 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=oscar-isaac "HTTP/1.1 200 OK"
+2025-08-18 16:48:33 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=marvel-studios "HTTP/1.1 200 OK"
+2025-08-18 16:48:34 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mohamed-diab "HTTP/1.1 200 OK"
+2025-08-18 16:48:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:48:35 - app.wordpress - INFO - Successfully created tag 'Mohamed Diab'
+2025-08-18 16:48:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=kevin-feige "HTTP/1.1 200 OK"
+2025-08-18 16:48:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hesham-nazih "HTTP/1.1 200 OK"
+2025-08-18 16:48:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:48:43 - app.wordpress - INFO - Successfully created tag 'Hesham Nazih'
+2025-08-18 16:48:44 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=disney "HTTP/1.1 200 OK"
+2025-08-18 16:48:44 - app.wordpress - INFO - Creating WordPress post: Futuro de Moon Knight: 2ª temporada incerta, diz compositor
+2025-08-18 16:48:46 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:48:46 - app.wordpress - INFO - Successfully created post 'Futuro de Moon Knight: 2ª temporada incerta, diz compositor' with ID: 14094
+2025-08-18 16:48:46 - app.store - INFO - Successfully recorded published post for article DB ID 214 (WP Post ID: 14094).
+2025-08-18 16:48:46 - app.pipeline - INFO - Successfully published post 14094 for article DB ID 214
+2025-08-18 16:48:46 - app.pipeline - INFO - Sleeping for 6.4s (per-article delay).
+2025-08-18 16:48:53 - app.pipeline - INFO - Processing article: Netflix’s ‘Extraction’ Series Just Added a ‘Game of Thrones’ Fan Favorite (DB ID: 215) from collider_tv
+2025-08-18 16:48:54 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:48:54 - app.extractor - INFO - Converted 1 'data-img-url' divs to <figure> tags.
+2025-08-18 16:48:54 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:48:54 - app.extractor - INFO - Collected 0 images from article (pre+post).
+2025-08-18 16:48:54 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/extraction-tv-series-cast-natalie-dormer-netflix/. Title: Netflix’s ‘Extraction’ Series Just Added a ‘Game o...
+2025-08-18 16:48:54 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:49:01 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:49:31 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 16:49:31 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/cressida-the-hunger-games-natalie-dormer-1.jpg
+2025-08-18 16:49:31 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/cressida-the-hunger-games-natalie-dormer-1.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:49:31 - app.wordpress - INFO - Uploading image 'cressida-the-hunger-games-natalie-dormer-1.jpg' to WordPress.
+2025-08-18 16:49:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:49:37 - app.wordpress - INFO - Uploaded media 14095 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/cressida-the-hunger-games-natalie-dormer-1.jpg
+2025-08-18 16:49:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14095 "HTTP/1.1 200 OK"
+2025-08-18 16:49:38 - app.wordpress - INFO - Post will be created with featured_media 14095.
+2025-08-18 16:49:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=extraction "HTTP/1.1 200 OK"
+2025-08-18 16:49:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=natalie-dormer "HTTP/1.1 200 OK"
+2025-08-18 16:49:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:49:43 - app.wordpress - INFO - Successfully created tag 'Natalie Dormer'
+2025-08-18 16:49:45 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=game-of-thrones "HTTP/1.1 200 OK"
+2025-08-18 16:49:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=chris-hemsworth "HTTP/1.1 200 OK"
+2025-08-18 16:49:47 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=omar-sy "HTTP/1.1 200 OK"
+2025-08-18 16:49:49 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=netflix "HTTP/1.1 200 OK"
+2025-08-18 16:49:50 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=irmaos-russo "HTTP/1.1 200 OK"
+2025-08-18 16:49:50 - app.wordpress - INFO - Creating WordPress post: Natalie Dormer em série derivada de Extraction
+2025-08-18 16:49:54 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:49:54 - app.wordpress - INFO - Successfully created post 'Natalie Dormer em série derivada de Extraction' with ID: 14096
+2025-08-18 16:49:54 - app.store - INFO - Successfully recorded published post for article DB ID 215 (WP Post ID: 14096).
+2025-08-18 16:49:54 - app.pipeline - INFO - Successfully published post 14096 for article DB ID 215
+2025-08-18 16:49:54 - app.pipeline - INFO - Sleeping for 7.4s (per-article delay).
+2025-08-18 16:50:01 - app.pipeline - INFO - Finished feed 'collider_tv'. Sleeping for 15s before next feed: movieweb_movies
+2025-08-18 16:50:16 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-18 16:50:16 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 16:50:17 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-18 16:50:17 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-18 16:50:17 - app.pipeline - INFO - Found 10 new articles for movieweb_movies
+2025-08-18 16:50:17 - app.pipeline - INFO - Processing article: YouTube Wants to Acquire the Rights to Host and Stream the Oscars (DB ID: 223) from movieweb_movies
+2025-08-18 16:50:18 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:50:18 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-08-18 16:50:18 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:50:18 - app.extractor - INFO - Collected 2 images from article (pre+post).
+2025-08-18 16:50:18 - app.extractor - INFO - Successfully extracted and cleaned content from https://movieweb.com/youtube-oscars-academy-awards-host-acquire-streaming-rights/. Title: The Oscars Might Be Leaving TV Behind for Streamin...
+2025-08-18 16:50:18 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:50:27 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:50:36 - app.pipeline - INFO - Pipeline cycle completed. Processed 4 articles.
+2025-08-18 16:50:36 - app.store - INFO - Database connection closed.
+2025-08-18 16:50:36 - app.wordpress - INFO - WordPress client connection closed.

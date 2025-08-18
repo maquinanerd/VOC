@@ -183,12 +183,17 @@ def rewrite_img_srcs_with_wp(html_content: str, url_map: Dict[str, str]) -> str:
     rewritten_count = 0
     for img in soup.find_all('img'):
         original_src = img.get('src')
-        if original_src and original_src in url_map:
-            img['src'] = url_map[original_src]
+        if not original_src:
+            continue
+
+        # Normalize URL to handle potential trailing slashes before lookup
+        key = original_src[:-1] if original_src.endswith('/') else original_src
+        if key in url_map:
+            img['src'] = url_map[key]
             if img.has_attr('srcset'):
-                img['srcset'] = url_map[original_src]
+                img['srcset'] = url_map[key]
             rewritten_count += 1
-            
+
     if rewritten_count > 0:
         logger.info(f"Reescreveu {rewritten_count} URLs de imagem para apontar para a biblioteca de mídia do WordPress.")
 

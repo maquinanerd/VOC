@@ -110,30 +110,29 @@ def run_pipeline_cycle():
                             rewritten_data['conteudo_final'],
                             extracted_data.get('images', [])
                         )
-
-                        # 3.2: Upload images to WordPress
-                        image_urls_to_upload = []
+                        
+                        # 3.2: Collect and upload up to 8 priority images
+                        urls_to_upload = []
                         if featured_url := extracted_data.get('featured_image_url'):
-                            image_urls_to_upload.append(featured_url)
+                            urls_to_upload.append(featured_url)
+                        for img_url in extracted_data.get('images', []):
+                            if img_url not in urls_to_upload:
+                                urls_to_upload.append(img_url)
                         
-                        soup = BeautifulSoup(content_html, 'html.parser')
-                        for img in soup.find_all('img'):
-                            if src := img.get('src'):
-                                image_urls_to_upload.append(src)
-                        
-                        # Deduplicate while preserving order and limit to 8
-                        unique_urls = list(OrderedDict.fromkeys(image_urls_to_upload))
-                        uploaded_map = {}
-                        logger.info(f"Attempting to upload up to 8 images from {len(unique_urls)} unique URLs found.")
-                        for img_url in unique_urls[:8]:
-                            media_info = wp_client.upload_media_from_url(img_url, rewritten_data['titulo_final'])
-                            if media_info and media_info.get('source_url'):
-                                uploaded_map[img_url] = media_info['source_url']
-                        
-                        # 3.3: Rewrite image `src` to point to WordPress
-                        content_html = rewrite_img_srcs_with_wp(content_html, uploaded_map)
+                        urls_to_upload = urls_to_upload[:8]
 
-                        # 3.4: Add credits to figures
+                        uploaded_src_map = {}
+                        uploaded_id_map = {}
+                        logger.info(f"Attempting to upload up to {len(urls_to_upload)} images.")
+                        for url in urls_to_upload:
+                            media = wp_client.upload_media_from_url(url, rewritten_data['titulo_final'])
+                            if media and media.get("source_url") and media.get("id"):
+                                # Normalize URL to handle potential trailing slashes as keys
+                                k = url[:-1] if url.endswith('/') else url
+                                uploaded_src_map[k] = media["source_url"]
+                                uploaded_id_map[k] = media["id"]
+                        
+                        # 3.3:
                         content_html = add_credit_to_figures(content_html, extracted_data['source_url'])
 
                         # 3.5: Final sanitization pass

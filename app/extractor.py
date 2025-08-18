@@ -52,6 +52,27 @@ def _parse_srcset(srcset: str):
             best = url
     return best
 
+def is_small(u: str) -> bool:
+    """Checks if a URL likely points to a small or irrelevant image."""
+    if not u:
+        return True
+    try:
+        # Check for width/height query parameters
+        query = urlparse(u).query
+        params = parse_qs(query)
+        w = int(params.get("w", [0])[0] or 0)
+        h = int(params.get("h", [0])[0] or 0)
+        if (w and w < 300) or (h and h < 200):
+            logger.debug(f"Filtering out small image by query param: {u} (w={w}, h={h})")
+            return True
+        # Check for common placeholder/junk patterns
+        if "placeholder" in u.lower() or u.lower().endswith(".svg"):
+            logger.debug(f"Filtering out image by pattern (placeholder/svg): {u}")
+            return True
+    except (ValueError, IndexError):
+        pass # Ignore parsing errors in query params
+    return False
+
 def _abs(u: str, base: str) -> str | None:
     """Converts a URL to an absolute URL, returning None for invalid inputs."""
     if not u:

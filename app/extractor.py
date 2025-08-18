@@ -285,12 +285,25 @@ class ContentExtractor:
             else:
                 final_content_html = str(article_soup)
 
+            # Extract all image URLs from the final content for later processing
+            final_soup = BeautifulSoup(final_content_html, 'html.parser')
+            all_image_urls = []
+            seen_urls = set()
+            for img_tag in final_soup.find_all('img'):
+                if src := img_tag.get('src'):
+                    abs_src = urljoin(url, src)
+                    if abs_src not in seen_urls:
+                        all_image_urls.append(abs_src)
+                        seen_urls.add(abs_src)
+
             result = {
                 "title": title.strip(),
                 "content": final_content_html,
                 "excerpt": excerpt.strip(),
                 "featured_image_url": featured_image_url,
-                "videos": videos
+                "images": all_image_urls,
+                "videos": videos,
+                "source_url": url,
             }
             logger.info(f"Successfully extracted and cleaned content from {url}. Title: {result['title'][:50]}...")
             return result

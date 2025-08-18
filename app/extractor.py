@@ -2,9 +2,10 @@ import logging
 import trafilatura
 from bs4 import BeautifulSoup
 import requests
-from typing import Dict, Optional, Any
+from typing import Dict, Optional, Any, Set
 from urllib.parse import urljoin, urlparse, parse_qs
 import json
+import re
 
 from .config import USER_AGENT
 
@@ -17,6 +18,15 @@ YOUTUBE_DOMAINS = (
     "youtu.be",
     "www.youtu.be",
 )
+
+FORBIDDEN_TEXT_EXACT: Set[str] = {
+    "Your comment has not been saved",
+}
+
+FORBIDDEN_LABELS: Set[str] = {
+    "Release Date", "Runtime", "Director", "Directors", "Writer", "Writers",
+    "Producer", "Producers", "Cast"
+}
 
 
 class ContentExtractor:
@@ -55,6 +65,49 @@ class ContentExtractor:
                 text_node.find_parent().decompose()
 
         logger.info("Pre-cleaned HTML, removing unwanted widgets and blocks.")
+
+    def _remove_forbidden_blocks(self, soup: BeautifulSoup) -> None:
+        """
+        Removes unwanted blocks like comment confirmations and technical spec boxes
+        from the extracted article content.
+        """
+        # 1. Remove any node containing the exact text of a comment warning
+        for t in soup.find_all(string=True):
+            s = (t or "").strip()
+            if not s:
+                continue
+            if s in FORBIDDEN_TEXT_EXACT:
+                try:
+                    # Try to remove the parent, which is likely the container
+                    t.parent.decompose()
+                    logger.debug(f"Removed forbidden text block: '{s}'")
+                except Exception:
+                    # If parent is gone or something else happens, just continue
+                    pass
+
+        # 2. Remove "infobox" like technical sheets based on labels
+        candidates = []
+        for tag in soup.find_all(["div", "section", "aside", "ul", "ol"]):
+            text = " ".join(tag.get_text(separator="\n").split())
+            # Heuristic: presence of >=2 known labels
+            lbl_count = sum(1 for lbl in FORBIDDEN_LABELS if re.search(rf"(^|\n)\s*{re.escape(lbl)}\s*(\n|:|$)", text, flags=re.I))
+            if lbl_count >= 2:
+                candidates.append(tag)
+
+        if candidates:
+            logger.info(f"Found {len(candidates)} candidate infobox(es) to remove.")
+        for c in candidates:
+            try:
+                c.decompose()
+            except Exception:
+                pass
+
+        # 3. Also remove isolated lines with these labels at the paragraph/list level
+        for tag in soup.find_all(["p", "li", "span", "h3", "h4"]):
+            if not tag.parent: continue # Already decomposed
+            s = (tag.get_text() or "").strip().rstrip(':').strip()
+            if s in FORBIDDEN_TEXT_EXACT or s in FORBIDDEN_LABELS:
+                tag.decompose()
 
     def _convert_data_img_to_figure(self, soup: BeautifulSoup):
         """Converts divs with 'data-img-url' into <figure> and <img> tags."""
@@ -222,14 +275,24 @@ class ContentExtractor:
                 logger.warning(f"Trafilatura returned empty content for {url}")
                 return None
 
+            # 6. Post-process the extracted content to remove forbidden blocks
+            article_soup = BeautifulSoup(content_html, 'lxml')
+            self._remove_forbidden_blocks(article_soup)
+
+            # The body tag is sometimes added by BeautifulSoup, we only want the contents
+            if article_soup.body:
+                final_content_html = article_soup.body.decode_contents()
+            else:
+                final_content_html = str(article_soup)
+
             result = {
                 "title": title.strip(),
-                "content": content_html,
+                "content": final_content_html,
                 "excerpt": excerpt.strip(),
                 "featured_image_url": featured_image_url,
                 "videos": videos
             }
-            logger.info(f"Successfully extracted content from {url}. Title: {result['title'][:50]}...")
+            logger.info(f"Successfully extracted and cleaned content from {url}. Title: {result['title'][:50]}...")
             return result
 
         except Exception as e:

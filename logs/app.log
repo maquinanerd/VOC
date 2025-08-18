@@ -5954,3 +5954,72 @@ message: "API key not valid. Please pass a valid API key."
 2025-08-18 01:42:50 - app.pipeline - INFO - Pipeline cycle completed. Processed 1 articles.
 2025-08-18 01:42:50 - app.store - INFO - Database connection closed.
 2025-08-18 01:42:50 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-18 09:10:38 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-18 09:10:38 - app.store - INFO - Database initialized successfully.
+2025-08-18 09:10:38 - app.store - INFO - Database connection closed.
+2025-08-18 09:10:38 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-18 09:10:38 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-18 09:10:38 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-18 09:10:40 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-18 09:10:40 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-18 09:10:40 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 09:10:41 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-18 09:10:41 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-18 09:10:41 - app.pipeline - INFO - Found 3 new articles for screenrant_movies
+2025-08-18 09:10:41 - app.pipeline - INFO - Processing article: Nobody 2 Director Explains How It Differs From John Wick Franchise (DB ID: 162) from screenrant_movies
+2025-08-18 09:10:42 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 09:10:42 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 09:10:42 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 09:10:42 - app.extractor - INFO - Successfully extracted content from https://screenrant.com/nobody-2-ending-john-wick-comparison-explained-timo-tjahjanto/. Title: How Nobody 2's Ending Separates It Forever From Th...
+2025-08-18 09:10:42 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 09:10:57 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 09:11:27 - app.wordpress - WARNING - No <img> tag found in the content to set as featured image.
+2025-08-18 09:11:29 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=nobody-2 "HTTP/1.1 200 OK"
+2025-08-18 09:11:30 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=john-wick "HTTP/1.1 200 OK"
+2025-08-18 09:11:31 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=bob-odenkirk "HTTP/1.1 200 OK"
+2025-08-18 09:11:32 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=connie-nielsen "HTTP/1.1 200 OK"
+2025-08-18 09:11:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 09:11:34 - app.wordpress - INFO - Successfully created tag 'Connie Nielsen'
+2025-08-18 09:11:35 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=timo-tjahjanto "HTTP/1.1 200 OK"
+2025-08-18 09:11:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 09:11:37 - app.wordpress - INFO - Successfully created tag 'Timo Tjahjanto'
+2025-08-18 09:11:38 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=acao "HTTP/1.1 200 OK"
+2025-08-18 09:11:39 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=familia "HTTP/1.1 200 OK"
+2025-08-18 09:11:40 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 09:11:40 - app.wordpress - INFO - Successfully created tag 'família'
+2025-08-18 09:11:40 - app.wordpress - INFO - Creating WordPress post: Nobody 2: Final Difere de John Wick, Diz Diretor
+2025-08-18 09:11:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 09:11:44 - app.wordpress - INFO - Successfully created post 'Nobody 2: Final Difere de John Wick, Diz Diretor' with ID: 13922
+2025-08-18 09:11:44 - app.store - INFO - Successfully recorded published post for article DB ID 162 (WP Post ID: 13922).
+2025-08-18 09:11:44 - app.pipeline - INFO - Successfully published post 13922 for article DB ID 162
+2025-08-18 09:11:44 - app.pipeline - INFO - Sleeping for 9.9s (per-article delay).
+2025-08-18 09:11:54 - app.pipeline - INFO - Processing article: Nobody 3 Director Teases 'Breaking Bad' Inspired Plot (DB ID: 163) from screenrant_movies
+2025-08-18 09:11:54 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 09:11:54 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 09:11:54 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 09:11:54 - app.extractor - INFO - Successfully extracted content from https://screenrant.com/nobody-3-plot-details-revealed-timo-tjahjanto/. Title: "We Can Go Completely Breaking Bad": Potential Nob...
+2025-08-18 09:11:54 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 09:12:08 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 09:12:38 - app.wordpress - WARNING - No <img> tag found in the content to set as featured image.
+2025-08-18 09:12:39 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=nobody-3 "HTTP/1.1 200 OK"
+2025-08-18 09:12:42 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 09:12:42 - app.wordpress - INFO - Successfully created tag 'Nobody 3'
+2025-08-18 09:12:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=nobody-2 "HTTP/1.1 200 OK"
+2025-08-18 09:12:44 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=bob-odenkirk "HTTP/1.1 200 OK"
+2025-08-18 09:12:45 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=timo-tjahjanto "HTTP/1.1 200 OK"
+2025-08-18 09:12:47 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=breaking-bad "HTTP/1.1 200 OK"
+2025-08-18 09:12:48 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hutch-mansell "HTTP/1.1 200 OK"
+2025-08-18 09:12:50 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 09:12:50 - app.wordpress - INFO - Successfully created tag 'Hutch Mansell'
+2025-08-18 09:12:51 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=becca-mansell "HTTP/1.1 200 OK"
+2025-08-18 09:12:53 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 09:12:53 - app.wordpress - INFO - Successfully created tag 'Becca Mansell'
+2025-08-18 09:12:53 - app.wordpress - INFO - Creating WordPress post: Nobody 3: Diretor revela detalhes da trama; será como Breaking Bad?
+2025-08-18 09:12:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 09:12:57 - app.wordpress - INFO - Successfully created post 'Nobody 3: Diretor revela detalhes da trama; será como Breaking Bad?' with ID: 13923
+2025-08-18 09:12:57 - app.store - INFO - Successfully recorded published post for article DB ID 163 (WP Post ID: 13923).
+2025-08-18 09:12:57 - app.pipeline - INFO - Successfully published post 13923 for article DB ID 163
+2025-08-18 09:12:57 - app.pipeline - INFO - Sleeping for 9.1s (per-article delay).
+2025-08-18 09:13:02 - app.pipeline - INFO - Pipeline cycle completed. Processed 2 articles.
+2025-08-18 09:13:02 - app.store - INFO - Database connection closed.
+2025-08-18 09:13:02 - app.wordpress - INFO - WordPress client connection closed.

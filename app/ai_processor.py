@@ -8,12 +8,25 @@ import logging
 import re
 import time
 from pathlib import Path 
-from typing import Dict, Optional, List, Tuple, Any
+from typing import Any, Dict, List, Optional, Tuple
 
 from .config import AI_CONFIG, SCHEDULE_CONFIG
 from .exceptions import AIProcessorError, AllKeysFailedError
+from .html_utils import hard_filter_forbidden_html
 
 logger = logging.getLogger(__name__)
+
+AI_SYSTEM_RULES = """
+[REGRAS OBRIGATÓRIAS — CUMPRIR 100%]
+
+NÃO incluir e REMOVER de forma explícita:
+- Qualquer texto de interface/comentários dos sites (ex.: "Your comment has not been saved").
+- Caixas/infobox de ficha técnica com rótulos como: "Release Date", "Runtime", "Director", "Writers", "Producers", "Cast".
+- Elementos de comentários, “trending”, “related”, “read more”, “newsletter”, “author box”, “ratings/review box”.
+
+Somente produzir o conteúdo jornalístico reescrito do artigo principal.
+Se algum desses itens aparecer no texto de origem, exclua-os do resultado.
+"""
 
 # Log the number of keys found for diagnostics at startup.
 for category, keys in AI_CONFIG.items():
@@ -92,7 +105,8 @@ class AIProcessor:
                     prompt_path = Path(__file__).resolve().parent.parent / 'universal_prompt.txt'
 
                 with open(prompt_path, 'r', encoding='utf-8') as f:
-                    cls._prompt_template = f.read()
+                    base_template = f.read()
+                cls._prompt_template = f"{AI_SYSTEM_RULES}\n\n{base_template}"
             except FileNotFoundError:
                 logger.critical("'universal_prompt.txt' not found in the project root.")
                 raise AIProcessorError("Prompt template file not found.")
@@ -138,6 +152,17 @@ class AIProcessor:
                 # If the AI returned a specific rejection error, handle it as a failure.
                 if "erro" in parsed_data:
                     return None, parsed_data["erro"]
+
+                # Sanitize the final HTML content to remove any remaining forbidden elements
+                if 'conteudo_final' in parsed_data and parsed_data['conteudo_final']:
+                    original_len = len(parsed_data['conteudo_final'])
+                    parsed_data['conteudo_final'] = hard_filter_forbidden_html(
+                        parsed_data['conteudo_final']
+                    )
+                    final_len = len(parsed_data['conteudo_final'])
+                    chars_removed = original_len - final_len
+                    if chars_removed > 0:
+                        logger.info(f"Post-AI HTML sanitizer removed {chars_removed} characters.")
 
                 # Success: Add a delay between calls to respect rate limits
                 time.sleep(SCHEDULE_CONFIG.get('api_call_delay', 30))

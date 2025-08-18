@@ -6577,3 +6577,255 @@ message: "API key not valid. Please pass a valid API key."
 2025-08-18 14:57:28 - app.pipeline - INFO - Pipeline cycle completed. Processed 1 articles.
 2025-08-18 14:57:28 - app.store - INFO - Database connection closed.
 2025-08-18 14:57:28 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-18 16:13:46 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-18 16:13:46 - app.store - INFO - Database initialized successfully.
+2025-08-18 16:13:46 - app.store - INFO - Database connection closed.
+2025-08-18 16:13:46 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-18 16:13:46 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-18 16:13:46 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-18 16:13:48 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-18 16:13:48 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-18 16:13:48 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 16:13:49 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-18 16:13:49 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-18 16:13:49 - app.pipeline - INFO - Found 2 new articles for screenrant_movies
+2025-08-18 16:13:49 - app.pipeline - INFO - Processing article: Weapons Box Office: Surpassing Snow White and Barbarian in 2025 (DB ID: 189) from screenrant_movies
+2025-08-18 16:13:50 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:13:50 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 16:13:50 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:13:50 - app.extractor - INFO - Collected 16 images from article (pre+post).
+2025-08-18 16:13:50 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/weapons-passes-2025-snow-white-box-office/. Title: Weapons Just Passes Infamous 2025 Fantasy Box Offi...
+2025-08-18 16:13:51 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:13:59 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:14:29 - app.pipeline - INFO - Attempting to upload up to 8 images.
+2025-08-18 16:14:29 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/julia-garner-weapons-copy.jpg
+2025-08-18 16:14:29 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/julia-garner-weapons-copy.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:14:29 - app.wordpress - INFO - Uploading image 'julia-garner-weapons-copy.jpg' to WordPress.
+2025-08-18 16:14:42 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:14:42 - app.wordpress - INFO - Uploaded media 14047 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/julia-garner-weapons-copy.jpg
+2025-08-18 16:14:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14047 "HTTP/1.1 200 OK"
+2025-08-18 16:14:44 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/julia-garner-with-tears-in-her-eyes-in-weapons.jpg
+2025-08-18 16:14:45 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/julia-garner-with-tears-in-her-eyes-in-weapons.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:14:45 - app.wordpress - INFO - Uploading image 'julia-garner-with-tears-in-her-eyes-in-weapons.jpg' to WordPress.
+2025-08-18 16:14:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:14:52 - app.wordpress - INFO - Uploaded media 14048 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/julia-garner-with-tears-in-her-eyes-in-weapons.jpg
+2025-08-18 16:14:54 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14048 "HTTP/1.1 200 OK"
+2025-08-18 16:14:54 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/aunt-gladys-in-weapons-laughing.jpg
+2025-08-18 16:14:54 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/aunt-gladys-in-weapons-laughing.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:14:55 - app.wordpress - INFO - Uploading image 'aunt-gladys-in-weapons-laughing.jpg' to WordPress.
+2025-08-18 16:15:08 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:15:08 - app.wordpress - INFO - Uploaded media 14049 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/aunt-gladys-in-weapons-laughing.jpg
+2025-08-18 16:15:09 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14049 "HTTP/1.1 200 OK"
+2025-08-18 16:15:09 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/06/01892952_poster_w780.jpg
+2025-08-18 16:15:10 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/06/01892952_poster_w780.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:15:10 - app.wordpress - INFO - Uploading image '01892952_poster_w780.jpg' to WordPress.
+2025-08-18 16:15:18 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:15:18 - app.wordpress - INFO - Uploaded media 14050 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/06/01892952_poster_w780.jpg
+2025-08-18 16:15:19 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14050 "HTTP/1.1 200 OK"
+2025-08-18 16:15:19 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/james-gunn-s-dcu-update-hints-at-david-corenswet-s-superman-future-appearance.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:15:20 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/james-gunn-s-dcu-update-hints-at-david-corenswet-s-superman-future-appearance.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:15:20 - app.wordpress - INFO - Uploading image 'james-gunn-s-dcu-update-hints-at-david-corenswet-s-superman-future-appearance.jpg' to WordPress.
+2025-08-18 16:15:24 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:15:24 - app.wordpress - INFO - Uploaded media 14051 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/james-gunn-s-dcu-update-hints-at-david-corenswet-s-superman-future-appearance.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:15:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14051 "HTTP/1.1 200 OK"
+2025-08-18 16:15:25 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jared-leto-in-tron_-ares.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:15:26 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jared-leto-in-tron_-ares.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:15:26 - app.wordpress - INFO - Uploading image 'jared-leto-in-tron_-ares.jpg' to WordPress.
+2025-08-18 16:15:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:15:29 - app.wordpress - INFO - Uploaded media 14052 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jared-leto-in-tron_-ares.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:15:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14052 "HTTP/1.1 200 OK"
+2025-08-18 16:15:30 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/the-thing-steering-the-ship-in-fantastic-four-first-steps.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:15:30 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/the-thing-steering-the-ship-in-fantastic-four-first-steps.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:15:30 - app.wordpress - INFO - Uploading image 'the-thing-steering-the-ship-in-fantastic-four-first-steps.jpg' to WordPress.
+2025-08-18 16:15:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:15:34 - app.wordpress - INFO - Uploaded media 14053 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/the-thing-steering-the-ship-in-fantastic-four-first-steps.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:15:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14053 "HTTP/1.1 200 OK"
+2025-08-18 16:15:34 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/netflix-logo.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:15:35 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/netflix-logo.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:15:35 - app.wordpress - INFO - Uploading image 'netflix-logo.jpg' to WordPress.
+2025-08-18 16:15:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:15:38 - app.wordpress - INFO - Uploaded media 14054 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/netflix-logo.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:15:39 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14054 "HTTP/1.1 200 OK"
+2025-08-18 16:15:39 - app.wordpress - INFO - Post will be created with featured_media 14047.
+2025-08-18 16:15:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=weapons "HTTP/1.1 200 OK"
+2025-08-18 16:15:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=julia-garner "HTTP/1.1 200 OK"
+2025-08-18 16:15:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=josh-brolin "HTTP/1.1 200 OK"
+2025-08-18 16:15:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=warner-bros "HTTP/1.1 200 OK"
+2025-08-18 16:15:45 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:15:45 - app.wordpress - INFO - Successfully created tag 'Warner Bros.'
+2025-08-18 16:15:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=barbarian "HTTP/1.1 200 OK"
+2025-08-18 16:15:47 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=branca-de-neve "HTTP/1.1 200 OK"
+2025-08-18 16:15:49 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=zach-cregger "HTTP/1.1 200 OK"
+2025-08-18 16:15:49 - app.wordpress - INFO - Creating WordPress post: Sucesso de bilheteria: 'Weapons' ultrapassa 'Branca de Neve' em 2025
+2025-08-18 16:15:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:15:52 - app.wordpress - INFO - Successfully created post 'Sucesso de bilheteria: 'Weapons' ultrapassa 'Branca de Neve' em 2025' with ID: 14055
+2025-08-18 16:15:52 - app.store - INFO - Successfully recorded published post for article DB ID 189 (WP Post ID: 14055).
+2025-08-18 16:15:52 - app.pipeline - INFO - Successfully published post 14055 for article DB ID 189
+2025-08-18 16:15:52 - app.pipeline - INFO - Sleeping for 9.3s (per-article delay).
+2025-08-18 16:16:01 - app.pipeline - INFO - Processing article: Denzel Washington on Cancel Culture: 'You Can't Be Canceled if You Haven't Signed Up' (DB ID: 190) from screenrant_movies
+2025-08-18 16:16:02 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:16:02 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 16:16:02 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:16:03 - app.extractor - INFO - Collected 15 images from article (pre+post).
+2025-08-18 16:16:03 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/denzel-washington-cancel-culture-thoughts/. Title: Denzel Washington Has The Most Intriguing Response...
+2025-08-18 16:16:03 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:16:09 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:16:39 - app.pipeline - INFO - Attempting to upload up to 8 images.
+2025-08-18 16:16:39 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/denzel-washington.jpg
+2025-08-18 16:16:40 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/denzel-washington.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:16:41 - app.wordpress - INFO - Uploading image 'denzel-washington.jpg' to WordPress.
+2025-08-18 16:17:04 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:17:04 - app.wordpress - INFO - Uploaded media 14056 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/denzel-washington.jpg
+2025-08-18 16:17:05 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14056 "HTTP/1.1 200 OK"
+2025-08-18 16:17:05 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/denzel-washington-cropped.jpg
+2025-08-18 16:17:06 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/denzel-washington-cropped.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:17:06 - app.wordpress - INFO - Uploading image 'denzel-washington-cropped.jpg' to WordPress.
+2025-08-18 16:17:23 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:17:23 - app.wordpress - INFO - Uploaded media 14057 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/denzel-washington-cropped.jpg
+2025-08-18 16:17:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14057 "HTTP/1.1 200 OK"
+2025-08-18 16:17:25 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/06/the-equalizer-3.jpg
+2025-08-18 16:17:26 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2024/06/the-equalizer-3.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:17:26 - app.wordpress - INFO - Uploading image 'the-equalizer-3.jpg' to WordPress.
+2025-08-18 16:17:39 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:17:39 - app.wordpress - INFO - Uploaded media 14058 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/06/the-equalizer-3.jpg
+2025-08-18 16:17:41 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14058 "HTTP/1.1 200 OK"
+2025-08-18 16:17:41 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/07/instar51023899.jpg
+2025-08-18 16:17:41 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2024/07/instar51023899.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:17:42 - app.wordpress - INFO - Uploading image 'instar51023899.jpg' to WordPress.
+2025-08-18 16:18:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:18:29 - app.wordpress - INFO - Uploaded media 14059 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/07/instar51023899.jpg
+2025-08-18 16:18:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14059 "HTTP/1.1 200 OK"
+2025-08-18 16:18:30 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/james-gunn-s-dcu-update-hints-at-david-corenswet-s-superman-future-appearance.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:18:31 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/james-gunn-s-dcu-update-hints-at-david-corenswet-s-superman-future-appearance.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:18:31 - app.wordpress - INFO - Uploading image 'james-gunn-s-dcu-update-hints-at-david-corenswet-s-superman-future-appearance.jpg' to WordPress.
+2025-08-18 16:18:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:18:34 - app.wordpress - INFO - Uploaded media 14060 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/james-gunn-s-dcu-update-hints-at-david-corenswet-s-superman-future-appearance.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:18:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14060 "HTTP/1.1 200 OK"
+2025-08-18 16:18:35 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/netflix-logo.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:18:35 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/netflix-logo.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:18:35 - app.wordpress - INFO - Uploading image 'netflix-logo.jpg' to WordPress.
+2025-08-18 16:18:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:18:38 - app.wordpress - INFO - Uploaded media 14061 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/netflix-logo.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:18:39 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14061 "HTTP/1.1 200 OK"
+2025-08-18 16:18:39 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jason-statham-in-beekeeper-with-sledgehammer.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:18:39 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jason-statham-in-beekeeper-with-sledgehammer.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:18:39 - app.wordpress - INFO - Uploading image 'jason-statham-in-beekeeper-with-sledgehammer.jpg' to WordPress.
+2025-08-18 16:18:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:18:43 - app.wordpress - INFO - Uploaded media 14062 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jason-statham-in-beekeeper-with-sledgehammer.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:18:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14062 "HTTP/1.1 200 OK"
+2025-08-18 16:18:44 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jared-leto-in-tron_-ares.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:18:44 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jared-leto-in-tron_-ares.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:18:44 - app.wordpress - INFO - Uploading image 'jared-leto-in-tron_-ares.jpg' to WordPress.
+2025-08-18 16:18:47 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:18:47 - app.wordpress - INFO - Uploaded media 14063 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jared-leto-in-tron_-ares.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:18:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14063 "HTTP/1.1 200 OK"
+2025-08-18 16:18:48 - app.wordpress - INFO - Post will be created with featured_media 14056.
+2025-08-18 16:18:49 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=denzel-washington "HTTP/1.1 200 OK"
+2025-08-18 16:18:50 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-equalizer "HTTP/1.1 200 OK"
+2025-08-18 16:18:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:18:52 - app.wordpress - INFO - Successfully created tag 'The Equalizer'
+2025-08-18 16:18:53 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=gladiator-2 "HTTP/1.1 200 OK"
+2025-08-18 16:18:54 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:18:54 - app.wordpress - INFO - Successfully created tag 'Gladiator 2'
+2025-08-18 16:18:55 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=training-day "HTTP/1.1 200 OK"
+2025-08-18 16:18:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:18:56 - app.wordpress - INFO - Successfully created tag 'Training Day'
+2025-08-18 16:18:57 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=spike-lee "HTTP/1.1 200 OK"
+2025-08-18 16:18:58 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ridley-scott "HTTP/1.1 200 OK"
+2025-08-18 16:18:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=highest-2-lowest "HTTP/1.1 200 OK"
+2025-08-18 16:18:59 - app.wordpress - INFO - Creating WordPress post: Denzel Washington ignora cultura do cancelamento: 'Não se inscreva'
+2025-08-18 16:19:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:19:03 - app.wordpress - INFO - Successfully created post 'Denzel Washington ignora cultura do cancelamento: 'Não se inscreva'' with ID: 14064
+2025-08-18 16:19:03 - app.store - INFO - Successfully recorded published post for article DB ID 190 (WP Post ID: 14064).
+2025-08-18 16:19:03 - app.pipeline - INFO - Successfully published post 14064 for article DB ID 190
+2025-08-18 16:19:03 - app.pipeline - INFO - Sleeping for 6.9s (per-article delay).
+2025-08-18 16:19:09 - app.pipeline - INFO - Finished feed 'screenrant_movies'. Sleeping for 15s before next feed: screenrant_tv
+2025-08-18 16:19:24 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-18 16:19:24 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-18 16:19:25 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-18 16:19:25 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-18 16:19:25 - app.pipeline - INFO - Found 10 new articles for screenrant_tv
+2025-08-18 16:19:25 - app.pipeline - INFO - Processing article: Chris Hemsworth’s Limitless: Live Better Now Is A Streaming Hit (DB ID: 191) from screenrant_tv
+2025-08-18 16:19:26 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:19:26 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-18 16:19:26 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:19:26 - app.extractor - INFO - Collected 14 images from article (pre+post).
+2025-08-18 16:19:26 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/chris-hemsworth-show-limitless-streaming-success/. Title: 3 Days After Release, Chris Hemsworth’s TV Show Is...
+2025-08-18 16:19:26 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:19:32 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:20:02 - app.pipeline - INFO - Attempting to upload up to 8 images.
+2025-08-18 16:20:02 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/chris-hemsworth-at-london-premiere-of-limitless-live-better-now-with-chris-hemsworth.jpg
+2025-08-18 16:20:02 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/chris-hemsworth-at-london-premiere-of-limitless-live-better-now-with-chris-hemsworth.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:20:03 - app.wordpress - INFO - Uploading image 'chris-hemsworth-at-london-premiere-of-limitless-live-better-now-with-chris-hemsworth.jpg' to WordPress.
+2025-08-18 16:20:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:20:13 - app.wordpress - INFO - Uploaded media 14065 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/chris-hemsworth-at-london-premiere-of-limitless-live-better-now-with-chris-hemsworth.jpg
+2025-08-18 16:20:14 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14065 "HTTP/1.1 200 OK"
+2025-08-18 16:20:14 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/chris-hemsworth-in-limitless_-live-better-now.jpg
+2025-08-18 16:20:14 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/chris-hemsworth-in-limitless_-live-better-now.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:20:15 - app.wordpress - INFO - Uploading image 'chris-hemsworth-in-limitless_-live-better-now.jpg' to WordPress.
+2025-08-18 16:20:21 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:20:21 - app.wordpress - INFO - Uploaded media 14066 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/chris-hemsworth-in-limitless_-live-better-now.jpg
+2025-08-18 16:20:22 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14066 "HTTP/1.1 200 OK"
+2025-08-18 16:20:22 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/limitless-live-better-now-season-2-poster.jpg
+2025-08-18 16:20:23 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/limitless-live-better-now-season-2-poster.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:20:23 - app.wordpress - INFO - Uploading image 'limitless-live-better-now-season-2-poster.jpg' to WordPress.
+2025-08-18 16:20:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:20:30 - app.wordpress - INFO - Uploaded media 14067 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/limitless-live-better-now-season-2-poster.jpg
+2025-08-18 16:20:32 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14067 "HTTP/1.1 200 OK"
+2025-08-18 16:20:32 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2023/04/tim-allen-as-jason-nesmith-smiling-in-galaxy-quest.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:32 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2023/04/tim-allen-as-jason-nesmith-smiling-in-galaxy-quest.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:20:32 - app.wordpress - INFO - Uploading image 'tim-allen-as-jason-nesmith-smiling-in-galaxy-quest.jpg' to WordPress.
+2025-08-18 16:20:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:20:35 - app.wordpress - INFO - Uploaded media 14068 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2023/04/tim-allen-as-jason-nesmith-smiling-in-galaxy-quest.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14068 "HTTP/1.1 200 OK"
+2025-08-18 16:20:37 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/adobe-express-file-58.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:37 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/adobe-express-file-58.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:20:37 - app.wordpress - INFO - Uploading image 'adobe-express-file-58.jpg' to WordPress.
+2025-08-18 16:20:41 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:20:41 - app.wordpress - INFO - Uploaded media 14069 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/adobe-express-file-58.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:42 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14069 "HTTP/1.1 200 OK"
+2025-08-18 16:20:42 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/zoe-saldan-a-s-joe-looking-distraught-while-standing-in-front-of-a-truck-in-lioness-season-2.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:43 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/zoe-saldan-a-s-joe-looking-distraught-while-standing-in-front-of-a-truck-in-lioness-season-2.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:20:43 - app.wordpress - INFO - Uploading image 'zoe-saldan-a-s-joe-looking-distraught-while-standing-in-front-of-a-truck-in-lioness-season-2.jpg' to WordPress.
+2025-08-18 16:20:46 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:20:46 - app.wordpress - INFO - Uploaded media 14070 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/zoe-saldan-a-s-joe-looking-distraught-while-standing-in-front-of-a-truck-in-lioness-season-2.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:47 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14070 "HTTP/1.1 200 OK"
+2025-08-18 16:20:47 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/snw3_306_mg_03_20_24_01196_rt_f.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:47 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/snw3_306_mg_03_20_24_01196_rt_f.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:20:47 - app.wordpress - INFO - Uploading image 'snw3_306_mg_03_20_24_01196_rt_f.jpg' to WordPress.
+2025-08-18 16:20:51 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:20:51 - app.wordpress - INFO - Uploaded media 14071 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/snw3_306_mg_03_20_24_01196_rt_f.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14071 "HTTP/1.1 200 OK"
+2025-08-18 16:20:52 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/adobe-express-file-79.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:52 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/adobe-express-file-79.jpg?q=49&fit=crop&w=420&h=300&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 16:20:52 - app.wordpress - INFO - Uploading image 'adobe-express-file-79.jpg' to WordPress.
+2025-08-18 16:20:55 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:20:55 - app.wordpress - INFO - Uploaded media 14072 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/adobe-express-file-79.jpg?q=49&fit=crop&w=420&h=300&dpr=2
+2025-08-18 16:20:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14072 "HTTP/1.1 200 OK"
+2025-08-18 16:20:57 - app.wordpress - INFO - Post will be created with featured_media 14065.
+2025-08-18 16:20:57 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=chris-hemsworth "HTTP/1.1 200 OK"
+2025-08-18 16:20:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=limitless "HTTP/1.1 200 OK"
+2025-08-18 16:21:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=disney "HTTP/1.1 200 OK"
+2025-08-18 16:21:02 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=thor "HTTP/1.1 200 OK"
+2025-08-18 16:21:04 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=marvel "HTTP/1.1 200 OK"
+2025-08-18 16:21:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=darren-aronofsky "HTTP/1.1 200 OK"
+2025-08-18 16:21:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=jane-root "HTTP/1.1 200 OK"
+2025-08-18 16:21:07 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:21:07 - app.wordpress - INFO - Successfully created tag 'Jane Root'
+2025-08-18 16:21:07 - app.wordpress - INFO - Creating WordPress post: Sucesso de Chris Hemsworth em Limitless: série domina streaming
+2025-08-18 16:21:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:21:10 - app.wordpress - INFO - Successfully created post 'Sucesso de Chris Hemsworth em Limitless: série domina streaming' with ID: 14073
+2025-08-18 16:21:10 - app.store - INFO - Successfully recorded published post for article DB ID 191 (WP Post ID: 14073).
+2025-08-18 16:21:10 - app.pipeline - INFO - Successfully published post 14073 for article DB ID 191
+2025-08-18 16:21:10 - app.pipeline - INFO - Sleeping for 9.5s (per-article delay).
+2025-08-18 16:21:20 - app.pipeline - INFO - Processing article: "Not A Snowball's Chance In Hell": Kimmel Blasts Report Colbert's Late Show Is Losing $40 Million (DB ID: 192) from screenrant_tv
+2025-08-18 16:21:21 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:21:21 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-18 16:21:21 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:21:21 - app.extractor - INFO - Collected 16 images from article (pre+post).
+2025-08-18 16:21:21 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/kimmel-blasts-report-colbert-late-show-losing-40-million/. Title: "Not A Snowball's Chance In Hell": Kimmel Blasts R...
+2025-08-18 16:21:21 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:21:27 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:21:50 - app.pipeline - INFO - Pipeline cycle completed. Processed 3 articles.
+2025-08-18 16:21:50 - app.store - INFO - Database connection closed.
+2025-08-18 16:21:50 - app.wordpress - INFO - WordPress client connection closed.

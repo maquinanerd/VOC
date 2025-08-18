@@ -180,6 +180,15 @@ def collect_images_from_article(soup: BeautifulSoup, base_url: str) -> list[str]
     for source in root.select("picture source[srcset]"):
         _push(_parse_srcset(source.get("srcset", "")))
 
+    # 2.5) <noscript> com <img> (fallback de lazy-load)
+    for ns in root.find_all("noscript"):
+        try:
+            inner = BeautifulSoup(ns.string or "", "html.parser")
+        except Exception:
+            continue
+        for img in inner.find_all("img"):
+            _push(img.get("src") or img.get("data-src") or img.get("data-original"))
+
     # 3) nós com data-* comuns
     for node in root.select('[data-img-url], [data-image], [data-src], [data-original]'):
         cand = node.get("data-img-url") or node.get("data-image") or node.get("data-src") or node.get("data-original")

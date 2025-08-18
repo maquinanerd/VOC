@@ -6829,3 +6829,150 @@ message: "API key not valid. Please pass a valid API key."
 2025-08-18 16:21:50 - app.pipeline - INFO - Pipeline cycle completed. Processed 3 articles.
 2025-08-18 16:21:50 - app.store - INFO - Database connection closed.
 2025-08-18 16:21:50 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-18 16:30:26 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-18 16:30:26 - app.store - INFO - Database initialized successfully.
+2025-08-18 16:30:26 - app.store - INFO - Database connection closed.
+2025-08-18 16:30:26 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-18 16:30:26 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-18 16:30:26 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-18 16:30:28 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-18 16:30:28 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-18 16:30:28 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 16:30:29 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-18 16:30:29 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-18 16:30:29 - app.pipeline - INFO - Found 1 new articles for screenrant_movies
+2025-08-18 16:30:29 - app.pipeline - INFO - Processing article: Superman Surpasses F1: The Movie as Both Films Approach $600 Million Milestone (DB ID: 201) from screenrant_movies
+2025-08-18 16:30:30 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:30:30 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-18 16:30:30 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:30:30 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-08-18 16:30:30 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/superman-passes-f1-worldwide-box-office-both-almost-600-million/. Title: Superman Races Past WB's Action Sports Movie As Th...
+2025-08-18 16:30:30 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:30:39 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:31:09 - app.pipeline - INFO - Attempting to upload up to 4 images.
+2025-08-18 16:31:09 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/superman-looking-forward-in-the-dcu-movie-ending.jpg
+2025-08-18 16:31:09 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/superman-looking-forward-in-the-dcu-movie-ending.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:31:10 - app.wordpress - INFO - Uploading image 'superman-looking-forward-in-the-dcu-movie-ending.jpg' to WordPress.
+2025-08-18 16:31:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:31:34 - app.wordpress - INFO - Uploaded media 14074 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/superman-looking-forward-in-the-dcu-movie-ending.jpg
+2025-08-18 16:31:36 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14074 "HTTP/1.1 200 OK"
+2025-08-18 16:31:36 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/01703330_poster_w780.jpg
+2025-08-18 16:31:36 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/01703330_poster_w780.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:31:36 - app.wordpress - INFO - Uploading image '01703330_poster_w780.jpg' to WordPress.
+2025-08-18 16:31:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:31:43 - app.wordpress - INFO - Uploaded media 14075 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/01703330_poster_w780.jpg
+2025-08-18 16:31:45 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14075 "HTTP/1.1 200 OK"
+2025-08-18 16:31:45 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/david-corenswet-s-superman-delivers-a-speech-at-luthorcorp-tower.jpg
+2025-08-18 16:31:45 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/david-corenswet-s-superman-delivers-a-speech-at-luthorcorp-tower.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:31:46 - app.wordpress - INFO - Uploading image 'david-corenswet-s-superman-delivers-a-speech-at-luthorcorp-tower.jpg' to WordPress.
+2025-08-18 16:31:58 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:31:58 - app.wordpress - INFO - Uploaded media 14076 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/david-corenswet-s-superman-delivers-a-speech-at-luthorcorp-tower.jpg
+2025-08-18 16:32:00 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14076 "HTTP/1.1 200 OK"
+2025-08-18 16:32:00 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/superman-looking-up-in-the-dcu-movie.jpg
+2025-08-18 16:32:01 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/superman-looking-up-in-the-dcu-movie.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:32:01 - app.wordpress - INFO - Uploading image 'superman-looking-up-in-the-dcu-movie.jpg' to WordPress.
+2025-08-18 16:32:27 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:32:27 - app.wordpress - INFO - Uploaded media 14077 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/superman-looking-up-in-the-dcu-movie.jpg
+2025-08-18 16:32:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14077 "HTTP/1.1 200 OK"
+2025-08-18 16:32:29 - app.wordpress - INFO - Post will be created with featured_media 14074.
+2025-08-18 16:32:30 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=superman "HTTP/1.1 200 OK"
+2025-08-18 16:32:31 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=warner-bros "HTTP/1.1 200 OK"
+2025-08-18 16:32:32 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dc-studios "HTTP/1.1 200 OK"
+2025-08-18 16:32:33 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=james-gunn "HTTP/1.1 200 OK"
+2025-08-18 16:32:34 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=brad-pitt "HTTP/1.1 200 OK"
+2025-08-18 16:32:35 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=f1-the-movie "HTTP/1.1 200 OK"
+2025-08-18 16:32:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:32:37 - app.wordpress - INFO - Successfully created tag 'F1: The Movie'
+2025-08-18 16:32:38 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=joseph-kosinski "HTTP/1.1 200 OK"
+2025-08-18 16:32:38 - app.wordpress - INFO - Creating WordPress post: Sucesso de bilheteria: Superman ultrapassa F1 e se aproxima da marca de US$ 600 milhões
+2025-08-18 16:32:47 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:32:47 - app.wordpress - INFO - Successfully created post 'Sucesso de bilheteria: Superman ultrapassa F1 e se aproxima da marca de US$ 600 milhões' with ID: 14078
+2025-08-18 16:32:47 - app.store - INFO - Successfully recorded published post for article DB ID 201 (WP Post ID: 14078).
+2025-08-18 16:32:47 - app.pipeline - INFO - Successfully published post 14078 for article DB ID 201
+2025-08-18 16:32:47 - app.pipeline - INFO - Sleeping for 7.8s (per-article delay).
+2025-08-18 16:32:55 - app.pipeline - INFO - Finished feed 'screenrant_movies'. Sleeping for 15s before next feed: screenrant_tv
+2025-08-18 16:33:10 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-18 16:33:10 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-18 16:33:10 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-18 16:33:10 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-18 16:33:10 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-18 16:33:10 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-18 16:33:10 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 16:33:11 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-18 16:33:11 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-18 16:33:11 - app.pipeline - INFO - Found 10 new articles for collider_movies
+2025-08-18 16:33:11 - app.pipeline - INFO - Processing article: New Horror Movie Gives ‘Courage the Cowardly Dog’ Vibes in First ‘Good Boy’ Trailer (DB ID: 202) from collider_movies
+2025-08-18 16:33:12 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:33:12 - app.extractor - INFO - Converted 1 'data-img-url' divs to <figure> tags.
+2025-08-18 16:33:12 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:33:12 - app.extractor - INFO - Found 1 unique YouTube videos.
+2025-08-18 16:33:12 - app.extractor - INFO - Collected 0 images from article (pre+post).
+2025-08-18 16:33:12 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/good-boy-trailer-horror-movie-dog-pov/. Title: New Horror Movie Gives ‘Courage the Cowardly Dog’ ...
+2025-08-18 16:33:12 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:33:18 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:33:48 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 16:33:48 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/good-boy-5.jpg
+2025-08-18 16:33:49 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/good-boy-5.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:33:49 - app.wordpress - INFO - Uploading image 'good-boy-5.jpg' to WordPress.
+2025-08-18 16:33:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:33:56 - app.wordpress - INFO - Uploaded media 14079 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/good-boy-5.jpg
+2025-08-18 16:33:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14079 "HTTP/1.1 200 OK"
+2025-08-18 16:33:57 - app.wordpress - INFO - Post will be created with featured_media 14079.
+2025-08-18 16:33:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=good-boy "HTTP/1.1 200 OK"
+2025-08-18 16:33:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=shudder "HTTP/1.1 200 OK"
+2025-08-18 16:34:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ben-leonberg "HTTP/1.1 200 OK"
+2025-08-18 16:34:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=terror "HTTP/1.1 200 OK"
+2025-08-18 16:34:03 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=cachorro "HTTP/1.1 200 OK"
+2025-08-18 16:34:04 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:34:04 - app.wordpress - INFO - Successfully created tag 'cachorro'
+2025-08-18 16:34:07 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=sobrenatural "HTTP/1.1 200 OK"
+2025-08-18 16:34:09 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:34:09 - app.wordpress - INFO - Successfully created tag 'sobrenatural'
+2025-08-18 16:34:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=channing-tatum "HTTP/1.1 200 OK"
+2025-08-18 16:34:11 - app.wordpress - INFO - Creating WordPress post: Terror canino: filme 'Good Boy' traz vibes de 'Coragem, o Cão Covarde'
+2025-08-18 16:34:15 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:34:15 - app.wordpress - INFO - Successfully created post 'Terror canino: filme 'Good Boy' traz vibes de 'Coragem, o Cão Covarde'' with ID: 14080
+2025-08-18 16:34:15 - app.store - INFO - Successfully recorded published post for article DB ID 202 (WP Post ID: 14080).
+2025-08-18 16:34:15 - app.pipeline - INFO - Successfully published post 14080 for article DB ID 202
+2025-08-18 16:34:15 - app.pipeline - INFO - Sleeping for 6.1s (per-article delay).
+2025-08-18 16:34:22 - app.pipeline - INFO - Processing article: Move Over Alan Ritchson This Jack Reacher Is Gaining Audiences' Attention on Streaming (DB ID: 203) from collider_movies
+2025-08-18 16:34:22 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 16:34:22 - app.extractor - INFO - Converted 1 'data-img-url' divs to <figure> tags.
+2025-08-18 16:34:22 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 16:34:22 - app.extractor - INFO - Found 1 unique YouTube videos.
+2025-08-18 16:34:22 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-18 16:34:22 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/tom-cruise-jack-reacher-streaming-success-pluto-tv-august-2025/. Title: Move Over Alan Ritchson This Jack Reacher Is Gaini...
+2025-08-18 16:34:22 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 16:34:31 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 16:35:01 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-18 16:35:01 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/06/tom-cruise-jack-reacher-never-go-back-2.jpg
+2025-08-18 16:35:22 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/06/tom-cruise-jack-reacher-never-go-back-2.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:35:22 - app.wordpress - INFO - Uploading image 'tom-cruise-jack-reacher-never-go-back-2.jpg' to WordPress.
+2025-08-18 16:35:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:35:30 - app.wordpress - INFO - Uploaded media 14081 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/06/tom-cruise-jack-reacher-never-go-back-2.jpg
+2025-08-18 16:35:31 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14081 "HTTP/1.1 200 OK"
+2025-08-18 16:35:31 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/sharedimages/2024/04/jack-reacher-poster.jpg
+2025-08-18 16:35:31 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/sharedimages/2024/04/jack-reacher-poster.jpg "HTTP/1.1 200 OK"
+2025-08-18 16:35:31 - app.wordpress - INFO - Uploading image 'jack-reacher-poster.jpg' to WordPress.
+2025-08-18 16:35:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 16:35:34 - app.wordpress - INFO - Uploaded media 14082 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/sharedimages/2024/04/jack-reacher-poster.jpg
+2025-08-18 16:35:36 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/14082 "HTTP/1.1 200 OK"
+2025-08-18 16:35:36 - app.wordpress - INFO - Post will be created with featured_media 14081.
+2025-08-18 16:35:37 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=tom-cruise "HTTP/1.1 200 OK"
+2025-08-18 16:35:38 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=jack-reacher "HTTP/1.1 200 OK"
+2025-08-18 16:35:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=alan-ritchson "HTTP/1.1 200 OK"
+2025-08-18 16:35:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=pluto-tv "HTTP/1.1 200 OK"
+2025-08-18 16:35:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=christopher-mcquarrie "HTTP/1.1 200 OK"
+2025-08-18 16:35:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=rosamund-pike "HTTP/1.1 200 OK"
+2025-08-18 16:35:45 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 16:35:45 - app.wordpress - INFO - Successfully created tag 'Rosamund Pike'
+2025-08-18 16:35:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=werner-herzog "HTTP/1.1 200 OK"
+2025-08-18 16:35:46 - app.wordpress - INFO - Creating WordPress post: Sucesso de Jack Reacher em Streaming: Tom Cruise Conquista o Público
+2025-08-18 16:35:49 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 16:35:49 - app.wordpress - INFO - Successfully created post 'Sucesso de Jack Reacher em Streaming: Tom Cruise Conquista o Público' with ID: 14083
+2025-08-18 16:35:49 - app.store - INFO - Successfully recorded published post for article DB ID 203 (WP Post ID: 14083).
+2025-08-18 16:35:49 - app.pipeline - INFO - Successfully published post 14083 for article DB ID 203
+2025-08-18 16:35:49 - app.pipeline - INFO - Sleeping for 7.3s (per-article delay).
+2025-08-18 16:35:53 - app.pipeline - INFO - Pipeline cycle completed. Processed 3 articles.
+2025-08-18 16:35:53 - app.store - INFO - Database connection closed.
+2025-08-18 16:35:53 - app.wordpress - INFO - WordPress client connection closed.

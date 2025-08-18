@@ -74,22 +74,23 @@ def is_small(u: str) -> bool:
     if not u:
         return True
     low = u.lower()
+
     # lixo comum
-    if any(pat in low for pat in JUNK_IMAGE_PATTERNS):
+    if any(pat in low for pat in ("placeholder","sprite","icon","emoji",".svg")):
         return True
-    # nomes editoriais genéricos que poluem
-    if any(pat in low for pat in ("adobe-express-file", "headshot", "logo")):
+
+    # posters/avatares genéricos do Collider
+    if "colliderimages.com" in low and ("/sharedimages/" in low or "poster" in low):
         return True
-    # query params (w/h/fit=crop)
+
+    # thumbs de card (fit=crop 420x300 etc.)
     try:
         params = parse_qs(urlparse(u).query)
-        w = int((params.get("w", ["0"])[0] or "0"))
-        h = int((params.get("h", ["0"])[0] or "0"))
-        fit = (params.get("fit", [""])[0] or "").lower()
-        # card thumbs típicos (ex.: 420×300 fit=crop do SR/Collider)
+        w = int((params.get("w",["0"])[0] or "0"))
+        h = int((params.get("h",["0"])[0] or "0"))
+        fit = (params.get("fit",[""])[0] or "").lower()
         if fit == "crop" and ((w and w <= 600) or (h and h <= 400)):
             return True
-        # miniaturas muito pequenas por query
         if (w and w < 320) or (h and h < 200):
             return True
     except Exception:

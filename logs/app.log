@@ -6171,3 +6171,352 @@ message: "API key not valid. Please pass a valid API key."
 2025-08-18 10:47:53 - app.pipeline - INFO - Pipeline cycle completed. Processed 3 articles.
 2025-08-18 10:47:53 - app.store - INFO - Database connection closed.
 2025-08-18 10:47:53 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-18 11:31:51 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-18 11:31:51 - app.store - INFO - Database initialized successfully.
+2025-08-18 11:31:51 - app.store - INFO - Database connection closed.
+2025-08-18 11:31:51 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-18 11:31:51 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-18 11:31:51 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-18 11:31:54 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-18 11:31:54 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-18 11:31:54 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 11:31:55 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-18 11:31:55 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-18 11:31:55 - app.pipeline - INFO - Found 2 new articles for screenrant_movies
+2025-08-18 11:31:55 - app.pipeline - INFO - Processing article: Helen Mirren: Why James Bond Shouldn't Be a Woman (DB ID: 169) from screenrant_movies
+2025-08-18 11:31:56 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 11:31:56 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 11:31:56 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 11:31:56 - app.extractor - INFO - Collected 0 images from article body.
+2025-08-18 11:31:56 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/james-bond-helen-mirren-cant-cast-woman/. Title: “I’m Such A Feminist”: Oscar-Winning Star Says Why...
+2025-08-18 11:31:56 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 11:32:06 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 11:32:36 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 11:32:36 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/daniel-craig-covered-in-dirt-as-james-bond-in-quantum-of-solace.jpg
+2025-08-18 11:32:37 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/daniel-craig-covered-in-dirt-as-james-bond-in-quantum-of-solace.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:32:37 - app.wordpress - INFO - Uploading image 'daniel-craig-covered-in-dirt-as-james-bond-in-quantum-of-solace.jpg' to WordPress.
+2025-08-18 11:32:54 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:32:54 - app.wordpress - INFO - Uploaded media 13950 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/daniel-craig-covered-in-dirt-as-james-bond-in-quantum-of-solace.jpg
+2025-08-18 11:32:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13950 "HTTP/1.1 200 OK"
+2025-08-18 11:32:56 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/daniel-craig-covered-in-dirt-as-james-bond-in-quantum-of-solace.jpg
+2025-08-18 11:32:56 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/daniel-craig-covered-in-dirt-as-james-bond-in-quantum-of-solace.jpg
+2025-08-18 11:32:56 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/daniel-craig-covered-in-dirt-as-james-bond-in-quantum-of-solace.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:32:57 - app.wordpress - INFO - Uploading image 'daniel-craig-covered-in-dirt-as-james-bond-in-quantum-of-solace.jpg' to WordPress.
+2025-08-18 11:33:15 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:33:15 - app.wordpress - INFO - Uploaded media 13951 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/daniel-craig-covered-in-dirt-as-james-bond-in-quantum-of-solace.jpg
+2025-08-18 11:33:16 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13951 "HTTP/1.1 200 OK"
+2025-08-18 11:33:16 - app.wordpress - INFO - Post will be created with featured_media 13951.
+2025-08-18 11:33:17 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=james-bond "HTTP/1.1 200 OK"
+2025-08-18 11:33:18 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=helen-mirren "HTTP/1.1 200 OK"
+2025-08-18 11:33:19 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:33:19 - app.wordpress - INFO - Successfully created tag 'Helen Mirren'
+2025-08-18 11:33:20 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=pierce-brosnan "HTTP/1.1 200 OK"
+2025-08-18 11:33:21 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:33:21 - app.wordpress - INFO - Successfully created tag 'Pierce Brosnan'
+2025-08-18 11:33:22 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=bond-26 "HTTP/1.1 200 OK"
+2025-08-18 11:33:23 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=daniel-craig "HTTP/1.1 200 OK"
+2025-08-18 11:33:24 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=007-sem-tempo-para-morrer "HTTP/1.1 200 OK"
+2025-08-18 11:33:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:33:25 - app.wordpress - INFO - Successfully created tag '007 - Sem Tempo para Morrer'
+2025-08-18 11:33:26 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=amazon "HTTP/1.1 200 OK"
+2025-08-18 11:33:28 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:33:28 - app.wordpress - INFO - Successfully created tag 'Amazon'
+2025-08-18 11:33:28 - app.wordpress - INFO - Creating WordPress post: Helen Mirren: Por que 007 não pode ser mulher?
+2025-08-18 11:33:31 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 11:33:31 - app.wordpress - INFO - Successfully created post 'Helen Mirren: Por que 007 não pode ser mulher?' with ID: 13952
+2025-08-18 11:33:31 - app.store - INFO - Successfully recorded published post for article DB ID 169 (WP Post ID: 13952).
+2025-08-18 11:33:31 - app.pipeline - INFO - Successfully published post 13952 for article DB ID 169
+2025-08-18 11:33:31 - app.pipeline - INFO - Sleeping for 8.0s (per-article delay).
+2025-08-18 11:33:39 - app.pipeline - INFO - Processing article: Ian McKellen Teases Return Of Frodo & Gandalf In Lord Of The Rings: The Hunt For Gollum (DB ID: 170) from screenrant_movies
+2025-08-18 11:33:40 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 11:33:40 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 11:33:40 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 11:33:40 - app.extractor - INFO - Collected 0 images from article body.
+2025-08-18 11:33:40 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/lord-of-the-rings-hunt-for-gollum-ian-mckellen-gandalf-frodo-return/. Title: Ian McKellen Confirms That 2 Original Lord Of The ...
+2025-08-18 11:33:40 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 11:33:49 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 11:34:19 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 11:34:19 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/gollum-in-the-hobbit_-an-unexpected-journey.jpg
+2025-08-18 11:34:20 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/gollum-in-the-hobbit_-an-unexpected-journey.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:34:20 - app.wordpress - INFO - Uploading image 'gollum-in-the-hobbit_-an-unexpected-journey.jpg' to WordPress.
+2025-08-18 11:34:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:34:34 - app.wordpress - INFO - Uploaded media 13953 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/gollum-in-the-hobbit_-an-unexpected-journey.jpg
+2025-08-18 11:34:36 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13953 "HTTP/1.1 200 OK"
+2025-08-18 11:34:36 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/gollum-in-the-hobbit_-an-unexpected-journey.jpg
+2025-08-18 11:34:36 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/gollum-in-the-hobbit_-an-unexpected-journey.jpg
+2025-08-18 11:34:37 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/gollum-in-the-hobbit_-an-unexpected-journey.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:34:37 - app.wordpress - INFO - Uploading image 'gollum-in-the-hobbit_-an-unexpected-journey.jpg' to WordPress.
+2025-08-18 11:34:49 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:34:49 - app.wordpress - INFO - Uploaded media 13954 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/gollum-in-the-hobbit_-an-unexpected-journey.jpg
+2025-08-18 11:34:50 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13954 "HTTP/1.1 200 OK"
+2025-08-18 11:34:50 - app.wordpress - INFO - Post will be created with featured_media 13954.
+2025-08-18 11:34:51 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ian-mckellen "HTTP/1.1 200 OK"
+2025-08-18 11:34:52 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=gandalf "HTTP/1.1 200 OK"
+2025-08-18 11:34:53 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=frodo "HTTP/1.1 200 OK"
+2025-08-18 11:34:54 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=o-senhor-dos-aneis "HTTP/1.1 200 OK"
+2025-08-18 11:34:55 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=a-busca-por-gollum "HTTP/1.1 200 OK"
+2025-08-18 11:34:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:34:56 - app.wordpress - INFO - Successfully created tag 'A Busca por Gollum'
+2025-08-18 11:34:57 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=peter-jackson "HTTP/1.1 200 OK"
+2025-08-18 11:34:58 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=andy-serkis "HTTP/1.1 200 OK"
+2025-08-18 11:34:58 - app.wordpress - INFO - Creating WordPress post: Ian McKellen Confirma: Gandalf e Frodo em 'A Busca por Gollum'
+2025-08-18 11:35:01 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 11:35:01 - app.wordpress - INFO - Successfully created post 'Ian McKellen Confirma: Gandalf e Frodo em 'A Busca por Gollum'' with ID: 13955
+2025-08-18 11:35:01 - app.store - INFO - Successfully recorded published post for article DB ID 170 (WP Post ID: 13955).
+2025-08-18 11:35:01 - app.pipeline - INFO - Successfully published post 13955 for article DB ID 170
+2025-08-18 11:35:01 - app.pipeline - INFO - Sleeping for 7.2s (per-article delay).
+2025-08-18 11:35:08 - app.pipeline - INFO - Finished feed 'screenrant_movies'. Sleeping for 15s before next feed: screenrant_tv
+2025-08-18 11:35:23 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-18 11:35:23 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-18 11:35:24 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-18 11:35:24 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-18 11:35:24 - app.pipeline - INFO - Found 3 new articles for screenrant_tv
+2025-08-18 11:35:24 - app.pipeline - INFO - Processing article: Helluva Boss Star Richard Horvitz Unpacks Show's Move to Prime Video (DB ID: 171) from screenrant_tv
+2025-08-18 11:35:25 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 11:35:25 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 11:35:25 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 11:35:25 - app.extractor - INFO - Collected 1 images from article body.
+2025-08-18 11:35:25 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/helluva-boss-prime-video-richard-horvitz-response/. Title: Richard Horvitz “Always Knew” Helluva Boss Would E...
+2025-08-18 11:35:25 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 11:35:34 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 11:35:34 - app.ai_processor - INFO - Post-AI HTML sanitizer removed 1 characters.
+2025-08-18 11:36:04 - app.html_utils - INFO - O conteúdo já contém tags <img>. Pulando a injeção de imagens.
+2025-08-18 11:36:04 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-18 11:36:04 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-looking-down-at-stolas-in-helluva-boss-season-2-episode-12.jpg
+2025-08-18 11:36:05 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-looking-down-at-stolas-in-helluva-boss-season-2-episode-12.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:36:05 - app.wordpress - INFO - Uploading image 'blitz-looking-down-at-stolas-in-helluva-boss-season-2-episode-12.jpg' to WordPress.
+2025-08-18 11:36:18 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:36:18 - app.wordpress - INFO - Uploaded media 13956 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-looking-down-at-stolas-in-helluva-boss-season-2-episode-12.jpg
+2025-08-18 11:36:19 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13956 "HTTP/1.1 200 OK"
+2025-08-18 11:36:19 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/sharedimages/2024/07/screen-hub-cast-placeholder-1.png?q=49&fit=crop&w=50&h=65&dpr=2
+2025-08-18 11:36:19 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/sharedimages/2024/07/screen-hub-cast-placeholder-1.png?q=49&fit=crop&w=50&h=65&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 11:36:19 - app.wordpress - INFO - Uploading image 'screen-hub-cast-placeholder-1.png' to WordPress.
+2025-08-18 11:36:20 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:36:20 - app.wordpress - INFO - Uploaded media 13957 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/sharedimages/2024/07/screen-hub-cast-placeholder-1.png?q=49&fit=crop&w=50&h=65&dpr=2
+2025-08-18 11:36:23 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13957 "HTTP/1.1 200 OK"
+2025-08-18 11:36:23 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-looking-down-at-stolas-in-helluva-boss-season-2-episode-12.jpg
+2025-08-18 11:36:23 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-looking-down-at-stolas-in-helluva-boss-season-2-episode-12.jpg
+2025-08-18 11:36:23 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-looking-down-at-stolas-in-helluva-boss-season-2-episode-12.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:36:23 - app.wordpress - INFO - Uploading image 'blitz-looking-down-at-stolas-in-helluva-boss-season-2-episode-12.jpg' to WordPress.
+2025-08-18 11:36:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:36:38 - app.wordpress - INFO - Uploaded media 13959 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-looking-down-at-stolas-in-helluva-boss-season-2-episode-12.jpg
+2025-08-18 11:36:39 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13959 "HTTP/1.1 200 OK"
+2025-08-18 11:36:39 - app.wordpress - INFO - Post will be created with featured_media 13959.
+2025-08-18 11:36:39 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=helluva-boss "HTTP/1.1 200 OK"
+2025-08-18 11:36:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hazbin-hotel "HTTP/1.1 200 OK"
+2025-08-18 11:36:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=richard-horvitz "HTTP/1.1 200 OK"
+2025-08-18 11:36:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=prime-video "HTTP/1.1 200 OK"
+2025-08-18 11:36:45 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=youtube "HTTP/1.1 200 OK"
+2025-08-18 11:36:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=moxxie "HTTP/1.1 200 OK"
+2025-08-18 11:36:47 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:36:47 - app.wordpress - INFO - Successfully created tag 'Moxxie'
+2025-08-18 11:36:48 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=vivienne-medrano "HTTP/1.1 200 OK"
+2025-08-18 11:36:49 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:36:49 - app.wordpress - INFO - Successfully created tag 'Vivienne Medrano'
+2025-08-18 11:36:49 - app.wordpress - INFO - Creating WordPress post: Helluva Boss no Prime Video: Richard Horvitz previa o sucesso
+2025-08-18 11:36:53 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 11:36:53 - app.wordpress - INFO - Successfully created post 'Helluva Boss no Prime Video: Richard Horvitz previa o sucesso' with ID: 13962
+2025-08-18 11:36:53 - app.store - INFO - Successfully recorded published post for article DB ID 171 (WP Post ID: 13962).
+2025-08-18 11:36:53 - app.pipeline - INFO - Successfully published post 13962 for article DB ID 171
+2025-08-18 11:36:53 - app.pipeline - INFO - Sleeping for 7.0s (per-article delay).
+2025-08-18 11:37:00 - app.pipeline - INFO - Processing article: Fallout Season 2 Images: Pre-War New Vegas & Norm's Fate Revealed (DB ID: 172) from screenrant_tv
+2025-08-18 11:37:01 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 11:37:01 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-18 11:37:01 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 11:37:01 - app.extractor - INFO - Collected 0 images from article body.
+2025-08-18 11:37:01 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/fallout-season-2-images-lucy-ghoul-maximus-norm-new-vegas/. Title: Fallout Season 2 Images Reveal New Vegas Before Th...
+2025-08-18 11:37:01 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 11:37:08 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 11:37:38 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 11:37:38 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/power-suit-in-fallout-sesaon-1.jpg
+2025-08-18 11:37:38 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/power-suit-in-fallout-sesaon-1.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:37:38 - app.wordpress - INFO - Uploading image 'power-suit-in-fallout-sesaon-1.jpg' to WordPress.
+2025-08-18 11:37:49 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:37:49 - app.wordpress - INFO - Uploaded media 13968 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/power-suit-in-fallout-sesaon-1.jpg
+2025-08-18 11:37:50 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13968 "HTTP/1.1 200 OK"
+2025-08-18 11:37:50 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/power-suit-in-fallout-sesaon-1.jpg
+2025-08-18 11:37:50 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/power-suit-in-fallout-sesaon-1.jpg
+2025-08-18 11:37:51 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/power-suit-in-fallout-sesaon-1.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:37:51 - app.wordpress - INFO - Uploading image 'power-suit-in-fallout-sesaon-1.jpg' to WordPress.
+2025-08-18 11:37:58 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:37:58 - app.wordpress - INFO - Uploaded media 13969 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/power-suit-in-fallout-sesaon-1.jpg
+2025-08-18 11:38:01 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13969 "HTTP/1.1 200 OK"
+2025-08-18 11:38:01 - app.wordpress - INFO - Post will be created with featured_media 13969.
+2025-08-18 11:38:02 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=fallout "HTTP/1.1 200 OK"
+2025-08-18 11:38:04 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=new-vegas "HTTP/1.1 200 OK"
+2025-08-18 11:38:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=prime-video "HTTP/1.1 200 OK"
+2025-08-18 11:38:07 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=macaulay-culkin "HTTP/1.1 200 OK"
+2025-08-18 11:38:08 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:38:08 - app.wordpress - INFO - Successfully created tag 'Macaulay Culkin'
+2025-08-18 11:38:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ella-purnell "HTTP/1.1 200 OK"
+2025-08-18 11:38:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=walton-goggins "HTTP/1.1 200 OK"
+2025-08-18 11:38:12 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=brotherhood-of-steel "HTTP/1.1 200 OK"
+2025-08-18 11:38:14 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:38:14 - app.wordpress - INFO - Successfully created tag 'Brotherhood of Steel'
+2025-08-18 11:38:14 - app.wordpress - INFO - Creating WordPress post: Fallout 2: Novas imagens revelam o passado de New Vegas
+2025-08-18 11:38:17 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 11:38:17 - app.wordpress - INFO - Successfully created post 'Fallout 2: Novas imagens revelam o passado de New Vegas' with ID: 13970
+2025-08-18 11:38:17 - app.store - INFO - Successfully recorded published post for article DB ID 172 (WP Post ID: 13970).
+2025-08-18 11:38:17 - app.pipeline - INFO - Successfully published post 13970 for article DB ID 172
+2025-08-18 11:38:17 - app.pipeline - INFO - Sleeping for 8.2s (per-article delay).
+2025-08-18 11:38:25 - app.pipeline - INFO - Processing article: Bridgerton Star Adam Hashmi To Lead The Chosen Creator’s New Series Joseph Of Egypt (DB ID: 173) from screenrant_tv
+2025-08-18 11:38:26 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 11:38:26 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 11:38:26 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 11:38:27 - app.extractor - INFO - Collected 2 images from article body.
+2025-08-18 11:38:27 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/joseph-of-egypt-show-adam-hashmi-cast-prime-video-greenlight/. Title: The Chosen Creator’s New Drama Casts Bridgerton St...
+2025-08-18 11:38:27 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 11:38:35 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 11:39:05 - app.html_utils - INFO - O conteúdo já contém tags <img>. Pulando a injeção de imagens.
+2025-08-18 11:39:05 - app.pipeline - INFO - Attempting to upload up to 3 images.
+2025-08-18 11:39:05 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jonathan-roumie-as-jesus-in-the-chosen-season-5-episode-9.jpg
+2025-08-18 11:39:05 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jonathan-roumie-as-jesus-in-the-chosen-season-5-episode-9.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:39:06 - app.wordpress - INFO - Uploading image 'jonathan-roumie-as-jesus-in-the-chosen-season-5-episode-9.jpg' to WordPress.
+2025-08-18 11:39:15 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:39:15 - app.wordpress - INFO - Uploaded media 13971 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jonathan-roumie-as-jesus-in-the-chosen-season-5-episode-9.jpg
+2025-08-18 11:39:16 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13971 "HTTP/1.1 200 OK"
+2025-08-18 11:39:16 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/07/instar53385847.jpg?q=49&fit=crop&w=50&h=65&dpr=2
+2025-08-18 11:39:17 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2024/07/instar53385847.jpg?q=49&fit=crop&w=50&h=65&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 11:39:17 - app.wordpress - INFO - Uploading image 'instar53385847.jpg' to WordPress.
+2025-08-18 11:39:18 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:39:18 - app.wordpress - INFO - Uploaded media 13972 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/07/instar53385847.jpg?q=49&fit=crop&w=50&h=65&dpr=2
+2025-08-18 11:39:19 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13972 "HTTP/1.1 200 OK"
+2025-08-18 11:39:19 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/07/instar53385859.jpg?q=49&fit=crop&w=50&h=65&dpr=2
+2025-08-18 11:39:19 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2024/07/instar53385859.jpg?q=49&fit=crop&w=50&h=65&dpr=2 "HTTP/1.1 200 OK"
+2025-08-18 11:39:19 - app.wordpress - INFO - Uploading image 'instar53385859.jpg' to WordPress.
+2025-08-18 11:39:20 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:39:20 - app.wordpress - INFO - Uploaded media 13973 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/07/instar53385859.jpg?q=49&fit=crop&w=50&h=65&dpr=2
+2025-08-18 11:39:21 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13973 "HTTP/1.1 200 OK"
+2025-08-18 11:39:21 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jonathan-roumie-as-jesus-in-the-chosen-season-5-episode-9.jpg
+2025-08-18 11:39:21 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jonathan-roumie-as-jesus-in-the-chosen-season-5-episode-9.jpg
+2025-08-18 11:39:21 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jonathan-roumie-as-jesus-in-the-chosen-season-5-episode-9.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:39:22 - app.wordpress - INFO - Uploading image 'jonathan-roumie-as-jesus-in-the-chosen-season-5-episode-9.jpg' to WordPress.
+2025-08-18 11:39:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:39:30 - app.wordpress - INFO - Uploaded media 13974 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/jonathan-roumie-as-jesus-in-the-chosen-season-5-episode-9.jpg
+2025-08-18 11:39:31 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13974 "HTTP/1.1 200 OK"
+2025-08-18 11:39:31 - app.wordpress - INFO - Post will be created with featured_media 13974.
+2025-08-18 11:39:32 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=joseph-of-egypt "HTTP/1.1 200 OK"
+2025-08-18 11:39:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:39:34 - app.wordpress - INFO - Successfully created tag 'Joseph of Egypt'
+2025-08-18 11:39:34 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-chosen "HTTP/1.1 200 OK"
+2025-08-18 11:39:36 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:39:36 - app.wordpress - INFO - Successfully created tag 'The Chosen'
+2025-08-18 11:39:37 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=adam-hashmi "HTTP/1.1 200 OK"
+2025-08-18 11:39:39 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:39:39 - app.wordpress - INFO - Successfully created tag 'Adam Hashmi'
+2025-08-18 11:39:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=bridgerton "HTTP/1.1 200 OK"
+2025-08-18 11:39:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=prime-video "HTTP/1.1 200 OK"
+2025-08-18 11:39:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=amazon-mgm-studios "HTTP/1.1 200 OK"
+2025-08-18 11:39:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dallas-jenkins "HTTP/1.1 200 OK"
+2025-08-18 11:39:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:39:44 - app.wordpress - INFO - Successfully created tag 'Dallas Jenkins'
+2025-08-18 11:39:44 - app.wordpress - INFO - Creating WordPress post: Bridgerton Star em Nova Série Bíblica na Prime Video
+2025-08-18 11:39:46 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 11:39:46 - app.wordpress - INFO - Successfully created post 'Bridgerton Star em Nova Série Bíblica na Prime Video' with ID: 13975
+2025-08-18 11:39:46 - app.store - INFO - Successfully recorded published post for article DB ID 173 (WP Post ID: 13975).
+2025-08-18 11:39:46 - app.pipeline - INFO - Successfully published post 13975 for article DB ID 173
+2025-08-18 11:39:46 - app.pipeline - INFO - Sleeping for 9.8s (per-article delay).
+2025-08-18 11:39:56 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-08-18 11:40:11 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-18 11:40:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 11:40:11 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-18 11:40:11 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-18 11:40:12 - app.pipeline - INFO - Found 9 new articles for collider_movies
+2025-08-18 11:40:12 - app.pipeline - INFO - Processing article: 17 Years Later, Russell Crowe and Leonardo DiCaprio’s Political Thriller Is Streaming For Free (DB ID: 174) from collider_movies
+2025-08-18 11:40:12 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 11:40:12 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-08-18 11:40:12 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 11:40:13 - app.extractor - INFO - Collected 0 images from article body.
+2025-08-18 11:40:13 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/russell-crowe-leonardo-dicaprio-body-of-lies-watch-stream-for-free-tubi/. Title: 17 Years Later, Russell Crowe and Leonardo DiCapri...
+2025-08-18 11:40:13 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 11:40:18 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 11:40:48 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 11:40:48 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/07/russell-crowe-red-carpet.jpg
+2025-08-18 11:40:48 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/07/russell-crowe-red-carpet.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:40:49 - app.wordpress - INFO - Uploading image 'russell-crowe-red-carpet.jpg' to WordPress.
+2025-08-18 11:41:01 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:41:01 - app.wordpress - INFO - Uploaded media 13976 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/07/russell-crowe-red-carpet.jpg
+2025-08-18 11:41:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13976 "HTTP/1.1 200 OK"
+2025-08-18 11:41:03 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/07/russell-crowe-red-carpet.jpg
+2025-08-18 11:41:03 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/07/russell-crowe-red-carpet.jpg
+2025-08-18 11:41:04 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/07/russell-crowe-red-carpet.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:41:04 - app.wordpress - INFO - Uploading image 'russell-crowe-red-carpet.jpg' to WordPress.
+2025-08-18 11:41:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:41:13 - app.wordpress - INFO - Uploaded media 13977 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/07/russell-crowe-red-carpet.jpg
+2025-08-18 11:41:14 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13977 "HTTP/1.1 200 OK"
+2025-08-18 11:41:14 - app.wordpress - INFO - Post will be created with featured_media 13977.
+2025-08-18 11:41:15 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=jogo-de-espioes "HTTP/1.1 200 OK"
+2025-08-18 11:41:16 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:41:16 - app.wordpress - INFO - Successfully created tag 'Jogo de Espiões'
+2025-08-18 11:41:17 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=body-of-lies "HTTP/1.1 200 OK"
+2025-08-18 11:41:19 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:41:19 - app.wordpress - INFO - Successfully created tag 'Body of Lies'
+2025-08-18 11:41:20 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=leonardo-dicaprio "HTTP/1.1 200 OK"
+2025-08-18 11:41:21 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=russell-crowe "HTTP/1.1 200 OK"
+2025-08-18 11:41:22 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ridley-scott "HTTP/1.1 200 OK"
+2025-08-18 11:41:23 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mark-strong "HTTP/1.1 200 OK"
+2025-08-18 11:41:24 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:41:24 - app.wordpress - INFO - Successfully created tag 'Mark Strong'
+2025-08-18 11:41:26 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=oscar-isaac "HTTP/1.1 200 OK"
+2025-08-18 11:41:26 - app.wordpress - INFO - Creating WordPress post: Assista ‘Jogo de Espiões’ de graça com DiCaprio e Crowe
+2025-08-18 11:41:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 11:41:30 - app.wordpress - INFO - Successfully created post 'Assista ‘Jogo de Espiões’ de graça com DiCaprio e Crowe' with ID: 13978
+2025-08-18 11:41:30 - app.store - INFO - Successfully recorded published post for article DB ID 174 (WP Post ID: 13978).
+2025-08-18 11:41:30 - app.pipeline - INFO - Successfully published post 13978 for article DB ID 174
+2025-08-18 11:41:30 - app.pipeline - INFO - Sleeping for 6.2s (per-article delay).
+2025-08-18 11:41:36 - app.pipeline - INFO - Processing article: Pedro Pascal’s New Western Struggles on Streaming After Disastrous Box Office Run (DB ID: 175) from collider_movies
+2025-08-18 11:41:37 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 11:41:37 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-08-18 11:41:37 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 11:41:37 - app.extractor - INFO - Collected 0 images from article body.
+2025-08-18 11:41:37 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/pedro-pascal-eddington-streaming-disappointment-after-box-office-bomb/. Title: Pedro Pascal’s New Western Struggles on Streaming ...
+2025-08-18 11:41:37 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 11:41:45 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 11:42:15 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-18 11:42:15 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/eddington-pedro-pascal.jpg
+2025-08-18 11:42:15 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/eddington-pedro-pascal.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:42:15 - app.wordpress - INFO - Uploading image 'eddington-pedro-pascal.jpg' to WordPress.
+2025-08-18 11:42:23 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:42:23 - app.wordpress - INFO - Uploaded media 13979 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/eddington-pedro-pascal.jpg
+2025-08-18 11:42:24 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13979 "HTTP/1.1 200 OK"
+2025-08-18 11:42:24 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/eddington-pedro-pascal.jpg
+2025-08-18 11:42:24 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/eddington-pedro-pascal.jpg
+2025-08-18 11:42:25 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/eddington-pedro-pascal.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:42:25 - app.wordpress - INFO - Uploading image 'eddington-pedro-pascal.jpg' to WordPress.
+2025-08-18 11:42:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 11:42:30 - app.wordpress - INFO - Uploaded media 13980 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/eddington-pedro-pascal.jpg
+2025-08-18 11:42:31 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13980 "HTTP/1.1 200 OK"
+2025-08-18 11:42:31 - app.wordpress - INFO - Post will be created with featured_media 13980.
+2025-08-18 11:42:34 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=pedro-pascal "HTTP/1.1 200 OK"
+2025-08-18 11:42:48 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ari-aster "HTTP/1.1 200 OK"
+2025-08-18 11:43:10 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=eddington "HTTP/1.1 200 OK"
+2025-08-18 11:43:27 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=joaquin-phoenix "HTTP/1.1 200 OK"
+2025-08-18 11:43:36 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-last-of-us "HTTP/1.1 200 OK"
+2025-08-18 11:43:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=materialists "HTTP/1.1 200 OK"
+2025-08-18 11:43:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 11:43:43 - app.wordpress - INFO - Successfully created tag 'Materialists'
+2025-08-18 11:43:44 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-fantastic-four-first-steps "HTTP/1.1 200 OK"
+2025-08-18 11:43:45 - app.wordpress - INFO - Creating WordPress post: Fracasso de 'Eddington': O novo faroeste de Pedro Pascal decepciona
+2025-08-18 11:43:47 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 11:43:47 - app.wordpress - INFO - Successfully created post 'Fracasso de 'Eddington': O novo faroeste de Pedro Pascal decepciona' with ID: 13981
+2025-08-18 11:43:47 - app.store - INFO - Successfully recorded published post for article DB ID 175 (WP Post ID: 13981).
+2025-08-18 11:43:47 - app.pipeline - INFO - Successfully published post 13981 for article DB ID 175
+2025-08-18 11:43:47 - app.pipeline - INFO - Sleeping for 9.5s (per-article delay).
+2025-08-18 11:43:57 - app.pipeline - INFO - Processing article: Netflix Viewers Flock to Watch Vanessa Kirby’s Divisive New Crime Thriller Despite Rotten RT Score (DB ID: 176) from collider_movies
+2025-08-18 11:43:58 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 11:43:58 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-08-18 11:43:58 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 11:43:58 - app.extractor - INFO - Found 1 unique YouTube videos.
+2025-08-18 11:43:58 - app.extractor - INFO - Collected 4 images from article body.
+2025-08-18 11:43:58 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/vanessa-kirby-night-always-comes-nightcrawler-replacement-netflix-streaming-success-august-2025/. Title: Netflix Viewers Flock to Watch Vanessa Kirby’s Div...
+2025-08-18 11:43:58 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 11:44:05 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 11:44:35 - app.html_utils - INFO - Nenhuma tag <img> encontrada. Tentando injetar até 6 imagens.
+2025-08-18 11:44:35 - app.html_utils - INFO - Injetou com sucesso 4 imagens no conteúdo.
+2025-08-18 11:44:35 - app.pipeline - INFO - Attempting to upload up to 5 images.
+2025-08-18 11:44:35 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/night-always-comes-vanessa-kirby-6.jpg
+2025-08-18 11:44:39 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/night-always-comes-vanessa-kirby-6.jpg "HTTP/1.1 200 OK"
+2025-08-18 11:44:40 - app.wordpress - INFO - Uploading image 'night-always-comes-vanessa-kirby-6.jpg' to WordPress.
+2025-08-18 11:44:46 - app.pipeline - INFO - Pipeline cycle completed. Processed 7 articles.
+2025-08-18 11:44:46 - app.store - INFO - Database connection closed.
+2025-08-18 11:44:46 - app.wordpress - INFO - WordPress client connection closed.

@@ -187,7 +187,7 @@ def rewrite_img_srcs_with_wp(html_content: str, url_map: Dict[str, str]) -> str:
             continue
 
         # Normalize URL to handle potential trailing slashes before lookup
-        key = original_src[:-1] if original_src.endswith('/') else original_src
+        key = original_src.rstrip('/')
         if key in url_map:
             img['src'] = url_map[key]
             if img.has_attr('srcset'):

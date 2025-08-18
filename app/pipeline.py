@@ -128,11 +128,14 @@ def run_pipeline_cycle():
                             media = wp_client.upload_media_from_url(url, rewritten_data['titulo_final'])
                             if media and media.get("source_url") and media.get("id"):
                                 # Normalize URL to handle potential trailing slashes as keys
-                                k = url[:-1] if url.endswith('/') else url
+                                k = url.rstrip('/')
                                 uploaded_src_map[k] = media["source_url"]
                                 uploaded_id_map[k] = media["id"]
                         
-                        # 3.3:
+                        # 3.3: Rewrite image `src` to point to WordPress
+                        content_html = rewrite_img_srcs_with_wp(content_html, uploaded_src_map)
+
+                        # 3.4: Add credits to figures
                         content_html = add_credit_to_figures(content_html, extracted_data['source_url'])
 
                         # 3.5: Final sanitization pass
@@ -140,15 +143,22 @@ def run_pipeline_cycle():
 
                         # Step 4: Prepare payload for WordPress
                         wp_category_id = categorizer.map_category(source_id, WORDPRESS_CATEGORIES)
-                        final_featured_url = extracted_data.get('featured_image_url') or next(iter(uploaded_map.values()), None)
-                        
+
+                        # 4.1: Determine featured media ID to avoid re-upload
+                        featured_media_id = None
+                        if featured_url := extracted_data.get('featured_image_url'):
+                            k = featured_url.rstrip('/')
+                            featured_media_id = uploaded_id_map.get(k)
+                        if not featured_media_id and uploaded_id_map:
+                            featured_media_id = next(iter(uploaded_id_map.values()), None)
+
                         post_payload = {
                             'title': rewritten_data['titulo_final'],
                             'content': content_html,
                             'excerpt': rewritten_data['meta_description'],
                             'categories': [wp_category_id] if wp_category_id else [],
                             'tags': rewritten_data.get('tags', []),
-                            'featured_image_url': final_featured_url
+                            'featured_media': featured_media_id,
                         }
 
                         wp_post_id = wp_client.create_post(post_payload)

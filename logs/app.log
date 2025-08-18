@@ -5143,3 +5143,52 @@ KeyError: '\n  "titulo_final"'
 2025-08-17 21:01:01 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 21:01:01 - app.store - INFO - Database connection closed.
 2025-08-17 21:01:01 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 21:10:37 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 21:10:37 - app.store - INFO - Database initialized successfully.
+2025-08-17 21:10:37 - app.store - INFO - Database connection closed.
+2025-08-17 21:10:37 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 21:10:37 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 21:10:37 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 21:10:39 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 21:10:39 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 21:10:39 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 21:10:40 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 21:10:40 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 21:10:40 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 21:10:40 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 21:10:40 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 21:10:40 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 21:10:40 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 21:10:40 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 21:10:40 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 21:10:40 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 21:10:41 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 21:10:41 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 21:10:41 - app.pipeline - INFO - Found 1 new articles for collider_movies
+2025-08-17 21:10:41 - app.pipeline - INFO - Processing article: 30 Years Later, Mel Gibson’s Most Iconic Movie Is Streaming Free (DB ID: 138) from collider_movies
+2025-08-17 21:10:41 - app.extractor - INFO - Extracting content from: https://collider.com/mel-gibson-braveheart-free-streaming-youtube-august-2025/
+2025-08-17 21:10:42 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 21:10:42 - app.tags - INFO - Extracted 15 tags: Gibson, Braveheart, Mel Gibson, Most Iconic Movie Is Streaming Free, Years Later...
+2025-08-17 21:10:42 - app.pipeline - ERROR - Error processing article https://collider.com/mel-gibson-braveheart-free-streaming-youtube-august-2025/: '\n  "titulo_final"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 84, in run_pipeline_cycle
+    rewritten_text, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_content['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        domain=wp_client.get_domain(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 120, in rewrite_content
+    prompt = prompt_template.format(
+        titulo_original=title,
+    ...<4 lines>...
+        domain=domain
+    )
+KeyError: '\n  "titulo_final"'
+2025-08-17 21:10:42 - app.pipeline - INFO - Finished feed 'collider_movies'. Sleeping for 15s before next feed: collider_tv
+2025-08-17 21:10:45 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-17 21:10:45 - app.store - INFO - Database connection closed.
+2025-08-17 21:10:45 - app.wordpress - INFO - WordPress client connection closed.

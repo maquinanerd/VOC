@@ -248,3 +248,14 @@ def rewrite_img_srcs_with_wp(content_html: str, uploaded_src_map: Dict[str, str]
                     img[a] = norm_map[k2]
 
     return soup.body.decode_contents() if soup.body else str(soup)
+
+# --- Stub para compatibilidade com pipeline: não adiciona crédito nenhum ---
+from typing import Optional
+
+def add_credit_to_figures(html: str, source_url: Optional[str] = None) -> str:
+    """
+    Compat: função mantida apenas para evitar ImportError.
+    Não faz nada e retorna o HTML intacto (sem créditos).
+    """
+    logger.info("add_credit_to_figures desabilitada: retornando HTML sem alterações.")
+    return html

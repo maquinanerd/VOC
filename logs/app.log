@@ -5292,3 +5292,248 @@ TypeError: expected string or bytes-like object, got 'dict'
 2025-08-17 21:25:40 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-17 21:25:40 - app.store - INFO - Database connection closed.
 2025-08-17 21:25:40 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-17 21:35:20 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-17 21:35:20 - app.store - INFO - Database initialized successfully.
+2025-08-17 21:35:20 - app.store - INFO - Database connection closed.
+2025-08-17 21:35:20 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-17 21:35:20 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-17 21:35:20 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-17 21:35:24 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-17 21:35:24 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-17 21:35:24 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 21:35:25 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-17 21:35:25 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-17 21:35:25 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-17 21:35:25 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-17 21:35:25 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 21:35:25 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-17 21:35:25 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-17 21:35:25 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-17 21:35:25 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-17 21:35:25 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 21:35:26 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-17 21:35:26 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-17 21:35:26 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-17 21:35:26 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-17 21:35:26 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 21:35:26 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-17 21:35:26 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-17 21:35:26 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-17 21:35:26 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-17 21:35:26 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 21:35:27 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-17 21:35:27 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-17 21:35:27 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-17 21:35:27 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-17 21:35:27 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-17 21:35:28 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/movies/news-movies/
+2025-08-17 21:35:28 - app.feeds - INFO - Total unique items for cbr_movies: 10
+2025-08-17 21:35:28 - app.pipeline - INFO - Found 5 new articles for cbr_movies
+2025-08-17 21:35:28 - app.pipeline - INFO - Processing article: Ridley Scott’s Critically Acclaimed Gangster Epic With Russell Crowe Is Back in the Spotlight (But There's a Catch) (DB ID: 144) from cbr_movies
+2025-08-17 21:35:28 - app.extractor - INFO - Extracting content from: https://www.cbr.com/ridley-scotts-american-gangster-streaming/
+2025-08-17 21:35:29 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 21:35:29 - app.tags - INFO - Extracted 15 tags: Crowe, Scott, American, American Gangster, Netflix...
+2025-08-17 21:35:29 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 21:35:37 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 21:36:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=american-gangster "HTTP/1.1 200 OK"
+2025-08-17 21:36:12 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:36:12 - app.wordpress - INFO - Successfully created tag 'American Gangster'
+2025-08-17 21:36:14 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ridley-scott "HTTP/1.1 200 OK"
+2025-08-17 21:36:15 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=russell-crowe "HTTP/1.1 200 OK"
+2025-08-17 21:36:16 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=netflix "HTTP/1.1 200 OK"
+2025-08-17 21:36:18 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=filme "HTTP/1.1 200 OK"
+2025-08-17 21:36:19 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=streaming "HTTP/1.1 200 OK"
+2025-08-17 21:36:20 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=crime "HTTP/1.1 200 OK"
+2025-08-17 21:36:21 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:36:21 - app.wordpress - INFO - Successfully created tag 'Crime'
+2025-08-17 21:36:21 - app.wordpress - INFO - Creating WordPress post: American Gangster Sai da Netflix em Setembro: Última Chance de Ver o Clássico de Ridley Scott e Russell Crowe
+2025-08-17 21:36:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-17 21:36:25 - app.wordpress - INFO - Post created successfully with ID: 13891
+2025-08-17 21:36:25 - app.store - INFO - Successfully recorded published post for article DB ID 144 (WP Post ID: 13891).
+2025-08-17 21:36:25 - app.pipeline - INFO - Successfully published post 13891 for article DB ID 144
+2025-08-17 21:36:25 - app.pipeline - INFO - Sleeping for 8.1s (per-article delay).
+2025-08-17 21:36:33 - app.pipeline - INFO - Processing article: 4 Years Later, Bob Odenkirk's Nobody Is Finding New Life on PVOD (DB ID: 145) from cbr_movies
+2025-08-17 21:36:33 - app.extractor - INFO - Extracting content from: https://www.cbr.com/bob-odenkirk-nobody-how-to-watch/
+2025-08-17 21:36:33 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 21:36:33 - app.tags - INFO - Extracted 15 tags: Nobody, VOD, RT John Wick Replacement That's All Killer, No Filler Is Finding New Life, Years Later...
+2025-08-17 21:36:33 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 21:36:38 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 21:37:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=nobody "HTTP/1.1 200 OK"
+2025-08-17 21:37:11 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:37:11 - app.wordpress - INFO - Successfully created tag 'Nobody'
+2025-08-17 21:37:12 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=bob-odenkirk "HTTP/1.1 200 OK"
+2025-08-17 21:37:13 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=acao "HTTP/1.1 200 OK"
+2025-08-17 21:37:14 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=pvod "HTTP/1.1 200 OK"
+2025-08-17 21:37:15 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=vod "HTTP/1.1 200 OK"
+2025-08-17 21:37:16 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:37:16 - app.wordpress - INFO - Successfully created tag 'VOD'
+2025-08-17 21:37:18 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=filme "HTTP/1.1 200 OK"
+2025-08-17 21:37:19 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=sucesso-de-bilheteria "HTTP/1.1 200 OK"
+2025-08-17 21:37:19 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=rotten-tomatoes "HTTP/1.1 200 OK"
+2025-08-17 21:37:19 - app.wordpress - INFO - Creating WordPress post: Nobody: sucesso de bilheteria ganha nova vida no PVOD
+2025-08-17 21:37:22 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-17 21:37:22 - app.wordpress - INFO - Post created successfully with ID: 13892
+2025-08-17 21:37:22 - app.store - INFO - Successfully recorded published post for article DB ID 145 (WP Post ID: 13892).
+2025-08-17 21:37:22 - app.pipeline - INFO - Successfully published post 13892 for article DB ID 145
+2025-08-17 21:37:22 - app.pipeline - INFO - Sleeping for 6.1s (per-article delay).
+2025-08-17 21:37:28 - app.pipeline - INFO - Processing article: Anya Taylor-Joy Stole the Show in Apple TV+'s The Gorge & It's Blowing Up on Streaming (DB ID: 146) from cbr_movies
+2025-08-17 21:37:28 - app.extractor - INFO - Extracting content from: https://www.cbr.com/anya-taylor-joy-the-gorge-streaming/
+2025-08-17 21:37:29 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 21:37:29 - app.tags - INFO - Extracted 15 tags: The Gorge, Taylor, Joy, Anya Taylor-Joy, Apple...
+2025-08-17 21:37:29 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 21:37:36 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 21:38:08 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=anya-taylor-joy "HTTP/1.1 200 OK"
+2025-08-17 21:38:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:38:10 - app.wordpress - INFO - Successfully created tag 'Anya Taylor-Joy'
+2025-08-17 21:38:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-gorge "HTTP/1.1 200 OK"
+2025-08-17 21:38:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:38:13 - app.wordpress - INFO - Successfully created tag 'The Gorge'
+2025-08-17 21:38:14 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=apple-tv "HTTP/1.1 200 OK"
+2025-08-17 21:38:15 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=sci-fi "HTTP/1.1 200 OK"
+2025-08-17 21:38:16 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=streaming "HTTP/1.1 200 OK"
+2025-08-17 21:38:17 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=miles-teller "HTTP/1.1 200 OK"
+2025-08-17 21:38:19 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:38:19 - app.wordpress - INFO - Successfully created tag 'Miles Teller'
+2025-08-17 21:38:20 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=filme "HTTP/1.1 200 OK"
+2025-08-17 21:38:20 - app.wordpress - INFO - Creating WordPress post: Anya Taylor-Joy Conquista o Público em 'The Gorge', Sucesso de Sci-Fi da Apple TV+
+2025-08-17 21:38:22 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-17 21:38:22 - app.wordpress - INFO - Post created successfully with ID: 13893
+2025-08-17 21:38:22 - app.store - INFO - Successfully recorded published post for article DB ID 146 (WP Post ID: 13893).
+2025-08-17 21:38:22 - app.pipeline - INFO - Successfully published post 13893 for article DB ID 146
+2025-08-17 21:38:22 - app.pipeline - INFO - Sleeping for 6.9s (per-article delay).
+2025-08-17 21:38:29 - app.pipeline - INFO - Finished feed 'cbr_movies'. Sleeping for 15s before next feed: cbr_tv
+2025-08-17 21:38:44 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-08-17 21:38:44 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-17 21:38:45 - app.feeds - INFO - Read 10 items from https://www.cbr.com/feed/category/tv/news-tv/
+2025-08-17 21:38:45 - app.feeds - INFO - Total unique items for cbr_tv: 10
+2025-08-17 21:38:45 - app.pipeline - INFO - Found 1 new articles for cbr_tv
+2025-08-17 21:38:45 - app.pipeline - INFO - Processing article: This New Netflix Show That Premieres Next Month Sounds Like the Perfect Squid Game Replacement (DB ID: 149) from cbr_tv
+2025-08-17 21:38:45 - app.extractor - INFO - Extracting content from: https://www.cbr.com/crime-scene-zero-squid-game-replace/
+2025-08-17 21:38:46 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 21:38:46 - app.tags - INFO - Extracted 15 tags: Crime Scene, Netflix, Crime Scene Zero, Detective, Season...
+2025-08-17 21:38:46 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 21:38:52 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 21:39:24 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=crime-scene-zero "HTTP/1.1 200 OK"
+2025-08-17 21:39:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:39:25 - app.wordpress - INFO - Successfully created tag 'Crime Scene Zero'
+2025-08-17 21:39:26 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=netflix "HTTP/1.1 200 OK"
+2025-08-17 21:39:27 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=reality-show "HTTP/1.1 200 OK"
+2025-08-17 21:39:29 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=coreia-do-sul "HTTP/1.1 200 OK"
+2025-08-17 21:39:30 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=misterio "HTTP/1.1 200 OK"
+2025-08-17 21:39:31 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=suspense "HTTP/1.1 200 OK"
+2025-08-17 21:39:32 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=investigacao "HTTP/1.1 200 OK"
+2025-08-17 21:39:32 - app.wordpress - INFO - Creating WordPress post: Crime Scene Zero: Novo reality de mistério coreano chega à Netflix em setembro
+2025-08-17 21:39:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-17 21:39:35 - app.wordpress - INFO - Post created successfully with ID: 13894
+2025-08-17 21:39:35 - app.store - INFO - Successfully recorded published post for article DB ID 149 (WP Post ID: 13894).
+2025-08-17 21:39:35 - app.pipeline - INFO - Successfully published post 13894 for article DB ID 149
+2025-08-17 21:39:35 - app.pipeline - INFO - Sleeping for 8.6s (per-article delay).
+2025-08-17 21:39:44 - app.pipeline - INFO - Finished feed 'cbr_tv'. Sleeping for 15s before next feed: gamerant_games
+2025-08-17 21:39:59 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-08-17 21:39:59 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-17 21:39:59 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-17 21:39:59 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-17 21:39:59 - app.pipeline - INFO - Found 2 new articles for gamerant_games
+2025-08-17 21:39:59 - app.pipeline - INFO - Processing article: Pokemon TCG Reveals 2025 World Champion's Decklist (DB ID: 150) from gamerant_games
+2025-08-17 21:39:59 - app.extractor - INFO - Extracting content from: https://gamerant.com/pokemon-trading-card-game-world-champion-2025-deck/
+2025-08-17 21:40:00 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 21:40:00 - app.tags - INFO - Extracted 15 tags: Pokemon, Gardevoir, World Champion, TCG, Pokemon TCG...
+2025-08-17 21:40:00 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 21:40:01 - app.ai_processor - ERROR - AI content generation failed with key index 0: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-08-17 21:40:01 - app.ai_processor - WARNING - Failing over to next API key for category 'games'.
+2025-08-17 21:40:01 - app.ai_processor - INFO - Using API key index 1 for category 'games'.
+2025-08-17 21:40:01 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-17 21:40:13 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 21:40:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=pokemon "HTTP/1.1 200 OK"
+2025-08-17 21:40:48 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=gardevoir-ex "HTTP/1.1 200 OK"
+2025-08-17 21:40:50 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:40:50 - app.wordpress - INFO - Successfully created tag 'Gardevoir ex'
+2025-08-17 21:40:53 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=campeonato-mundial "HTTP/1.1 200 OK"
+2025-08-17 21:40:53 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:40:53 - app.wordpress - INFO - Successfully created tag 'Campeonato Mundial'
+2025-08-17 21:40:54 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=tcg "HTTP/1.1 200 OK"
+2025-08-17 21:40:55 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:40:55 - app.wordpress - INFO - Successfully created tag 'TCG'
+2025-08-17 21:40:56 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=pokemon-tcg "HTTP/1.1 200 OK"
+2025-08-17 21:40:58 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:40:58 - app.wordpress - INFO - Successfully created tag 'Pokemon TCG'
+2025-08-17 21:40:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=riley-mckay "HTTP/1.1 200 OK"
+2025-08-17 21:41:00 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:41:00 - app.wordpress - INFO - Successfully created tag 'Riley Mckay'
+2025-08-17 21:41:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=decklist "HTTP/1.1 200 OK"
+2025-08-17 21:41:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:41:03 - app.wordpress - INFO - Successfully created tag 'Decklist'
+2025-08-17 21:41:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=estrategia "HTTP/1.1 200 OK"
+2025-08-17 21:41:07 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:41:07 - app.wordpress - INFO - Successfully created tag 'estratégia'
+2025-08-17 21:41:08 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=meta "HTTP/1.1 200 OK"
+2025-08-17 21:41:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:41:10 - app.wordpress - INFO - Successfully created tag 'meta'
+2025-08-17 21:41:10 - app.wordpress - INFO - Creating WordPress post: Campeão Mundial de 2025 de Pokemon TCG: Decklist de Riley Mckay Revelada!
+2025-08-17 21:41:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-17 21:41:13 - app.wordpress - INFO - Post created successfully with ID: 13895
+2025-08-17 21:41:13 - app.store - INFO - Successfully recorded published post for article DB ID 150 (WP Post ID: 13895).
+2025-08-17 21:41:13 - app.pipeline - INFO - Successfully published post 13895 for article DB ID 150
+2025-08-17 21:41:13 - app.pipeline - INFO - Sleeping for 9.5s (per-article delay).
+2025-08-17 21:41:23 - app.pipeline - INFO - Processing article: Battlefield 6's Destruction Receipts Goal Could Be Out of Reach (DB ID: 151) from gamerant_games
+2025-08-17 21:41:23 - app.extractor - INFO - Extracting content from: https://gamerant.com/battlefield-6-destruction-receipts-goal/
+2025-08-17 21:41:24 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 21:41:24 - app.tags - INFO - Extracted 15 tags: Battlefield, Press Image, Destruction, Destruction Receipts, Destruction Receipts Goal Could Be Out...
+2025-08-17 21:41:24 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-17 21:41:39 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 21:42:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=battlefield-6 "HTTP/1.1 200 OK"
+2025-08-17 21:42:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:42:13 - app.wordpress - INFO - Successfully created tag 'Battlefield 6'
+2025-08-17 21:42:15 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=destruicao "HTTP/1.1 200 OK"
+2025-08-17 21:42:16 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:42:16 - app.wordpress - INFO - Successfully created tag 'Destruição'
+2025-08-17 21:42:17 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=destruicao-de-recibos "HTTP/1.1 200 OK"
+2025-08-17 21:42:18 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:42:18 - app.wordpress - INFO - Successfully created tag 'Destruição de Recibos'
+2025-08-17 21:42:19 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=beta-aberta "HTTP/1.1 200 OK"
+2025-08-17 21:42:21 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:42:21 - app.wordpress - INFO - Successfully created tag 'Beta Aberta'
+2025-08-17 21:42:22 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=jogo-online "HTTP/1.1 200 OK"
+2025-08-17 21:42:24 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-17 21:42:24 - app.wordpress - INFO - Successfully created tag 'Jogo Online'
+2025-08-17 21:42:24 - app.wordpress - INFO - Creating WordPress post: Objetivo de Destruição do Battlefield 6 Está Longe de Ser Alcançado
+2025-08-17 21:42:27 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-17 21:42:27 - app.wordpress - INFO - Post created successfully with ID: 13896
+2025-08-17 21:42:27 - app.store - INFO - Successfully recorded published post for article DB ID 151 (WP Post ID: 13896).
+2025-08-17 21:42:27 - app.pipeline - INFO - Successfully published post 13896 for article DB ID 151
+2025-08-17 21:42:27 - app.pipeline - INFO - Sleeping for 9.6s (per-article delay).
+2025-08-17 21:42:37 - app.pipeline - INFO - Finished feed 'gamerant_games'. Sleeping for 15s before next feed: thegamer_games
+2025-08-17 21:42:52 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-08-17 21:42:52 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-17 21:42:52 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-17 21:42:52 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-17 21:42:53 - app.pipeline - INFO - Found 1 new articles for thegamer_games
+2025-08-17 21:42:53 - app.pipeline - INFO - Processing article: GTA 5 Easter Egg Hunter Has Explained The Creepy Sewer Laugh Mystery (DB ID: 152) from thegamer_games
+2025-08-17 21:42:53 - app.extractor - INFO - Extracting content from: https://www.thegamer.com/grand-theft-auto-5-sewer-laughing-ratman-urban-myth-explained/
+2025-08-17 21:42:54 - app.extractor - INFO - Successfully extracted content using trafilatura
+2025-08-17 21:42:54 - app.tags - INFO - Extracted 15 tags: GTA, Ratman, Gator Keys, Grand Theft Auto, Rockstar...
+2025-08-17 21:42:54 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-17 21:42:55 - app.ai_processor - ERROR - AI content generation failed with key index 0: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-08-17 21:42:55 - app.ai_processor - WARNING - Failing over to next API key for category 'games'.
+2025-08-17 21:42:55 - app.ai_processor - INFO - Using API key index 1 for category 'games'.
+2025-08-17 21:42:55 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-17 21:43:07 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-17 21:43:34 - app.pipeline - INFO - Pipeline cycle completed. Processed 6 articles.
+2025-08-17 21:43:34 - app.store - INFO - Database connection closed.
+2025-08-17 21:43:34 - app.wordpress - INFO - WordPress client connection closed.

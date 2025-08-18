@@ -108,8 +108,7 @@ def run_pipeline_cycle():
                             'excerpt': rewritten_data['meta_description'],
                             'status': 'publish',
                             'categories': [wp_category_id] if wp_category_id else [],
-                            'tags': rewritten_data.get('tags', []),
-                            'featured_media_url': extracted_content.get('main_image')
+                            'tags': rewritten_data.get('tags', [])
                         }
 
                         wp_post_id = wp_client.create_post(post_payload)

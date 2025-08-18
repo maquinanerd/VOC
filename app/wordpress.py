@@ -4,9 +4,11 @@ WordPress client for publishing content via the REST API.
 
 import logging
 import httpx
+import os
 from typing import List, Dict, Any, Optional
 import mimetypes
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
+from bs4 import BeautifulSoup
 from slugify import slugify
 
 logger = logging.getLogger(__name__)
@@ -112,9 +114,95 @@ class WordPressClient:
                 tag_ids.append(tag_id)
         return tag_ids
 
+    def _handle_featured_media(self, content_html: str, title: str) -> Optional[int]:
+        """
+        Parses HTML to find the first image, uploads it, and returns its media ID.
+
+        Args:
+            content_html: The HTML content of the post.
+            title: The title of the post, for image metadata.
+
+        Returns:
+            The WordPress media ID of the uploaded image, or None.
+        """
+        try:
+            soup = BeautifulSoup(content_html, 'html.parser')
+            first_image = soup.find('img')
+
+            if not first_image or not first_image.get('src'):
+                logger.warning("No <img> tag found in the content to set as featured image.")
+                return None
+
+            image_url = first_image['src']
+            # Ensure URL is absolute, as it might be relative in the content
+            if not urlparse(image_url).scheme:
+                 image_url = urljoin(self.get_domain(), image_url)
+
+            return self.upload_media(image_url, title)
+        except Exception as e:
+            logger.error(f"Error processing content for featured image: {e}", exc_info=True)
+            return None
+
+    def upload_media(self, image_url: str, post_title: str) -> Optional[int]:
+        """
+        Downloads an image from a URL and uploads it to the WordPress media library.
+
+        Args:
+            image_url: The URL of the image to download.
+            post_title: The title of the post, used for image alt text and title.
+
+        Returns:
+            The media ID of the uploaded image, or None on failure.
+        """
+        if not image_url:
+            return None
+
+        try:
+            logger.info(f"Downloading image for upload: {image_url}")
+            with self.client.stream("GET", image_url, timeout=20.0) as response:
+                response.raise_for_status()
+                image_data = response.read()
+                content_type = response.headers.get('content-type', 'image/jpeg')
+        except (httpx.RequestError, httpx.HTTPStatusError) as e:
+            logger.error(f"Failed to download image from {image_url}: {e}")
+            return None
+
+        if not image_data:
+            logger.warning(f"Downloaded image from {image_url} is empty.")
+            return None
+
+        parsed_url = urlparse(image_url)
+        filename = os.path.basename(parsed_url.path) or f"{slugify(post_title)}.jpg"
+
+        media_endpoint = f"{self.base_url}/media"
+        headers = {
+            'Content-Disposition': f'attachment; filename="{filename}"',
+            'Content-Type': content_type
+        }
+
+        try:
+            logger.info(f"Uploading image '{filename}' to WordPress.")
+            upload_response = self.client.post(media_endpoint, content=image_data, headers=headers, timeout=60.0)
+            upload_response.raise_for_status()
+
+            media_data = upload_response.json()
+            media_id = media_data['id']
+            logger.info(f"Image uploaded successfully. Media ID: {media_id}")
+
+            # Update alt text and title for SEO
+            update_payload = {'alt_text': post_title, 'title': post_title}
+            self.client.post(f"{media_endpoint}/{media_id}", json=update_payload)
+
+            return media_id
+        except (httpx.RequestError, httpx.HTTPStatusError, ValueError) as e:
+            logger.error(f"Failed to upload image '{filename}' to WordPress: {e}")
+            if hasattr(e, 'response'):
+                logger.error(f"Response body: {e.response.text}")
+            return None
+
     def create_post(self, post_data: Dict[str, Any]) -> Optional[int]:
         """
-        Creates a new post in WordPress.
+        Creates a new post in WordPress, handling featured media automatically.
 
         Args:
             post_data: A dictionary containing post details like title, content, etc.
@@ -123,58 +211,21 @@ class WordPressClient:
             The ID of the newly created post, or None on failure.
         """
         endpoint = f"{self.base_url}/posts"
+
+        # Handle featured media by extracting it from the content
+        content_html = post_data.get('content', '')
+        post_title = post_data.get('title', 'Untitled Post')
+        if content_html:
+            media_id = self._handle_featured_media(content_html, post_title)
+            if media_id:
+                post_data['featured_media'] = media_id
         
         # Resolve tag names to IDs
         tag_names = post_data.get('tags', [])
         if tag_names:
             post_data['tags'] = self._get_tag_ids(tag_names)
 
-        # Remove featured_media if it's None or 0, as WP API might reject it
-        if not post_data.get('featured_media'):
-            post_data.pop('featured_media', None)
-
-        logger.info(f"Creating WordPress post: {post_data.get('title', 'No Title')}")
-        
-        try:
-            response = self.client.post(endpoint, json=post_data)
-            
-            if response.status_code == 201:
-                logger.info(f"Post created successfully with ID: {response.json()['id']}")
-                return response.json()['id']
-            else:
-                logger.error(f"Failed to create post: {response.status_code} - {response.text}")
-                # Fallback attempt without metadata as per original prompt
-                if 'meta' in post_data:
-                    logger.info("Retrying without meta data")
-                    del post_data['meta']
-                    response = self.client.post(endpoint, json=post_data)
-                    if response.status_code == 201:
-                        logger.info(f"Post created successfully on retry with ID: {response.json()['id']}")
-                        return response.json()['id']
-                    else:
-                         logger.error(f"Retry also failed: {response.status_code} - {response.text}")
-                return None
-
-        except (httpx.RequestError, ValueError) as e:
-            logger.critical(f"An exception occurred while creating post: {e}")
-            return None
-
-    def upload_media(self, image_url: str, image_name: str) -> Optional[int]:
-        """
-        Downloads an image from a URL and uploads it to the WordPress media library.
-
-        Args:
-            image_url: The URL of the image to download.
-            image_name: The desired filename for the uploaded image.
-
-        Returns:
-            The media ID of the uploaded image, or None on failure.
-        """
-        # This method would be implemented for the 'download_upload' mode.
-        # It involves downloading the image into memory and then POSTing it
-        # to the /wp/v2/media endpoint with appropriate headers.
-        logger.warning("Media upload functionality is not fully implemented yet.")
-        return None
+        logger.info(f"Creating WordPress post: {post_data.get('title
 
     def close(self):
         """Closes the httpx client session."""

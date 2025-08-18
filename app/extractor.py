@@ -42,6 +42,7 @@ FORBIDDEN_LABELS: Set[str] = {
 
 JUNK_IMAGE_PATTERNS = ("placeholder", "sprite", "icon", "emoji", ".svg")
 
+
 def _parse_srcset(srcset: str):
     """
     Parses a srcset attribute and returns the URL of the largest image.
@@ -66,6 +67,7 @@ def _parse_srcset(srcset: str):
             best = url
     return best
 
+
 def is_small(u: str) -> bool:
     """Checks if a URL likely points to a small or irrelevant image."""
     if not u:
@@ -84,8 +86,10 @@ def is_small(u: str) -> bool:
             logger.debug(f"Filtering out image by pattern (junk/svg): {u}")
             return True
     except (ValueError, IndexError):
-        pass # Ignore parsing errors in query params
+        # Ignore parsing errors in query params
+        pass
     return False
+
 
 def _abs(u: str, base: str) -> str | None:
     """Converts a URL to an absolute URL, returning None for invalid inputs."""
@@ -95,6 +99,7 @@ def _abs(u: str, base: str) -> str | None:
     if not u or u.startswith("data:"):
         return None
     return urljoin(base, u)
+
 
 def _extract_from_style(style_attr: str) -> Optional[str]:
     """Extracts a URL from a 'background-image: url(...)' style attribute."""
@@ -106,32 +111,89 @@ def _extract_from_style(style_attr: str) -> Optional[str]:
         return match.group(2)
     return None
 
+
 def collect_images_from_article(soup: BeautifulSoup, base_url: str) -> list[str]:
     """
+    Coleta URLs de imagens relevantes do conteúdo do artigo.
+    Fontes consideradas:
+      - <img> (src, data-src, data-original, data-lazy-src, data-image, data-img-url, srcset)
+      - <picture><source srcset="...">
+      - nós com atributos data-* (ScreenRant/Collider etc.)
+      - estilos inline: style="background-image: url(...)"
+      - <figure> contendo <img>
+    Regras:
+      - Converte para URL absoluta
+      - Remove duplicadas preservando ordem
+      - Filtra imagens pequenas/junk via is_small()
+      - Prioriza domínios de CDN conhecidos, mantendo as demais
+    """
+    urls: list[str] = []
+
+    def _push(candidate: Optional[str]) -> None:
+        if not candidate:
+            return
+        abs_u = _abs(candidate, base_url)
+        if not abs_u:
+            return
+        urls.append(abs_u)
+
+    # 1) <img> tags: src/variações + srcset
     for img in soup.find_all("img"):
         cand = None
         for attr in ("src", "data-src", "data-original", "data-lazy-src", "data-image", "data-img-url"):
-            if cand := img.get(attr):
+            if img.get(attr):
+                cand = img.get(attr)
                 break
         if not cand and img.get("srcset"):
             cand = _parse_srcset(img.get("srcset"))
-        if cand := _abs(cand, base_url):
-            urls.append(cand)
+        _push(cand)
 
-    # 2) <picture><source srcset="..."> tags
+    # 2) <picture><source srcset="...">
     for source in soup.select("picture source[srcset]"):
-        if pick := _parse_srcset(source.get("srcset")):
-            if pick := _abs(pick, base_url):
-                urls.append(pick)
+        pick = _parse_srcset(source.get("srcset", ""))
+        _push(pick)
 
-    # 3) divs/figures with data-* attributes (common on ScreenRant/Collider)
+    # 3) nós com data-* comuns
     for node in soup.select('[data-img-url], [data-image], [data-src], [data-original]'):
-        cand = node.get("data-img-url") or node.get("data-image") or node.get("data-src") or node.get("data-original")
-        if cand := _abs(cand, base_url):
-            urls.append(cand)
+        cand = (
+            node.get("data-img-url")
+            or node.get("data-image")
+            or node.get("data-src")
+            or node.get("data-original")
+        )
+        _push(cand)
 
-    # De-duplicate while preserving order
-    return list(dict.fromkeys(urls))
+    # 4) estilos inline background-image
+    for node in soup.select('[style*="background"]'):
+        style_u = _extract_from_style(node.get("style", ""))
+        _push(style_u)
+
+    # 5) <figure> com <img> (ou srcset)
+    for fig in soup.find_all("figure"):
+        img = fig.find("img")
+        if img:
+            if img.get("src"):
+                _push(img.get("src"))
+            elif img.get("srcset"):
+                _push(_parse_srcset(img.get("srcset", "")))
+
+    # De-duplicar preservando ordem
+    dedup_ordered: list[str] = []
+    seen: Set[str] = set()
+    for u in urls:
+        if u not in seen:
+            seen.add(u)
+            dedup_ordered.append(u)
+
+    # Filtrar pequenas/junk
+    filtered = [u for u in dedup_ordered if not is_small(u)]
+    if not filtered:
+        return dedup_ordered  # fallback: melhor retornar algo do que nada
+
+    # Priorizar CDNs conhecidas (mantendo ordem relativa)
+    cdn = [u for u in filtered if any(dom in urlparse(u).netloc for dom in PRIORITY_CDN_DOMAINS)]
+    rest = [u for u in filtered if u not in cdn]
+    return cdn + rest
 
 
 class ContentExtractor:
@@ -164,10 +226,11 @@ class ContentExtractor:
         for selector in selectors_to_remove:
             for element in soup.select(selector):
                 element.decompose()
-        
-        for text_node in soup.find_all(string=lambda t: "powered by srdb" in t.lower()):
-            if text_node.find_parent():
-                text_node.find_parent().decompose()
+
+        for text_node in soup.find_all(string=lambda t: isinstance(t, str) and "powered by srdb" in t.lower()):
+            parent = text_node.find_parent()
+            if parent:
+                parent.decompose()
 
         logger.info("Pre-cleaned HTML, removing unwanted widgets and blocks.")
 
@@ -176,26 +239,26 @@ class ContentExtractor:
         Removes unwanted blocks like comment confirmations and technical spec boxes
         from the extracted article content.
         """
-        # 1. Remove any node containing the exact text of a comment warning
+        # 1. Remover nós que contenham texto exato proibido
         for t in soup.find_all(string=True):
             s = (t or "").strip()
             if not s:
                 continue
             if s in FORBIDDEN_TEXT_EXACT:
                 try:
-                    # Try to remove the parent, which is likely the container
                     t.parent.decompose()
                     logger.debug(f"Removed forbidden text block: '{s}'")
                 except Exception:
-                    # If parent is gone or something else happens, just continue
                     pass
 
-        # 2. Remove "infobox" like technical sheets based on labels
+        # 2. Remover "infobox" técnica por presença de rótulos
         candidates = []
         for tag in soup.find_all(["div", "section", "aside", "ul", "ol"]):
             text = " ".join(tag.get_text(separator="\n").split())
-            # Heuristic: presence of >=2 known labels
-            lbl_count = sum(1 for lbl in FORBIDDEN_LABELS if re.search(rf"(^|\n)\s*{re.escape(lbl)}\s*(\n|:|$)", text, flags=re.I))
+            lbl_count = sum(
+                1 for lbl in FORBIDDEN_LABELS
+                if re.search(rf"(^|\n)\s*{re.escape(lbl)}\s*(\n|:|$)", text, flags=re.I)
+            )
             if lbl_count >= 2:
                 candidates.append(tag)
 
@@ -207,9 +270,10 @@ class ContentExtractor:
             except Exception:
                 pass
 
-        # 3. Also remove isolated lines with these labels at the paragraph/list level
+        # 3. Remover linhas isoladas com rótulos
         for tag in soup.find_all(["p", "li", "span", "h3", "h4"]):
-            if not tag.parent: continue # Already decomposed
+            if not tag.parent:
+                continue
             s = (tag.get_text() or "").strip().rstrip(':').strip()
             if s in FORBIDDEN_TEXT_EXACT or s in FORBIDDEN_LABELS:
                 tag.decompose()
@@ -221,20 +285,20 @@ class ContentExtractor:
             img_url = div['data-img-url']
             figure_tag = soup.new_tag('figure')
             img_tag = soup.new_tag('img', src=img_url)
-            
+
             caption_tag = soup.new_tag('figcaption')
             caption_text = div.get_text(strip=True)
             if caption_text:
                 caption_tag.string = caption_text
                 img_tag['alt'] = caption_text
-            
+
             figure_tag.append(img_tag)
             if caption_text:
                 figure_tag.append(caption_tag)
 
             div.replace_with(figure_tag)
             converted_count += 1
-        
+
         if converted_count > 0:
             logger.info(f"Converted {converted_count} 'data-img-url' divs to <figure> tags.")
 
@@ -255,13 +319,28 @@ class ContentExtractor:
         # 3. JSON-LD
         for script in soup.find_all('script', type='application/ld+json'):
             try:
+                if not script.string:
+                    continue
                 data = json.loads(script.string)
-                if data.get('@type') in ('NewsArticle', 'Article') and 'image' in data:
+                if isinstance(data, list):
+                    # alguns sites colocam lista de objetos
+                    for item in data:
+                        if isinstance(item, dict) and item.get('@type') in ('NewsArticle', 'Article') and 'image' in item:
+                            image_info = item['image']
+                            if isinstance(image_info, dict) and (url := image_info.get('url')):
+                                return urljoin(base_url, url)
+                            if isinstance(image_info, list) and image_info:
+                                first = image_info[0]
+                                return urljoin(base_url, first.get('url') if isinstance(first, dict) else first)
+                            if isinstance(image_info, str):
+                                return urljoin(base_url, image_info)
+                elif isinstance(data, dict) and data.get('@type') in ('NewsArticle', 'Article') and 'image' in data:
                     image_info = data['image']
                     if isinstance(image_info, dict) and (url := image_info.get('url')):
                         return urljoin(base_url, url)
                     if isinstance(image_info, list) and image_info:
-                        return urljoin(base_url, image_info[0].get('url') or image_info[0])
+                        first = image_info[0]
+                        return urljoin(base_url, first.get('url') if isinstance(first, dict) else first)
                     if isinstance(image_info, str):
                         return urljoin(base_url, image_info)
             except (json.JSONDecodeError, TypeError, AttributeError):
@@ -283,7 +362,7 @@ class ContentExtractor:
             return None
         try:
             u = urlparse(src)
-            if u.netloc not in YOUTUBE_DOMAINS:
+            if u.netloc not in YOUTUBE_DOMAINS and not any(u.netloc.endswith(d) for d in YOUTUBE_DOMAINS):
                 return None
             if u.path.startswith("/embed/"):
                 return u.path.split("/")[2].split("?")[0]
@@ -320,7 +399,7 @@ class ContentExtractor:
             if v_id and v_id not in seen:
                 seen.add(v_id)
                 ordered_ids.append(v_id)
-        
+
         if ordered_ids:
             logger.info(f"Found {len(ordered_ids)} unique YouTube videos.")
 

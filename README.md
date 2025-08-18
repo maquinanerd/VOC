@@ -1,17 +1,35 @@
-# RSS to WordPress Automation App
+# RSS AI Content Pipeline
 
-Este é um aplicativo Python que lê feeds RSS, reescreve o conteúdo usando uma IA generativa (Gemini) e o publica automaticamente em um site WordPress.
+Este é um aplicativo de produção em Python que automatiza o processo de leitura de feeds RSS, reescrita de conteúdo com IA e publicação no WordPress.
 
 ## Funcionalidades
 
-- Leitura de múltiplos feeds RSS em uma ordem definida.
-- Extração de conteúdo completo de artigos (título, texto, imagens, vídeos).
-- Reescrita de conteúdo otimizada para SEO via IA.
-- Publicação automática no WordPress (título, conteúdo, resumo, categorias, tags, imagem destacada).
-- Agendamento de tarefas com `APScheduler`.
-- Gerenciamento de chaves de API com failover e rate limiting.
-- Armazenamento de dados em SQLite para evitar duplicatas.
-- Limpeza periódica de dados antigos.
+- **Leitura de Feeds RSS**: Lê múltiplos feeds RSS em uma ordem pré-definida.
+- **Extração de Conteúdo**: Extrai o artigo completo, incluindo título, conteúdo, imagens e vídeos do YouTube.
+- **Reescrita com IA**: Utiliza um modelo de linguagem (Gemini) para reescrever e otimizar o conteúdo para SEO, seguindo um prompt customizável.
+- **Publicação no WordPress**: Publica o artigo reescrito automaticamente via API REST, definindo título, conteúdo, resumo, categorias, tags e imagem destacada.
+- **Agendamento**: Roda em ciclos contínuos usando `APScheduler`.
+- **Resiliência**: Inclui retentativas com backoff exponencial, failover de chaves de API e deduplicação de artigos.
+- **Armazenamento**: Usa um banco de dados SQLite para rastrear artigos processados e falhas.
+- **Modularidade**: O código é organizado em módulos com responsabilidades claras.
+
+## Arquitetura
+
+O projeto é estruturado como um pacote Python `app/` com os seguintes módulos:
+
+- `main.py`: Ponto de entrada, gerencia o agendador de tarefas.
+- `config.py`: Centraliza a leitura de todas as configurações a partir de variáveis de ambiente.
+- `feeds.py`: Responsável pela leitura e parsing dos feeds RSS.
+- `extractor.py`: Baixa e extrai o conteúdo principal das páginas dos artigos.
+- `ai_processor.py`: Interage com a API de IA para reescrever o conteúdo.
+- `rewriter.py`: Valida e sanitiza a resposta da IA.
+- `tags.py`: Extrai tags relevantes do conteúdo original.
+- `categorizer.py`: Mapeia feeds para categorias do WordPress.
+- `media.py`: Gerencia o download e upload de imagens.
+- `wordpress.py`: Cliente para a API REST do WordPress.
+- `store.py`: Gerencia o banco de dados SQLite.
+- `logging_conf.py`: Configuração do sistema de logs.
+- `cleanup.py`: Tarefa agendada para limpar dados antigos.
 
 ## Instalação
 
@@ -21,51 +39,13 @@ Este é um aplicativo Python que lê feeds RSS, reescreve o conteúdo usando uma
     cd <nome-do-repositorio>
     ```
 
-2.  **Crie e ative um ambiente virtual:**
-    ```bash
-    python -m venv .venv
-    source .venv/bin/activate  # No Windows: .venv\Scripts\activate
-    ```
+2.  **Crie e configure o arquivo de ambiente:**
+    - Renomeie o arquivo `.env.example` para `.env`.
+    - Abra o arquivo `.env` e preencha todas as variáveis com suas credenciais e configurações.
 
 3.  **Instale as dependências:**
+    Recomenda-se o uso de um ambiente virtual.
     ```bash
-    pip install -r requirements.txt
+    make install
     ```
-
-4.  **Configure as variáveis de ambiente:**
-    Copie o arquivo `.env.example` para `.env` e preencha com suas credenciais e chaves de API.
-    ```bash
-    cp .env.example .env
-    ```
-    Edite o arquivo `.env` com seus dados.
-
-## Execução
-
-### Execução contínua (agendada)
-O aplicativo irá rodar continuamente, verificando os feeds em intervalos definidos.
-```bash
-python -m app.main
-```
-
-### Execução única (para teste)
-Para rodar o ciclo de pipeline apenas uma vez e sair:
-```bash
-python -m app.main --once
-```
-
-### Executando os testes
-Para rodar os testes unitários:
-```bash
-make test
-# ou
-pytest
-```
-
-## Makefile
-
-Comandos úteis disponíveis no `Makefile`:
-
-- `make run`: Inicia o aplicativo em modo agendado.
-- `make once`: Roda o pipeline uma vez.
-- `make test`: Roda os testes.
-- `make clean`: Limpa o banco de dados e os logs.
+    Após a instalação, ative

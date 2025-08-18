@@ -1,23 +1,33 @@
-.PHONY: all run once test clean
+.PHONY: help install run run-once test clean
 
-# Define o interpretador Python a ser usado (procura em .venv primeiro)
-PYTHON := .venv/bin/python
+VENV_NAME=.venv
+PYTHON=$(VENV_NAME)/Scripts/python
 
-all: run
+help:
+	@echo "Comandos disponíveis:"
+	@echo "  install    - Cria o ambiente virtual e instala as dependências"
+	@echo "  run        - Inicia o scheduler para rodar o pipeline em loop"
+	@echo "  run-once   - Roda o pipeline uma única vez para teste"
+	@echo "  test       - Roda os testes unitários"
+	@echo "  clean      - Remove o ambiente virtual e arquivos de cache"
+
+install:
+	@echo "Criando ambiente virtual em $(VENV_NAME)..."
+	python -m venv $(VENV_NAME)
+	@echo "Instalando dependências de requirements.txt..."
+	$(PYTHON) -m pip install --upgrade pip
+	$(PYTHON) -m pip install -r requirements.txt
+	@echo "Instalação concluída. Ative o ambiente com: source $(VENV_NAME)/bin/activate (Linux/macOS) ou .\\$(VENV_NAME)\\Scripts\\activate (Windows)"
 
 run:
-	@echo "Starting the application in scheduled mode..."
 	$(PYTHON) -m app.main
 
-once:
-	@echo "Running a single pipeline cycle..."
+run-once:
 	$(PYTHON) -m app.main --once
 
 test:
-	@echo "Running tests..."
 	$(PYTHON) -m pytest
 
 clean:
-	@echo "Cleaning up database and logs..."
-	@rm -f data/app.db
-	@rm -f logs/*.log
+	@echo "Limpando ambiente..."
+	rm -rf $(VENV_NAME) __pycache__ app/__pycache__ tests/__pycache__ .pytest_cache .coverage data/*.db*

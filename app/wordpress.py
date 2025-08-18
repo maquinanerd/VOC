@@ -113,46 +113,36 @@ class WordPressClient:
             if tag_id:
                 tag_ids.append(tag_id)
         return tag_ids
-
-    def _handle_featured_media(self, content_html: str, title: str) -> Optional[int]:
+    
+    def _ensure_media(self, url: str, post_title: str) -> Optional[int]:
         """
-        Parses HTML to find the first image, uploads it, and returns its media ID.
+        Helper to upload a media file from a URL and return only its ID.
 
         Args:
-            content_html: The HTML content of the post.
-            title: The title of the post, for image metadata.
+            url: The URL of the image to upload.
+            post_title: The title of the post for metadata.
 
         Returns:
-            The WordPress media ID of the uploaded image, or None.
+            The new media ID, or None on failure.
         """
-        try:
-            soup = BeautifulSoup(content_html, 'html.parser')
-            first_image = soup.find('img')
+        logger.info(f"Ensuring media exists for URL: {url}")
+        media_info = self.upload_media_from_url(url, post_title)
+        if media_info and 'id' in media_info:
+            return media_info['id']
+        logger.warning(f"Failed to ensure media for URL: {url}")
+        return None
 
-            if not first_image or not first_image.get('src'):
-                logger.warning("No <img> tag found in the content to set as featured image.")
-                return None
-
-            image_url = first_image['src']
-            # Ensure URL is absolute, as it might be relative in the content
-            if not urlparse(image_url).scheme:
-                 image_url = urljoin(self.get_domain(), image_url)
-
-            return self.upload_media(image_url, title)
-        except Exception as e:
-            logger.error(f"Error processing content for featured image: {e}", exc_info=True)
-            return None
-
-    def upload_media(self, image_url: str, post_title: str) -> Optional[int]:
+    def upload_media_from_url(self, image_url: str, post_title: str) -> Optional[Dict[str, Any]]:
         """
-        Downloads an image from a URL and uploads it to the WordPress media library.
+        Downloads an image from a URL, uploads it to the WordPress media library,
+        and returns its ID and new source URL.
 
         Args:
             image_url: The URL of the image to download.
             post_title: The title of the post, used for image alt text and title.
 
         Returns:
-            The media ID of the uploaded image, or None on failure.
+            A dictionary with 'id' and 'source_url' of the uploaded image, or None on failure.
         """
         if not image_url:
             return None
@@ -187,13 +177,16 @@ class WordPressClient:
 
             media_data = upload_response.json()
             media_id = media_data['id']
-            logger.info(f"Image uploaded successfully. Media ID: {media_id}")
+            logger.info(f"Uploaded media {media_id} from URL: {image_url}")
 
             # Update alt text and title for SEO
             update_payload = {'alt_text': post_title, 'title': post_title}
             self.client.post(f"{media_endpoint}/{media_id}", json=update_payload)
 
-            return media_id
+            return {
+                'id': media_id,
+                'source_url': media_data.get('source_url')
+            }
         except (httpx.RequestError, httpx.HTTPStatusError, ValueError) as e:
             logger.error(f"Failed to upload image '{filename}' to WordPress: {e}")
             if hasattr(e, 'response'):
@@ -202,7 +195,8 @@ class WordPressClient:
 
     def create_post(self, post_data: Dict[str, Any]) -> Optional[int]:
         """
-        Creates a new post in WordPress, handling featured media automatically.
+        Creates a new post in WordPress.
+        It can accept either a 'featured_media' ID or a 'featured_image_url' to upload.
 
         Args:
             post_data: A dictionary containing post details like title, content, etc.
@@ -216,13 +210,19 @@ class WordPressClient:
             'status': 'publish'  # Default status
         }
 
-        # Handle featured media
-        content_html = post_data.get('content', '')
         post_title = post_data.get('title', 'Untitled Post')
-        if content_html:
-            media_id = self._handle_featured_media(content_html, post_title)
-            if media_id:
-                payload['featured_media'] = media_id
+
+        # Handle featured media: use existing ID or upload from URL
+        featured_media_id = post_data.get('featured_media')
+        if not featured_media_id:
+            if image_url := post_data.get('featured_image_url'):
+                featured_media_id = self._ensure_media(image_url, post_title)
+
+        if featured_media_id:
+            payload['featured_media'] = featured_media_id
+            logger.info(f"Post will be created with featured_media {featured_media_id}.")
+        else:
+            logger.warning(f"Post '{post_title}' will be created without a featured image.")
 
         # Resolve tag names to IDs
         tag_names = post_data.get('tags', [])

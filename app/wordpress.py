@@ -212,20 +212,44 @@ class WordPressClient:
         """
         endpoint = f"{self.base_url}/posts"
 
-        # Handle featured media by extracting it from the content
+        payload = {
+            'status': 'publish'  # Default status
+        }
+
+        # Handle featured media
         content_html = post_data.get('content', '')
         post_title = post_data.get('title', 'Untitled Post')
         if content_html:
             media_id = self._handle_featured_media(content_html, post_title)
             if media_id:
-                post_data['featured_media'] = media_id
-        
+                payload['featured_media'] = media_id
+
         # Resolve tag names to IDs
         tag_names = post_data.get('tags', [])
         if tag_names:
-            post_data['tags'] = self._get_tag_ids(tag_names)
+            payload['tags'] = self._get_tag_ids(tag_names)
 
-        logger.info(f"Creating WordPress post: {post_data.get('title
+        # Copy other relevant fields from post_data to the payload
+        for key in ['title', 'content', 'excerpt', 'categories', 'meta']:
+            if key in post_data:
+                payload[key] = post_data[key]
+
+        logger.info(f"Creating WordPress post: {payload.get('title')}")
+
+        try:
+            response = self.client.post(endpoint, json=payload, timeout=45.0)
+            response.raise_for_status()
+
+            created_post = response.json()
+            post_id = created_post.get('id')
+            logger.info(f"Successfully created post '{payload.get('title')}' with ID: {post_id}")
+            return post_id
+
+        except (httpx.RequestError, httpx.HTTPStatusError, ValueError) as e:
+            logger.error(f"Failed to create post '{payload.get('title')}': {e}")
+            if hasattr(e, 'response'):
+                logger.error(f"Response body: {e.response.text}")
+            return None
 
     def close(self):
         """Closes the httpx client session."""

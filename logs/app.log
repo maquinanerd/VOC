@@ -6023,3 +6023,151 @@ message: "API key not valid. Please pass a valid API key."
 2025-08-18 09:13:02 - app.pipeline - INFO - Pipeline cycle completed. Processed 2 articles.
 2025-08-18 09:13:02 - app.store - INFO - Database connection closed.
 2025-08-18 09:13:02 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-18 10:43:35 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-18 10:43:35 - app.store - INFO - Database initialized successfully.
+2025-08-18 10:43:35 - app.store - INFO - Database connection closed.
+2025-08-18 10:43:35 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-18 10:43:35 - __main__ - INFO - Executando um único ciclo do pipeline (--once).
+2025-08-18 10:43:35 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-18 10:43:38 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-18 10:43:38 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-18 10:43:38 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-18 10:43:39 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movie-news/
+2025-08-18 10:43:39 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-18 10:43:39 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-18 10:43:39 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-18 10:43:39 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-18 10:43:39 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv-news/
+2025-08-18 10:43:39 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-18 10:43:39 - app.pipeline - INFO - Found 4 new articles for screenrant_tv
+2025-08-18 10:43:39 - app.pipeline - INFO - Processing article: The Diplomat Season 3 Trailer & Release Date Revealed (DB ID: 165) from screenrant_tv
+2025-08-18 10:43:40 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 10:43:40 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-08-18 10:43:40 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 10:43:40 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/the-diplomat-season-3-trailer-release-date/. Title: The Diplomat Season 3 Trailer & Release Date Revea...
+2025-08-18 10:43:40 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 10:43:46 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 10:44:16 - app.pipeline - INFO - Attempting to upload up to 8 images from 1 unique URLs found.
+2025-08-18 10:44:16 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/keri-russell-and-allison-janney-standing-together-in-the-diplomat.jpg
+2025-08-18 10:44:17 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/keri-russell-and-allison-janney-standing-together-in-the-diplomat.jpg "HTTP/1.1 200 OK"
+2025-08-18 10:44:17 - app.wordpress - INFO - Uploading image 'keri-russell-and-allison-janney-standing-together-in-the-diplomat.jpg' to WordPress.
+2025-08-18 10:44:27 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 10:44:27 - app.wordpress - INFO - Uploaded media 13935 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/keri-russell-and-allison-janney-standing-together-in-the-diplomat.jpg
+2025-08-18 10:44:28 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13935 "HTTP/1.1 200 OK"
+2025-08-18 10:44:28 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/keri-russell-and-allison-janney-standing-together-in-the-diplomat.jpg
+2025-08-18 10:44:28 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/keri-russell-and-allison-janney-standing-together-in-the-diplomat.jpg
+2025-08-18 10:44:29 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/keri-russell-and-allison-janney-standing-together-in-the-diplomat.jpg "HTTP/1.1 200 OK"
+2025-08-18 10:44:29 - app.wordpress - INFO - Uploading image 'keri-russell-and-allison-janney-standing-together-in-the-diplomat.jpg' to WordPress.
+2025-08-18 10:44:36 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 10:44:36 - app.wordpress - INFO - Uploaded media 13936 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/keri-russell-and-allison-janney-standing-together-in-the-diplomat.jpg
+2025-08-18 10:44:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13936 "HTTP/1.1 200 OK"
+2025-08-18 10:44:37 - app.wordpress - INFO - Post will be created with featured_media 13936.
+2025-08-18 10:44:38 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-diplomat "HTTP/1.1 200 OK"
+2025-08-18 10:44:39 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:44:39 - app.wordpress - INFO - Successfully created tag 'The Diplomat'
+2025-08-18 10:44:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=keri-russell "HTTP/1.1 200 OK"
+2025-08-18 10:44:42 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:44:42 - app.wordpress - INFO - Successfully created tag 'Keri Russell'
+2025-08-18 10:44:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=allison-janney "HTTP/1.1 200 OK"
+2025-08-18 10:44:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:44:44 - app.wordpress - INFO - Successfully created tag 'Allison Janney'
+2025-08-18 10:44:45 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=bradley-whitford "HTTP/1.1 200 OK"
+2025-08-18 10:44:46 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:44:46 - app.wordpress - INFO - Successfully created tag 'Bradley Whitford'
+2025-08-18 10:44:47 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=netflix "HTTP/1.1 200 OK"
+2025-08-18 10:44:48 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=diplomacia-internacional "HTTP/1.1 200 OK"
+2025-08-18 10:44:50 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:44:50 - app.wordpress - INFO - Successfully created tag 'Diplomacia Internacional'
+2025-08-18 10:44:50 - app.wordpress - INFO - Creating WordPress post: The Diplomat 3ª Temporada: Trailer, Data de Lançamento e Novos Mistérios
+2025-08-18 10:44:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 10:44:52 - app.wordpress - INFO - Successfully created post 'The Diplomat 3ª Temporada: Trailer, Data de Lançamento e Novos Mistérios' with ID: 13937
+2025-08-18 10:44:52 - app.store - INFO - Successfully recorded published post for article DB ID 165 (WP Post ID: 13937).
+2025-08-18 10:44:52 - app.pipeline - INFO - Successfully published post 13937 for article DB ID 165
+2025-08-18 10:44:52 - app.pipeline - INFO - Sleeping for 9.1s (per-article delay).
+2025-08-18 10:45:01 - app.pipeline - INFO - Processing article: Helluva Boss Season 3 Stars Tease "Pilot Redo" Episode (DB ID: 166) from screenrant_tv
+2025-08-18 10:45:02 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 10:45:02 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 10:45:02 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 10:45:02 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/helluva-boss-mission-zero-episode-ignis-horvitz-response/. Title: Morgana Ignis & Richard Horvitz Tease Season 3’s “...
+2025-08-18 10:45:02 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 10:45:10 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 10:45:40 - app.pipeline - INFO - Attempting to upload up to 8 images from 1 unique URLs found.
+2025-08-18 10:45:40 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-smiling-in-helluva-boss-pilot-episode.jpg
+2025-08-18 10:45:41 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-smiling-in-helluva-boss-pilot-episode.jpg "HTTP/1.1 200 OK"
+2025-08-18 10:45:41 - app.wordpress - INFO - Uploading image 'blitz-smiling-in-helluva-boss-pilot-episode.jpg' to WordPress.
+2025-08-18 10:45:59 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 10:45:59 - app.wordpress - INFO - Uploaded media 13938 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-smiling-in-helluva-boss-pilot-episode.jpg
+2025-08-18 10:46:00 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13938 "HTTP/1.1 200 OK"
+2025-08-18 10:46:00 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-smiling-in-helluva-boss-pilot-episode.jpg
+2025-08-18 10:46:00 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-smiling-in-helluva-boss-pilot-episode.jpg
+2025-08-18 10:46:01 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-smiling-in-helluva-boss-pilot-episode.jpg "HTTP/1.1 200 OK"
+2025-08-18 10:46:01 - app.wordpress - INFO - Uploading image 'blitz-smiling-in-helluva-boss-pilot-episode.jpg' to WordPress.
+2025-08-18 10:46:14 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 10:46:14 - app.wordpress - INFO - Uploaded media 13939 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/blitz-smiling-in-helluva-boss-pilot-episode.jpg
+2025-08-18 10:46:15 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13939 "HTTP/1.1 200 OK"
+2025-08-18 10:46:15 - app.wordpress - INFO - Post will be created with featured_media 13939.
+2025-08-18 10:46:16 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=helluva-boss "HTTP/1.1 200 OK"
+2025-08-18 10:46:17 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:46:17 - app.wordpress - INFO - Successfully created tag 'Helluva Boss'
+2025-08-18 10:46:18 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hazbin-hotel "HTTP/1.1 200 OK"
+2025-08-18 10:46:20 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:46:20 - app.wordpress - INFO - Successfully created tag 'Hazbin Hotel'
+2025-08-18 10:46:21 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mission-zero "HTTP/1.1 200 OK"
+2025-08-18 10:46:23 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:46:23 - app.wordpress - INFO - Successfully created tag 'Mission Zero'
+2025-08-18 10:46:24 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=morgana-ignis "HTTP/1.1 200 OK"
+2025-08-18 10:46:26 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:46:26 - app.wordpress - INFO - Successfully created tag 'Morgana Ignis'
+2025-08-18 10:46:27 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=richard-horvitz "HTTP/1.1 200 OK"
+2025-08-18 10:46:28 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:46:28 - app.wordpress - INFO - Successfully created tag 'Richard Horvitz'
+2025-08-18 10:46:29 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=prime-video "HTTP/1.1 200 OK"
+2025-08-18 10:46:30 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=blitzo "HTTP/1.1 200 OK"
+2025-08-18 10:46:31 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:46:31 - app.wordpress - INFO - Successfully created tag 'Blitzø'
+2025-08-18 10:46:31 - app.wordpress - INFO - Creating WordPress post: Helluva Boss: Novo episódio de Season 3 é um 'redo' do piloto
+2025-08-18 10:46:33 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 10:46:33 - app.wordpress - INFO - Successfully created post 'Helluva Boss: Novo episódio de Season 3 é um 'redo' do piloto' with ID: 13940
+2025-08-18 10:46:33 - app.store - INFO - Successfully recorded published post for article DB ID 166 (WP Post ID: 13940).
+2025-08-18 10:46:33 - app.pipeline - INFO - Successfully published post 13940 for article DB ID 166
+2025-08-18 10:46:33 - app.pipeline - INFO - Sleeping for 6.9s (per-article delay).
+2025-08-18 10:46:40 - app.pipeline - INFO - Processing article: The Terminal List: Dark Wolf - How The Prequel Changes A Key Book Character (DB ID: 167) from screenrant_tv
+2025-08-18 10:46:41 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-18 10:46:41 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-08-18 10:46:41 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-18 10:46:41 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/terminal-list-dark-wolf-ben-book-change-comparison-jack-carr-explained/. Title: How The Terminal List Prequel Changes Key Book Cha...
+2025-08-18 10:46:41 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-18 10:46:51 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-18 10:47:21 - app.pipeline - INFO - Attempting to upload up to 8 images from 1 unique URLs found.
+2025-08-18 10:47:21 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdteli_zu013-1.jpg
+2025-08-18 10:47:22 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdteli_zu013-1.jpg "HTTP/1.1 200 OK"
+2025-08-18 10:47:22 - app.wordpress - INFO - Uploading image 'tcdteli_zu013-1.jpg' to WordPress.
+2025-08-18 10:47:32 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 10:47:32 - app.wordpress - INFO - Uploaded media 13941 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdteli_zu013-1.jpg
+2025-08-18 10:47:33 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13941 "HTTP/1.1 200 OK"
+2025-08-18 10:47:33 - app.wordpress - INFO - Ensuring media exists for URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdteli_zu013-1.jpg
+2025-08-18 10:47:33 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdteli_zu013-1.jpg
+2025-08-18 10:47:33 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdteli_zu013-1.jpg "HTTP/1.1 200 OK"
+2025-08-18 10:47:33 - app.wordpress - INFO - Uploading image 'tcdteli_zu013-1.jpg' to WordPress.
+2025-08-18 10:47:40 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-18 10:47:40 - app.wordpress - INFO - Uploaded media 13942 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdteli_zu013-1.jpg
+2025-08-18 10:47:41 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/13942 "HTTP/1.1 200 OK"
+2025-08-18 10:47:41 - app.wordpress - INFO - Post will be created with featured_media 13942.
+2025-08-18 10:47:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-terminal-list "HTTP/1.1 200 OK"
+2025-08-18 10:47:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dark-wolf "HTTP/1.1 200 OK"
+2025-08-18 10:47:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-18 10:47:43 - app.wordpress - INFO - Successfully created tag 'Dark Wolf'
+2025-08-18 10:47:44 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=taylor-kitsch "HTTP/1.1 200 OK"
+2025-08-18 10:47:45 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=chris-pratt "HTTP/1.1 200 OK"
+2025-08-18 10:47:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ben-edwards "HTTP/1.1 200 OK"
+2025-08-18 10:47:47 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=jack-carr "HTTP/1.1 200 OK"
+2025-08-18 10:47:48 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=prime-video "HTTP/1.1 200 OK"
+2025-08-18 10:47:48 - app.wordpress - INFO - Creating WordPress post: Dark Wolf: Como a prequel de Terminal List muda o personagem de Ben
+2025-08-18 10:47:51 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-18 10:47:51 - app.wordpress - INFO - Successfully created post 'Dark Wolf: Como a prequel de Terminal List muda o personagem de Ben' with ID: 13943
+2025-08-18 10:47:51 - app.store - INFO - Successfully recorded published post for article DB ID 167 (WP Post ID: 13943).
+2025-08-18 10:47:51 - app.pipeline - INFO - Successfully published post 13943 for article DB ID 167
+2025-08-18 10:47:51 - app.pipeline - INFO - Sleeping for 8.3s (per-article delay).
+2025-08-18 10:47:53 - app.pipeline - INFO - Pipeline cycle completed. Processed 3 articles.
+2025-08-18 10:47:53 - app.store - INFO - Database connection closed.
+2025-08-18 10:47:53 - app.wordpress - INFO - WordPress client connection closed.

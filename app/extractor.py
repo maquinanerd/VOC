@@ -28,6 +28,72 @@ FORBIDDEN_LABELS: Set[str] = {
     "Producer", "Producers", "Cast"
 }
 
+def _parse_srcset(srcset: str):
+    """
+    Parses a srcset attribute and returns the URL of the largest image.
+    Example: "url1 320w, url2 640w, url3 1200w" -> "url3"
+    """
+    best = None
+    best_w = -1
+    for part in (srcset or "").split(","):
+        part = part.strip()
+        if not part:
+            continue
+        tokens = part.split()
+        url = tokens[0]
+        w = 0
+        if len(tokens) > 1 and tokens[1].endswith("w"):
+            try:
+                w = int(tokens[1][:-1])
+            except Exception:
+                w = 0
+        if w >= best_w:
+            best_w = w
+            best = url
+    return best
+
+def _abs(u: str, base: str) -> str | None:
+    """Converts a URL to an absolute URL, returning None for invalid inputs."""
+    if not u:
+        return None
+    u = u.strip()
+    if not u or u.startswith("data:"):
+        return None
+    return urljoin(base, u)
+
+def collect_images_from_article(soup: BeautifulSoup, base_url: str) -> list[str]:
+    """
+    Collects all valid image URLs from an article's soup, handling various
+    lazy-loading and responsive image techniques.
+    """
+    urls = []
+
+    # 1) Classic <img> tags (src, data-*, and srcset)
+    for img in soup.find_all("img"):
+        cand = None
+        for attr in ("src", "data-src", "data-original", "data-lazy-src", "data-image", "data-img-url"):
+            if cand := img.get(attr):
+                break
+        if not cand and img.get("srcset"):
+            cand = _parse_srcset(img.get("srcset"))
+        if cand := _abs(cand, base_url):
+            urls.append(cand)
+
+    # 2) <picture><source srcset="..."> tags
+    for source in soup.select("picture source[srcset]"):
+        if pick := _parse_srcset(source.get("srcset")):
+            if pick := _abs(pick, base_url):
+                urls.append(pick)
+
+    # 3) divs/figures with data-* attributes (common on ScreenRant/Collider)
+    for node in soup.select('[data-img-url], [data-image], [data-src], [data-original]'):
+        cand = node.get("data-img-url") or node.get("data-image") or node.get("data-src") or node.get("data-original")
+        if cand := _abs(cand, base_url):
+            urls.append(cand)
+
+    # De-duplicate while preserving order
+    return list(dict.fromkeys(urls))
+
 
 class ContentExtractor:
     """
@@ -279,22 +345,15 @@ class ContentExtractor:
             article_soup = BeautifulSoup(content_html, 'lxml')
             self._remove_forbidden_blocks(article_soup)
 
+            # 7. Collect all images using the advanced collector from the cleaned article soup
+            all_image_urls = collect_images_from_article(article_soup, base_url=url)
+            logger.info(f"Collected {len(all_image_urls)} images from article body.")
+
             # The body tag is sometimes added by BeautifulSoup, we only want the contents
             if article_soup.body:
                 final_content_html = article_soup.body.decode_contents()
             else:
                 final_content_html = str(article_soup)
-
-            # Extract all image URLs from the final content for later processing
-            final_soup = BeautifulSoup(final_content_html, 'html.parser')
-            all_image_urls = []
-            seen_urls = set()
-            for img_tag in final_soup.find_all('img'):
-                if src := img_tag.get('src'):
-                    abs_src = urljoin(url, src)
-                    if abs_src not in seen_urls:
-                        all_image_urls.append(abs_src)
-                        seen_urls.add(abs_src)
 
             result = {
                 "title": title.strip(),

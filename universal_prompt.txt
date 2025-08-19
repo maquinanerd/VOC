@@ -21,15 +21,18 @@ Use a seguinte estrutura JSON para a sua resposta:
     *   Crie um novo título otimizado para SEO, atrativo e claro. Máximo de 70 caracteres.
     *   Apenas texto puro, sem HTML.
 
-2.  **conteudo_final**:
-    *   Reestruture o texto em parágrafos curtos e coesos, cada um envolto em `<p>`. **Não crie parágrafos novos a cada vírgula.**
-    *   **PRESERVE INTEGRALMENTE todas as tags de mídia do conteúdo original**, como `<img>`, `<figure>` e `<iframe>`. Elas devem estar no `conteudo_final`.
-    *   **INCORPORE OS VÍDEOS DO YOUTUBE** fornecidos na lista abaixo em pontos relevantes do texto. Use o seguinte formato de `<iframe>` para cada vídeo. Limite a no máximo 3 vídeos por artigo:
-        ```html
-        <figure class="video-container">
-          <iframe src="URL_DO_EMBED_AQUI" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        </figure>
-        ```
+2. **conteudo_final**
+   * Reestruture em parágrafos curtos dentro de `<p>`.  
+   * Preserve integralmente `<img>`, `<figure>` e `<iframe>`.  
+   * **Organização das imagens**:  
+     - Posicione cada imagem logo após o parágrafo relacionado ao conteúdo dela.  
+     - Envolva todas as imagens dentro de `<figure>` e adicione uma legenda curta em `<figcaption>`.  
+     - Nunca coloque mais de uma imagem seguida sem um parágrafo entre elas.  
+     - A primeira imagem deve ser considerada a destacada (featured), portanto **não repita no corpo**.  
+   * Incorpore no máximo 3 vídeos do YouTube no formato:  
+     `<figure class="video-container"><iframe src="URL_DO_EMBED" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></figure>`  
+   * Destaque termos-chave com `<b>`.  
+   * Crie no máximo 3 links internos relevantes usando `{domain}/tag/{tag}`. 
     *   Destaque com `<b>` os termos mais importantes (nomes de filmes, atores, personagens, estúdios).
     *   Insira links internos contextuais usando as tags que você identificou. Ex: `<b><a href="{domain}/tag/miles-teller">Miles Teller</a></b>`.
 

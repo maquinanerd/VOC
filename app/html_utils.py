@@ -277,3 +277,40 @@ def add_credit_to_figures(html: str, source_url: Optional[str] = None) -> str:
     """
     logger.info("add_credit_to_figures desabilitada: retornando HTML sem alterações.")
     return html
+
+# =========================
+# Post-AI Defensive Cleanup
+# =========================
+
+def remove_broken_image_placeholders(html: str) -> str:
+    """
+    Removes text-based image placeholders that the AI might mistakenly add,
+    like '[Imagem Destacada]' on its own line, without affecting real content.
+    """
+    if not html or "Imagem" not in html:
+        return html
+    # This regex targets lines that ONLY contain the placeholder.
+    # `^` and `$` anchor to the start and end of a line due to MULTILINE flag.
+    # It avoids touching legitimate text that happens to contain the word "Imagem".
+    return re.sub(
+        r'^\s*(\[?Imagem[^\n<]*\]?)\s*$',
+        '',
+        html,
+        flags=re.IGNORECASE | re.MULTILINE
+    )
+
+
+def strip_naked_internal_links(html: str) -> str:
+    """
+    Removes paragraphs that contain nothing but a bare URL to an internal
+    tag or category page, a common AI formatting error.
+    """
+    if not html or ("/tag/" not in html and "/categoria/" not in html):
+        return html
+    # This regex looks for a <p> tag containing only a URL to /tag/ or /categoria/.
+    return re.sub(
+        r'<p>\s*https?://[^<>\s]+/(?:tag|categoria)/[a-z0-9\-_/]+/?\s*</p>',
+        '',
+        html,
+        flags=re.IGNORECASE
+    )

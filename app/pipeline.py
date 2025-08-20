@@ -23,6 +23,8 @@ from .html_utils import (
     add_credit_to_figures,
     rewrite_img_srcs_with_wp,
     strip_credits_and_normalize_youtube,
+    remove_broken_image_placeholders,
+    strip_naked_internal_links,
 )
 from bs4 import BeautifulSoup
 
@@ -104,14 +106,20 @@ def run_pipeline_cycle():
                             db.update_article_status(article_db_id, 'FAILED', reason=reason)
                             continue
 
-                        # Step 3: Image and HTML processing
-                        # 3.1: Ensure images exist in content, injecting if AI removed them
+                        # Step 3: HTML Processing and Cleanup
+                        # 3.1: Defensive cleanup of common AI errors (e.g., leftover placeholders)
+                        # These functions only act if specific error patterns are found.
+                        content_html = rewritten_data['conteudo_final']
+                        content_html = remove_broken_image_placeholders(content_html)
+                        content_html = strip_naked_internal_links(content_html)
+
+                        # 3.2: Ensure images from original article exist in content, injecting if AI removed them
                         content_html = merge_images_into_content(
-                            rewritten_data['conteudo_final'],
+                            content_html,
                             extracted_data.get('images', [])
                         )
                         
-                        # 3.2: Collect and upload up to 8 priority images
+                        # 3.3: Collect and upload up to 8 priority images
                         urls_to_upload = []
                         if featured_url := extracted_data.get('featured_image_url'):
                             urls_to_upload.append(featured_url)
@@ -132,10 +140,10 @@ def run_pipeline_cycle():
                                 uploaded_src_map[k] = media["source_url"]
                                 uploaded_id_map[k] = media["id"]
                         
-                        # 3.3: Rewrite image `src` to point to WordPress
+                        # 3.4: Rewrite image `src` to point to WordPress
                         content_html = rewrite_img_srcs_with_wp(content_html, uploaded_src_map)
 
-                        # 3.4: Add credits to figures
+                        # 3.5: Add credits to figures (currently disabled)
                         # content_html = add_credit_to_figures(content_html, extracted_data['source_url'])
 
                         # Só player do YouTube (oEmbed) e sem “Crédito: …”

@@ -112,7 +112,15 @@ class AIProcessor:
         return cls._prompt_template
 
     def rewrite_content(
-        self, title: str, url: str, content: str, domain: str, videos: List[Dict[str, str]]
+        self,
+        title: str,
+        url: str,
+        content: str,
+        domain: str,
+        videos: List[Dict[str, str]],
+        tags: List[str],
+        images: List[str],
+        fonte_nome: str,
     ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
         """
         Rewrites the given article content using the AI model.
@@ -123,19 +131,36 @@ class AIProcessor:
             content: The full HTML content of the article.
             domain: The base domain for internal links.
             videos: A list of dictionaries of extracted YouTube videos.
+            tags: A list of extracted tags.
+            images: A list of extracted image URLs.
+            fonte_nome: The name of the source (e.g., 'ScreenRant').
 
         Returns:
             A tuple containing a dictionary with the rewritten text and a failure
             reason (or None if successful).
         """
+        class _SafeDict(dict):
+            def __missing__(self, key):
+                return ""
+
         prompt_template = self._load_prompt_template()
-        prompt = prompt_template.format(
-            titulo_original=title,
-            url_original=url,
-            content=content,
-            domain=domain,
-            videos_list="\n".join([v['embed_url'] for v in videos]) if videos else "Nenhum"
-        )
+
+        fields = {
+            "titulo_original": title,
+            "url_original": url,
+            "content": content,
+            "domain": domain,
+            "fonte_nome": fonte_nome,
+            "categoria": self.category,
+            "tag": (tags[0] if tags else self.category) or "",
+            "tags": (", ".join(tags) if tags else self.category) or "",
+            "videos_list": "\n".join([v['embed_url'] for v in videos]) if videos else "Nenhum",
+            "imagens_list": "\n".join(images) if images else "Nenhuma",
+            "titulo_final": "",
+            "meta_description": "",
+            "focus_keyword": "",
+        }
+        prompt = prompt_template.format_map(_SafeDict(fields))
 
         last_error = "Unknown error"
         for _ in range(len(self.api_keys)):

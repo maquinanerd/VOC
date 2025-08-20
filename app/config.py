@@ -19,8 +19,8 @@ PIPELINE_ORDER = [
 ]
 
 RSS_FEEDS = {
-    'screenrant_movies': {'urls': ['https://screenrant.com/feed/movie-news/'], 'category': 'movies'},
-    'screenrant_tv':     {'urls': ['https://screenrant.com/feed/tv-news/'],    'category': 'series'},
+    'screenrant_movies': {'urls': ['https://screenrant.com/feed/movies/'], 'category': 'movies'},
+    'screenrant_tv':     {'urls': ['https://screenrant.com/feed/tv/'],    'category': 'series'},
     'movieweb_movies':   {'urls': ['https://movieweb.com/feed/'],               'category': 'movies'},
     'collider_movies':   {'urls': ['https://collider.com/feed/category/movie-news/'], 'category': 'movies'},
     'collider_tv':       {'urls': ['https://collider.com/feed/category/tv-news/'],    'category': 'series'},

@@ -5,6 +5,7 @@ Handles content rewriting using a Generative AI model with API key failover.
 import json
 import google.generativeai as genai
 import logging
+from urllib.parse import urlparse
 import re
 import time
 from pathlib import Path 
@@ -113,53 +114,81 @@ class AIProcessor:
 
     def rewrite_content(
         self,
-        title: str,
-        url: str,
-        content: str,
-        domain: str,
-        videos: List[Dict[str, str]],
-        tags: List[str],
-        images: List[str],
-        fonte_nome: str,
+        title: Optional[str] = None,
+        content_html: Optional[str] = None,
+        source_url: Optional[str] = None,
+        category: Optional[str] = None,
+        videos: Optional[List[Dict[str, str]]] = None,
+        images: Optional[List[str]] = None,
+        tags: Optional[List[str]] = None,
+        fonte_nome: Optional[str] = None,
+        source_name: Optional[str] = None,
+        **kwargs: Any,
     ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
         """
         Rewrites the given article content using the AI model.
+        This method is designed to be robust and backward-compatible.
 
         Args:
             title: The original title of the article.
-            url: The original URL of the article.
-            content: The full HTML content of the article.
-            domain: The base domain for internal links.
+            content_html: The full HTML content of the article.
+            source_url: The original URL of the article.
+            category: The content category (e.g., 'movies'). Overrides instance category.
             videos: A list of dictionaries of extracted YouTube videos.
-            tags: A list of extracted tags.
             images: A list of extracted image URLs.
+            tags: A list of extracted tags.
             fonte_nome: The name of the source (e.g., 'ScreenRant').
+            source_name: Alternative name for the source.
+            **kwargs: Catches extra arguments like 'domain' for backward compatibility.
 
         Returns:
             A tuple containing a dictionary with the rewritten text and a failure
             reason (or None if successful).
         """
         class _SafeDict(dict):
-            def __missing__(self, key):
+            def __missing__(self, key: str) -> str:
                 return ""
 
         prompt_template = self._load_prompt_template()
 
+        # Handle defaults and backward compatibility
+        videos = videos or []
+        images = images or []
+        tags = tags or []
+        
+        # Determine source name, falling back to URL if necessary
+        fonte = fonte_nome or source_name or ""
+        if not fonte and source_url:
+            try:
+                fonte = urlparse(source_url).netloc.replace("www.", "")
+            except Exception:
+                fonte = ""  # Fallback in case of URL parsing error
+
+        final_category = category or self.category or ""
+        domain = kwargs.get("domain", "")
+
         fields = {
-            "titulo_original": title,
-            "url_original": url,
-            "content": content,
+            "titulo_original": title or "",
+            "url_original": source_url or "",
+            "content": content_html or "",
             "domain": domain,
-            "fonte_nome": fonte_nome,
-            "categoria": self.category,
-            "tag": (tags[0] if tags else self.category) or "",
-            "tags": (", ".join(tags) if tags else self.category) or "",
-            "videos_list": "\n".join([v['embed_url'] for v in videos]) if videos else "Nenhum",
+            "fonte_nome": fonte,
+            "categoria": final_category,
+            "tag": (tags[0] if tags else final_category),
+            "tags": (", ".join(tags) if tags else final_category),
+            "videos_list": "\n".join([v.get("embed_url", "") for v in videos if isinstance(v, dict) and v.get("embed_url")]) or "Nenhum",
             "imagens_list": "\n".join(images) if images else "Nenhuma",
             "titulo_final": "",
             "meta_description": "",
             "focus_keyword": "",
         }
+
+        # Log placeholders in the template that are not in the fields dict for debugging
+        placeholders = re.findall(r"{(\w+)}", prompt_template)
+        for p in placeholders:
+            if p not in fields:
+                logger.warning(f"Prompt template placeholder '{{{p}}}' is not in the provided fields dictionary.")
+
         prompt = prompt_template.format_map(_SafeDict(fields))
 
         last_error = "Unknown error"

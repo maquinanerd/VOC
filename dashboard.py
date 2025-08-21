@@ -11,6 +11,11 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from flask import Flask, render_template, jsonify, request, redirect, url_for, flash
 import logging
+import subprocess
+try:
+    import psutil
+except ImportError:
+    psutil = None
 from collections import deque
 
 # Load environment variables
@@ -172,60 +177,64 @@ def get_recent_logs():
         logging.error(f"Error reading logs: {e}")
         return []
 
+def find_main_process():
+    """Finds the running main.py or app.main module process."""
+    if not psutil:
+        return None
+    current_pid = os.getpid()
+    for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+        if proc.pid == current_pid:
+            continue
+        try:
+            cmdline = proc.info.get('cmdline')
+            if cmdline:
+                cmd_str = ' '.join(cmdline)
+                # Avoid matching the dashboard process itself
+                if 'dashboard.py' in cmd_str:
+                    continue
+                
+                # Check for `python main.py`
+                if any('main.py' in arg for arg in cmdline):
+                    return proc
+                
+                # Check for `python -m app.main`
+                if '-m' in cmdline and any('app.main' in arg for arg in cmdline):
+                    return proc
+
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            continue
+    return None
+
 def _get_system_status():
-    """Determines the system status by checking logs and running processes."""
-    try:
-        import psutil
-    except ImportError:
+    """Determines the system status by checking for a running process and recent logs."""
+    if not psutil:
         logging.warning("psutil not installed, status check will be limited.")
         return "Unknown (psutil not installed)"
 
+    # 1. Check if the main process is actively running
+    if find_main_process():
+        return "Running"
+
+    # 2. If not running, check for recent activity in logs (e.g., a completed --once run)
     try:
         logs = get_recent_logs()
-        is_running = False
-        recent_activity = False
-
-        # Look for scheduler started messages in recent logs (last 10 minutes)
-        for log in logs:
-            msg = log.get('message', '').lower()
-            if any(keyword in msg for keyword in [
-                "Scheduler started",
-                "Starting RSS to WordPress automation system",
-                "Pipeline will run every",
-                "Added job"
-            ]):
-                is_running = True
-                break
-
-            # Also check for recent processing activity
-            msg = log.get('message', '').lower()
-            if any(keyword in msg for keyword in [
-                "Processing feed",
-                "Found new articles",
-                "Published to WordPress"
-            ]):
-                recent_activity = True
-
-        # Check if main.py process is running (backup method)
-        if not is_running:
-            for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
-                try:
-                    if proc.info['cmdline'] and 'main.py' in ' '.join(proc.info['cmdline']):
-                        is_running = True
-                        break
-                except (psutil.NoSuchProcess, psutil.AccessDenied):
-                    pass
-
-        if is_running:
-            return "Running"
-        elif recent_activity:
-            return "Processing"
-        else:
-            return "Stopped"
-
+        if logs:
+            last_log = logs[0]  # Logs are reversed, so this is the newest
+            # Check if the last log is recent
+            last_log_time = datetime.strptime(last_log['timestamp'].split(',')[0], '%Y-%m-%d %H:%M:%S')
+            if (datetime.now() - last_log_time) < timedelta(minutes=5):
+                 if any(keyword in last_log['message'].lower() for keyword in [
+                    "processing feed",
+                    "found new articles",
+                    "published to wordpress",
+                    "pipeline run finished"
+                ]):
+                    return "Processing"
     except Exception as e:
-        logging.error(f"Error determining system status: {e}")
-        return "Unknown"
+        logging.error(f"Error checking logs for system status: {e}")
+
+    # 3. If no process and no recent activity, it's stopped
+    return "Stopped"
 
 @app.route('/')
 def dashboard():
@@ -266,17 +275,57 @@ def api_system_status():
 @app.route('/api/system/start', methods=['POST'])
 def api_start_system():
     """Start the automation system"""
-    return jsonify({'success': False, 'message': 'Controle do sistema não disponível nesta versão'})
+    if not psutil:
+        return jsonify({'success': False, 'message': 'psutil não está instalado. Não é possível controlar o processo.'})
+
+    if find_main_process():
+        return jsonify({'success': False, 'message': 'O sistema já está em execução.'})
+
+    try:
+        # Start main.py as a background process
+        python_executable = sys.executable
+        main_script_path = BASE_DIR / 'main.py'
+        subprocess.Popen([python_executable, str(main_script_path)], cwd=BASE_DIR)
+        return jsonify({'success': True, 'message': 'Sistema iniciado com sucesso.'})
+    except Exception as e:
+        logging.error(f"Failed to start system: {e}")
+        return jsonify({'success': False, 'message': f'Falha ao iniciar o sistema: {e}'})
 
 @app.route('/api/system/stop', methods=['POST'])
 def api_stop_system():
     """Stop the automation system"""
-    return jsonify({'success': False, 'message': 'Controle do sistema não disponível nesta versão'})
+    if not psutil:
+        return jsonify({'success': False, 'message': 'psutil não está instalado. Não é possível controlar o processo.'})
+
+    proc = find_main_process()
+    if not proc:
+        return jsonify({'success': False, 'message': 'O sistema não parece estar em execução.'})
+
+    try:
+        proc.terminate()
+        proc.wait(timeout=5) # Wait for process to terminate
+        return jsonify({'success': True, 'message': 'Sistema parado com sucesso.'})
+    except psutil.TimeoutExpired:
+        proc.kill()
+        return jsonify({'success': True, 'message': 'Sistema forçadamente parado.'})
+    except Exception as e:
+        logging.error(f"Failed to stop system: {e}")
+        return jsonify({'success': False, 'message': f'Falha ao parar o sistema: {e}'})
 
 @app.route('/api/system/run-now', methods=['POST'])
 def api_run_now():
     """Force a pipeline run now"""
-    return jsonify({'success': False, 'message': 'Execução manual não disponível nesta versão'})
+    try:
+        # Run the pipeline once using the --once flag
+        python_executable = sys.executable
+        subprocess.Popen(
+            [python_executable, '-m', 'app.main', '--once'],
+            cwd=BASE_DIR
+        )
+        return jsonify({'success': True, 'message': 'Execução única do pipeline iniciada.'})
+    except Exception as e:
+        logging.error(f"Failed to run-now: {e}")
+        return jsonify({'success': False, 'message': f'Falha ao iniciar execução única: {e}'})
 
 @app.route('/feeds')
 def feeds_page():

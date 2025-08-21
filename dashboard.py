@@ -33,18 +33,32 @@ except ImportError:
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Import application modules
-from app.store import Database
+try:
+    from app.config import RSS_FEEDS, PIPELINE_ORDER, SCHEDULE_CONFIG
+except ImportError:
+    # Define empty fallbacks to allow the app to start, but show an error.
+    print("="*80)
+    print("ERROR: Could not import configuration from 'app.config'.")
+    print("Please ensure 'app/config.py' exists and contains:")
+    print(" - RSS_FEEDS (dict)")
+    print(" - PIPELINE_ORDER (list)")
+    print(" - SCHEDULE_CONFIG (dict)")
+    print("="*80)
+    RSS_FEEDS, PIPELINE_ORDER, SCHEDULE_CONFIG = {}, [], {}
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 
-# Global variable for automation system status
-automation_system = None
+BASE_DIR = Path(__file__).resolve().parent
+DB_PATH = BASE_DIR / 'data' / 'app.db'
+LOG_FILE_PATH = BASE_DIR / 'logs' / 'app.log'
 
 def get_db_stats():
     """Get statistics from database"""
     try:
-        conn = sqlite3.connect('data/app.db')
+        if not DB_PATH.exists():
+            raise FileNotFoundError(f"Database not found at {DB_PATH}")
+        conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
 
         # Get article counts
@@ -80,19 +94,23 @@ def get_db_stats():
             SELECT MAX(inserted_at) FROM seen_articles 
             WHERE inserted_at > datetime('now', '-2 hours')
         ''')
-        last_activity = cursor.fetchone()[0]
-        
+        row = cursor.fetchone()
+        last_activity = row[0] if row and row[0] else None
+
+        check_interval = SCHEDULE_CONFIG.get('check_interval', 15)
+
         if last_activity:
             try:
-                last_time = datetime.fromisoformat(last_activity.replace('Z', '+00:00'))
-                next_cycle = last_time + timedelta(minutes=15)
+                # SQLite datetime format is 'YYYY-MM-DD HH:MM:SS'
+                last_time = datetime.strptime(last_activity, '%Y-%m-%d %H:%M:%S')
+                next_cycle = last_time + timedelta(minutes=check_interval)
                 # If next cycle is in the past, schedule for 15 minutes from now
                 if next_cycle < datetime.now():
-                    next_cycle = datetime.now() + timedelta(minutes=15)
-            except:
-                next_cycle = datetime.now() + timedelta(minutes=15)
+                    next_cycle = datetime.now() + timedelta(minutes=check_interval)
+            except (ValueError, TypeError):
+                next_cycle = datetime.now() + timedelta(minutes=check_interval)
         else:
-            next_cycle = datetime.now() + timedelta(minutes=15)
+            next_cycle = datetime.now() + timedelta(minutes=check_interval)
             
         next_cycle_str = next_cycle.strftime('%H:%M:%S')
 
@@ -120,7 +138,7 @@ def get_db_stats():
 def get_recent_logs():
     """Get recent log entries"""
     try:
-        log_file = Path('logs/app.log')
+        log_file = LOG_FILE_PATH
         if not log_file.exists():
             return []
 
@@ -134,7 +152,7 @@ def get_recent_logs():
             if line and ' - ' in line:
                 try:
                     parts = line.split(' - ', 3)
-                    if len(parts) >= 4:
+                    if len(parts) == 4:
                         timestamp = parts[0]
                         logger_name = parts[1]
                         level = parts[2]
@@ -146,32 +164,31 @@ def get_recent_logs():
                             'level': level,
                             'message': message
                         })
-                except:
+                except Exception:
                     pass
 
-        return logs[-20:]  # Return last 20 logs
+        return list(reversed(logs))
     except Exception as e:
         logging.error(f"Error reading logs: {e}")
         return []
 
-@app.route('/')
-def dashboard():
-    """Main dashboard page"""
-    stats = get_db_stats()
-    logs = get_recent_logs()
-
-    # Check if system is running by checking recent logs and process status
+def _get_system_status():
+    """Determines the system status by checking logs and running processes."""
     try:
         import psutil
-        import os
+    except ImportError:
+        logging.warning("psutil not installed, status check will be limited.")
+        return "Unknown (psutil not installed)"
 
-        # Check if there are recent logs indicating the system is active
+    try:
+        logs = get_recent_logs()
         is_running = False
         recent_activity = False
 
         # Look for scheduler started messages in recent logs (last 10 minutes)
-        for log in logs[-20:]:  # Check last 20 log entries
-            if any(keyword in log['message'] for keyword in [
+        for log in logs:
+            msg = log.get('message', '').lower()
+            if any(keyword in msg for keyword in [
                 "Scheduler started",
                 "Starting RSS to WordPress automation system",
                 "Pipeline will run every",
@@ -181,7 +198,8 @@ def dashboard():
                 break
 
             # Also check for recent processing activity
-            if any(keyword in log['message'] for keyword in [
+            msg = log.get('message', '').lower()
+            if any(keyword in msg for keyword in [
                 "Processing feed",
                 "Found new articles",
                 "Published to WordPress"
@@ -199,20 +217,26 @@ def dashboard():
                     pass
 
         if is_running:
-            system_status = "Running"
+            return "Running"
         elif recent_activity:
-            system_status = "Processing"
+            return "Processing"
         else:
-            system_status = "Stopped"
+            return "Stopped"
 
     except Exception as e:
         logging.error(f"Error determining system status: {e}")
-        system_status = "Unknown"
+        return "Unknown"
 
+@app.route('/')
+def dashboard():
+    """Main dashboard page"""
+    stats = get_db_stats()
+    logs = get_recent_logs()
+    system_status = _get_system_status()
 
     return render_template('dashboard.html', 
                          stats=stats, 
-                         logs=logs, 
+                         logs=logs[:20], # Show latest 20 logs
                          system_status=system_status)
 
 @app.route('/api/stats')
@@ -228,17 +252,15 @@ def api_logs():
 @app.route('/api/system/status')
 def api_system_status():
     """Get system status"""
-    # This is a placeholder. A real implementation would check the actual status of the automation system.
-    # For now, it defaults to not running as per the original code's implication.
+    status_str = _get_system_status()
+    stats = get_db_stats()
+
     status = {
-        'running': False,
-        'next_run': None,
+        'running': status_str in ["Running", "Processing"],
+        'status_text': status_str,
+        'next_run': stats.get('next_cycle', 'N/A'),
         'jobs': []
     }
-    # Example of how to infer status if there were logs indicating startup:
-    # if any("Automation system started" in log['message'] for log in get_recent_logs()):
-    #     status['running'] = True
-
     return jsonify(status)
 
 @app.route('/api/system/start', methods=['POST'])
@@ -259,61 +281,16 @@ def api_run_now():
 @app.route('/feeds')
 def feeds_page():
     """Feeds management page"""
-    # Define feed sources directly since import might fail
-    FEED_SOURCES = {
-        'screenrant_movies': {
-            'name': 'ScreenRant Movies',
-            'url': 'https://screenrant.com/feed/movie-news/',
-            'category': 'movies'
-        },
-        'movieweb_movies': {
-            'name': 'MovieWeb Movies',
-            'url': 'https://movieweb.com/feed/',
-            'category': 'movies'
-        },
-        'collider_movies': {
-            'name': 'Collider Movies',
-            'url': 'https://collider.com/feed/category/movie-news/',
-            'category': 'movies'
-        },
-        'cbr_movies': {
-            'name': 'CBR Movies',
-            'url': 'https://www.cbr.com/feed/category/movies/news-movies/',
-            'category': 'movies'
-        },
-        'screenrant_tv': {
-            'name': 'ScreenRant TV',
-            'url': 'https://screenrant.com/feed/tv-news/',
-            'category': 'series'
-        },
-        'collider_tv': {
-            'name': 'Collider TV',
-            'url': 'https://collider.com/feed/category/tv-news/',
-            'category': 'series'
-        },
-        'cbr_tv': {
-            'name': 'CBR TV',
-            'url': 'https://www.cbr.com/feed/category/tv/news-tv/',
-            'category': 'series'
-        },
-        'gamerant_games': {
-            'name': 'GameRant Games',
-            'url': 'https://gamerant.com/feed/gaming/',
-            'category': 'games'
-        },
-        'thegamer_games': {
-            'name': 'TheGamer Games',
-            'url': 'https://www.thegamer.com/feed/category/game-news/',
-            'category': 'games'
-        }
-    }
-
     feed_stats = []
     try:
-        conn = sqlite3.connect('data/app.db')
+        conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
 
-        for source_id, config in FEED_SOURCES.items():
+        for source_id in PIPELINE_ORDER:
+            config = RSS_FEEDS.get(source_id)
+            if not config:
+                continue
+
             cursor.execute('''
                 SELECT COUNT(*) FROM seen_articles 
                 WHERE source_id = ? AND inserted_at > datetime('now', '-24 hours')
@@ -328,8 +305,8 @@ def feeds_page():
 
             feed_stats.append({
                 'id': source_id,
-                'name': config['name'],
-                'url': config['url'],
+                'name': source_id.replace('_', ' ').title(),
+                'url': config.get('urls', ['N/A'])[0],
                 'category': config['category'],
                 'recent_articles': recent_count,
                 'published_posts': published_count
@@ -338,12 +315,14 @@ def feeds_page():
         conn.close()
     except Exception as e:
         logging.error(f"Error getting feed stats: {e}")
-        for source_id, config in FEED_SOURCES.items():
+        # Fallback with no stats on DB error
+        for source_id in PIPELINE_ORDER:
+            config = RSS_FEEDS.get(source_id, {})
             feed_stats.append({
                 'id': source_id,
-                'name': config['name'],
-                'url': config['url'],
-                'category': config['category'],
+                'name': source_id.replace('_', ' ').title(),
+                'url': config.get('urls', ['N/A'])[0],
+                'category': config.get('category', 'N/A'),
                 'recent_articles': 0,
                 'published_posts': 0
             })
@@ -357,9 +336,9 @@ def settings_page():
         'wordpress_url': os.environ.get('WORDPRESS_URL', ''),
         'wordpress_user': os.environ.get('WORDPRESS_USER', ''),
         'gemini_keys_count': len([k for k in os.environ.keys() if k.startswith('GEMINI_')]),
-        'log_level': 'INFO',
-        'pipeline_interval': '15 minutes',
-        'cleanup_interval': '12 hours'
+        'log_level': os.environ.get('LOG_LEVEL', 'INFO'),
+        'pipeline_interval': f"{SCHEDULE_CONFIG.get('check_interval', 'N/A')} minutes",
+        'cleanup_interval': f"{SCHEDULE_CONFIG.get('cleanup_after_hours', 'N/A')} hours"
     }
 
     return render_template('settings.html', settings=settings)

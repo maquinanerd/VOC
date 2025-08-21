@@ -24,8 +24,8 @@ RSS_FEEDS = {
     'movieweb_movies':   {'urls': ['https://movieweb.com/feed/'],               'category': 'movies'},
     'collider_movies':   {'urls': ['https://collider.com/feed/category/movie-news/'], 'category': 'movies'},
     'collider_tv':       {'urls': ['https://collider.com/feed/category/tv-news/'],    'category': 'series'},
-    'cbr_movies':        {'urls': ['https://www.cbr.com/feed/category/movies/news-movies/'], 'category': 'movies'},
-    'cbr_tv':            {'urls': ['https://www.cbr.com/feed/category/tv/news-tv/'],         'category': 'series'},
+    'cbr_movies':        {'urls': ['https://comicbook.com/category/movies/feed/'], 'category': 'movies'},
+    'cbr_tv':            {'urls': ['https://comicbook.com/category/tv-shows/feed/'],         'category': 'series'},
     'gamerant_games':    {'urls': ['https://gamerant.com/feed/gaming/'],        'category': 'games'},
     'thegamer_games':    {'urls': ['https://www.thegamer.com/feed/category/game-news/'], 'category': 'games'}
 }

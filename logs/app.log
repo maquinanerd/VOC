@@ -13351,3 +13351,1055 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2025-08-20 22:50:58 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-08-20 22:50:58 - app.store - INFO - Database connection closed.
 2025-08-20 22:50:58 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-20 23:57:32 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-20 23:57:32 - app.store - INFO - Database initialized successfully.
+2025-08-20 23:57:32 - app.store - INFO - Database connection closed.
+2025-08-20 23:57:32 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-20 23:57:32 - __main__ - INFO - Iniciando o agendador para execução contínua.
+2025-08-20 23:57:32 - __main__ - INFO - Agendador iniciado. Pipeline rodará a cada 5 minutos.
+2025-08-20 23:57:32 - __main__ - INFO - Limpeza de dados antigos agendada para cada 36 horas.
+2025-08-20 23:57:32 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-20 23:57:34 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-20 23:57:34 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-20 23:57:34 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-20 23:57:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-08-20 23:57:35 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-20 23:57:35 - app.pipeline - INFO - Found 1 new articles for screenrant_movies
+2025-08-20 23:57:35 - app.pipeline - INFO - Processing article: Guillermo del Toro's Frankenstein: Netflix's $120 Million Monster (DB ID: 909) from screenrant_movies
+2025-08-20 23:57:36 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-20 23:57:36 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-08-20 23:57:36 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-20 23:57:36 - app.extractor - INFO - Collected 2 images from article (pre+post).
+2025-08-20 23:57:36 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/netflix-frankenstein-movie-budget-guillermo-del-toro-records/. Title: Netflix's Frankenstein Becomes Guillermo Del Toro'...
+2025-08-20 23:57:36 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-20 23:57:41 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-20 23:58:11 - app.pipeline - INFO - Attempting to upload up to 3 images.
+2025-08-20 23:58:11 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/frankenstein-jacob-elordi-1.jpg
+2025-08-20 23:58:11 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/frankenstein-jacob-elordi-1.jpg "HTTP/1.1 200 OK"
+2025-08-20 23:58:12 - app.wordpress - INFO - Uploading image 'frankenstein-jacob-elordi-1.jpg' to WordPress.
+2025-08-20 23:58:24 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-20 23:58:24 - app.wordpress - INFO - Uploaded media 16621 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/frankenstein-jacob-elordi-1.jpg
+2025-08-20 23:58:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16621 "HTTP/1.1 200 OK"
+2025-08-20 23:58:25 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/02/oscar-isaac-on-the-set-of-frankenstein.jpg
+2025-08-20 23:58:26 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/02/oscar-isaac-on-the-set-of-frankenstein.jpg "HTTP/1.1 200 OK"
+2025-08-20 23:58:26 - app.wordpress - INFO - Uploading image 'oscar-isaac-on-the-set-of-frankenstein.jpg' to WordPress.
+2025-08-20 23:58:32 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-20 23:58:32 - app.wordpress - INFO - Uploaded media 16622 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/02/oscar-isaac-on-the-set-of-frankenstein.jpg
+2025-08-20 23:58:33 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16622 "HTTP/1.1 200 OK"
+2025-08-20 23:58:33 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/01700166_poster_w780.jpg
+2025-08-20 23:58:33 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/01700166_poster_w780.jpg "HTTP/1.1 200 OK"
+2025-08-20 23:58:33 - app.wordpress - INFO - Uploading image '01700166_poster_w780.jpg' to WordPress.
+2025-08-20 23:58:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-20 23:58:37 - app.wordpress - INFO - Uploaded media 16623 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/01700166_poster_w780.jpg
+2025-08-20 23:58:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16623 "HTTP/1.1 200 OK"
+2025-08-20 23:58:38 - app.wordpress - INFO - Post will be created with featured_media 16621.
+2025-08-20 23:58:39 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=frankenstein "HTTP/1.1 200 OK"
+2025-08-20 23:58:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=guillermo-del-toro "HTTP/1.1 200 OK"
+2025-08-20 23:58:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=netflix "HTTP/1.1 200 OK"
+2025-08-20 23:58:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mary-shelley "HTTP/1.1 200 OK"
+2025-08-20 23:58:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=a-forma-da-agua "HTTP/1.1 200 OK"
+2025-08-20 23:58:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-20 23:58:44 - app.wordpress - INFO - Successfully created tag 'A Forma da Água'
+2025-08-20 23:58:44 - app.wordpress - INFO - Creating WordPress post: Frankenstein da Netflix: 2º filme mais caro de Del Toro
+2025-08-20 23:58:46 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-20 23:58:46 - app.wordpress - INFO - Successfully created post 'Frankenstein da Netflix: 2º filme mais caro de Del Toro' with ID: 16624
+2025-08-20 23:58:46 - app.store - INFO - Successfully recorded published post for article DB ID 909 (WP Post ID: 16624).
+2025-08-20 23:58:46 - app.pipeline - INFO - Successfully published post 16624 for article DB ID 909
+2025-08-20 23:58:46 - app.pipeline - INFO - Sleeping for 6.7s (per-article delay).
+2025-08-20 23:58:53 - app.pipeline - INFO - Finished feed 'screenrant_movies'. Sleeping for 15s before next feed: screenrant_tv
+2025-08-20 23:59:08 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-20 23:59:08 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-20 23:59:08 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-08-20 23:59:08 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-20 23:59:08 - app.pipeline - INFO - Found 4 new articles for screenrant_tv
+2025-08-20 23:59:08 - app.pipeline - INFO - Processing article: Becky Lynch Expects Return in Star Trek: Starfleet Academy Season 2 (DB ID: 910) from screenrant_tv
+2025-08-20 23:59:10 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-20 23:59:10 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-20 23:59:10 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-20 23:59:10 - app.extractor - INFO - Found 1 unique YouTube videos.
+2025-08-20 23:59:10 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-08-20 23:59:10 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/star-trek-starfleet-academy-becky-lynch-season-2-expect/. Title: Star Trek Guest Star Becky Lynch Believes She’ll B...
+2025-08-20 23:59:10 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-20 23:59:15 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-20 23:59:45 - app.pipeline - INFO - Attempting to upload up to 4 images.
+2025-08-20 23:59:45 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/becky-lynch.jpg
+2025-08-20 23:59:45 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/becky-lynch.jpg "HTTP/1.1 200 OK"
+2025-08-20 23:59:46 - app.wordpress - INFO - Uploading image 'becky-lynch.jpg' to WordPress.
+2025-08-20 23:59:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-20 23:59:56 - app.wordpress - INFO - Uploaded media 16625 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/becky-lynch.jpg
+2025-08-20 23:59:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16625 "HTTP/1.1 200 OK"
+2025-08-20 23:59:57 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/becky-lynch-dramatic.jpg
+2025-08-20 23:59:58 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/becky-lynch-dramatic.jpg "HTTP/1.1 200 OK"
+2025-08-20 23:59:58 - app.wordpress - INFO - Uploading image 'becky-lynch-dramatic.jpg' to WordPress.
+2025-08-21 00:00:06 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:00:06 - app.wordpress - INFO - Uploaded media 16626 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2024/12/becky-lynch-dramatic.jpg
+2025-08-21 00:00:07 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16626 "HTTP/1.1 200 OK"
+2025-08-21 00:00:07 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/holly-hunter-as-captain-nahla-ake-in-her-captain-s-chair-on-star-trek_-starfleet-academy.jpg
+2025-08-21 00:00:08 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/holly-hunter-as-captain-nahla-ake-in-her-captain-s-chair-on-star-trek_-starfleet-academy.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:00:08 - app.wordpress - INFO - Uploading image 'holly-hunter-as-captain-nahla-ake-in-her-captain-s-chair-on-star-trek_-starfleet-academy.jpg' to WordPress.
+2025-08-21 00:00:21 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:00:21 - app.wordpress - INFO - Uploaded media 16627 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/holly-hunter-as-captain-nahla-ake-in-her-captain-s-chair-on-star-trek_-starfleet-academy.jpg
+2025-08-21 00:00:23 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16627 "HTTP/1.1 200 OK"
+2025-08-21 00:00:23 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/star-trek_-starfleet-academy.jpg
+2025-08-21 00:00:24 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/star-trek_-starfleet-academy.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:00:24 - app.wordpress - INFO - Uploading image 'star-trek_-starfleet-academy.jpg' to WordPress.
+2025-08-21 00:00:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:00:57 - app.wordpress - INFO - Uploaded media 16628 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/star-trek_-starfleet-academy.jpg
+2025-08-21 00:00:59 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16628 "HTTP/1.1 200 OK"
+2025-08-21 00:00:59 - app.wordpress - INFO - Post will be created with featured_media 16625.
+2025-08-21 00:01:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=becky-lynch "HTTP/1.1 200 OK"
+2025-08-21 00:01:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=star-trek "HTTP/1.1 200 OK"
+2025-08-21 00:01:02 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=starfleet-academy "HTTP/1.1 200 OK"
+2025-08-21 00:01:03 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=star-trek-academia-starfleet "HTTP/1.1 200 OK"
+2025-08-21 00:01:05 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:01:05 - app.wordpress - INFO - Successfully created tag 'Star Trek: Academia Starfleet'
+2025-08-21 00:01:06 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=wwe "HTTP/1.1 200 OK"
+2025-08-21 00:01:07 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=serie "HTTP/1.1 200 OK"
+2025-08-21 00:01:08 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=segunda-temporada "HTTP/1.1 200 OK"
+2025-08-21 00:01:08 - app.wordpress - INFO - Creating WordPress post: Becky Lynch em Star Trek: Academia Starfleet - 2ª Temporada?
+2025-08-21 00:01:12 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:01:12 - app.wordpress - INFO - Successfully created post 'Becky Lynch em Star Trek: Academia Starfleet - 2ª Temporada?' with ID: 16629
+2025-08-21 00:01:12 - app.store - INFO - Successfully recorded published post for article DB ID 910 (WP Post ID: 16629).
+2025-08-21 00:01:12 - app.pipeline - INFO - Successfully published post 16629 for article DB ID 910
+2025-08-21 00:01:12 - app.pipeline - INFO - Sleeping for 8.1s (per-article delay).
+2025-08-21 00:01:20 - app.pipeline - INFO - Processing article: South Park Season 27 Episode 3: Divisive "Sickofancy" Reactions (DB ID: 911) from screenrant_tv
+2025-08-21 00:01:21 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:01:21 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:01:21 - app.extractor - INFO - Collected 0 images from article (pre+post).
+2025-08-21 00:01:21 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/south-park-season-27-episode-3-reaction/. Title: South Park Season 27's New Episode Is The Most Div...
+2025-08-21 00:01:21 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-21 00:01:25 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:01:55 - app.pipeline - INFO - Attempting to upload up to 1 images.
+2025-08-21 00:01:55 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/04/randy-offers-shelley-a-jar-of-ketamine-on-her-bed-in-south-park-season-27-trailer.jpg
+2025-08-21 00:01:55 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/04/randy-offers-shelley-a-jar-of-ketamine-on-her-bed-in-south-park-season-27-trailer.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:01:55 - app.wordpress - INFO - Uploading image 'randy-offers-shelley-a-jar-of-ketamine-on-her-bed-in-south-park-season-27-trailer.jpg' to WordPress.
+2025-08-21 00:02:09 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:02:09 - app.wordpress - INFO - Uploaded media 16630 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/04/randy-offers-shelley-a-jar-of-ketamine-on-her-bed-in-south-park-season-27-trailer.jpg
+2025-08-21 00:02:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16630 "HTTP/1.1 200 OK"
+2025-08-21 00:02:10 - app.wordpress - INFO - Post will be created with featured_media 16630.
+2025-08-21 00:02:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=south-park "HTTP/1.1 200 OK"
+2025-08-21 00:02:12 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=temporada-27 "HTTP/1.1 200 OK"
+2025-08-21 00:02:12 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=polemica "HTTP/1.1 200 OK"
+2025-08-21 00:02:13 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=humor-negro "HTTP/1.1 200 OK"
+2025-08-21 00:02:14 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=satira-social "HTTP/1.1 200 OK"
+2025-08-21 00:02:16 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:02:16 - app.wordpress - INFO - Successfully created tag 'sátira social'
+2025-08-21 00:02:16 - app.wordpress - INFO - Creating WordPress post: South Park 27: Episódio mais polêmico causa divisão
+2025-08-21 00:02:17 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:02:17 - app.wordpress - INFO - Successfully created post 'South Park 27: Episódio mais polêmico causa divisão' with ID: 16631
+2025-08-21 00:02:17 - app.store - INFO - Successfully recorded published post for article DB ID 911 (WP Post ID: 16631).
+2025-08-21 00:02:17 - app.pipeline - INFO - Successfully published post 16631 for article DB ID 911
+2025-08-21 00:02:17 - app.pipeline - INFO - Sleeping for 6.9s (per-article delay).
+2025-08-21 00:02:24 - app.pipeline - INFO - Processing article: Schitt's Creek: A Rare 10/10 Sitcom That Stands The Test Of Time (DB ID: 912) from screenrant_tv
+2025-08-21 00:02:25 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:02:25 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-21 00:02:25 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:02:25 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-08-21 00:02:25 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/schitts-creek-rare-perfect-sitcom/. Title: This 93% RT Sitcom Is A Rare 10/10 For The Genre, ...
+2025-08-21 00:02:25 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-21 00:02:25 - app.ai_processor - ERROR - AI content generation failed with key index 0: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 34
+}
+]
+2025-08-21 00:02:25 - app.ai_processor - WARNING - Failing over to next API key for category 'series'.
+2025-08-21 00:02:25 - app.ai_processor - INFO - Using API key index 1 for category 'series'.
+2025-08-21 00:02:25 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-21 00:02:30 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:02:32 - apscheduler.scheduler - WARNING - Execution of job "Run RSS processing pipeline (trigger: interval[0:05:00], next run at: 2025-08-21 00:02:32 -03)" skipped: maximum number of running instances reached (1)
+2025-08-21 00:03:00 - app.pipeline - INFO - Attempting to upload up to 4 images.
+2025-08-21 00:03:00 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/schitts-creek_c9leyk.jpg
+2025-08-21 00:03:01 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/schitts-creek_c9leyk.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:03:01 - app.wordpress - INFO - Uploading image 'schitts-creek_c9leyk.jpg' to WordPress.
+2025-08-21 00:03:32 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:03:32 - app.wordpress - INFO - Uploaded media 16632 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/schitts-creek_c9leyk.jpg
+2025-08-21 00:03:32 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16632 "HTTP/1.1 200 OK"
+2025-08-21 00:03:32 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2021/11/schitts-creek-poster.jpg
+2025-08-21 00:03:33 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2021/11/schitts-creek-poster.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:03:33 - app.wordpress - INFO - Uploading image 'schitts-creek-poster.jpg' to WordPress.
+2025-08-21 00:03:47 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:03:47 - app.wordpress - INFO - Uploaded media 16633 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2021/11/schitts-creek-poster.jpg
+2025-08-21 00:03:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16633 "HTTP/1.1 200 OK"
+2025-08-21 00:03:48 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2023/11/end-060.jpg
+2025-08-21 00:03:48 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2023/11/end-060.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:03:49 - app.wordpress - INFO - Uploading image 'end-060.jpg' to WordPress.
+2025-08-21 00:03:55 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:03:55 - app.wordpress - INFO - Uploaded media 16634 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2023/11/end-060.jpg
+2025-08-21 00:03:55 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16634 "HTTP/1.1 200 OK"
+2025-08-21 00:03:55 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/david-rose-dan-levy-smirking-in-schitt-s-creek.jpg
+2025-08-21 00:03:56 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/david-rose-dan-levy-smirking-in-schitt-s-creek.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:03:56 - app.wordpress - INFO - Uploading image 'david-rose-dan-levy-smirking-in-schitt-s-creek.jpg' to WordPress.
+2025-08-21 00:04:06 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:04:06 - app.wordpress - INFO - Uploaded media 16635 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/07/david-rose-dan-levy-smirking-in-schitt-s-creek.jpg
+2025-08-21 00:04:07 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16635 "HTTP/1.1 200 OK"
+2025-08-21 00:04:07 - app.wordpress - INFO - Post will be created with featured_media 16632.
+2025-08-21 00:04:08 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-good-place "HTTP/1.1 200 OK"
+2025-08-21 00:04:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=kristen-bell "HTTP/1.1 200 OK"
+2025-08-21 00:04:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ted-danson "HTTP/1.1 200 OK"
+2025-08-21 00:04:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:04:10 - app.wordpress - INFO - Successfully created tag 'Ted Danson'
+2025-08-21 00:04:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=michael-schur "HTTP/1.1 200 OK"
+2025-08-21 00:04:12 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=sitcom "HTTP/1.1 200 OK"
+2025-08-21 00:04:13 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=comedia "HTTP/1.1 200 OK"
+2025-08-21 00:04:13 - app.wordpress - INFO - Creating WordPress post: Com 93% de aprovação, esta sitcom é rara obra-prima, mesmo 10 anos depois
+2025-08-21 00:04:15 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:04:15 - app.wordpress - INFO - Successfully created post 'Com 93% de aprovação, esta sitcom é rara obra-prima, mesmo 10 anos depois' with ID: 16636
+2025-08-21 00:04:16 - app.store - INFO - Successfully recorded published post for article DB ID 912 (WP Post ID: 16636).
+2025-08-21 00:04:16 - app.pipeline - INFO - Successfully published post 16636 for article DB ID 912
+2025-08-21 00:04:16 - app.pipeline - INFO - Sleeping for 9.4s (per-article delay).
+2025-08-21 00:04:25 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-08-21 00:04:40 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-21 00:04:40 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:04:41 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-21 00:04:41 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-21 00:04:41 - app.pipeline - INFO - Found 2 new articles for collider_movies
+2025-08-21 00:04:41 - app.pipeline - INFO - Processing article: ‘Top Gun: Maverick’ Star Rejects Bid to Play James Bond (DB ID: 914) from collider_movies
+2025-08-21 00:04:42 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:04:42 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-08-21 00:04:42 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:04:42 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-21 00:04:42 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/glen-powell-shouldnt-play-james-bond-texan/. Title: ‘Top Gun: Maverick’ Star Rejects Bid to Play James...
+2025-08-21 00:04:42 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-21 00:04:43 - app.ai_processor - ERROR - AI content generation failed with key index 0: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 16
+}
+]
+2025-08-21 00:04:43 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-21 00:04:43 - app.ai_processor - INFO - Using API key index 1 for category 'movies'.
+2025-08-21 00:04:43 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-21 00:04:46 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:05:16 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-21 00:05:16 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/09/glen-powell-top-gun-maverick.jpg
+2025-08-21 00:05:17 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/09/glen-powell-top-gun-maverick.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:05:17 - app.wordpress - INFO - Uploading image 'glen-powell-top-gun-maverick.jpg' to WordPress.
+2025-08-21 00:05:23 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:05:23 - app.wordpress - INFO - Uploaded media 16637 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/09/glen-powell-top-gun-maverick.jpg
+2025-08-21 00:05:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16637 "HTTP/1.1 200 OK"
+2025-08-21 00:05:25 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/glen-powell-chad-powers.jpg
+2025-08-21 00:05:26 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/glen-powell-chad-powers.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:05:26 - app.wordpress - INFO - Uploading image 'glen-powell-chad-powers.jpg' to WordPress.
+2025-08-21 00:05:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:05:37 - app.wordpress - INFO - Uploaded media 16638 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2025/08/glen-powell-chad-powers.jpg
+2025-08-21 00:05:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16638 "HTTP/1.1 200 OK"
+2025-08-21 00:05:38 - app.wordpress - INFO - Post will be created with featured_media 16637.
+2025-08-21 00:05:39 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=miles-teller "HTTP/1.1 200 OK"
+2025-08-21 00:05:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=top-gun-maverick "HTTP/1.1 200 OK"
+2025-08-21 00:05:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=james-bond "HTTP/1.1 200 OK"
+2025-08-21 00:05:42 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=eon-productions "HTTP/1.1 200 OK"
+2025-08-21 00:05:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:05:44 - app.wordpress - INFO - Successfully created tag 'Eon Productions'
+2025-08-21 00:05:45 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=007 "HTTP/1.1 200 OK"
+2025-08-21 00:05:45 - app.wordpress - INFO - Creating WordPress post: Miles Teller Recusa Papel de James Bond
+2025-08-21 00:05:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:05:48 - app.wordpress - INFO - Successfully created post 'Miles Teller Recusa Papel de James Bond' with ID: 16639
+2025-08-21 00:05:48 - app.store - INFO - Successfully recorded published post for article DB ID 914 (WP Post ID: 16639).
+2025-08-21 00:05:48 - app.pipeline - INFO - Successfully published post 16639 for article DB ID 914
+2025-08-21 00:05:48 - app.pipeline - INFO - Sleeping for 9.3s (per-article delay).
+2025-08-21 00:05:57 - app.pipeline - INFO - Processing article: 5 Years After ‘The Rise of Skywalker,’ Oscar Isaac Reverses His Stance on a Star Wars Return (DB ID: 915) from collider_movies
+2025-08-21 00:05:58 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:05:58 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-08-21 00:05:58 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:05:58 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-21 00:05:58 - app.extractor - INFO - Successfully extracted and cleaned content from https://collider.com/star-wars-oscar-isaac-open-to-return-poe-dameron/. Title: 5 Years After ‘The Rise of Skywalker,’ Oscar Isaac...
+2025-08-21 00:05:58 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-21 00:05:59 - app.ai_processor - ERROR - AI content generation failed with key index 1: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+}
+]
+2025-08-21 00:05:59 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-21 00:05:59 - app.ai_processor - INFO - Using API key index 2 for category 'movies'.
+2025-08-21 00:05:59 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 2)...
+2025-08-21 00:06:03 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:06:33 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-21 00:06:33 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/image-1400x700-82.jpg
+2025-08-21 00:06:33 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/image-1400x700-82.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:06:33 - app.wordpress - INFO - Uploading image 'image-1400x700-82.jpg' to WordPress.
+2025-08-21 00:06:41 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:06:41 - app.wordpress - INFO - Uploaded media 16640 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/08/image-1400x700-82.jpg
+2025-08-21 00:06:42 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16640 "HTTP/1.1 200 OK"
+2025-08-21 00:06:42 - app.wordpress - INFO - Downloading image for upload: https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/10/Poe-Dameron-(1).jpeg
+2025-08-21 00:06:42 - httpx - INFO - HTTP Request: GET https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/10/Poe-Dameron-(1).jpeg "HTTP/1.1 200 OK"
+2025-08-21 00:06:43 - app.wordpress - INFO - Uploading image 'Poe-Dameron-(1).jpeg' to WordPress.
+2025-08-21 00:06:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:06:56 - app.wordpress - INFO - Uploaded media 16641 from URL: https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/10/Poe-Dameron-(1).jpeg
+2025-08-21 00:06:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16641 "HTTP/1.1 200 OK"
+2025-08-21 00:06:57 - app.wordpress - INFO - Post will be created with featured_media 16640.
+2025-08-21 00:06:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=oscar-isaac "HTTP/1.1 200 OK"
+2025-08-21 00:07:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=star-wars "HTTP/1.1 200 OK"
+2025-08-21 00:07:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=poe-dameron "HTTP/1.1 200 OK"
+2025-08-21 00:07:02 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=star-wars-the-rise-of-skywalker "HTTP/1.1 200 OK"
+2025-08-21 00:07:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:07:03 - app.wordpress - INFO - Successfully created tag 'Star Wars: The Rise of Skywalker'
+2025-08-21 00:07:04 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=lucasfilm "HTTP/1.1 200 OK"
+2025-08-21 00:07:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=trilogia-sequencial "HTTP/1.1 200 OK"
+2025-08-21 00:07:06 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=franquia-star-wars "HTTP/1.1 200 OK"
+2025-08-21 00:07:06 - app.wordpress - INFO - Creating WordPress post: Oscar Isaac reconsidera retorno a Star Wars após 5 anos
+2025-08-21 00:07:09 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:07:09 - app.wordpress - INFO - Successfully created post 'Oscar Isaac reconsidera retorno a Star Wars após 5 anos' with ID: 16642
+2025-08-21 00:07:09 - app.store - INFO - Successfully recorded published post for article DB ID 915 (WP Post ID: 16642).
+2025-08-21 00:07:09 - app.pipeline - INFO - Successfully published post 16642 for article DB ID 915
+2025-08-21 00:07:09 - app.pipeline - INFO - Sleeping for 6.7s (per-article delay).
+2025-08-21 00:07:16 - app.pipeline - INFO - Finished feed 'collider_movies'. Sleeping for 15s before next feed: collider_tv
+2025-08-21 00:07:31 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-21 00:07:31 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:07:31 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-21 00:07:31 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-21 00:07:31 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-21 00:07:31 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-21 00:07:31 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:07:32 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-21 00:07:32 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-21 00:07:32 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-21 00:07:32 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-21 00:07:32 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:07:32 - apscheduler.scheduler - WARNING - Execution of job "Run RSS processing pipeline (trigger: interval[0:05:00], next run at: 2025-08-21 00:07:32 -03)" skipped: maximum number of running instances reached (1)
+2025-08-21 00:07:34 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-08-21 00:07:34 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-08-21 00:07:34 - app.pipeline - INFO - Found 50 new articles for cbr_movies
+2025-08-21 00:07:34 - app.pipeline - INFO - Processing article: 7 Most Important MCU Post-Credit Scenes, Ranked (DB ID: 916) from cbr_movies
+2025-08-21 00:07:35 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:07:35 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:07:35 - app.extractor - INFO - Collected 7 images from article (pre+post).
+2025-08-21 00:07:35 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/movies/news/marvel-mcu-7-best-post-credit-scenes-list-the-avengers/. Title: 7 Most Important MCU Post-Credit Scenes, Ranked...
+2025-08-21 00:07:35 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-21 00:07:41 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:08:11 - app.pipeline - INFO - Attempting to upload up to 8 images.
+2025-08-21 00:08:11 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-48.jpg?resize=2000,1125
+2025-08-21 00:08:11 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-48.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-21 00:08:11 - app.wordpress - INFO - Uploading image 'CB-feature-image-48.jpg' to WordPress.
+2025-08-21 00:08:24 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:08:24 - app.wordpress - INFO - Uploaded media 16643 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-48.jpg?resize=2000,1125
+2025-08-21 00:08:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16643 "HTTP/1.1 200 OK"
+2025-08-21 00:08:25 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-47.jpg?w=1024
+2025-08-21 00:08:26 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-47.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:08:26 - app.wordpress - INFO - Uploading image 'CB-feature-image-47.jpg' to WordPress.
+2025-08-21 00:08:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:08:29 - app.wordpress - INFO - Uploaded media 16644 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-47.jpg?w=1024
+2025-08-21 00:08:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16644 "HTTP/1.1 200 OK"
+2025-08-21 00:08:30 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-49.jpg?w=1024
+2025-08-21 00:08:30 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-49.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:08:30 - app.wordpress - INFO - Uploading image 'CB-feature-image-49.jpg' to WordPress.
+2025-08-21 00:08:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:08:34 - app.wordpress - INFO - Uploaded media 16645 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-49.jpg?w=1024
+2025-08-21 00:08:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16645 "HTTP/1.1 200 OK"
+2025-08-21 00:08:35 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-50.jpg?w=1024
+2025-08-21 00:08:36 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-50.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:08:36 - app.wordpress - INFO - Uploading image 'CB-feature-image-50.jpg' to WordPress.
+2025-08-21 00:08:39 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:08:39 - app.wordpress - INFO - Uploaded media 16646 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-50.jpg?w=1024
+2025-08-21 00:08:40 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16646 "HTTP/1.1 200 OK"
+2025-08-21 00:08:40 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-51.jpg?w=1024
+2025-08-21 00:08:41 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-51.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:08:41 - app.wordpress - INFO - Uploading image 'CB-feature-image-51.jpg' to WordPress.
+2025-08-21 00:08:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:08:43 - app.wordpress - INFO - Uploaded media 16647 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-51.jpg?w=1024
+2025-08-21 00:08:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16647 "HTTP/1.1 200 OK"
+2025-08-21 00:08:44 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-52.jpg?w=1024
+2025-08-21 00:08:45 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-52.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:08:45 - app.wordpress - INFO - Uploading image 'CB-feature-image-52.jpg' to WordPress.
+2025-08-21 00:08:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:08:48 - app.wordpress - INFO - Uploaded media 16648 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-52.jpg?w=1024
+2025-08-21 00:08:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16648 "HTTP/1.1 200 OK"
+2025-08-21 00:08:48 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-53.jpg?w=1024
+2025-08-21 00:08:49 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-53.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:08:49 - app.wordpress - INFO - Uploading image 'CB-feature-image-53.jpg' to WordPress.
+2025-08-21 00:08:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:08:52 - app.wordpress - INFO - Uploaded media 16649 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-53.jpg?w=1024
+2025-08-21 00:08:53 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16649 "HTTP/1.1 200 OK"
+2025-08-21 00:08:53 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-54.jpg?w=1024
+2025-08-21 00:08:53 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-54.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:08:54 - app.wordpress - INFO - Uploading image 'CB-feature-image-54.jpg' to WordPress.
+2025-08-21 00:08:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:08:56 - app.wordpress - INFO - Uploaded media 16650 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/CB-feature-image-54.jpg?w=1024
+2025-08-21 00:08:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16650 "HTTP/1.1 200 OK"
+2025-08-21 00:08:57 - app.wordpress - INFO - Post will be created with featured_media 16643.
+2025-08-21 00:08:57 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=vingadores "HTTP/1.1 200 OK"
+2025-08-21 00:08:58 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=thanos "HTTP/1.1 200 OK"
+2025-08-21 00:08:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=homem-aranha-longe-de-casa "HTTP/1.1 200 OK"
+2025-08-21 00:09:00 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:09:00 - app.wordpress - INFO - Successfully created tag 'Homem-Aranha: Longe de Casa'
+2025-08-21 00:09:02 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=capitao-america-o-soldado-invernal "HTTP/1.1 200 OK"
+2025-08-21 00:09:04 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=guardioes-da-galaxia "HTTP/1.1 200 OK"
+2025-08-21 00:09:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=marvel "HTTP/1.1 200 OK"
+2025-08-21 00:09:07 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mcu "HTTP/1.1 200 OK"
+2025-08-21 00:09:07 - app.wordpress - INFO - Creating WordPress post: 7 Melhores Cenas Pós-Créditos da MCU: Ranking Essencial
+2025-08-21 00:09:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:09:10 - app.wordpress - INFO - Successfully created post '7 Melhores Cenas Pós-Créditos da MCU: Ranking Essencial' with ID: 16651
+2025-08-21 00:09:10 - app.store - INFO - Successfully recorded published post for article DB ID 916 (WP Post ID: 16651).
+2025-08-21 00:09:10 - app.pipeline - INFO - Successfully published post 16651 for article DB ID 916
+2025-08-21 00:09:10 - app.pipeline - INFO - Sleeping for 8.0s (per-article delay).
+2025-08-21 00:09:18 - app.pipeline - INFO - Processing article: Shin Godzilla Takes Fans Back in Time With Black and White Limited Re-Release (DB ID: 917) from cbr_movies
+2025-08-21 00:09:19 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:09:19 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:09:19 - app.extractor - INFO - Found 1 unique YouTube videos.
+2025-08-21 00:09:19 - app.extractor - INFO - Collected 2 images from article (pre+post).
+2025-08-21 00:09:19 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/anime/news/shin-godzilla-black-and-white-release-date/. Title: Shin Godzilla Takes Fans Back in Time With Black a...
+2025-08-21 00:09:19 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-21 00:09:19 - app.ai_processor - ERROR - AI content generation failed with key index 0: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 40
+}
+]
+2025-08-21 00:09:19 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-21 00:09:19 - app.ai_processor - INFO - Using API key index 1 for category 'movies'.
+2025-08-21 00:09:19 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-21 00:09:24 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:09:54 - app.pipeline - INFO - Attempting to upload up to 3 images.
+2025-08-21 00:09:54 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/SHIN-GODZILLA-ORTHOchromatic-1.jpg?resize=2000,1125
+2025-08-21 00:09:54 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/SHIN-GODZILLA-ORTHOchromatic-1.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-21 00:09:54 - app.wordpress - INFO - Uploading image 'SHIN-GODZILLA-ORTHOchromatic-1.jpg' to WordPress.
+2025-08-21 00:10:12 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:10:12 - app.wordpress - INFO - Uploaded media 16652 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/SHIN-GODZILLA-ORTHOchromatic-1.jpg?resize=2000,1125
+2025-08-21 00:10:13 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16652 "HTTP/1.1 200 OK"
+2025-08-21 00:10:13 - app.wordpress - INFO - Downloading image for upload: https://img.youtube.com/vi/9F5EwXZdv0E/hqdefault.jpg
+2025-08-21 00:10:13 - httpx - INFO - HTTP Request: GET https://img.youtube.com/vi/9F5EwXZdv0E/hqdefault.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:10:13 - app.wordpress - INFO - Uploading image 'hqdefault.jpg' to WordPress.
+2025-08-21 00:10:18 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:10:18 - app.wordpress - INFO - Uploaded media 16653 from URL: https://img.youtube.com/vi/9F5EwXZdv0E/hqdefault.jpg
+2025-08-21 00:10:20 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16653 "HTTP/1.1 200 OK"
+2025-08-21 00:10:20 - app.wordpress - INFO - Downloading image for upload: https://img.youtube.com/vi/9F5EwXZdv0E/maxresdefault.jpg
+2025-08-21 00:10:20 - httpx - INFO - HTTP Request: GET https://img.youtube.com/vi/9F5EwXZdv0E/maxresdefault.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:10:20 - app.wordpress - INFO - Uploading image 'maxresdefault.jpg' to WordPress.
+2025-08-21 00:10:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:10:30 - app.wordpress - INFO - Uploaded media 16654 from URL: https://img.youtube.com/vi/9F5EwXZdv0E/maxresdefault.jpg
+2025-08-21 00:10:32 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16654 "HTTP/1.1 200 OK"
+2025-08-21 00:10:32 - app.wordpress - INFO - Post will be created with featured_media 16652.
+2025-08-21 00:10:33 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=shin-godzilla "HTTP/1.1 200 OK"
+2025-08-21 00:10:35 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=godzilla "HTTP/1.1 200 OK"
+2025-08-21 00:10:36 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=preto-e-branco "HTTP/1.1 200 OK"
+2025-08-21 00:10:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:10:38 - app.wordpress - INFO - Successfully created tag 'Preto e Branco'
+2025-08-21 00:10:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=kaiju "HTTP/1.1 200 OK"
+2025-08-21 00:10:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=filme "HTTP/1.1 200 OK"
+2025-08-21 00:10:43 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=relancamento "HTTP/1.1 200 OK"
+2025-08-21 00:10:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:10:44 - app.wordpress - INFO - Successfully created tag 'Relançamento'
+2025-08-21 00:10:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=toho "HTTP/1.1 200 OK"
+2025-08-21 00:10:46 - app.wordpress - INFO - Creating WordPress post: Shin Godzilla em Preto e Branco: Re-estreia nostálgica
+2025-08-21 00:10:51 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:10:51 - app.wordpress - INFO - Successfully created post 'Shin Godzilla em Preto e Branco: Re-estreia nostálgica' with ID: 16655
+2025-08-21 00:10:51 - app.store - INFO - Successfully recorded published post for article DB ID 917 (WP Post ID: 16655).
+2025-08-21 00:10:51 - app.pipeline - INFO - Successfully published post 16655 for article DB ID 917
+2025-08-21 00:10:51 - app.pipeline - INFO - Sleeping for 9.5s (per-article delay).
+2025-08-21 00:11:01 - app.pipeline - INFO - Processing article: What Went Wrong With One of the MCU’s Biggest Bombs Explained by Director (DB ID: 918) from cbr_movies
+2025-08-21 00:11:02 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:11:02 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:11:02 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-21 00:11:02 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/movies/news/what-went-wrong-mcu-bomb-director-nia-dacosta-marvels/. Title: What Went Wrong With One of the MCU’s Biggest Bomb...
+2025-08-21 00:11:02 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-21 00:11:02 - app.ai_processor - ERROR - AI content generation failed with key index 1: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 57
+}
+]
+2025-08-21 00:11:02 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-21 00:11:02 - app.ai_processor - INFO - Using API key index 2 for category 'movies'.
+2025-08-21 00:11:02 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 2)...
+2025-08-21 00:11:06 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:11:36 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-21 00:11:36 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2023/11/fc5a7e44-5b54-4fe7-bb48-89bef2eb5f77.jpg?w=1200
+2025-08-21 00:11:37 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2023/11/fc5a7e44-5b54-4fe7-bb48-89bef2eb5f77.jpg?w=1200 "HTTP/1.1 200 OK"
+2025-08-21 00:11:37 - app.wordpress - INFO - Uploading image 'fc5a7e44-5b54-4fe7-bb48-89bef2eb5f77.jpg' to WordPress.
+2025-08-21 00:11:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:11:43 - app.wordpress - INFO - Uploaded media 16656 from URL: https://comicbook.com/wp-content/uploads/sites/4/2023/11/fc5a7e44-5b54-4fe7-bb48-89bef2eb5f77.jpg?w=1200
+2025-08-21 00:11:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16656 "HTTP/1.1 200 OK"
+2025-08-21 00:11:44 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/07/captain-marvel-the-marvels.jpg?w=1024
+2025-08-21 00:11:44 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/07/captain-marvel-the-marvels.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:11:44 - app.wordpress - INFO - Uploading image 'captain-marvel-the-marvels.jpg' to WordPress.
+2025-08-21 00:11:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:11:48 - app.wordpress - INFO - Uploaded media 16657 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/07/captain-marvel-the-marvels.jpg?w=1024
+2025-08-21 00:11:50 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16657 "HTTP/1.1 200 OK"
+2025-08-21 00:11:50 - app.wordpress - INFO - Post will be created with featured_media 16656.
+2025-08-21 00:11:52 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=marvel-cinematic-universe "HTTP/1.1 200 OK"
+2025-08-21 00:11:53 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mcu "HTTP/1.1 200 OK"
+2025-08-21 00:11:55 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=fracasso "HTTP/1.1 200 OK"
+2025-08-21 00:11:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:11:56 - app.wordpress - INFO - Successfully created tag 'fracasso'
+2025-08-21 00:11:57 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=filme "HTTP/1.1 200 OK"
+2025-08-21 00:11:58 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=diretor "HTTP/1.1 200 OK"
+2025-08-21 00:11:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=roteiro "HTTP/1.1 200 OK"
+2025-08-21 00:12:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=elenco "HTTP/1.1 200 OK"
+2025-08-21 00:12:00 - app.wordpress - INFO - Creating WordPress post: O fracasso de um grande filme da MCU: Diretor explica
+2025-08-21 00:12:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:12:03 - app.wordpress - INFO - Successfully created post 'O fracasso de um grande filme da MCU: Diretor explica' with ID: 16658
+2025-08-21 00:12:03 - app.store - INFO - Successfully recorded published post for article DB ID 918 (WP Post ID: 16658).
+2025-08-21 00:12:03 - app.pipeline - INFO - Successfully published post 16658 for article DB ID 918
+2025-08-21 00:12:03 - app.pipeline - INFO - Sleeping for 6.8s (per-article delay).
+2025-08-21 00:12:10 - app.pipeline - INFO - Finished feed 'cbr_movies'. Sleeping for 15s before next feed: cbr_tv
+2025-08-21 00:12:25 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-08-21 00:12:25 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:12:28 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-08-21 00:12:28 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-08-21 00:12:28 - app.pipeline - INFO - Found 50 new articles for cbr_tv
+2025-08-21 00:12:28 - app.pipeline - INFO - Processing article: James Gunn Reveals the DC Role He Wrote for Lance Reddick (DB ID: 966) from cbr_tv
+2025-08-21 00:12:28 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:12:28 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:12:28 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-21 00:12:28 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/tv-shows/news/james-gunn-peacemaker-lance-reddick-dc-role/. Title: James Gunn Reveals the DC Role He Wrote for Lance ...
+2025-08-21 00:12:28 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-21 00:12:32 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:12:32 - apscheduler.scheduler - WARNING - Execution of job "Run RSS processing pipeline (trigger: interval[0:05:00], next run at: 2025-08-21 00:12:32 -03)" skipped: maximum number of running instances reached (1)
+2025-08-21 00:13:02 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-21 00:13:02 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Lance-Reddick-DC-Role-James-Gunn.jpg?resize=2000,1125
+2025-08-21 00:13:03 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Lance-Reddick-DC-Role-James-Gunn.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-21 00:13:03 - app.wordpress - INFO - Uploading image 'Lance-Reddick-DC-Role-James-Gunn.jpg' to WordPress.
+2025-08-21 00:13:18 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:13:18 - app.wordpress - INFO - Uploaded media 16659 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Lance-Reddick-DC-Role-James-Gunn.jpg?resize=2000,1125
+2025-08-21 00:13:19 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16659 "HTTP/1.1 200 OK"
+2025-08-21 00:13:19 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peacemaker-Lance-Reddick-Clemson-Murn.jpg?w=1024
+2025-08-21 00:13:20 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peacemaker-Lance-Reddick-Clemson-Murn.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:13:20 - app.wordpress - INFO - Uploading image 'Peacemaker-Lance-Reddick-Clemson-Murn.jpg' to WordPress.
+2025-08-21 00:13:24 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:13:24 - app.wordpress - INFO - Uploaded media 16660 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peacemaker-Lance-Reddick-Clemson-Murn.jpg?w=1024
+2025-08-21 00:13:25 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16660 "HTTP/1.1 200 OK"
+2025-08-21 00:13:25 - app.wordpress - INFO - Post will be created with featured_media 16659.
+2025-08-21 00:13:26 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=james-gunn "HTTP/1.1 200 OK"
+2025-08-21 00:13:28 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=lance-reddick "HTTP/1.1 200 OK"
+2025-08-21 00:13:29 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dc-studios "HTTP/1.1 200 OK"
+2025-08-21 00:13:30 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dc "HTTP/1.1 200 OK"
+2025-08-21 00:13:31 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=john-wick "HTTP/1.1 200 OK"
+2025-08-21 00:13:31 - app.wordpress - INFO - Creating WordPress post: James Gunn escreveu papel em DC para Lance Reddick
+2025-08-21 00:13:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:13:34 - app.wordpress - INFO - Successfully created post 'James Gunn escreveu papel em DC para Lance Reddick' with ID: 16661
+2025-08-21 00:13:34 - app.store - INFO - Successfully recorded published post for article DB ID 966 (WP Post ID: 16661).
+2025-08-21 00:13:34 - app.pipeline - INFO - Successfully published post 16661 for article DB ID 966
+2025-08-21 00:13:34 - app.pipeline - INFO - Sleeping for 6.1s (per-article delay).
+2025-08-21 00:13:40 - app.pipeline - INFO - Processing article: Marvel Fans Think the MCU Has Cast Scarlet Witch and Vision’s Other Child (DB ID: 967) from cbr_tv
+2025-08-21 00:13:41 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:13:41 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:13:41 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-21 00:13:41 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/tv-shows/news/marvel-mcu-theory-scarlet-witch-son-vision-quest-tommy-maximoff-ruaridh-mollica/. Title: Marvel Fans Think the MCU Has Cast Scarlet Witch a...
+2025-08-21 00:13:41 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-21 00:13:41 - app.ai_processor - ERROR - AI content generation failed with key index 0: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 17
+}
+]
+2025-08-21 00:13:41 - app.ai_processor - WARNING - Failing over to next API key for category 'series'.
+2025-08-21 00:13:41 - app.ai_processor - INFO - Using API key index 1 for category 'series'.
+2025-08-21 00:13:41 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-21 00:13:45 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:14:15 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-21 00:14:15 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Marvel-Scarlet-Witch-Elizabeth-Olsen-Vision-Paul-Bettany.jpg?resize=2000,1125
+2025-08-21 00:14:16 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Marvel-Scarlet-Witch-Elizabeth-Olsen-Vision-Paul-Bettany.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-21 00:14:16 - app.wordpress - INFO - Uploading image 'Marvel-Scarlet-Witch-Elizabeth-Olsen-Vision-Paul-Bettany.jpg' to WordPress.
+2025-08-21 00:14:28 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:14:28 - app.wordpress - INFO - Uploaded media 16662 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Marvel-Scarlet-Witch-Elizabeth-Olsen-Vision-Paul-Bettany.jpg?resize=2000,1125
+2025-08-21 00:14:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16662 "HTTP/1.1 200 OK"
+2025-08-21 00:14:29 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Joe-Locke-Ruaridh-Mollica-MCU.jpg?w=1024
+2025-08-21 00:14:30 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Joe-Locke-Ruaridh-Mollica-MCU.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:14:30 - app.wordpress - INFO - Uploading image 'Joe-Locke-Ruaridh-Mollica-MCU.jpg' to WordPress.
+2025-08-21 00:14:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:14:34 - app.wordpress - INFO - Uploaded media 16663 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Joe-Locke-Ruaridh-Mollica-MCU.jpg?w=1024
+2025-08-21 00:14:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16663 "HTTP/1.1 200 OK"
+2025-08-21 00:14:35 - app.wordpress - INFO - Post will be created with featured_media 16662.
+2025-08-21 00:14:36 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=wanda-maximoff "HTTP/1.1 200 OK"
+2025-08-21 00:14:37 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=visao "HTTP/1.1 200 OK"
+2025-08-21 00:14:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:14:38 - app.wordpress - INFO - Successfully created tag 'Visão'
+2025-08-21 00:14:39 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mcu "HTTP/1.1 200 OK"
+2025-08-21 00:14:40 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=marvel-studios "HTTP/1.1 200 OK"
+2025-08-21 00:14:41 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=multiverso "HTTP/1.1 200 OK"
+2025-08-21 00:14:41 - app.wordpress - INFO - Creating WordPress post: MCU: Fãs especulam sobre o outro filho de Wanda e Visão
+2025-08-21 00:14:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:14:44 - app.wordpress - INFO - Successfully created post 'MCU: Fãs especulam sobre o outro filho de Wanda e Visão' with ID: 16664
+2025-08-21 00:14:44 - app.store - INFO - Successfully recorded published post for article DB ID 967 (WP Post ID: 16664).
+2025-08-21 00:14:44 - app.pipeline - INFO - Successfully published post 16664 for article DB ID 967
+2025-08-21 00:14:44 - app.pipeline - INFO - Sleeping for 9.1s (per-article delay).
+2025-08-21 00:14:53 - app.pipeline - INFO - Processing article: Dexter: Resurrection Season 2’s Big Villain Is Already Being Set Up (And You Didn’t Notice) (DB ID: 968) from cbr_tv
+2025-08-21 00:14:54 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:14:54 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:14:54 - app.extractor - INFO - Collected 2 images from article (pre+post).
+2025-08-21 00:14:54 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/tv-shows/news/dexter-resurrection-season-2-villain-new-york-ripper-jonah-mitchell/. Title: Dexter: Resurrection Season 2's Big Villain Is Alr...
+2025-08-21 00:14:54 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-21 00:14:59 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:15:29 - app.pipeline - INFO - Attempting to upload up to 3 images.
+2025-08-21 00:15:29 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Dexter-Resurrection-Episode-7.jpg?resize=2000,1125
+2025-08-21 00:15:30 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Dexter-Resurrection-Episode-7.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-21 00:15:30 - app.wordpress - INFO - Uploading image 'Dexter-Resurrection-Episode-7.jpg' to WordPress.
+2025-08-21 00:15:45 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:15:45 - app.wordpress - INFO - Uploaded media 16665 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Dexter-Resurrection-Episode-7.jpg?resize=2000,1125
+2025-08-21 00:15:47 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16665 "HTTP/1.1 200 OK"
+2025-08-21 00:15:47 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Dexter-Resurrection-Hoodie.jpg?w=1024
+2025-08-21 00:15:48 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Dexter-Resurrection-Hoodie.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:15:48 - app.wordpress - INFO - Uploading image 'Dexter-Resurrection-Hoodie.jpg' to WordPress.
+2025-08-21 00:15:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:15:52 - app.wordpress - INFO - Uploaded media 16666 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Dexter-Resurrection-Hoodie.jpg?w=1024
+2025-08-21 00:15:53 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16666 "HTTP/1.1 200 OK"
+2025-08-21 00:15:53 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Dexter-Resurrection-New-York-Ripper.jpg?w=1024
+2025-08-21 00:15:54 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Dexter-Resurrection-New-York-Ripper.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-21 00:15:54 - app.wordpress - INFO - Uploading image 'Dexter-Resurrection-New-York-Ripper.jpg' to WordPress.
+2025-08-21 00:15:59 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:15:59 - app.wordpress - INFO - Uploaded media 16667 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Dexter-Resurrection-New-York-Ripper.jpg?w=1024
+2025-08-21 00:16:00 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16667 "HTTP/1.1 200 OK"
+2025-08-21 00:16:00 - app.wordpress - INFO - Post will be created with featured_media 16665.
+2025-08-21 00:16:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dexter-morgan "HTTP/1.1 200 OK"
+2025-08-21 00:16:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dexter-nova-sangue "HTTP/1.1 200 OK"
+2025-08-21 00:16:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:16:03 - app.wordpress - INFO - Successfully created tag 'Dexter: Nova Sangue'
+2025-08-21 00:16:04 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=ressurreicao "HTTP/1.1 200 OK"
+2025-08-21 00:16:05 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:16:05 - app.wordpress - INFO - Successfully created tag 'Ressurreição'
+2025-08-21 00:16:07 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=kurt-caldwell "HTTP/1.1 200 OK"
+2025-08-21 00:16:08 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:16:08 - app.wordpress - INFO - Successfully created tag 'Kurt Caldwell'
+2025-08-21 00:16:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=clancy-brown "HTTP/1.1 200 OK"
+2025-08-21 00:16:11 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:16:11 - app.wordpress - INFO - Successfully created tag 'Clancy Brown'
+2025-08-21 00:16:11 - app.wordpress - INFO - Creating WordPress post: Dexter: A grande vilã da 2ª temporada de 'Ressurreição' já está sendo preparada
+2025-08-21 00:16:15 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:16:15 - app.wordpress - INFO - Successfully created post 'Dexter: A grande vilã da 2ª temporada de 'Ressurreição' já está sendo preparada' with ID: 16668
+2025-08-21 00:16:15 - app.store - INFO - Successfully recorded published post for article DB ID 968 (WP Post ID: 16668).
+2025-08-21 00:16:15 - app.pipeline - INFO - Successfully published post 16668 for article DB ID 968
+2025-08-21 00:16:15 - app.pipeline - INFO - Sleeping for 7.1s (per-article delay).
+2025-08-21 00:16:22 - app.pipeline - INFO - Finished feed 'cbr_tv'. Sleeping for 15s before next feed: gamerant_games
+2025-08-21 00:16:37 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-08-21 00:16:37 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:16:37 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-21 00:16:37 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-21 00:16:37 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-08-21 00:16:37 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-08-21 00:16:37 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:16:38 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-21 00:16:38 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-21 00:16:38 - app.pipeline - INFO - Found 1 new articles for thegamer_games
+2025-08-21 00:16:38 - app.pipeline - INFO - Processing article: Mortal Kombat Legacy Kollection Includes Mythologies: Sub-Zero And Special Forces (DB ID: 1016) from thegamer_games
+2025-08-21 00:16:39 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:16:39 - app.extractor - INFO - Converted 13 'data-img-url' divs to <figure> tags.
+2025-08-21 00:16:39 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:16:39 - app.extractor - INFO - Collected 7 images from article (pre+post).
+2025-08-21 00:16:39 - app.extractor - INFO - Successfully extracted and cleaned content from https://www.thegamer.com/mortal-kombat-legacy-kollection-includes-two-worst-mk-games-ever-mythologies-sub-zero-special-forces/. Title: Mortal Kombat Legacy Kollection Will Include Two O...
+2025-08-21 00:16:39 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-21 00:16:40 - app.ai_processor - ERROR - AI content generation failed with key index 0: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-08-21 00:16:40 - app.ai_processor - WARNING - Failing over to next API key for category 'games'.
+2025-08-21 00:16:40 - app.ai_processor - INFO - Using API key index 1 for category 'games'.
+2025-08-21 00:16:40 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-21 00:16:45 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:17:15 - app.pipeline - INFO - Attempting to upload up to 8 images.
+2025-08-21 00:17:15 - app.wordpress - INFO - Downloading image for upload: https://static1.thegamerimages.com/wordpress/wp-content/uploads/2025/08/a-man-with-a-metal-arm-covered-in-lightning-raised-in-the-air.jpg
+2025-08-21 00:17:16 - httpx - INFO - HTTP Request: GET https://static1.thegamerimages.com/wordpress/wp-content/uploads/2025/08/a-man-with-a-metal-arm-covered-in-lightning-raised-in-the-air.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:17:16 - app.wordpress - INFO - Uploading image 'a-man-with-a-metal-arm-covered-in-lightning-raised-in-the-air.jpg' to WordPress.
+2025-08-21 00:17:32 - apscheduler.scheduler - WARNING - Execution of job "Run RSS processing pipeline (trigger: interval[0:05:00], next run at: 2025-08-21 00:17:32 -03)" skipped: maximum number of running instances reached (1)
+2025-08-21 00:17:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:17:34 - app.wordpress - INFO - Uploaded media 16669 from URL: https://static1.thegamerimages.com/wordpress/wp-content/uploads/2025/08/a-man-with-a-metal-arm-covered-in-lightning-raised-in-the-air.jpg
+2025-08-21 00:17:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16669 "HTTP/1.1 200 OK"
+2025-08-21 00:17:35 - app.wordpress - INFO - Downloading image for upload: https://static1.thegamerimages.com/wordpress/wp-content/uploads/sharedimages/2025/06/mortal-kombat-legacy-kollection-tag-page-cover-art.jpg
+2025-08-21 00:17:36 - httpx - INFO - HTTP Request: GET https://static1.thegamerimages.com/wordpress/wp-content/uploads/sharedimages/2025/06/mortal-kombat-legacy-kollection-tag-page-cover-art.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:17:36 - app.wordpress - INFO - Uploading image 'mortal-kombat-legacy-kollection-tag-page-cover-art.jpg' to WordPress.
+2025-08-21 00:17:47 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:17:47 - app.wordpress - INFO - Uploaded media 16670 from URL: https://static1.thegamerimages.com/wordpress/wp-content/uploads/sharedimages/2025/06/mortal-kombat-legacy-kollection-tag-page-cover-art.jpg
+2025-08-21 00:17:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16670 "HTTP/1.1 200 OK"
+2025-08-21 00:17:48 - app.wordpress - INFO - Downloading image for upload: https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-1.jpg
+2025-08-21 00:17:49 - httpx - INFO - HTTP Request: GET https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-1.jpg "HTTP/1.1 404 Not Found"
+2025-08-21 00:17:49 - app.wordpress - ERROR - Failed to download image from https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-1.jpg: Client error '404 Not Found' for url 'https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-1.jpg'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-08-21 00:17:49 - app.wordpress - INFO - Downloading image for upload: https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-2.jpg
+2025-08-21 00:17:49 - httpx - INFO - HTTP Request: GET https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-2.jpg "HTTP/1.1 404 Not Found"
+2025-08-21 00:17:49 - app.wordpress - ERROR - Failed to download image from https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-2.jpg: Client error '404 Not Found' for url 'https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-2.jpg'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-08-21 00:17:49 - app.wordpress - INFO - Downloading image for upload: https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-3.jpg
+2025-08-21 00:17:49 - httpx - INFO - HTTP Request: GET https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-3.jpg "HTTP/1.1 404 Not Found"
+2025-08-21 00:17:49 - app.wordpress - ERROR - Failed to download image from https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-3.jpg: Client error '404 Not Found' for url 'https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-3.jpg'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-08-21 00:17:49 - app.wordpress - INFO - Downloading image for upload: https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-4.jpg
+2025-08-21 00:17:50 - httpx - INFO - HTTP Request: GET https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-4.jpg "HTTP/1.1 404 Not Found"
+2025-08-21 00:17:50 - app.wordpress - ERROR - Failed to download image from https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-4.jpg: Client error '404 Not Found' for url 'https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-4.jpg'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-08-21 00:17:50 - app.wordpress - INFO - Downloading image for upload: https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-5.jpg
+2025-08-21 00:17:50 - httpx - INFO - HTTP Request: GET https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-5.jpg "HTTP/1.1 404 Not Found"
+2025-08-21 00:17:50 - app.wordpress - ERROR - Failed to download image from https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-5.jpg: Client error '404 Not Found' for url 'https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-5.jpg'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-08-21 00:17:50 - app.wordpress - INFO - Downloading image for upload: https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-6.jpg
+2025-08-21 00:17:52 - httpx - INFO - HTTP Request: GET https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-6.jpg "HTTP/1.1 404 Not Found"
+2025-08-21 00:17:52 - app.wordpress - ERROR - Failed to download image from https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-6.jpg: Client error '404 Not Found' for url 'https://static1.thegamerimages.com/wordpresshttps://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/mortal-kombat-legacy-kollection-press-image-6.jpg'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-08-21 00:17:52 - app.wordpress - INFO - Post will be created with featured_media 16669.
+2025-08-21 00:17:54 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mortal-kombat-special-forces "HTTP/1.1 200 OK"
+2025-08-21 00:17:58 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:17:58 - app.wordpress - INFO - Successfully created tag 'Mortal Kombat: Special Forces'
+2025-08-21 00:18:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mortal-kombat-mythologies-sub-zero "HTTP/1.1 200 OK"
+2025-08-21 00:18:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:18:03 - app.wordpress - INFO - Successfully created tag 'Mortal Kombat Mythologies: Sub-Zero'
+2025-08-21 00:18:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mortal-kombat-legacy-kollection "HTTP/1.1 200 OK"
+2025-08-21 00:18:05 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:18:05 - app.wordpress - INFO - Successfully created tag 'Mortal Kombat Legacy Kollection'
+2025-08-21 00:18:06 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=jogos-de-luta "HTTP/1.1 200 OK"
+2025-08-21 00:18:08 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:18:08 - app.wordpress - INFO - Successfully created tag 'jogos de luta'
+2025-08-21 00:18:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=franquia-mortal-kombat "HTTP/1.1 200 OK"
+2025-08-21 00:18:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:18:10 - app.wordpress - INFO - Successfully created tag 'franquia Mortal Kombat'
+2025-08-21 00:18:10 - app.wordpress - INFO - Creating WordPress post: Mortal Kombat Legacy: Os Piores Jogos da Franquia?
+2025-08-21 00:18:12 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:18:12 - app.wordpress - INFO - Successfully created post 'Mortal Kombat Legacy: Os Piores Jogos da Franquia?' with ID: 16671
+2025-08-21 00:18:12 - app.store - INFO - Successfully recorded published post for article DB ID 1016 (WP Post ID: 16671).
+2025-08-21 00:18:12 - app.pipeline - INFO - Successfully published post 16671 for article DB ID 1016
+2025-08-21 00:18:12 - app.pipeline - INFO - Sleeping for 7.4s (per-article delay).
+2025-08-21 00:18:19 - app.pipeline - INFO - Pipeline cycle completed. Processed 13 articles.
+2025-08-21 00:18:19 - app.store - INFO - Database connection closed.
+2025-08-21 00:18:19 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-21 00:22:32 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-21 00:22:34 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-21 00:22:34 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-21 00:22:34 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:22:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-08-21 00:22:35 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-21 00:22:35 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-21 00:22:35 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-21 00:22:35 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:22:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-08-21 00:22:35 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-21 00:22:35 - app.pipeline - INFO - Found 1 new articles for screenrant_tv
+2025-08-21 00:22:35 - app.pipeline - INFO - Processing article: The Pitt Season 2 Trailer: July 4th Chaos In The ER (DB ID: 1017) from screenrant_tv
+2025-08-21 00:22:36 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-21 00:22:36 - app.extractor - INFO - Converted 1 'data-img-url' divs to <figure> tags.
+2025-08-21 00:22:36 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-21 00:22:36 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-21 00:22:36 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/the-pitt-season-2-trailer/. Title: The Pitt Season 2 Trailer: July 4th Brings Bloody ...
+2025-08-21 00:22:36 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-21 00:22:38 - app.ai_processor - ERROR - AI content generation failed with key index 0: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 21
+}
+]
+2025-08-21 00:22:38 - app.ai_processor - WARNING - Failing over to next API key for category 'series'.
+2025-08-21 00:22:38 - app.ai_processor - INFO - Using API key index 1 for category 'series'.
+2025-08-21 00:22:38 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-21 00:22:42 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-21 00:23:12 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-21 00:23:12 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdpitt_h7053-cropped.jpg
+2025-08-21 00:23:13 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdpitt_h7053-cropped.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:23:13 - app.wordpress - INFO - Uploading image 'tcdpitt_h7053-cropped.jpg' to WordPress.
+2025-08-21 00:23:21 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:23:21 - app.wordpress - INFO - Uploaded media 16672 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/tcdpitt_h7053-cropped.jpg
+2025-08-21 00:23:22 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16672 "HTTP/1.1 200 OK"
+2025-08-21 00:23:22 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/03222269_poster_w780.jpg
+2025-08-21 00:23:23 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/03222269_poster_w780.jpg "HTTP/1.1 200 OK"
+2025-08-21 00:23:23 - app.wordpress - INFO - Uploading image '03222269_poster_w780.jpg' to WordPress.
+2025-08-21 00:23:27 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-21 00:23:27 - app.wordpress - INFO - Uploaded media 16673 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/01/03222269_poster_w780.jpg
+2025-08-21 00:23:28 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/16673 "HTTP/1.1 200 OK"
+2025-08-21 00:23:28 - app.wordpress - INFO - Post will be created with featured_media 16672.
+2025-08-21 00:23:29 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-pitt "HTTP/1.1 200 OK"
+2025-08-21 00:23:30 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=serie-medica "HTTP/1.1 200 OK"
+2025-08-21 00:23:31 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=trailer "HTTP/1.1 200 OK"
+2025-08-21 00:23:31 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=suspense "HTTP/1.1 200 OK"
+2025-08-21 00:23:32 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=4-de-julho "HTTP/1.1 200 OK"
+2025-08-21 00:23:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-21 00:23:34 - app.wordpress - INFO - Successfully created tag '4 de Julho'
+2025-08-21 00:23:34 - app.wordpress - INFO - Creating WordPress post: The Pitt 2ª Temporada: Trailer Promove Caos Sangrento
+2025-08-21 00:23:36 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-21 00:23:36 - app.wordpress - INFO - Successfully created post 'The Pitt 2ª Temporada: Trailer Promove Caos Sangrento' with ID: 16674
+2025-08-21 00:23:36 - app.store - INFO - Successfully recorded published post for article DB ID 1017 (WP Post ID: 16674).
+2025-08-21 00:23:36 - app.pipeline - INFO - Successfully published post 16674 for article DB ID 1017
+2025-08-21 00:23:36 - app.pipeline - INFO - Sleeping for 9.4s (per-article delay).
+2025-08-21 00:23:45 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-08-21 00:24:00 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-21 00:24:00 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:24:01 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-21 00:24:01 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-21 00:24:01 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-21 00:24:01 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-21 00:24:01 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:24:01 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-21 00:24:01 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-21 00:24:01 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-21 00:24:01 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-21 00:24:01 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:24:02 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-21 00:24:02 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-21 00:24:02 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-21 00:24:02 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-21 00:24:02 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:24:02 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-08-21 00:24:02 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-08-21 00:24:02 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-08-21 00:24:02 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-08-21 00:24:02 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:24:03 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-08-21 00:24:03 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-08-21 00:24:03 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-08-21 00:24:03 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-08-21 00:24:03 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:24:03 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-21 00:24:03 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-21 00:24:03 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-08-21 00:24:03 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-08-21 00:24:03 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:24:04 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-21 00:24:04 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-21 00:24:04 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-08-21 00:24:04 - app.pipeline - INFO - Pipeline cycle completed. Processed 1 articles.
+2025-08-21 00:24:04 - app.store - INFO - Database connection closed.
+2025-08-21 00:24:04 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-21 00:27:32 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-21 00:27:34 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-21 00:27:34 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-21 00:27:34 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:27:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-08-21 00:27:35 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-21 00:27:35 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-21 00:27:35 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-21 00:27:35 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:27:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-08-21 00:27:35 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-21 00:27:35 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-21 00:27:35 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-21 00:27:35 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:27:36 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-21 00:27:36 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-21 00:27:36 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-21 00:27:36 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-21 00:27:36 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:27:36 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-21 00:27:36 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-21 00:27:36 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-21 00:27:36 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-21 00:27:36 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:27:37 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-21 00:27:37 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-21 00:27:37 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-21 00:27:37 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-21 00:27:37 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:27:37 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-08-21 00:27:37 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-08-21 00:27:37 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-08-21 00:27:37 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-08-21 00:27:37 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:27:37 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-08-21 00:27:37 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-08-21 00:27:37 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-08-21 00:27:37 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-08-21 00:27:37 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:27:38 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-21 00:27:38 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-21 00:27:38 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-08-21 00:27:38 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-08-21 00:27:38 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:27:39 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-21 00:27:39 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-21 00:27:39 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-08-21 00:27:39 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-21 00:27:39 - app.store - INFO - Database connection closed.
+2025-08-21 00:27:39 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-21 00:32:32 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-21 00:32:34 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-21 00:32:34 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-21 00:32:34 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:32:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-08-21 00:32:35 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-21 00:32:35 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-21 00:32:35 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-21 00:32:35 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:32:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-08-21 00:32:35 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-21 00:32:35 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-21 00:32:35 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-21 00:32:35 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:32:36 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-21 00:32:36 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-21 00:32:36 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-21 00:32:36 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-21 00:32:36 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:32:36 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-21 00:32:36 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-21 00:32:36 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-21 00:32:36 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-21 00:32:36 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:32:36 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-21 00:32:36 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-21 00:32:36 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-21 00:32:36 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-21 00:32:36 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:32:37 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-08-21 00:32:37 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-08-21 00:32:37 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-08-21 00:32:37 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-08-21 00:32:37 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:32:37 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-08-21 00:32:37 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-08-21 00:32:37 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-08-21 00:32:37 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-08-21 00:32:37 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:32:38 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-21 00:32:38 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-21 00:32:38 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-08-21 00:32:38 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-08-21 00:32:38 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:32:39 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-21 00:32:39 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-21 00:32:39 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-08-21 00:32:39 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-21 00:32:39 - app.store - INFO - Database connection closed.
+2025-08-21 00:32:39 - app.wordpress - INFO - WordPress client connection closed.
+2025-08-21 00:37:32 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-21 00:37:34 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-21 00:37:34 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-21 00:37:34 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:37:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-08-21 00:37:35 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-21 00:37:35 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-21 00:37:35 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-21 00:37:35 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:37:35 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-08-21 00:37:35 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-21 00:37:35 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-08-21 00:37:35 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-21 00:37:35 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:37:36 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-21 00:37:36 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-21 00:37:36 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-21 00:37:36 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-21 00:37:36 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:37:36 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-21 00:37:36 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-21 00:37:36 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-21 00:37:36 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-21 00:37:36 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:37:37 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-21 00:37:37 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-21 00:37:37 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-08-21 00:37:37 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-21 00:37:37 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-21 00:37:37 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-08-21 00:37:37 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-08-21 00:37:37 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-08-21 00:37:37 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-08-21 00:37:37 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-21 00:37:37 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-08-21 00:37:37 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-08-21 00:37:37 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-08-21 00:37:37 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-08-21 00:37:37 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:37:38 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-21 00:37:38 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-21 00:37:38 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-08-21 00:37:38 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-08-21 00:37:38 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-21 00:37:39 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-08-21 00:37:39 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-08-21 00:37:39 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-08-21 00:37:39 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-08-21 00:37:39 - app.store - INFO - Database connection closed.
+2025-08-21 00:37:39 - app.wordpress - INFO - WordPress client connection closed.

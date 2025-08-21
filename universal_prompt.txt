@@ -28,7 +28,9 @@ Use a seguinte estrutura JSON para a sua resposta:
      - Posicione cada imagem logo após o parágrafo relacionado ao conteúdo dela.  
      - Envolva todas as imagens dentro de `<figure>` e adicione uma legenda curta em `<figcaption>`.  
      - Nunca coloque mais de uma imagem seguida sem um parágrafo entre elas.  
-     - A primeira imagem deve ser considerada a destacada (featured), portanto **não repita no corpo**.  
+     - A primeira imagem deve ser considerada a destacada (featured), portanto **não repita no corpo**. 
+     - As imagens devem ficar alternadas entre os parágrafos, evitar postar as imagens seguidas. 
+ 
    * Incorpore no máximo 3 vídeos do YouTube no formato:  
      `<figure class="video-container"><iframe src="URL_DO_EMBED" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></figure>`  
    * Destaque termos-chave com `<b>`.  

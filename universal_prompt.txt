@@ -35,6 +35,13 @@ Use a seguinte estrutura JSON para a sua resposta:
    * Crie no máximo 3 links internos relevantes usando `{domain}/tag/{tag}`. 
     *   Destaque com `<b>` os termos mais importantes (nomes de filmes, atores, personagens, estúdios).
     *   Insira links internos contextuais usando as tags que você identificou. Ex: `<b><a href="{domain}/tag/miles-teller">Miles Teller</a></b>`.
+   * Obrigatório: use subtítulos <h2> para organizar o texto (mínimo 1). 
+    *   Exemplos ilustrativos: “Quem é a nova vilã?”, “Pistas reveladas na série”, “O que esperar da 2ª temporada”.
+    *   Os exemplos são apenas ilustrativos. Adapte os subtítulos conforme o contexto (filme, série, jogo, ator, etc.), garantindo sempre no mínimo 3 seções bem estruturadas.
+    * Inclua citações específicas de episódios, cenas, trailers ou entrevistas quando disponíveis.
+    * Se existirem, mencione teorias concretas ou conexões (com temporadas passadas, outros filmes, franquias, personagens).
+    * Sempre que possível, adicione fontes ou falas de showrunners, diretores, atores ou produtores para dar credibilidade.
+    * Evite frases genéricas e dê mais conteúdo verificável e detalhado para sustentar a narrativa..  
 
 3.  **meta_description**:
     *   Crie um resumo para o Google de até 155 caracteres. Deve ser atrativo e conter a palavra-chave principal.

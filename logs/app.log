@@ -18218,3 +18218,504 @@ ValueError: Invalid format specifier ' "...",
   "url_original": "..."
 ' for object of type 'str'
 2025-08-25 08:59:10 - app.pipeline - INFO - Finished feed 'movieweb_movies'. Sleeping for 15s before next feed: cbr_movies
+2025-08-25 09:02:23 - app.store - INFO - Initializing database tables if they don't exist...
+2025-08-25 09:02:23 - app.store - INFO - Database initialized successfully.
+2025-08-25 09:02:23 - app.store - INFO - Database connection closed.
+2025-08-25 09:02:23 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-08-25 09:02:23 - __main__ - INFO - Iniciando o agendador para execução contínua.
+2025-08-25 09:02:23 - __main__ - INFO - Agendador iniciado. Pipeline rodará a cada 5 minutos.
+2025-08-25 09:02:23 - __main__ - INFO - Limpeza de dados antigos agendada para cada 36 horas.
+2025-08-25 09:02:23 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-08-25 09:02:25 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-08-25 09:02:25 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-08-25 09:02:25 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-25 09:02:26 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-08-25 09:02:26 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-08-25 09:02:26 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-08-25 09:02:26 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-08-25 09:02:26 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-25 09:02:26 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-08-25 09:02:26 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-08-25 09:02:26 - app.pipeline - INFO - Found 1 new articles for screenrant_tv
+2025-08-25 09:02:26 - app.pipeline - INFO - Processing article: Keri Russell's 96% RT Series The Americans Is A Must-Watch Spy Thriller (DB ID: 2415) from screenrant_tv
+2025-08-25 09:02:27 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:02:27 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-25 09:02:27 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:02:27 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-08-25 09:02:27 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/the-americans-keri-russell-thriller-series-must-watch/. Title: Keri Russell's 96% RT Hit Is A Must-Watch For Thri...
+2025-08-25 09:02:27 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:02:27 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-25 09:02:34 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:03:04 - app.pipeline - INFO - Attempting to upload up to 4 images.
+2025-08-25 09:03:04 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/keri-russell-at-the-sag-awards.jpg
+2025-08-25 09:03:04 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/keri-russell-at-the-sag-awards.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:03:05 - app.wordpress - INFO - Uploading image 'keri-russell-at-the-sag-awards.jpg' to WordPress.
+2025-08-25 09:03:49 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:03:49 - app.wordpress - INFO - Uploaded media 22369 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/keri-russell-at-the-sag-awards.jpg
+2025-08-25 09:03:50 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22369 "HTTP/1.1 200 OK"
+2025-08-25 09:03:50 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2023/07/the-americans-philip-and-elizabeth-2.jpg
+2025-08-25 09:03:50 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2023/07/the-americans-philip-and-elizabeth-2.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:03:51 - app.wordpress - INFO - Uploading image 'the-americans-philip-and-elizabeth-2.jpg' to WordPress.
+2025-08-25 09:03:58 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:03:58 - app.wordpress - INFO - Uploaded media 22370 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2023/07/the-americans-philip-and-elizabeth-2.jpg
+2025-08-25 09:03:59 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22370 "HTTP/1.1 200 OK"
+2025-08-25 09:03:59 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/03118752_poster_w780.jpg
+2025-08-25 09:03:59 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/03118752_poster_w780.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:03:59 - app.wordpress - INFO - Uploading image '03118752_poster_w780.jpg' to WordPress.
+2025-08-25 09:04:06 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:04:06 - app.wordpress - INFO - Uploaded media 22371 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/03118752_poster_w780.jpg
+2025-08-25 09:04:07 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22371 "HTTP/1.1 200 OK"
+2025-08-25 09:04:07 - app.wordpress - INFO - Downloading image for upload: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/elizabeth-in-the-car-in-the-americans.jpg
+2025-08-25 09:04:07 - httpx - INFO - HTTP Request: GET https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/elizabeth-in-the-car-in-the-americans.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:04:08 - app.wordpress - INFO - Uploading image 'elizabeth-in-the-car-in-the-americans.jpg' to WordPress.
+2025-08-25 09:04:22 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:04:22 - app.wordpress - INFO - Uploaded media 22372 from URL: https://static1.srcdn.com/wordpress/wp-content/uploads/2025/08/elizabeth-in-the-car-in-the-americans.jpg
+2025-08-25 09:04:22 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22372 "HTTP/1.1 200 OK"
+2025-08-25 09:04:22 - app.wordpress - INFO - Post will be created with featured_media 22369.
+2025-08-25 09:04:23 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=the-diplomat "HTTP/1.1 200 OK"
+2025-08-25 09:04:24 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=keri-russell "HTTP/1.1 200 OK"
+2025-08-25 09:04:25 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=netflix "HTTP/1.1 200 OK"
+2025-08-25 09:04:25 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=suspense "HTTP/1.1 200 OK"
+2025-08-25 09:04:26 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=thriller "HTTP/1.1 200 OK"
+2025-08-25 09:04:26 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=series "HTTP/1.1 200 OK"
+2025-08-25 09:04:27 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=drama "HTTP/1.1 200 OK"
+2025-08-25 09:04:27 - app.wordpress - INFO - Creating WordPress post: The Diplomat: Thriller da Netflix com Keri Russell é imperdível
+2025-08-25 09:04:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-25 09:04:29 - app.wordpress - INFO - Successfully created post 'The Diplomat: Thriller da Netflix com Keri Russell é imperdível' with ID: 22373
+2025-08-25 09:04:30 - app.store - INFO - Successfully recorded published post for article DB ID 2415 (WP Post ID: 22373).
+2025-08-25 09:04:30 - app.pipeline - INFO - Successfully published post 22373 for article DB ID 2415
+2025-08-25 09:04:30 - app.pipeline - INFO - Sleeping for 7.2s (per-article delay).
+2025-08-25 09:04:37 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-08-25 09:04:52 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-08-25 09:04:52 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-25 09:04:53 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-08-25 09:04:53 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-08-25 09:04:53 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-08-25 09:04:53 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-08-25 09:04:53 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-25 09:04:53 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-08-25 09:04:53 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-08-25 09:04:53 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-08-25 09:04:53 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-08-25 09:04:53 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-25 09:04:54 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-08-25 09:04:54 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-08-25 09:04:54 - app.pipeline - INFO - Found 1 new articles for movieweb_movies
+2025-08-25 09:04:54 - app.pipeline - INFO - Processing article: 'Star Wars' Icon Mark Hamill Says He Was Approached to Star in Vile and "Disgusting" Horror Franchise (DB ID: 2416) from movieweb_movies
+2025-08-25 09:04:55 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:04:55 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-08-25 09:04:55 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:04:55 - app.extractor - INFO - Collected 2 images from article (pre+post).
+2025-08-25 09:04:55 - app.extractor - INFO - Successfully extracted and cleaned content from https://movieweb.com/star-wars-mark-hamill-approached-horror-franchise-human-centipede/. Title: 'Star Wars' Icon Mark Hamill Reveals Which "Disgus...
+2025-08-25 09:04:55 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:04:55 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-25 09:05:01 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:05:31 - app.pipeline - INFO - Attempting to upload up to 3 images.
+2025-08-25 09:05:31 - app.wordpress - INFO - Downloading image for upload: https://static1.moviewebimages.com/wordpress/wp-content/uploads/2025/08/mark-hamill-in-the-empire-strikes-back.jpg
+2025-08-25 09:05:32 - httpx - INFO - HTTP Request: GET https://static1.moviewebimages.com/wordpress/wp-content/uploads/2025/08/mark-hamill-in-the-empire-strikes-back.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:05:32 - app.wordpress - INFO - Uploading image 'mark-hamill-in-the-empire-strikes-back.jpg' to WordPress.
+2025-08-25 09:05:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:05:38 - app.wordpress - INFO - Uploaded media 22374 from URL: https://static1.moviewebimages.com/wordpress/wp-content/uploads/2025/08/mark-hamill-in-the-empire-strikes-back.jpg
+2025-08-25 09:05:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22374 "HTTP/1.1 200 OK"
+2025-08-25 09:05:38 - app.wordpress - INFO - Downloading image for upload: https://static1.moviewebimages.com/wordpress/wp-content/uploads/2024/11/7-7.jpg
+2025-08-25 09:05:39 - httpx - INFO - HTTP Request: GET https://static1.moviewebimages.com/wordpress/wp-content/uploads/2024/11/7-7.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:05:39 - app.wordpress - INFO - Uploading image '7-7.jpg' to WordPress.
+2025-08-25 09:05:45 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:05:45 - app.wordpress - INFO - Uploaded media 22375 from URL: https://static1.moviewebimages.com/wordpress/wp-content/uploads/2024/11/7-7.jpg
+2025-08-25 09:05:45 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22375 "HTTP/1.1 200 OK"
+2025-08-25 09:05:45 - app.wordpress - INFO - Downloading image for upload: https://static1.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2024/04/the-human-centipede-2-movie-poster.jpg
+2025-08-25 09:05:46 - httpx - INFO - HTTP Request: GET https://static1.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2024/04/the-human-centipede-2-movie-poster.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:05:46 - app.wordpress - INFO - Uploading image 'the-human-centipede-2-movie-poster.jpg' to WordPress.
+2025-08-25 09:05:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:05:57 - app.wordpress - INFO - Uploaded media 22376 from URL: https://static1.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2024/04/the-human-centipede-2-movie-poster.jpg
+2025-08-25 09:05:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22376 "HTTP/1.1 200 OK"
+2025-08-25 09:05:57 - app.wordpress - INFO - Post will be created with featured_media 22374.
+2025-08-25 09:05:58 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mark-hamill "HTTP/1.1 200 OK"
+2025-08-25 09:05:59 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=star-wars "HTTP/1.1 200 OK"
+2025-08-25 09:06:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=luke-skywalker "HTTP/1.1 200 OK"
+2025-08-25 09:06:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=terror "HTTP/1.1 200 OK"
+2025-08-25 09:06:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=cinema "HTTP/1.1 200 OK"
+2025-08-25 09:06:01 - app.wordpress - INFO - Creating WordPress post: Mark Hamill Recusa Franquia de Terror: Qual?
+2025-08-25 09:06:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-25 09:06:03 - app.wordpress - INFO - Successfully created post 'Mark Hamill Recusa Franquia de Terror: Qual?' with ID: 22377
+2025-08-25 09:06:03 - app.store - INFO - Successfully recorded published post for article DB ID 2416 (WP Post ID: 22377).
+2025-08-25 09:06:03 - app.pipeline - INFO - Successfully published post 22377 for article DB ID 2416
+2025-08-25 09:06:03 - app.pipeline - INFO - Sleeping for 7.5s (per-article delay).
+2025-08-25 09:06:11 - app.pipeline - INFO - Finished feed 'movieweb_movies'. Sleeping for 15s before next feed: cbr_movies
+2025-08-25 09:06:26 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-08-25 09:06:26 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-08-25 09:06:28 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-08-25 09:06:28 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-08-25 09:06:28 - app.pipeline - INFO - Found 3 new articles for cbr_movies
+2025-08-25 09:06:28 - app.pipeline - INFO - Processing article: Every Spider-Man Suit Tom Holland Has Worn in the MCU (DB ID: 2417) from cbr_movies
+2025-08-25 09:06:29 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:06:29 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:06:29 - app.extractor - INFO - Collected 9 images from article (pre+post).
+2025-08-25 09:06:29 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/movies/news/every-spider-man-suit-mcu-tom-holland-peter-parker/. Title: Every Spider-Man Suit Tom Holland Has Worn in the ...
+2025-08-25 09:06:29 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:06:29 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-25 09:06:37 - app.ai_processor - ERROR - Error decoding JSON from AI response: Expecting ',' delimiter: line 1 column 421 (char 420)
+2025-08-25 09:06:37 - app.ai_processor - ERROR - AI content generation failed with key index 0: Failed to parse or validate AI response. See logs for details.
+2025-08-25 09:06:37 - app.ai_processor - WARNING - Failing over to next API key for category 'movies'.
+2025-08-25 09:06:37 - app.ai_processor - INFO - Using API key index 1 for category 'movies'.
+2025-08-25 09:06:37 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-25 09:06:46 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:07:16 - app.pipeline - INFO - Attempting to upload up to 8 images.
+2025-08-25 09:07:16 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Spider-Man-in-his-costume-in-the-MCU.jpg?resize=2000,1125
+2025-08-25 09:07:17 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Spider-Man-in-his-costume-in-the-MCU.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-25 09:07:17 - app.wordpress - INFO - Uploading image 'Spider-Man-in-his-costume-in-the-MCU.jpg' to WordPress.
+2025-08-25 09:07:23 - apscheduler.scheduler - WARNING - Execution of job "Run RSS processing pipeline (trigger: interval[0:05:00], next run at: 2025-08-25 09:07:23 -03)" skipped: maximum number of running instances reached (1)
+2025-08-25 09:07:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:07:30 - app.wordpress - INFO - Uploaded media 22378 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Spider-Man-in-his-costume-in-the-MCU.jpg?resize=2000,1125
+2025-08-25 09:07:30 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22378 "HTTP/1.1 200 OK"
+2025-08-25 09:07:30 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-Night-Monkey-costume-in-Spider-Man-Far-From-Home.jpg?w=1024
+2025-08-25 09:07:31 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-Night-Monkey-costume-in-Spider-Man-Far-From-Home.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:07:32 - app.wordpress - INFO - Uploading image 'Peter-Parker-in-his-Night-Monkey-costume-in-Spider-Man-Far-From-Home.jpg' to WordPress.
+2025-08-25 09:07:34 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:07:34 - app.wordpress - INFO - Uploaded media 22379 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-Night-Monkey-costume-in-Spider-Man-Far-From-Home.jpg?w=1024
+2025-08-25 09:07:35 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22379 "HTTP/1.1 200 OK"
+2025-08-25 09:07:35 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-Stark-suit-in-Spider-Man-Homecoming.jpg?w=1024
+2025-08-25 09:07:36 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-Stark-suit-in-Spider-Man-Homecoming.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:07:36 - app.wordpress - INFO - Uploading image 'Peter-Parker-in-his-Stark-suit-in-Spider-Man-Homecoming.jpg' to WordPress.
+2025-08-25 09:07:39 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:07:39 - app.wordpress - INFO - Uploaded media 22380 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-Stark-suit-in-Spider-Man-Homecoming.jpg?w=1024
+2025-08-25 09:07:40 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22380 "HTTP/1.1 200 OK"
+2025-08-25 09:07:40 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-black-and-red-suit-in-Spider-Man-Far-From-Home.jpg?w=1024
+2025-08-25 09:07:40 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-black-and-red-suit-in-Spider-Man-Far-From-Home.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:07:41 - app.wordpress - INFO - Uploading image 'Peter-Parker-in-his-black-and-red-suit-in-Spider-Man-Far-From-Home.jpg' to WordPress.
+2025-08-25 09:07:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:07:43 - app.wordpress - INFO - Uploaded media 22381 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-black-and-red-suit-in-Spider-Man-Far-From-Home.jpg?w=1024
+2025-08-25 09:07:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22381 "HTTP/1.1 200 OK"
+2025-08-25 09:07:44 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-homemade-suit-in-Spider-Man-No-Way-Hoem.jpg?w=1024
+2025-08-25 09:07:45 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-homemade-suit-in-Spider-Man-No-Way-Hoem.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:07:45 - app.wordpress - INFO - Uploading image 'Peter-Parker-in-his-homemade-suit-in-Spider-Man-No-Way-Hoem.jpg' to WordPress.
+2025-08-25 09:07:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:07:48 - app.wordpress - INFO - Uploaded media 22382 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-homemade-suit-in-Spider-Man-No-Way-Hoem.jpg?w=1024
+2025-08-25 09:07:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22382 "HTTP/1.1 200 OK"
+2025-08-25 09:07:48 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-inside-out-costume-in-Spider-Man-No-Way-Home.jpg?w=1024
+2025-08-25 09:07:49 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-inside-out-costume-in-Spider-Man-No-Way-Home.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:07:49 - app.wordpress - INFO - Uploading image 'Peter-Parker-in-his-inside-out-costume-in-Spider-Man-No-Way-Home.jpg' to WordPress.
+2025-08-25 09:07:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:07:52 - app.wordpress - INFO - Uploaded media 22383 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-inside-out-costume-in-Spider-Man-No-Way-Home.jpg?w=1024
+2025-08-25 09:07:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22383 "HTTP/1.1 200 OK"
+2025-08-25 09:07:52 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-nanite-integrated-suit-with-Tobey-Maguire-and-Andrew-Garfield-in-Spider-Man-No-Way-Home.jpg?w=1024
+2025-08-25 09:07:53 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-nanite-integrated-suit-with-Tobey-Maguire-and-Andrew-Garfield-in-Spider-Man-No-Way-Home.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:07:53 - app.wordpress - INFO - Uploading image 'Peter-Parker-in-his-nanite-integrated-suit-with-Tobey-Maguire-and-Andrew-Garfield-in-Spider-Man-No-Way-Home.jpg' to WordPress.
+2025-08-25 09:07:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:07:56 - app.wordpress - INFO - Uploaded media 22384 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-nanite-integrated-suit-with-Tobey-Maguire-and-Andrew-Garfield-in-Spider-Man-No-Way-Home.jpg?w=1024
+2025-08-25 09:07:57 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22384 "HTTP/1.1 200 OK"
+2025-08-25 09:07:57 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-original-costume-in-Spider-Man-Homecoming.jpg?w=1024
+2025-08-25 09:07:58 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-original-costume-in-Spider-Man-Homecoming.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:07:58 - app.wordpress - INFO - Uploading image 'Peter-Parker-in-his-original-costume-in-Spider-Man-Homecoming.jpg' to WordPress.
+2025-08-25 09:08:00 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:08:00 - app.wordpress - INFO - Uploaded media 22385 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Peter-Parker-in-his-original-costume-in-Spider-Man-Homecoming.jpg?w=1024
+2025-08-25 09:08:01 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22385 "HTTP/1.1 200 OK"
+2025-08-25 09:08:01 - app.wordpress - INFO - Post will be created with featured_media 22378.
+2025-08-25 09:08:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=tom-holland "HTTP/1.1 200 OK"
+2025-08-25 09:08:02 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=homem-aranha "HTTP/1.1 200 OK"
+2025-08-25 09:08:03 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=mcu "HTTP/1.1 200 OK"
+2025-08-25 09:08:03 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=marvel "HTTP/1.1 200 OK"
+2025-08-25 09:08:04 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=homem-aranha-de-volta-ao-lar "HTTP/1.1 200 OK"
+2025-08-25 09:08:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=homem-aranha-longe-de-casa "HTTP/1.1 200 OK"
+2025-08-25 09:08:06 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=homem-aranha-sem-volta-para-casa "HTTP/1.1 200 OK"
+2025-08-25 09:08:06 - app.wordpress - INFO - Creating WordPress post: Tom Holland como Homem-Aranha: todos os seus trajes no MCU
+2025-08-25 09:08:09 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-25 09:08:09 - app.wordpress - INFO - Successfully created post 'Tom Holland como Homem-Aranha: todos os seus trajes no MCU' with ID: 22386
+2025-08-25 09:08:09 - app.store - INFO - Successfully recorded published post for article DB ID 2417 (WP Post ID: 22386).
+2025-08-25 09:08:09 - app.pipeline - INFO - Successfully published post 22386 for article DB ID 2417
+2025-08-25 09:08:09 - app.pipeline - INFO - Sleeping for 8.5s (per-article delay).
+2025-08-25 09:08:17 - app.pipeline - INFO - Processing article: James Gunn Told 2 People About His DC Studios Job Before Accepting It (And Both Are in Peacemaker) (DB ID: 2418) from cbr_movies
+2025-08-25 09:08:18 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:08:18 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:08:18 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-25 09:08:18 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/tv-shows/news/james-gunn-dc-studios-dcu-job-steve-agee-peacemaker-star-comment/. Title: James Gunn Told 2 People About His DC Studios Job ...
+2025-08-25 09:08:18 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:08:18 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-25 09:08:25 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:08:55 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-25 09:08:55 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg?resize=2000,1125
+2025-08-25 09:08:56 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-25 09:08:56 - app.wordpress - INFO - Uploading image 'John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg' to WordPress.
+2025-08-25 09:09:06 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:09:06 - app.wordpress - INFO - Uploaded media 22387 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg?resize=2000,1125
+2025-08-25 09:09:06 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22387 "HTTP/1.1 200 OK"
+2025-08-25 09:09:06 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg?w=1024
+2025-08-25 09:09:07 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:09:07 - app.wordpress - INFO - Uploading image 'A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg' to WordPress.
+2025-08-25 09:09:10 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:09:10 - app.wordpress - INFO - Uploaded media 22388 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg?w=1024
+2025-08-25 09:09:11 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22388 "HTTP/1.1 200 OK"
+2025-08-25 09:09:11 - app.wordpress - INFO - Post will be created with featured_media 22387.
+2025-08-25 09:09:11 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=james-gunn "HTTP/1.1 200 OK"
+2025-08-25 09:09:12 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dc-studios "HTTP/1.1 200 OK"
+2025-08-25 09:09:13 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=peacemaker "HTTP/1.1 200 OK"
+2025-08-25 09:09:13 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hbo-max "HTTP/1.1 200 OK"
+2025-08-25 09:09:14 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dceu "HTTP/1.1 200 OK"
+2025-08-25 09:09:15 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=guardioes-da-galaxia "HTTP/1.1 200 OK"
+2025-08-25 09:09:15 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dc-comics "HTTP/1.1 200 OK"
+2025-08-25 09:09:15 - app.wordpress - INFO - Creating WordPress post: James Gunn contou a 2 atores de Peacemaker sobre seu novo trabalho na DC
+2025-08-25 09:09:17 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-25 09:09:17 - app.wordpress - INFO - Successfully created post 'James Gunn contou a 2 atores de Peacemaker sobre seu novo trabalho na DC' with ID: 22389
+2025-08-25 09:09:18 - app.store - INFO - Successfully recorded published post for article DB ID 2418 (WP Post ID: 22389).
+2025-08-25 09:09:18 - app.pipeline - INFO - Successfully published post 22389 for article DB ID 2418
+2025-08-25 09:09:18 - app.pipeline - INFO - Sleeping for 6.0s (per-article delay).
+2025-08-25 09:09:24 - app.pipeline - INFO - Processing article: Netflix Surprise Box Office Hit Is Available for Streaming (DB ID: 2419) from cbr_movies
+2025-08-25 09:09:24 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:09:24 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:09:24 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-25 09:09:24 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/anime/news/kpop-demon-hunters-sing-along-netflix-release-date/. Title: Netflix Surprise Box Office Hit Is Available for S...
+2025-08-25 09:09:24 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:09:24 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-25 09:09:30 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:10:00 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-25 09:10:00 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Netflix-Logo.jpg?resize=2000,1125
+2025-08-25 09:10:00 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Netflix-Logo.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-25 09:10:00 - app.wordpress - INFO - Uploading image 'Netflix-Logo.jpg' to WordPress.
+2025-08-25 09:10:12 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:10:12 - app.wordpress - INFO - Uploaded media 22390 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Netflix-Logo.jpg?resize=2000,1125
+2025-08-25 09:10:12 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22390 "HTTP/1.1 200 OK"
+2025-08-25 09:10:12 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/The-protagonists-of-Netflixs-KPop-Demon-Hunters.jpg?w=1024
+2025-08-25 09:10:12 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/The-protagonists-of-Netflixs-KPop-Demon-Hunters.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:10:13 - app.wordpress - INFO - Uploading image 'The-protagonists-of-Netflixs-KPop-Demon-Hunters.jpg' to WordPress.
+2025-08-25 09:10:16 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:10:16 - app.wordpress - INFO - Uploaded media 22391 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/The-protagonists-of-Netflixs-KPop-Demon-Hunters.jpg?w=1024
+2025-08-25 09:10:17 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22391 "HTTP/1.1 200 OK"
+2025-08-25 09:10:17 - app.wordpress - INFO - Post will be created with featured_media 22390.
+2025-08-25 09:10:18 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=netflix "HTTP/1.1 200 OK"
+2025-08-25 09:10:18 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=filme "HTTP/1.1 200 OK"
+2025-08-25 09:10:19 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=streaming "HTTP/1.1 200 OK"
+2025-08-25 09:10:20 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=sucesso-de-bilheteria "HTTP/1.1 200 OK"
+2025-08-25 09:10:20 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=cultura-pop "HTTP/1.1 200 OK"
+2025-08-25 09:10:20 - app.wordpress - INFO - Creating WordPress post: Sucesso Inesperado da Netflix: Filme Disponível no Streaming
+2025-08-25 09:10:23 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-25 09:10:23 - app.wordpress - INFO - Successfully created post 'Sucesso Inesperado da Netflix: Filme Disponível no Streaming' with ID: 22392
+2025-08-25 09:10:23 - app.store - INFO - Successfully recorded published post for article DB ID 2419 (WP Post ID: 22392).
+2025-08-25 09:10:23 - app.pipeline - INFO - Successfully published post 22392 for article DB ID 2419
+2025-08-25 09:10:23 - app.pipeline - INFO - Sleeping for 6.4s (per-article delay).
+2025-08-25 09:10:29 - app.pipeline - INFO - Finished feed 'cbr_movies'. Sleeping for 15s before next feed: cbr_tv
+2025-08-25 09:10:44 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-08-25 09:10:44 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-08-25 09:10:46 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-08-25 09:10:46 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-08-25 09:10:46 - app.pipeline - INFO - Found 4 new articles for cbr_tv
+2025-08-25 09:10:46 - app.pipeline - INFO - Processing article: James Gunn Told 2 People About His DC Studios Job Before Accepting It (And Both Are in Peacemaker) (DB ID: 2420) from cbr_tv
+2025-08-25 09:10:46 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:10:46 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:10:46 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-25 09:10:46 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/tv-shows/news/james-gunn-dc-studios-dcu-job-steve-agee-peacemaker-star-comment/. Title: James Gunn Told 2 People About His DC Studios Job ...
+2025-08-25 09:10:46 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:10:46 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-25 09:10:57 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:11:27 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-25 09:11:27 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg?resize=2000,1125
+2025-08-25 09:11:27 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-25 09:11:27 - app.wordpress - INFO - Uploading image 'John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg' to WordPress.
+2025-08-25 09:11:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:11:38 - app.wordpress - INFO - Uploaded media 22393 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg?resize=2000,1125
+2025-08-25 09:11:40 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22393 "HTTP/1.1 200 OK"
+2025-08-25 09:11:40 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg?w=1024
+2025-08-25 09:11:40 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:11:40 - app.wordpress - INFO - Uploading image 'A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg' to WordPress.
+2025-08-25 09:11:43 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:11:43 - app.wordpress - INFO - Uploaded media 22394 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg?w=1024
+2025-08-25 09:11:44 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22394 "HTTP/1.1 200 OK"
+2025-08-25 09:11:44 - app.wordpress - INFO - Post will be created with featured_media 22393.
+2025-08-25 09:11:44 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=james-gunn "HTTP/1.1 200 OK"
+2025-08-25 09:11:45 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dc-studios "HTTP/1.1 200 OK"
+2025-08-25 09:11:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=peacemaker "HTTP/1.1 200 OK"
+2025-08-25 09:11:46 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=john-cena "HTTP/1.1 200 OK"
+2025-08-25 09:11:47 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=warner-bros-discovery "HTTP/1.1 200 OK"
+2025-08-25 09:11:47 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dc-comics "HTTP/1.1 200 OK"
+2025-08-25 09:11:48 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=super-herois "HTTP/1.1 200 OK"
+2025-08-25 09:11:48 - app.wordpress - INFO - Creating WordPress post: James Gunn contou a apenas dois atores de Peacemaker sobre seu novo emprego na DC
+2025-08-25 09:11:50 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-25 09:11:50 - app.wordpress - INFO - Successfully created post 'James Gunn contou a apenas dois atores de Peacemaker sobre seu novo emprego na DC' with ID: 22395
+2025-08-25 09:11:50 - app.store - INFO - Successfully recorded published post for article DB ID 2420 (WP Post ID: 22395).
+2025-08-25 09:11:50 - app.pipeline - INFO - Successfully published post 22395 for article DB ID 2420
+2025-08-25 09:11:50 - app.pipeline - INFO - Sleeping for 9.9s (per-article delay).
+2025-08-25 09:12:00 - app.pipeline - INFO - Processing article: Peacemaker Star Teases the Wildest Season 2 Episode Is Yet to Come (DB ID: 2421) from cbr_tv
+2025-08-25 09:12:01 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:12:01 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:12:01 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-25 09:12:01 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/tv-shows/news/peacemaker-season-2-final-episodes-insane-steve-agee-comments/. Title: Peacemaker Star Teases the Wildest Season 2 Episod...
+2025-08-25 09:12:01 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:12:01 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-25 09:12:06 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:12:23 - apscheduler.scheduler - WARNING - Execution of job "Run RSS processing pipeline (trigger: interval[0:05:00], next run at: 2025-08-25 09:12:23 -03)" skipped: maximum number of running instances reached (1)
+2025-08-25 09:12:36 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-25 09:12:36 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg?resize=2000,1125
+2025-08-25 09:12:37 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-25 09:12:38 - app.wordpress - INFO - Uploading image 'A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg' to WordPress.
+2025-08-25 09:12:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:12:52 - app.wordpress - INFO - Uploaded media 22396 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/A-mural-depicting-the-cast-of-Peacemaker-Season-2.jpg?resize=2000,1125
+2025-08-25 09:12:53 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22396 "HTTP/1.1 200 OK"
+2025-08-25 09:12:53 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg?w=1024
+2025-08-25 09:12:53 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:12:53 - app.wordpress - INFO - Uploading image 'John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg' to WordPress.
+2025-08-25 09:12:58 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:12:58 - app.wordpress - INFO - Uploaded media 22397 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/John-Cena-as-Peacemaker-and-Eagly-in-Peacemaker-Season-2.jpg?w=1024
+2025-08-25 09:12:59 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22397 "HTTP/1.1 200 OK"
+2025-08-25 09:12:59 - app.wordpress - INFO - Post will be created with featured_media 22396.
+2025-08-25 09:13:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=peacemaker "HTTP/1.1 200 OK"
+2025-08-25 09:13:00 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=john-cena "HTTP/1.1 200 OK"
+2025-08-25 09:13:01 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=hbo-max "HTTP/1.1 200 OK"
+2025-08-25 09:13:02 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=james-gunn "HTTP/1.1 200 OK"
+2025-08-25 09:13:02 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=dc-comics "HTTP/1.1 200 OK"
+2025-08-25 09:13:03 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=o-esquadrao-suicida "HTTP/1.1 200 OK"
+2025-08-25 09:13:03 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=series "HTTP/1.1 200 OK"
+2025-08-25 09:13:03 - app.wordpress - INFO - Creating WordPress post: Peacemaker 2ª Temporada: Episódio Mais Insano Está Chegando
+2025-08-25 09:13:05 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-25 09:13:05 - app.wordpress - INFO - Successfully created post 'Peacemaker 2ª Temporada: Episódio Mais Insano Está Chegando' with ID: 22398
+2025-08-25 09:13:05 - app.store - INFO - Successfully recorded published post for article DB ID 2421 (WP Post ID: 22398).
+2025-08-25 09:13:05 - app.pipeline - INFO - Successfully published post 22398 for article DB ID 2421
+2025-08-25 09:13:05 - app.pipeline - INFO - Sleeping for 9.1s (per-article delay).
+2025-08-25 09:13:15 - app.pipeline - INFO - Processing article: Emily in Paris Crew Member Dies on Set (DB ID: 2422) from cbr_tv
+2025-08-25 09:13:15 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:13:15 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:13:15 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-08-25 09:13:15 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/tv-shows/news/netflix-emily-in-paris-season-5-diego-borella-dead-on-venice-set/. Title: Emily in Paris Crew Member Dies on Set...
+2025-08-25 09:13:15 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:13:15 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-25 09:13:20 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:13:50 - app.pipeline - INFO - Attempting to upload up to 2 images.
+2025-08-25 09:13:50 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Lily-Collins-as-Emily-Cooper-in-Venice-Season-5-of-Emily-in-Paris.jpg?resize=2000,1125
+2025-08-25 09:13:50 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Lily-Collins-as-Emily-Cooper-in-Venice-Season-5-of-Emily-in-Paris.jpg?resize=2000,1125 "HTTP/1.1 200 OK"
+2025-08-25 09:13:50 - app.wordpress - INFO - Uploading image 'Lily-Collins-as-Emily-Cooper-in-Venice-Season-5-of-Emily-in-Paris.jpg' to WordPress.
+2025-08-25 09:13:59 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:13:59 - app.wordpress - INFO - Uploaded media 22399 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Lily-Collins-as-Emily-Cooper-in-Venice-Season-5-of-Emily-in-Paris.jpg?resize=2000,1125
+2025-08-25 09:14:00 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22399 "HTTP/1.1 200 OK"
+2025-08-25 09:14:00 - app.wordpress - INFO - Downloading image for upload: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Lily-Collins-as-Emily-Cooper-in-Season-5-of-Emily-in-Paris.jpg?w=1024
+2025-08-25 09:14:00 - httpx - INFO - HTTP Request: GET https://comicbook.com/wp-content/uploads/sites/4/2025/08/Lily-Collins-as-Emily-Cooper-in-Season-5-of-Emily-in-Paris.jpg?w=1024 "HTTP/1.1 200 OK"
+2025-08-25 09:14:00 - app.wordpress - INFO - Uploading image 'Lily-Collins-as-Emily-Cooper-in-Season-5-of-Emily-in-Paris.jpg' to WordPress.
+2025-08-25 09:14:04 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:14:04 - app.wordpress - INFO - Uploaded media 22400 from URL: https://comicbook.com/wp-content/uploads/sites/4/2025/08/Lily-Collins-as-Emily-Cooper-in-Season-5-of-Emily-in-Paris.jpg?w=1024
+2025-08-25 09:14:05 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22400 "HTTP/1.1 200 OK"
+2025-08-25 09:14:05 - app.wordpress - INFO - Post will be created with featured_media 22399.
+2025-08-25 09:14:05 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=emily-em-paris "HTTP/1.1 200 OK"
+2025-08-25 09:14:06 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=netflix "HTTP/1.1 200 OK"
+2025-08-25 09:14:07 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=lily-collins "HTTP/1.1 200 OK"
+2025-08-25 09:14:07 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=paris "HTTP/1.1 200 OK"
+2025-08-25 09:14:08 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-25 09:14:08 - app.wordpress - INFO - Successfully created tag 'Paris'
+2025-08-25 09:14:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=series "HTTP/1.1 200 OK"
+2025-08-25 09:14:09 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=filmagens "HTTP/1.1 200 OK"
+2025-08-25 09:14:10 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=morte "HTTP/1.1 200 OK"
+2025-08-25 09:14:10 - app.wordpress - INFO - Creating WordPress post: Morre membro da equipe de Emily em Paris durante gravações
+2025-08-25 09:14:12 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-25 09:14:12 - app.wordpress - INFO - Successfully created post 'Morre membro da equipe de Emily em Paris durante gravações' with ID: 22401
+2025-08-25 09:14:12 - app.store - INFO - Successfully recorded published post for article DB ID 2422 (WP Post ID: 22401).
+2025-08-25 09:14:12 - app.pipeline - INFO - Successfully published post 22401 for article DB ID 2422
+2025-08-25 09:14:12 - app.pipeline - INFO - Sleeping for 7.7s (per-article delay).
+2025-08-25 09:14:20 - app.pipeline - INFO - Finished feed 'cbr_tv'. Sleeping for 15s before next feed: gamerant_games
+2025-08-25 09:14:35 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-08-25 09:14:35 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-08-25 09:14:35 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-08-25 09:14:35 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-08-25 09:14:35 - app.pipeline - INFO - Found 5 new articles for gamerant_games
+2025-08-25 09:14:35 - app.pipeline - INFO - Processing article: Call of Duty Accused of Trying to Trick Players Into Pre-Ordering Black Ops 7 (DB ID: 2424) from gamerant_games
+2025-08-25 09:14:36 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:14:37 - app.extractor - INFO - Converted 13 'data-img-url' divs to <figure> tags.
+2025-08-25 09:14:37 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:14:37 - app.extractor - INFO - Collected 8 images from article (pre+post).
+2025-08-25 09:14:37 - app.extractor - INFO - Successfully extracted and cleaned content from https://gamerant.com/call-of-duty-tricks-players-to-buy-black-ops-7/. Title: Call of Duty Accused of Trying to Trick Players In...
+2025-08-25 09:14:37 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:14:37 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 0)...
+2025-08-25 09:14:37 - app.ai_processor - ERROR - AI content generation failed with key index 0: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-08-25 09:14:37 - app.ai_processor - WARNING - Failing over to next API key for category 'games'.
+2025-08-25 09:14:37 - app.ai_processor - INFO - Using API key index 1 for category 'games'.
+2025-08-25 09:14:37 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-25 09:14:45 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:15:15 - app.pipeline - INFO - Attempting to upload up to 8 images.
+2025-08-25 09:15:15 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/08/black-ops-7-screenshot.jpg
+2025-08-25 09:15:15 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/08/black-ops-7-screenshot.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:15:15 - app.wordpress - INFO - Uploading image 'black-ops-7-screenshot.jpg' to WordPress.
+2025-08-25 09:15:27 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:15:27 - app.wordpress - INFO - Uploaded media 22402 from URL: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/08/black-ops-7-screenshot.jpg
+2025-08-25 09:15:27 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22402 "HTTP/1.1 200 OK"
+2025-08-25 09:15:27 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-android.jpg
+2025-08-25 09:15:28 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-android.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:15:28 - app.wordpress - INFO - Uploading image 'black-ops-7-android.jpg' to WordPress.
+2025-08-25 09:15:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:15:37 - app.wordpress - INFO - Uploaded media 22403 from URL: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-android.jpg
+2025-08-25 09:15:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22403 "HTTP/1.1 200 OK"
+2025-08-25 09:15:38 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-battle-royale-map.jpg
+2025-08-25 09:15:38 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-battle-royale-map.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:15:39 - app.wordpress - INFO - Uploading image 'black-ops-7-battle-royale-map.jpg' to WordPress.
+2025-08-25 09:15:51 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:15:51 - app.wordpress - INFO - Uploaded media 22404 from URL: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-battle-royale-map.jpg
+2025-08-25 09:15:52 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22404 "HTTP/1.1 200 OK"
+2025-08-25 09:15:52 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-david-mason.jpg
+2025-08-25 09:15:52 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-david-mason.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:15:53 - app.wordpress - INFO - Uploading image 'black-ops-7-david-mason.jpg' to WordPress.
+2025-08-25 09:16:03 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:16:03 - app.wordpress - INFO - Uploaded media 22405 from URL: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-david-mason.jpg
+2025-08-25 09:16:04 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22405 "HTTP/1.1 200 OK"
+2025-08-25 09:16:04 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-drone.jpg
+2025-08-25 09:16:04 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-drone.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:16:05 - app.wordpress - INFO - Uploading image 'black-ops-7-drone.jpg' to WordPress.
+2025-08-25 09:16:17 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:16:17 - app.wordpress - INFO - Uploaded media 22406 from URL: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/black-ops-7-drone.jpg
+2025-08-25 09:16:17 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22406 "HTTP/1.1 200 OK"
+2025-08-25 09:16:17 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/call-of-duty-black-ops-7-david-mason.jpg
+2025-08-25 09:16:18 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/call-of-duty-black-ops-7-david-mason.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:16:18 - app.wordpress - INFO - Uploading image 'call-of-duty-black-ops-7-david-mason.jpg' to WordPress.
+2025-08-25 09:16:28 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:16:28 - app.wordpress - INFO - Uploaded media 22407 from URL: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/call-of-duty-black-ops-7-david-mason.jpg
+2025-08-25 09:16:29 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22407 "HTTP/1.1 200 OK"
+2025-08-25 09:16:29 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/cod-black-ops-7-tag-page-cover-art.jpg
+2025-08-25 09:16:29 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/cod-black-ops-7-tag-page-cover-art.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:16:30 - app.wordpress - INFO - Uploading image 'cod-black-ops-7-tag-page-cover-art.jpg' to WordPress.
+2025-08-25 09:16:37 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:16:37 - app.wordpress - INFO - Uploaded media 22408 from URL: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/06/cod-black-ops-7-tag-page-cover-art.jpg
+2025-08-25 09:16:38 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22408 "HTTP/1.1 200 OK"
+2025-08-25 09:16:38 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/08/work-featured-images-13.jpg
+2025-08-25 09:16:38 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/08/work-featured-images-13.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:16:39 - app.wordpress - INFO - Uploading image 'work-featured-images-13.jpg' to WordPress.
+2025-08-25 09:16:48 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:16:48 - app.wordpress - INFO - Uploaded media 22409 from URL: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/08/work-featured-images-13.jpg
+2025-08-25 09:16:49 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22409 "HTTP/1.1 200 OK"
+2025-08-25 09:16:49 - app.wordpress - INFO - Post will be created with featured_media 22402.
+2025-08-25 09:16:50 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=call-of-duty "HTTP/1.1 200 OK"
+2025-08-25 09:16:50 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=black-ops-7 "HTTP/1.1 200 OK"
+2025-08-25 09:16:51 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/tags "HTTP/1.1 201 Created"
+2025-08-25 09:16:51 - app.wordpress - INFO - Successfully created tag 'Black Ops 7'
+2025-08-25 09:16:52 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=activision "HTTP/1.1 200 OK"
+2025-08-25 09:16:52 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=pre-venda "HTTP/1.1 200 OK"
+2025-08-25 09:16:53 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=games "HTTP/1.1 200 OK"
+2025-08-25 09:16:53 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=polemica "HTTP/1.1 200 OK"
+2025-08-25 09:16:54 - httpx - INFO - HTTP Request: GET https://www.maquinanerd.com.br/wp-json/wp/v2/tags?slug=marketing "HTTP/1.1 200 OK"
+2025-08-25 09:16:54 - app.wordpress - INFO - Creating WordPress post: Call of Duty: Acusações de enganar jogadores com pré-venda do Black Ops 7
+2025-08-25 09:16:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/posts "HTTP/1.1 201 Created"
+2025-08-25 09:16:56 - app.wordpress - INFO - Successfully created post 'Call of Duty: Acusações de enganar jogadores com pré-venda do Black Ops 7' with ID: 22410
+2025-08-25 09:16:56 - app.store - INFO - Successfully recorded published post for article DB ID 2424 (WP Post ID: 22410).
+2025-08-25 09:16:56 - app.pipeline - INFO - Successfully published post 22410 for article DB ID 2424
+2025-08-25 09:16:56 - app.pipeline - INFO - Sleeping for 9.5s (per-article delay).
+2025-08-25 09:17:05 - app.pipeline - INFO - Processing article: Upcoming Steam Game Is Like Realistic Minecraft with Co-Op and Procedural Generation (DB ID: 2425) from gamerant_games
+2025-08-25 09:17:06 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-08-25 09:17:06 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-08-25 09:17:06 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-08-25 09:17:06 - app.extractor - INFO - Found 1 unique YouTube videos.
+2025-08-25 09:17:07 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-08-25 09:17:07 - app.extractor - INFO - Successfully extracted and cleaned content from https://gamerant.com/steam-game-everwind-like-minecraft/. Title: Upcoming Steam Game Is Like Realistic Minecraft wi...
+2025-08-25 09:17:07 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-08-25 09:17:07 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 1)...
+2025-08-25 09:17:13 - app.ai_processor - INFO - Successfully parsed and validated AI response.
+2025-08-25 09:17:23 - apscheduler.scheduler - WARNING - Execution of job "Run RSS processing pipeline (trigger: interval[0:05:00], next run at: 2025-08-25 09:17:23 -03)" skipped: maximum number of running instances reached (1)
+2025-08-25 09:17:43 - app.pipeline - INFO - Attempting to upload up to 4 images.
+2025-08-25 09:17:43 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/08/steam-logo-voxel-realistic-art-game-rant.jpg
+2025-08-25 09:17:43 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/08/steam-logo-voxel-realistic-art-game-rant.jpg "HTTP/1.1 200 OK"
+2025-08-25 09:17:44 - app.wordpress - INFO - Uploading image 'steam-logo-voxel-realistic-art-game-rant.jpg' to WordPress.
+2025-08-25 09:17:55 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media "HTTP/1.1 201 Created"
+2025-08-25 09:17:55 - app.wordpress - INFO - Uploaded media 22411 from URL: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/08/steam-logo-voxel-realistic-art-game-rant.jpg
+2025-08-25 09:17:56 - httpx - INFO - HTTP Request: POST https://www.maquinanerd.com.br/wp-json/wp/v2/media/22411 "HTTP/1.1 200 OK"
+2025-08-25 09:17:56 - app.wordpress - INFO - Downloading image for upload: https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/10/SteamCompanyTagPageHeader.png
+2025-08-25 09:17:56 - httpx - INFO - HTTP Request: GET https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/10/SteamCompanyTagPageHeader.png "HTTP/1.1 200 OK"
+2025-08-25 09:17:57 - app.wordpress - INFO - Uploading image 'SteamCompanyTagPageHeader.png' to WordPress.

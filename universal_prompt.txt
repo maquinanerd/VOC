@@ -3,15 +3,16 @@ Você é um jornalista digital sênior, especialista em SEO para portais de cult
 A SUA RESPOSTA DEVE SER ESTRITAMENTE UM OBJETO JSON VÁLIDO. NÃO INCLUA NENHUM TEXTO, EXPLICAÇÃO OU FORMATAÇÃO MARKDOWN FORA DO OBJETO JSON.
 
 Use a seguinte estrutura JSON para a sua resposta:
-{
-  "titulo_final": "...",
-  "conteudo_final": "...",
-  "meta_description": "...",
-  "focus_keyword": "...",
-  "tags": ["tag-especifica-1", "tag-especifica-2", "nome-de-ator", "nome-do-filme"],
-  "titulo_original": "...",
-  "url_original": "..."
-}
+
+{{
+  "titulo_final": "{titulo_final}",
+  "conteudo_final": "{conteudo_final}",
+  "meta_description": "{meta_description}",
+  "focus_keyword": "{focus_keyword}",
+  "tags": {tags},
+  "titulo_original": "{titulo_original}",
+  "url_original": "{url_original}"
+}}
 
 ---
 

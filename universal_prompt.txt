@@ -19,7 +19,20 @@ Use a seguinte estrutura JSON para a sua resposta:
   "conteudo_final": "{conteudo_final}",
   "meta_description": "{meta_description}",
   "focus_keyword": "{focus_keyword}",
-  "tags": {tags},
+  "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
+  "slug": "(opcional) slug-para-url-amigavel",
+  "related_keyphrases": ["(opcional) variação da keyword", "(opcional) keyword long-tail"],
+  "image_alt_texts": {
+    "(opcional) nome-da-imagem.jpg": "Texto alternativo otimizado para a imagem"
+  },
+  "yoast_meta": {
+    "_yoast_wpseo_title": "{titulo_final}",
+    "_yoast_wpseo_metadesc": "{meta_description}",
+    "_yoast_wpseo_focuskw": "{focus_keyword}",
+    "_yoast_news_keywords": "keyword1, keyword2, keyword3",
+    "_yoast_wpseo_opengraph-title": "(opcional) Título para redes sociais",
+    "_yoast_wpseo_opengraph-description": "(opcional) Descrição para redes sociais"
+  },
   "titulo_original": "{titulo_original}",
   "url_original": "{url_original}"
 }
@@ -59,6 +72,10 @@ Incorpore no máximo 3 vídeos do YouTube no formato:
 
 Destaque termos-chave com <b>.
 
+Insira links internos e externos relevantes quando fizerem sentido no contexto.
+
+Use a palavra-chave principal (focus_keyword) naturalmente no primeiro parágrafo.
+
 Crie no máximo 3 links internos relevantes usando {domain}/tag/{tag}.
 
 Os links DEVEM estar SEMPRE embutidos em palavras-chave no formato:
@@ -74,7 +91,7 @@ Exemplo incorreto (proibido): https://www.maquinanerd.com.br/tag/movies
 
 Destaque com <b> os termos mais importantes (nomes de filmes, atores, personagens, estúdios).
 
-Insira links internos contextuais usando as tags identificadas. Ex: <b><a href="{domain}/tag/miles-teller">Miles Teller</a></b>.
+Use variações da palavra-chave e termos long-tail nos subtítulos (H2/H3) para cobrir a intenção de busca do usuário.
 
 Obrigatório: use subtítulos <h2> para organizar o texto (mínimo 3 seções).
 
@@ -108,6 +125,18 @@ NÃO USE TAGS GENÉRICAS como "filme", "ator" ou "série".
 
 Use nomes próprios, títulos de obras etc. (ex: "Miles Teller", "Anya Taylor-Joy", "The Gorge", "Skydance").
 
+slug
+
+(Opcional) Crie um slug otimizado para a URL, com 3 a 5 palavras, separadas por hífens. Ex: "novo-filme-miles-teller-the-gorge".
+
+related_keyphrases
+
+(Opcional) Liste 2 a 3 variações ou palavras-chave long-tail relacionadas à `focus_keyword`.
+
+image_alt_texts
+
+(Opcional) Crie um objeto onde a chave é o nome do arquivo da imagem e o valor é um texto alternativo (ALT) descritivo, que inclua a `focus_keyword`.
+
 titulo_original
 
 Copie exatamente o título original fornecido.
@@ -115,6 +144,10 @@ Copie exatamente o título original fornecido.
 url_original
 
 Copie exatamente a URL original fornecida.
+
+yoast_meta
+
+Gere os campos para o plugin Yoast SEO. Os campos `_yoast_wpseo_opengraph-title` e `_yoast_wpseo_opengraph-description` são opcionais; se omitidos, o Yoast usará o título e a meta description principais.
 
 REGRAS PARA CRIAÇÃO DE TÍTULOS SEO
 

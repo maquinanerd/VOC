@@ -260,6 +260,23 @@ class AIProcessor:
                 logger.debug(f"Received data: {data}")
                 return None
 
+            # Optionally validate yoast_meta if it exists, as it's a critical but potentially optional object
+            if "yoast_meta" in data:
+                if not isinstance(data.get("yoast_meta"), dict):
+                    logger.error("AI response 'yoast_meta' field is not a dictionary.")
+                    logger.debug(f"Received yoast_meta: {data['yoast_meta']}")
+                    return None
+
+                required_yoast_keys = [
+                    "_yoast_wpseo_title", "_yoast_wpseo_metadesc",
+                    "_yoast_wpseo_focuskw", "_yoast_news_keywords"
+                ]
+                missing_yoast_keys = [key for key in required_yoast_keys if key not in data["yoast_meta"]]
+                if missing_yoast_keys:
+                    logger.error(f"AI response 'yoast_meta' is missing required keys: {', '.join(missing_yoast_keys)}")
+                    logger.debug(f"Received yoast_meta: {data['yoast_meta']}")
+                    return None
+
             logger.info("Successfully parsed and validated AI response.")
             return data
 

@@ -251,6 +251,56 @@ class WordPressClient:
                 logger.error(f"Response body: {e.response.text}")
             return None
 
+    def set_media_alt_text(self, media_id: int, alt_text: str) -> bool:
+        """
+        Sets the alt text for an already uploaded media item.
+
+        Args:
+            media_id: The ID of the media item.
+            alt_text: The alternative text to set.
+
+        Returns:
+            True if successful, False otherwise.
+        """
+        endpoint = f"{self.base_url}/media/{media_id}"
+        payload = {"alt_text": alt_text}
+        try:
+            response = self.client.post(endpoint, json=payload, timeout=20.0)
+            response.raise_for_status()
+            logger.info(f"Successfully set alt text for media ID {media_id}.")
+            return True
+        except (httpx.RequestError, httpx.HTTPStatusError) as e:
+            logger.warning(f"Failed to set alt_text for media ID {media_id}: {e}")
+            if hasattr(e, 'response'):
+                logger.warning(f"Response body: {e.response.text}")
+            return False
+
+    def find_related_posts(self, search_term: str, limit: int = 3) -> List[Dict[str, str]]:
+        """
+        Finds related posts on WordPress via the search endpoint.
+
+        Args:
+            search_term: The term to search for.
+            limit: The maximum number of posts to return.
+
+        Returns:
+            A list of dictionaries, each with 'title' and 'url'.
+        """
+        endpoint = f"{self.base_url}/search"
+        params = {"search": search_term, "per_page": limit, "subtype": "post"}
+        try:
+            response = self.client.get(endpoint, params=params, timeout=15.0)
+            response.raise_for_status()
+            results = response.json()
+            # The search endpoint returns a list of objects with title and url
+            return [
+                {"title": item.get("title", ""), "url": item.get("url", "")}
+                for item in results if item.get("url")
+            ]
+        except (httpx.RequestError, httpx.HTTPStatusError, ValueError) as e:
+            logger.error(f"Failed to search for related posts with term '{search_term}': {e}")
+            return []
+
     def close(self):
         """Closes the httpx client session."""
         if self.client and not self.client.is_closed:

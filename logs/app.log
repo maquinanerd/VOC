@@ -10647,3 +10647,363 @@ message: "API key not valid. Please pass a valid API key."
 2025-09-03 19:59:54 - app.ai_processor - WARNING - Failing over to next API key for category 'series'.
 2025-09-03 19:59:54 - app.ai_processor - INFO - Using API key index 2 for category 'series'.
 2025-09-03 19:59:54 - app.ai_processor - INFO - Sending content to AI for rewriting (Key index: 2)...
+2025-09-03 20:39:11 - app.store - INFO - Initializing database tables if they don't exist...
+2025-09-03 20:39:11 - app.store - INFO - Database initialized successfully.
+2025-09-03 20:39:11 - app.store - INFO - Database connection closed.
+2025-09-03 20:39:11 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-09-03 20:39:11 - __main__ - INFO - Iniciando o agendador para execução contínua.
+2025-09-03 20:39:11 - __main__ - INFO - Agendador iniciado. Pipeline rodará a cada 5 minutos.
+2025-09-03 20:39:11 - __main__ - INFO - Limpeza de dados antigos agendada para cada 36 horas.
+2025-09-03 20:39:11 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 20:39:12 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 20:39:12 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 20:39:12 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:39:13 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 20:39:13 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 20:39:13 - app.pipeline - INFO - Found 2 new articles for screenrant_movies
+2025-09-03 20:39:13 - app.pipeline - INFO - Processing article: Disney's Lilo & Stitch Live-Action Remake Now On Disney+ After $1B Theatrical Run (DB ID: 5293) from screenrant_movies
+2025-09-03 20:39:14 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:39:14 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-09-03 20:39:14 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:39:14 - app.extractor - INFO - Collected 2 images from article (pre+post).
+2025-09-03 20:39:14 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/lilo-and-stitch-remake-now-streaming-disney-plus/. Title: Disney's Live-Action Remake In Top 5 Box Office Ch...
+2025-09-03 20:39:14 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:39:14 - app.pipeline - ERROR - Error processing article https://screenrant.com/lilo-and-stitch-remake-now-streaming-disney-plus/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:39:14 - app.pipeline - INFO - Processing article: James Wan Explains His “Full Circle” Conjuring: Last Rites Moment (DB ID: 5294) from screenrant_movies
+2025-09-03 20:39:15 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:39:15 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:39:15 - app.extractor - INFO - Collected 0 images from article (pre+post).
+2025-09-03 20:39:15 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/video/the-conjuring-last-rites-producer-james-wan-interview/. Title: James Wan Explains Why His Newest Horror Movie Is ...
+2025-09-03 20:39:15 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:39:15 - app.pipeline - ERROR - Error processing article https://screenrant.com/video/the-conjuring-last-rites-producer-james-wan-interview/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:39:15 - app.pipeline - INFO - Finished feed 'screenrant_movies'. Sleeping for 15s before next feed: screenrant_tv
+2025-09-03 20:39:30 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 20:39:30 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:39:30 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 20:39:30 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 20:39:30 - app.pipeline - INFO - Found 5 new articles for screenrant_tv
+2025-09-03 20:39:30 - app.pipeline - INFO - Processing article: The Blacklist: James Spader's Crime Thriller With 91% Rotten Tomatoes Score (DB ID: 5295) from screenrant_tv
+2025-09-03 20:39:31 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:39:31 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-09-03 20:39:31 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:39:31 - app.extractor - INFO - Collected 4 images from article (pre+post).
+2025-09-03 20:39:31 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/james-spader-the-blacklist-rotten-tomatoes-score-deserved/. Title: James Spader's 91% RT Crime Thriller Deserves Its ...
+2025-09-03 20:39:31 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:39:31 - app.pipeline - ERROR - Error processing article https://screenrant.com/james-spader-the-blacklist-rotten-tomatoes-score-deserved/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:39:31 - app.pipeline - INFO - Processing article: Fire Country's Tragedy Risks Disturbingly Undoing Bode's Three-Season Arc (DB ID: 5296) from screenrant_tv
+2025-09-03 20:39:32 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:39:32 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-09-03 20:39:32 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:39:32 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-09-03 20:39:32 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/fire-country-vince-leone-looming-death-bode-progress-arc/. Title: Fire Country's Heartbreaking Tragedy Risks Undoing...
+2025-09-03 20:39:32 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:39:32 - app.pipeline - ERROR - Error processing article https://screenrant.com/fire-country-vince-leone-looming-death-bode-progress-arc/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:39:32 - app.pipeline - INFO - Processing article: Marvel Zombies Reveals Spider-Man's Full Power In Brutal MCU Scene (DB ID: 5297) from screenrant_tv
+2025-09-03 20:39:32 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:39:32 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-09-03 20:39:32 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:39:32 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-09-03 20:39:32 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/spider-man-marvel-zombies-fight-scene-mcu-too-brutal/. Title: Spider-Man Unleashes His Full Strength In Upcoming...
+2025-09-03 20:39:32 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:39:32 - app.pipeline - ERROR - Error processing article https://screenrant.com/spider-man-marvel-zombies-fight-scene-mcu-too-brutal/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:39:32 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-09-03 20:39:47 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 20:39:47 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:39:48 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 20:39:48 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 20:39:48 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 20:39:48 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 20:39:48 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:39:48 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 20:39:48 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 20:39:48 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 20:39:48 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 20:39:48 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:39:49 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 20:39:49 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 20:39:49 - app.pipeline - INFO - Found 3 new articles for movieweb_movies
+2025-09-03 20:39:49 - app.pipeline - INFO - Processing article: 'Saturday Night Live' Season 51 Has the Biggest Cast Shake-Up in Years (DB ID: 5300) from movieweb_movies
+2025-09-03 20:39:50 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:39:50 - app.extractor - INFO - Converted 10 'data-img-url' divs to <figure> tags.
+2025-09-03 20:39:50 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:39:51 - app.extractor - INFO - Collected 10 images from article (pre+post).
+2025-09-03 20:39:51 - app.extractor - INFO - Successfully extracted and cleaned content from https://movieweb.com/saturday-night-live-season-51-cast-guide/. Title: 'Saturday Night Live' Season 51 Might Be Going the...
+2025-09-03 20:39:51 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:39:51 - app.pipeline - ERROR - Error processing article https://movieweb.com/saturday-night-live-season-51-cast-guide/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:39:51 - app.pipeline - INFO - Processing article: A 'Call of Duty' Movie Is Coming — One Game Is the Perfect Adaptation (DB ID: 5301) from movieweb_movies
+2025-09-03 20:39:51 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:39:51 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-09-03 20:39:51 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:39:51 - app.extractor - INFO - Collected 2 images from article (pre+post).
+2025-09-03 20:39:51 - app.extractor - INFO - Successfully extracted and cleaned content from https://movieweb.com/call-of-duty-movie-adapt-black-ops-story/. Title: The 'Call of Duty' Movie Is Official — This Game M...
+2025-09-03 20:39:51 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:39:51 - app.pipeline - ERROR - Error processing article https://movieweb.com/call-of-duty-movie-adapt-black-ops-story/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:39:51 - app.pipeline - INFO - Processing article: The $136M Flop Francis Ford Coppola Tried to Stop You Watching at Home Is Getting a Surprise Home Release (DB ID: 5302) from movieweb_movies
+2025-09-03 20:39:52 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:39:52 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-09-03 20:39:52 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:39:52 - app.extractor - INFO - Collected 2 images from article (pre+post).
+2025-09-03 20:39:52 - app.extractor - INFO - Successfully extracted and cleaned content from https://movieweb.com/megalopolis-francis-ford-coppola-flop-vod-release-september-2025/. Title: The $136M Flop Francis Ford Coppola Tried to Stop ...
+2025-09-03 20:39:52 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:39:52 - app.pipeline - ERROR - Error processing article https://movieweb.com/megalopolis-francis-ford-coppola-flop-vod-release-september-2025/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:39:52 - app.pipeline - INFO - Finished feed 'movieweb_movies'. Sleeping for 15s before next feed: cbr_movies
+2025-09-03 20:40:07 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 20:40:07 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:40:09 - app.store - INFO - Initializing database tables if they don't exist...
+2025-09-03 20:40:09 - app.store - INFO - Database initialized successfully.
+2025-09-03 20:40:09 - app.store - INFO - Database connection closed.
+2025-09-03 20:40:09 - __main__ - INFO - Verificação do banco de dados concluída com sucesso.
+2025-09-03 20:40:09 - __main__ - INFO - Iniciando o agendador para execução contínua.
+2025-09-03 20:40:09 - __main__ - INFO - Agendador iniciado. Pipeline rodará a cada 5 minutos.
+2025-09-03 20:40:09 - __main__ - INFO - Limpeza de dados antigos agendada para cada 36 horas.
+2025-09-03 20:40:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 20:40:09 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 20:40:09 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 20:40:09 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 20:40:09 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 20:40:09 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:40:10 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 20:40:11 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 20:40:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:40:11 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 20:40:11 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 20:40:11 - app.pipeline - INFO - Found 1 new articles for cbr_tv
+2025-09-03 20:40:11 - app.pipeline - INFO - Processing article: 3 WWE Legends Who Could Return in 2025 (DB ID: 5303) from cbr_tv
+2025-09-03 20:40:11 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:40:11 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:40:11 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-09-03 20:40:11 - app.extractor - INFO - Successfully extracted and cleaned content from https://comicbook.com/tv-shows/news/3-wwe-legends-who-could-return-in-2025/. Title: 3 WWE Legends Who Could Return in 2025...
+2025-09-03 20:40:11 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:40:11 - app.pipeline - ERROR - Error processing article https://comicbook.com/tv-shows/news/3-wwe-legends-who-could-return-in-2025/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:40:11 - app.pipeline - INFO - Finished feed 'cbr_tv'. Sleeping for 15s before next feed: gamerant_games
+2025-09-03 20:40:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 20:40:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 20:40:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 20:40:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 20:40:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:40:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 20:40:11 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 20:40:11 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-09-03 20:40:11 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 20:40:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:40:12 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 20:40:12 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 20:40:12 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 20:40:12 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 20:40:12 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:40:12 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 20:40:12 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 20:40:12 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 20:40:12 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 20:40:12 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:40:13 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 20:40:13 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 20:40:13 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 20:40:13 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 20:40:13 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:40:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 20:40:14 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 20:40:14 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 20:40:14 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 20:40:14 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:40:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 20:40:14 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 20:40:14 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 20:40:14 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 20:40:14 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:40:15 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 20:40:15 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 20:40:15 - app.pipeline - INFO - Found 1 new articles for gamerant_games
+2025-09-03 20:40:15 - app.pipeline - INFO - Processing article: Genshin Impact Leak Reveals New 5-Star Character for Version 6.1 (DB ID: 5304) from gamerant_games
+2025-09-03 20:40:16 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:40:16 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-09-03 20:40:16 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:40:16 - app.extractor - INFO - Collected 4 images from article (pre+post).
+2025-09-03 20:40:16 - app.extractor - INFO - Successfully extracted and cleaned content from https://gamerant.com/genshin-impact-5-star-character-nefer-version-6-1-leak/. Title: Genshin Impact Leak Reveals New 5-Star Character f...
+2025-09-03 20:40:16 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:40:16 - app.pipeline - ERROR - Error processing article https://gamerant.com/genshin-impact-5-star-character-nefer-version-6-1-leak/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:40:16 - app.pipeline - INFO - Finished feed 'gamerant_games'. Sleeping for 15s before next feed: thegamer_games
+2025-09-03 20:40:26 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 20:40:26 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:40:27 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 20:40:27 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 20:40:27 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 20:40:27 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 20:40:27 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:40:28 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 20:40:28 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 20:40:28 - app.pipeline - INFO - Found 1 new articles for thegamer_games
+2025-09-03 20:40:28 - app.pipeline - INFO - Processing article: Marvel Rivals Season 4 Is Giving Hulk And Black Panther A Busted Team-Up Ability (DB ID: 5305) from thegamer_games
+2025-09-03 20:40:29 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 20:40:29 - app.extractor - INFO - Converted 1 'data-img-url' divs to <figure> tags.
+2025-09-03 20:40:29 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 20:40:29 - app.extractor - INFO - Found 1 unique YouTube videos.
+2025-09-03 20:40:29 - app.extractor - INFO - Collected 1 images from article (pre+post).
+2025-09-03 20:40:29 - app.extractor - INFO - Successfully extracted and cleaned content from https://www.thegamer.com/marvel-rivals-season-4-giving-black-panther-hulk-gamma-team-up/. Title: Sorry Hulk Mains, Marvel Rivals Is Giving Him A Bu...
+2025-09-03 20:40:29 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 20:40:29 - app.pipeline - ERROR - Error processing article https://www.thegamer.com/marvel-rivals-season-4-giving-black-panther-hulk-gamma-team-up/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 20:40:29 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 20:40:29 - app.store - INFO - Database connection closed.
+2025-09-03 20:40:29 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 20:40:31 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 20:40:31 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:40:32 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 20:40:32 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 20:40:32 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 20:40:32 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 20:40:32 - app.store - INFO - Database connection closed.
+2025-09-03 20:40:32 - app.wordpress - INFO - WordPress client connection closed.

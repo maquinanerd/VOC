@@ -183,13 +183,12 @@ class AIProcessor:
             "focus_keyword": "",
         }
 
-        # Log placeholders in the template that are not in the fields dict for debugging
-        placeholders = re.findall(r"{(\w+)}", prompt_template)
-        for p in placeholders:
-            if p not in fields:
-                logger.warning(f"Prompt template placeholder '{{{p}}}' is not in the provided fields dictionary.")
-
-        prompt = prompt_template.format_map(_SafeDict(fields))
+        # Manually replace placeholders. This is safer than format_map because it won't
+        # try to interpret literal braces {} within the prompt's JSON structure example,
+        # which was causing the unexpected AttributeError.
+        prompt = prompt_template
+        for key, value in fields.items():
+            prompt = prompt.replace(f'{{{key}}}', str(value))
 
         last_error = "Unknown error"
         for _ in range(len(self.api_keys)):

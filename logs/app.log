@@ -11007,3 +11007,758 @@ AttributeError: 'str' object has no attribute 'jpg"'
 2025-09-03 20:40:32 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
 2025-09-03 20:40:32 - app.store - INFO - Database connection closed.
 2025-09-03 20:40:32 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 20:45:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 20:45:32 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 20:45:32 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 20:45:32 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:45:33 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 20:45:33 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 20:45:33 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 20:45:33 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 20:45:33 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:45:33 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 20:45:33 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 20:45:33 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-09-03 20:45:33 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 20:45:33 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:45:34 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 20:45:34 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 20:45:34 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 20:45:34 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 20:45:34 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:45:34 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 20:45:34 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 20:45:34 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 20:45:34 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 20:45:34 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:45:35 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 20:45:35 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 20:45:35 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 20:45:35 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 20:45:35 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:45:36 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 20:45:36 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 20:45:36 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 20:45:36 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 20:45:36 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:45:37 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 20:45:37 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 20:45:37 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 20:45:37 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 20:45:37 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:45:37 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 20:45:37 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 20:45:37 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 20:45:37 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 20:45:37 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:45:38 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 20:45:38 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 20:45:38 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 20:45:38 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 20:45:38 - app.store - INFO - Database connection closed.
+2025-09-03 20:45:38 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 20:50:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 20:50:10 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 20:50:10 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 20:50:10 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:50:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 20:50:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 20:50:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 20:50:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 20:50:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:50:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 20:50:11 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 20:50:11 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-09-03 20:50:11 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 20:50:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:50:12 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 20:50:12 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 20:50:12 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 20:50:12 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 20:50:12 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:50:12 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 20:50:12 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 20:50:12 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 20:50:12 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 20:50:12 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:50:13 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 20:50:13 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 20:50:13 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 20:50:13 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 20:50:13 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:50:13 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 20:50:13 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 20:50:13 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 20:50:13 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 20:50:13 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:50:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 20:50:14 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 20:50:14 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 20:50:14 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 20:50:14 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:50:15 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 20:50:15 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 20:50:15 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 20:50:15 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 20:50:15 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:50:15 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 20:50:15 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 20:50:15 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 20:50:15 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 20:50:15 - app.store - INFO - Database connection closed.
+2025-09-03 20:50:15 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 20:55:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 20:55:11 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 20:55:11 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 20:55:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:55:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 20:55:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 20:55:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 20:55:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 20:55:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:55:12 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 20:55:12 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 20:55:12 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-09-03 20:55:12 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 20:55:12 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:55:12 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 20:55:12 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 20:55:12 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 20:55:12 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 20:55:12 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:55:13 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 20:55:13 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 20:55:13 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 20:55:13 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 20:55:13 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:55:13 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 20:55:13 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 20:55:13 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 20:55:13 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 20:55:13 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 20:55:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 20:55:14 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 20:55:14 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 20:55:14 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 20:55:14 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 20:55:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 20:55:14 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 20:55:14 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 20:55:14 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 20:55:14 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:55:15 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 20:55:15 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 20:55:15 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 20:55:15 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 20:55:15 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 20:55:15 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 20:55:15 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 20:55:15 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 20:55:15 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 20:55:15 - app.store - INFO - Database connection closed.
+2025-09-03 20:55:15 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 21:00:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 21:00:11 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 21:00:11 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 21:00:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:00:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 21:00:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 21:00:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 21:00:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 21:00:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:00:12 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 21:00:12 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 21:00:12 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-09-03 21:00:12 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 21:00:12 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:00:12 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 21:00:12 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 21:00:12 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 21:00:12 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 21:00:12 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:00:12 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 21:00:12 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 21:00:12 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 21:00:12 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 21:00:12 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:00:13 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 21:00:13 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 21:00:13 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 21:00:13 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 21:00:13 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:00:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 21:00:14 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 21:00:14 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 21:00:14 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 21:00:14 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:00:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 21:00:14 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 21:00:14 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 21:00:14 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 21:00:14 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:00:15 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 21:00:15 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 21:00:15 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 21:00:15 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 21:00:15 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:00:15 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 21:00:15 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 21:00:15 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 21:00:15 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 21:00:15 - app.store - INFO - Database connection closed.
+2025-09-03 21:00:15 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 21:05:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 21:05:11 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 21:05:11 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 21:05:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:05:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 21:05:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 21:05:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 21:05:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 21:05:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:05:12 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 21:05:12 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 21:05:12 - app.pipeline - INFO - Found 1 new articles for screenrant_tv
+2025-09-03 21:05:12 - app.pipeline - INFO - Processing article: The Paper Cast: Where You've Seen The Office Spinoff Stars Before (DB ID: 5306) from screenrant_tv
+2025-09-03 21:05:13 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 21:05:13 - app.extractor - INFO - Converted 7 'data-img-url' divs to <figure> tags.
+2025-09-03 21:05:13 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 21:05:13 - app.extractor - INFO - Collected 7 images from article (pre+post).
+2025-09-03 21:05:13 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/the-paper-cast-character-guide/. Title: The Paper Cast & Character Guide: Who Stars In The...
+2025-09-03 21:05:13 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 21:05:13 - app.pipeline - ERROR - Error processing article https://screenrant.com/the-paper-cast-character-guide/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 21:05:13 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-09-03 21:05:28 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 21:05:28 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:05:29 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 21:05:29 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 21:05:29 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 21:05:29 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 21:05:29 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:05:29 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 21:05:29 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 21:05:29 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 21:05:29 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 21:05:29 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:05:30 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 21:05:30 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 21:05:30 - app.pipeline - INFO - Found 2 new articles for movieweb_movies
+2025-09-03 21:05:30 - app.pipeline - INFO - Processing article: How To Watch 'The Conjuring' Universe in Chronological & Release Order (DB ID: 5307) from movieweb_movies
+2025-09-03 21:05:31 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 21:05:31 - app.extractor - INFO - Converted 2 'data-img-url' divs to <figure> tags.
+2025-09-03 21:05:31 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 21:05:31 - app.extractor - INFO - Collected 2 images from article (pre+post).
+2025-09-03 21:05:31 - app.extractor - INFO - Successfully extracted and cleaned content from https://movieweb.com/the-conjuring-movies-in-order/. Title: How To Watch 'The Conjuring' Universe in Chronolog...
+2025-09-03 21:05:31 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 21:05:31 - app.pipeline - ERROR - Error processing article https://movieweb.com/the-conjuring-movies-in-order/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 21:05:31 - app.pipeline - INFO - Processing article: '28 Years Later: The Bone Temple' Trailer Is Missing One Major Character (DB ID: 5308) from movieweb_movies
+2025-09-03 21:05:31 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 21:05:31 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-09-03 21:05:31 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 21:05:32 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-09-03 21:05:32 - app.extractor - INFO - Successfully extracted and cleaned content from https://movieweb.com/28-years-later-the-bone-temple-trailer-aaron-taylor-johnson-jamie-missing/. Title: '28 Years Later: The Bone Temple' Trailer Is Final...
+2025-09-03 21:05:32 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 21:05:32 - app.pipeline - ERROR - Error processing article https://movieweb.com/28-years-later-the-bone-temple-trailer-aaron-taylor-johnson-jamie-missing/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 21:05:32 - app.pipeline - INFO - Finished feed 'movieweb_movies'. Sleeping for 15s before next feed: cbr_movies
+2025-09-03 21:05:47 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 21:05:47 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:05:47 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 21:05:47 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 21:05:47 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 21:05:47 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 21:05:47 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:05:47 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 21:05:47 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 21:05:47 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 21:05:47 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 21:05:47 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:05:48 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 21:05:48 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 21:05:48 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 21:05:48 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 21:05:48 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:05:49 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 21:05:49 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 21:05:49 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 21:05:49 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 21:05:49 - app.store - INFO - Database connection closed.
+2025-09-03 21:05:49 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 21:10:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 21:10:11 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 21:10:11 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 21:10:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:10:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 21:10:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 21:10:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 21:10:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 21:10:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:10:12 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 21:10:12 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 21:10:12 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-09-03 21:10:12 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 21:10:12 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:10:12 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 21:10:12 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 21:10:12 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 21:10:12 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 21:10:12 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:10:13 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 21:10:13 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 21:10:13 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 21:10:13 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 21:10:13 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:10:13 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 21:10:13 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 21:10:13 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 21:10:13 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 21:10:13 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:10:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 21:10:14 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 21:10:14 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 21:10:14 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 21:10:14 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:10:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 21:10:14 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 21:10:14 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 21:10:14 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 21:10:14 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:10:15 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 21:10:15 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 21:10:15 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 21:10:15 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 21:10:15 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:10:15 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 21:10:15 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 21:10:15 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 21:10:15 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 21:10:15 - app.store - INFO - Database connection closed.
+2025-09-03 21:10:15 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 21:15:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 21:15:11 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 21:15:11 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 21:15:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:15:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 21:15:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 21:15:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 21:15:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 21:15:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:15:12 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 21:15:12 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 21:15:12 - app.pipeline - INFO - Found 2 new articles for screenrant_tv
+2025-09-03 21:15:12 - app.pipeline - INFO - Processing article: The Diplomat Season 3: West Wing Reunion Brings New Dynamic To Political Drama (DB ID: 5309) from screenrant_tv
+2025-09-03 21:15:13 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 21:15:13 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-09-03 21:15:13 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 21:15:13 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-09-03 21:15:13 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/the-diplomat-season-3-west-wing-reunion-bradley-whitford-allison-janney-differences/. Title: West Wing Reunion In Season 3 Of Netflix’s 90% RT ...
+2025-09-03 21:15:13 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 21:15:13 - app.pipeline - ERROR - Error processing article https://screenrant.com/the-diplomat-season-3-west-wing-reunion-bradley-whitford-allison-janney-differences/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 21:15:13 - app.pipeline - INFO - Processing article: Wednesday Season 2, Part 2 Review: Shocking Deaths Make The Netflix Show Stick The Landing (DB ID: 5310) from screenrant_tv
+2025-09-03 21:15:13 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 21:15:13 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-09-03 21:15:13 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 21:15:13 - app.extractor - INFO - Collected 4 images from article (pre+post).
+2025-09-03 21:15:13 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/wednesday-season-2-part-2-review/. Title: Wednesday Season 2, Part 2 Review: Shocking Deaths...
+2025-09-03 21:15:13 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 21:15:13 - app.pipeline - ERROR - Error processing article https://screenrant.com/wednesday-season-2-part-2-review/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 21:15:14 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-09-03 21:15:29 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 21:15:29 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:15:29 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 21:15:29 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 21:15:29 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 21:15:29 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 21:15:29 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:15:30 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 21:15:30 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 21:15:30 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 21:15:30 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 21:15:30 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:15:30 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 21:15:30 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 21:15:30 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 21:15:30 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 21:15:30 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:15:31 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 21:15:31 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 21:15:31 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 21:15:31 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 21:15:31 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:15:31 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 21:15:31 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 21:15:31 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 21:15:31 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 21:15:31 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:15:32 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 21:15:32 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 21:15:32 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 21:15:32 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 21:15:32 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:15:32 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 21:15:32 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 21:15:32 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 21:15:32 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 21:15:32 - app.store - INFO - Database connection closed.
+2025-09-03 21:15:32 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 21:20:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 21:20:11 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 21:20:11 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 21:20:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:20:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 21:20:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 21:20:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 21:20:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 21:20:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:20:12 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 21:20:12 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 21:20:12 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-09-03 21:20:12 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 21:20:12 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:20:12 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 21:20:12 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 21:20:12 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 21:20:12 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 21:20:12 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:20:13 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 21:20:13 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 21:20:13 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 21:20:13 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 21:20:13 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:20:13 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 21:20:13 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 21:20:13 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 21:20:13 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 21:20:13 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:20:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 21:20:14 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 21:20:14 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 21:20:14 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 21:20:14 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:20:14 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 21:20:14 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 21:20:14 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 21:20:14 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 21:20:14 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:20:15 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 21:20:15 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 21:20:15 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 21:20:15 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 21:20:15 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:20:15 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 21:20:15 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 21:20:15 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 21:20:15 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 21:20:15 - app.store - INFO - Database connection closed.
+2025-09-03 21:20:15 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 21:25:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 21:25:11 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 21:25:11 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 21:25:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:25:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 21:25:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 21:25:11 - app.pipeline - INFO - Found 1 new articles for screenrant_movies
+2025-09-03 21:25:11 - app.pipeline - INFO - Processing article: The Conjuring: Last Rites - Essential Viewing Guide For Maximum Impact (DB ID: 5311) from screenrant_movies
+2025-09-03 21:25:12 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 21:25:12 - app.extractor - INFO - Converted 3 'data-img-url' divs to <figure> tags.
+2025-09-03 21:25:12 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 21:25:12 - app.extractor - INFO - Collected 3 images from article (pre+post).
+2025-09-03 21:25:12 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/conjuring-last-rites-which-movies-watch-before/. Title: There's 9 Conjuring Movies, & These Are The Ones Y...
+2025-09-03 21:25:12 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 21:25:12 - app.pipeline - ERROR - Error processing article https://screenrant.com/conjuring-last-rites-which-movies-watch-before/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 21:25:13 - app.pipeline - INFO - Finished feed 'screenrant_movies'. Sleeping for 15s before next feed: screenrant_tv
+2025-09-03 21:25:28 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 21:25:28 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:25:28 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 21:25:28 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 21:25:28 - app.pipeline - INFO - No new articles found for screenrant_tv.
+2025-09-03 21:25:28 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 21:25:28 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:25:28 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 21:25:29 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 21:25:29 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 21:25:29 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 21:25:29 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:25:29 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 21:25:29 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 21:25:29 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 21:25:29 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 21:25:29 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:25:29 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 21:25:29 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 21:25:29 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 21:25:29 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 21:25:29 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:25:30 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 21:25:30 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 21:25:30 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 21:25:30 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 21:25:30 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:25:30 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 21:25:30 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 21:25:30 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 21:25:30 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 21:25:30 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:25:31 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 21:25:31 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 21:25:31 - app.pipeline - INFO - Found 1 new articles for gamerant_games
+2025-09-03 21:25:31 - app.pipeline - INFO - Processing article: Rumor: Sony's Next State of Play Could Include Insomniac's Wolverine (DB ID: 5312) from gamerant_games
+2025-09-03 21:25:32 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 21:25:32 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-09-03 21:25:32 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 21:25:32 - app.extractor - INFO - Collected 4 images from article (pre+post).
+2025-09-03 21:25:32 - app.extractor - INFO - Successfully extracted and cleaned content from https://gamerant.com/sony-state-of-play-insomniac-wolverine-september-2025-leak/. Title: Rumor: Sony's Next State of Play Could Include Ins...
+2025-09-03 21:25:32 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 21:25:32 - app.pipeline - ERROR - Error processing article https://gamerant.com/sony-state-of-play-insomniac-wolverine-september-2025-leak/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 21:25:32 - app.pipeline - INFO - Finished feed 'gamerant_games'. Sleeping for 15s before next feed: thegamer_games
+2025-09-03 21:25:47 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 21:25:47 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:25:48 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 21:25:48 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 21:25:48 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 21:25:48 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 21:25:48 - app.store - INFO - Database connection closed.
+2025-09-03 21:25:48 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 21:30:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 21:30:10 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 21:30:10 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 21:30:10 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:30:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 21:30:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 21:30:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 21:30:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 21:30:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:30:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 21:30:11 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 21:30:12 - app.pipeline - INFO - Found 1 new articles for screenrant_tv
+2025-09-03 21:30:12 - app.pipeline - INFO - Processing article: ABC's New Hit Show Solves Major Problem Wutg Latest Trend (DB ID: 5313) from screenrant_tv
+2025-09-03 21:30:13 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 21:30:13 - app.extractor - INFO - Converted 4 'data-img-url' divs to <figure> tags.
+2025-09-03 21:30:13 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 21:30:13 - app.extractor - INFO - Collected 4 images from article (pre+post).
+2025-09-03 21:30:13 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/abc-latest-trend-with-new-hit-show-solves-one-of-network-tv-biggest-problems/. Title: ABC's Latest Trend With Its New Hit Show Solves On...
+2025-09-03 21:30:13 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 21:30:13 - app.pipeline - ERROR - Error processing article https://screenrant.com/abc-latest-trend-with-new-hit-show-solves-one-of-network-tv-biggest-problems/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 21:30:13 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-09-03 21:30:28 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 21:30:28 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:30:28 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 21:30:28 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 21:30:28 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 21:30:28 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 21:30:28 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:30:29 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 21:30:29 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 21:30:29 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 21:30:29 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 21:30:29 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:30:29 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 21:30:29 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 21:30:29 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 21:30:29 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 21:30:29 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:30:30 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 21:30:30 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 21:30:30 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 21:30:30 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 21:30:30 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:30:31 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 21:30:31 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 21:30:31 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 21:30:31 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 21:30:31 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:30:32 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 21:30:32 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 21:30:32 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 21:30:32 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 21:30:32 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:30:33 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 21:30:33 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 21:30:33 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 21:30:33 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 21:30:33 - app.store - INFO - Database connection closed.
+2025-09-03 21:30:33 - app.wordpress - INFO - WordPress client connection closed.
+2025-09-03 21:35:09 - app.pipeline - INFO - Starting new pipeline cycle.
+2025-09-03 21:35:11 - httpx - INFO - HTTP Request: HEAD https://www.maquinanerd.com.br/wp-json/wp/v2 "HTTP/1.1 200 OK"
+2025-09-03 21:35:11 - app.pipeline - INFO - Processing feed: screenrant_movies (Category: movies)
+2025-09-03 21:35:11 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:35:11 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/movies/
+2025-09-03 21:35:11 - app.feeds - INFO - Total unique items for screenrant_movies: 10
+2025-09-03 21:35:11 - app.pipeline - INFO - No new articles found for screenrant_movies.
+2025-09-03 21:35:11 - app.pipeline - INFO - Processing feed: screenrant_tv (Category: series)
+2025-09-03 21:35:11 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:35:12 - app.feeds - INFO - Read 10 items from https://screenrant.com/feed/tv/
+2025-09-03 21:35:12 - app.feeds - INFO - Total unique items for screenrant_tv: 10
+2025-09-03 21:35:12 - app.pipeline - INFO - Found 1 new articles for screenrant_tv
+2025-09-03 21:35:12 - app.pipeline - INFO - Processing article: 10 Miniseries I Knew Would Be Masterpieces In The First 10 Minutes (DB ID: 5314) from screenrant_tv
+2025-09-03 21:35:13 - app.extractor - INFO - Pre-cleaned HTML, removing unwanted widgets and blocks.
+2025-09-03 21:35:13 - app.extractor - INFO - Converted 10 'data-img-url' divs to <figure> tags.
+2025-09-03 21:35:13 - app.extractor - INFO - Found featured image via 'og:image'.
+2025-09-03 21:35:13 - app.extractor - INFO - Collected 10 images from article (pre+post).
+2025-09-03 21:35:13 - app.extractor - INFO - Successfully extracted and cleaned content from https://screenrant.com/miniseries-masterpieces-first-10-minutes/. Title: 10 Great Miniseries I Knew Would Be Masterpieces I...
+2025-09-03 21:35:13 - app.ai_processor - WARNING - Prompt template placeholder '{conteudo_final}' is not in the provided fields dictionary.
+2025-09-03 21:35:13 - app.pipeline - ERROR - Error processing article https://screenrant.com/miniseries-masterpieces-first-10-minutes/: 'str' object has no attribute 'jpg"'
+Traceback (most recent call last):
+  File "E:\Área de Trabalho 2\VocSenior\app\pipeline.py", line 89, in run_pipeline_cycle
+    rewritten_data, failure_reason = ai_processor.rewrite_content(
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        title=extracted_data['title'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        videos=extracted_data.get('videos', [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Área de Trabalho 2\VocSenior\app\ai_processor.py", line 192, in rewrite_content
+    prompt = prompt_template.format_map(_SafeDict(fields))
+AttributeError: 'str' object has no attribute 'jpg"'
+2025-09-03 21:35:13 - app.pipeline - INFO - Finished feed 'screenrant_tv'. Sleeping for 15s before next feed: collider_movies
+2025-09-03 21:35:28 - app.pipeline - INFO - Processing feed: collider_movies (Category: movies)
+2025-09-03 21:35:28 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:35:29 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/movie-news/
+2025-09-03 21:35:29 - app.feeds - INFO - Total unique items for collider_movies: 10
+2025-09-03 21:35:29 - app.pipeline - INFO - No new articles found for collider_movies.
+2025-09-03 21:35:29 - app.pipeline - INFO - Processing feed: collider_tv (Category: series)
+2025-09-03 21:35:29 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:35:29 - app.feeds - INFO - Read 10 items from https://collider.com/feed/category/tv-news/
+2025-09-03 21:35:29 - app.feeds - INFO - Total unique items for collider_tv: 10
+2025-09-03 21:35:29 - app.pipeline - INFO - No new articles found for collider_tv.
+2025-09-03 21:35:29 - app.pipeline - INFO - Processing feed: movieweb_movies (Category: movies)
+2025-09-03 21:35:29 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:35:30 - app.feeds - INFO - Read 10 items from https://movieweb.com/feed/
+2025-09-03 21:35:30 - app.feeds - INFO - Total unique items for movieweb_movies: 10
+2025-09-03 21:35:30 - app.pipeline - INFO - No new articles found for movieweb_movies.
+2025-09-03 21:35:30 - app.pipeline - INFO - Processing feed: cbr_movies (Category: movies)
+2025-09-03 21:35:30 - app.ai_processor - INFO - Using API key index 0 for category 'movies'.
+2025-09-03 21:35:30 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/movies/feed/
+2025-09-03 21:35:30 - app.feeds - INFO - Total unique items for cbr_movies: 50
+2025-09-03 21:35:30 - app.pipeline - INFO - No new articles found for cbr_movies.
+2025-09-03 21:35:30 - app.pipeline - INFO - Processing feed: cbr_tv (Category: series)
+2025-09-03 21:35:30 - app.ai_processor - INFO - Using API key index 0 for category 'series'.
+2025-09-03 21:35:31 - app.feeds - INFO - Read 50 items from https://comicbook.com/category/tv-shows/feed/
+2025-09-03 21:35:31 - app.feeds - INFO - Total unique items for cbr_tv: 50
+2025-09-03 21:35:31 - app.pipeline - INFO - No new articles found for cbr_tv.
+2025-09-03 21:35:31 - app.pipeline - INFO - Processing feed: gamerant_games (Category: games)
+2025-09-03 21:35:31 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:35:31 - app.feeds - INFO - Read 10 items from https://gamerant.com/feed/gaming/
+2025-09-03 21:35:31 - app.feeds - INFO - Total unique items for gamerant_games: 10
+2025-09-03 21:35:31 - app.pipeline - INFO - No new articles found for gamerant_games.
+2025-09-03 21:35:31 - app.pipeline - INFO - Processing feed: thegamer_games (Category: games)
+2025-09-03 21:35:31 - app.ai_processor - INFO - Using API key index 0 for category 'games'.
+2025-09-03 21:35:32 - app.feeds - INFO - Read 10 items from https://www.thegamer.com/feed/category/game-news/
+2025-09-03 21:35:32 - app.feeds - INFO - Total unique items for thegamer_games: 10
+2025-09-03 21:35:32 - app.pipeline - INFO - No new articles found for thegamer_games.
+2025-09-03 21:35:32 - app.pipeline - INFO - Pipeline cycle completed. Processed 0 articles.
+2025-09-03 21:35:32 - app.store - INFO - Database connection closed.
+2025-09-03 21:35:32 - app.wordpress - INFO - WordPress client connection closed.

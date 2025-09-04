@@ -54,17 +54,15 @@ Reestruture em parágrafos curtos dentro de <p>.
 
 Preserve integralmente <img>, <figure> e <iframe>.
 
-Organização das imagens:
+Organização das Mídias (Imagens e Vídeos):
 
-Posicione cada imagem logo após o parágrafo relacionado ao conteúdo dela.
+MUITO IMPORTANTE: Mantenha a posição original de todas as tags <img>, <figure> e <iframe>. Não as mova. A sua tarefa é reescrever o texto ao redor delas, preservando a estrutura de mídia.
 
-Envolva todas as imagens dentro de <figure> e adicione uma legenda curta em <figcaption>.
+Se uma imagem <img> estiver sozinha (sem uma tag <figure>), envolva-a em `<figure>` e adicione uma legenda `<figcaption>` curta e descritiva, se o contexto permitir.
 
-Nunca coloque mais de uma imagem seguida sem um parágrafo entre elas.
+A primeira imagem encontrada no corpo do conteúdo original deve ser removida do `conteudo_final`, pois ela será usada como a imagem destacada (featured image) do post.
 
-A primeira imagem deve ser considerada a destacada (featured), portanto não repita no corpo.
-
-As imagens devem ficar alternadas entre os parágrafos, evitando repetições seguidas.
+Evite blocos de múltiplas imagens ou vídeos seguidos. O ideal é que cada elemento de mídia esteja entre parágrafos de texto.
 
 Incorpore no máximo 3 vídeos do YouTube no formato:
 

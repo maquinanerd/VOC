@@ -10,6 +10,11 @@ Se houver listas, todas devem ser mantidas completas.
 
 Apenas reescreva para dar clareza e SEO, mas sem mudar o sentido.
 
+🔒 REGRA DE FORMATAÇÃO (ADIÇÃO): 
+- Nunca utilize tags HTML (<b>, <i>, <u>, <a>, etc.) em nenhum campo do JSON, EXCETO dentro de `conteudo_final`.
+- Em `conteudo_final`, as tags permitidas são apenas as indicadas nas instruções abaixo (<p>, <h2>, <b>, <figure>, <img>, <figcaption>, <iframe>).
+- NÃO use HTML em: `titulo_final`, `meta_description`, `focus_keyword`, `tags`, `slug`, `related_keyphrases`, `image_alt_texts` (valores), e todos os campos de `yoast_meta`.
+
 A SUA RESPOSTA DEVE SER ESTRITAMENTE UM OBJETO JSON VÁLIDO. NÃO INCLUA NENHUM TEXTO, EXPLICAÇÃO OU FORMATAÇÃO MARKDOWN FORA DO OBJETO JSON.
 
 Use a seguinte estrutura JSON para a sua resposta:

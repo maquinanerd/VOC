@@ -19,6 +19,7 @@ from .ai_processor import AIProcessor
 from .categorizer import Categorizer
 from .wordpress import WordPressClient
 from .html_utils import (
+    strip_all_html,
     merge_images_into_content,
     add_credit_to_figures,
     rewrite_img_srcs_with_wp,
@@ -106,6 +107,12 @@ def run_pipeline_cycle():
                             db.update_article_status(article_db_id, 'FAILED', reason=reason)
                             continue
 
+                        # SANITIZAÇÃO OBRIGATÓRIA:
+                        # Garante que o título e o resumo (meta_description) não contenham HTML.
+                        # Esta é uma camada de segurança para corrigir erros da IA.
+                        final_title = strip_all_html(rewritten_data['titulo_final'])
+                        final_excerpt = strip_all_html(rewritten_data['meta_description'])
+
                         # Step 3: HTML Processing and Cleanup
                         # 3.1: Defensive cleanup of common AI errors (e.g., leftover placeholders)
                         # These functions only act if specific error patterns are found.
@@ -133,7 +140,7 @@ def run_pipeline_cycle():
                         uploaded_id_map = {}
                         logger.info(f"Attempting to upload up to {len(urls_to_upload)} images.")
                         for url in urls_to_upload:
-                            media = wp_client.upload_media_from_url(url, rewritten_data['titulo_final'])
+                            media = wp_client.upload_media_from_url(url, final_title)
                             if media and media.get("source_url") and media.get("id"):
                                 # Normalize URL to handle potential trailing slashes as keys
                                 k = url.rstrip('/')
@@ -161,9 +168,9 @@ def run_pipeline_cycle():
                             featured_media_id = next(iter(uploaded_id_map.values()), None)
 
                         post_payload = {
-                            'title': rewritten_data['titulo_final'],
+                            'title': final_title,
                             'content': content_html,
-                            'excerpt': rewritten_data['meta_description'],
+                            'excerpt': final_excerpt,
                             'categories': [wp_category_id] if wp_category_id else [],
                             'tags': rewritten_data.get('tags', []),
                             'featured_media': featured_media_id,

@@ -1,6 +1,12 @@
 // ===================================================================
 // PROMPT UNIVERSAL – JORNALISTA DIGITAL + SEO (JSON OUTPUT)
 // ===================================================================
+// ⚠️ REGRAS CRÍTICAS DE FORMATAÇÃO (NÃO IGNORAR)
+// 1. O campo `titulo_final` DEVE ser apenas texto puro. NENHUMA tag HTML é permitida.
+//    - Exemplo CORRETO: "Lance Reddick: Novo thriller de época promete caos"
+//    - Exemplo INCORRETO: "<b>Lance Reddick</b>: Novo thriller de época promete caos"
+// 2. O campo `meta_description` DEVE ser apenas texto puro. NENHUMA tag HTML é permitida.
+//
 // ❌ NUNCA usar <b> no título ou no resumo
 // ❌ NUNCA usar HTML em titulo_final, meta_description ou focus_keyword
 // ✅ HTML só dentro de conteudo_final (tags permitidas: <p>, <h2>, <b>, <figure>, <img>, <figcaption>, <iframe>)

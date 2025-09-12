@@ -279,6 +279,22 @@ def add_credit_to_figures(html: str, source_url: Optional[str] = None) -> str:
     return html
 
 # =========================
+# Generic HTML Stripper
+# =========================
+
+def strip_all_html(text: str) -> str:
+    """
+    Remove todas as tags HTML de uma string, retornando apenas o texto.
+    Também decodifica entidades HTML como &lt; para <.
+    """
+    if not text or '<' not in text:
+        return text
+
+    # BeautifulSoup decodifica entidades HTML e extrai apenas o texto.
+    soup = BeautifulSoup(text, "html.parser")
+    return soup.get_text(separator=' ', strip=True)
+
+# =========================
 # Post-AI Defensive Cleanup
 # =========================
 

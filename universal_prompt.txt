@@ -99,6 +99,7 @@ Organização das Mídias (Imagens e Vídeos):
 meta_description
 - Crie um resumo para o Google de até 155 caracteres.
 - Deve ser atrativo e conter a palavra-chave principal.
+- Apenas texto puro, sem HTML.
 
 focus_keyword
 - Identifique a palavra-chave principal do artigo (ex: "The Gorge", "Miles Teller").
